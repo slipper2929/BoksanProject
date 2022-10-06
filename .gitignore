@@ -7,7 +7,7 @@ log4j.xml
 lecture
 target
 pom.properties
-# .classpath
+.classpath
 MANIFEST.MF
 
 ### Eclipse ###
@@ -60,7 +60,7 @@ local.properties
 .recommenders/
 
 # Annotation Processing
-# 나중에 살려줄거 .apt_generated/
+.apt_generated/
 .apt_generated_test/
 
 # Scala IDE specific (Scala & Java development for Eclipse)
@@ -74,13 +74,13 @@ local.properties
 
 ### Eclipse Patch ###
 # Spring Boot Tooling
-# 나중에 살려줄거 .sts4-cache/
+.sts4-cache/
 
 # Eclipse Core
-# 나중에 살려줄거 .project
+.project
 
 # IDT-specific (Eclipse Java Development Tools)
-# 나중에 살려줄거 .classpath
+.classpath
 
 ### Java ###
 # Compiled class file
