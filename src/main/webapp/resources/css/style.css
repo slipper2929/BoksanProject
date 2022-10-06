@@ -1,0 +1,58 @@
+@charset "utf-8";
+
+#container .b_main1{
+    padding-top: 70px;
+}
+
+.b_main1_title{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    padding-bottom: 50px;
+    margin-bottom: 100px;
+    border-bottom: 3px solid rgb(200, 200, 200);
+}
+
+.b_main1_department{
+    display: flex;
+    justify-content: space-between;
+}
+
+.b_main1_department>div{
+    width: 330px;
+    background-color: rgb(241, 241, 241);
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.b_main1_smallTitle{
+    height: 100px;
+    background-color: rgb(226, 220, 213);
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.b_main1_department>div>div:last-child{
+    padding: 50px;
+}
+
+.b_main1_department>div li{
+    margin-bottom: 5px;
+    list-style:square
+}
+
+.b_main1_department>div li a{
+    display: block;
+    color: #444;
+    margin-left: -5px;
+}
+
+.b_main1_department>div li a:hover{
+    color: rgb(176, 160, 56);
+}
+
+.b_main1_department>div li::marker{
+    font-size: 0.8rem;
+    
+}

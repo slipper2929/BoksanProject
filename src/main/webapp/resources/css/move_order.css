@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+.move_house{
+    width: 200px;
+    height: 40px;
+}
+
+.move_house>p>input{
+    width: 200px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+}
+
+.move_order_btn>input{
+    width: 80px;
+}

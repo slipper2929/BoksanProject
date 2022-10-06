@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+.b_submit{
+
+    margin-top: 80px;
+}
+
+.b_submit>input{
+    margin: 0 auto;
+}
+
+.b_inputform_name .b_check_bacode{
+    font-size: 25px;
+}
+
+#b_content_check {
+    position: relative;
+}
+
+#b_content_check .b_inputform_name{
+    margin-bottom: 110px;
+}
+
+#b_content_check .b_inputform_name .b_check_bacode{
+    position: absolute;
+    top: 0;
+    left: 38%;
+}
+
+#b_content_check .b_inputform_name .B_input{
+    position: absolute;
+    top: 50px;
+    left: 25%;
+}
+
+#b_content_check .b_inputform_name span{
+    position: absolute;
+    top: 150px;
+    left: 40%;
+}
+
+
+#b_content_check .b_inputform_name input{
+    position: absolute;
+    top: 200px;
+    left: 25%;
+}
+
+#b_content_check .b_check_ps{
+    position: absolute;
+    top: 400px;
+    left: 35%;
+}

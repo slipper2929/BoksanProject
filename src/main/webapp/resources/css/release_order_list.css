@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+.b_content{
+    padding-top: 0;
+}
+
+.release_location_bacode{
+    width: 200px;
+    height: 40px;
+}
+
+.release_location_bacode>p>input{
+    width: 200px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+}
+
+.release_order_btn>input{
+    width: 80px;
+}
+
+.b_content select{
+    margin-bottom: 20px;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 400;
+}

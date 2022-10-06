@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+.small_title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.b_inputform_main{
+    padding-bottom: 50px;
+    border-bottom: 3px solid rgb(200, 200, 200);
+}
+
+#container .b_content{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+#container .b_select1{
+    width: 50%;
+}
+
+#container .b_inputBox{
+    width: 50%;
+    
+}
+
+#container .b_text>label>span{
+    width: 23%;
+    margin-right: 0;
+}
+
+#container .b_inputBox>label>span{
+    width: 15%;
+    margin-right: 0;
+}
+
+
+
+#container .b_select>label>select{
+    width: 32%;
+
+}
+
+#container .b_inputBox>label>select{
+    width: 32%;
+}
+
+
+.pallet_add_btn{
+    position: absolute;
+    top: 80px;
+    right: 20px;
+}
+
+.pallet_add_btn>input{
+    width: 100px;
+    height: 39px;
+    line-height: 39px;
+}
+
+
+
+
+.b_inquiry_main{
+    position: relative;
+}
+
+.b_pallet_ps{
+    text-align: center;
+    margin-top: 10px;
+    color: #666;
+    margin-bottom: 50px;
+}
+
+.b_select3{
+    width: 100%;
+    text-align: center;
+    margin-left: -100px;
+}
+
+#container .b_select3>label>select{
+    width: 13%;
+}
+
+
+
+#container .b_select3>label>span{
+    width: 40%;
+    margin-right: 0;
+    font-size: 30px;
+    vertical-align: top;
+    line-height: 40px;
+}
+
+.pallet_delete_list_btn{
+    position: absolute;
+    top: 150px;
+    right: 280px;
+}
+
+.pallet_delete_list_btn>input{
+    width: 170px;
+    height: 39px;
+    line-height: 39px;
+}
+
+#container .b_table{
+    width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.pallet_all_check{
+    text-align: center;
+    line-height: 20px;
+}
+
+.pallet_all_check>input{
+    margin-right: 5px;
+    vertical-align: top;
+    margin-top: 3px;
+}
+
+.pallet_delete_check_btn{
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    margin-left: -175px;
+}

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.b_content{
+    padding-top: 0;
+}
+
+.emp_btn{
+    display: flex;
+    justify-content: end;
+}
+
+.emp_btn>p{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

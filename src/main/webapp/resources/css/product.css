@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+.b_submit{
+
+    margin-top: 80px;
+}
+
+.b_submit>input{
+    margin: 0 auto;
+}
+.b_product_ps{
+    margin-left: 340px;
+}

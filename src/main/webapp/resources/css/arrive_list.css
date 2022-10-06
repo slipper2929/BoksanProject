@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+
+#container .b_content{
+    padding-top: 0;
+}
+
+#container>section:first-child{
+    margin-bottom: 60px;
+}
+.arrive_info{
+    width: 200px;
+    height: 40px;
+}
+
+.arrive_info>p>input{
+    width: 200px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 14px;
+}
+
+.arrive_bacode_btn>input{
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+}

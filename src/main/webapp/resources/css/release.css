@@ -1,0 +1,134 @@
+@charset "utf-8";
+
+.b_submit{
+
+    margin-top: 80px;
+}
+
+.b_submit>input{
+    margin: 0 auto;
+}
+
+.b_inputform_main{
+    border-bottom: 3px solid rgb(200, 200, 200);
+}
+
+
+#b_release{
+    position: relative;
+}
+
+#b_release .b_select select{
+    margin-left: -6px;
+    width: 23%;
+    
+}
+
+.b_release_select{
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+
+.b_inputform_main .b_content .b_text span{
+    display: inline-block;
+    width: 25%;
+    height: 40px;
+    margin-right: 20%;
+}
+
+.b_release_ps{
+    position: absolute;
+    left: 45%;
+}
+
+.b_submit{
+    margin-bottom: 50px;
+}
+
+/*페레트css*/
+
+
+.section2 .small_title{
+    text-align: center;
+    font-size: 30px;
+}
+
+.b_inputform_main{
+    padding-bottom: 50px;
+    border-bottom: 3px solid rgb(200, 200, 200);
+}
+
+#container .section2 .b_content{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+#container .section2 .b_select1{
+    width: 60%;
+}
+
+#container .section2 .b_inputBox{
+    width: 50%;
+}
+
+#container .section2 .b_text>label>span{
+    width: 30%;
+    margin-right: 0;
+}
+
+
+#container .section2 .b_inputBox>label>span{
+    width: 12%;
+    margin-right: 0;
+}
+
+
+
+#container .section2 .b_select>label>select{
+    width: 30%;
+
+}
+
+#container .section2 .b_inputBox>label>select{
+    width: 32%;
+}
+
+
+.section2 .pallet_add_btn{
+    position: absolute;
+    top: 80px;
+    right: 20px;
+}
+
+.section2 .pallet_add_btn>input{
+    width: 100px;
+    height: 39px;
+    line-height: 39px;
+}
+
+.release_weight_textbox{
+    width: 300px;
+}
+
+.release_weight_textbox>p>input{
+    width: 300px;
+    height: 40px;
+    border: none;
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+.b_inquiry_main{
+    position: relative;
+    margin-bottom: 250px;
+}
+
+.release_list_btn{
+    position: absolute;
+    bottom: -120px;
+    left: 50%;
+    margin-left: -175px;
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+.pay_btn>p>input{
+    width: 100px;
+    height: 40px;
+    margin: 3px 0;
+}
+.payment{
+    width: 250px;
+}
+
+.b_content{
+    padding-top: 0;
+}

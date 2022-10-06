@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+.b_submit{
+
+    margin-top: 80px;
+}
+
+.b_submit>input{
+    margin: 0 auto;
+}
+
+#b_order{
+    position: relative;
+}
+
+#b_order .b_select select{
+    margin-left: -6px;
+    width: 23%;
+    
+}
+
+.b_order_select{
+    position: absolute;
+    top: 0;
+    right: 50px;
+}
+
+
+.b_inputform_main .b_content .b_text span{
+    display: inline-block;
+    width: 25%;
+    height: 40px;
+    margin-right: 20%;
+}
+
+.b_order_ps{
+    position: absolute;
+    left: 45%;
+}
+
+#b_order_price{
+    margin-top: 40px;
+}
+
+#b_order_price span{
+    padding-left: 320px;
+}
+

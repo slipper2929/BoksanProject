@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+.b_inquiry_main{
+    width: 1240px;
+    padding-top: 50px;
+}
+
+.b_inquiry_main .b_title{
+    border-bottom: 3px solid rgb(200,200,200);
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.b_inquiry_main .b_title h1{
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.b_inquiry_main .b_title h2{
+    font-size: 25px;
+    line-height: 30px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.b_inputform_main .b_content{
+    margin: 0 auto;
+}
+
+.b_content{
+    position: relative;
+    padding-top: 80px;
+}
+
+.b_inquiry_main .b_search{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 250px;
+    height: 40px;
+    padding-left: 5px;
+    /* overflow: hidden; */
+    border: 2px solid #cccccc;
+
+}
+
+.b_inquiry_main .b_input_text{
+    width: 200px;
+    height: 40px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border: 0;
+    color: #999;
+    vertical-align: top;
+    font-size: 20px;
+}
+
+.b_inquiry_main .b_submit{
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background-color: transparent;
+    background-size: 30px auto;
+    background-image: url(../b_img/search.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.b_inquiry_main .b_explain{
+    width: 300px;
+    position:absolute;
+    top: 10px;
+    left: 280px;
+}
+
+.b_inquiry_main .b_table{
+    width: 1240px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    border-collapse: collapse;
+}
+
+.b_inquiry_main .b_table tr,.b_table th, .b_table td{
+    border: 1px solid rgb(127, 127, 127);
+    text-align: center;
+    
+}
+
+.b_inquiry_main .b_table th{
+    height: 30px;
+    line-height: 30px;
+    background-color: #cccccc;
+    border-bottom: 2px solid rgb(127, 127, 127);
+}
+
+.b_inquiry_main .b_table p{
+    display: inline-block
+}
+
+.b_inquiry_main .b_pager{
+    display: flex;
+    justify-content: space-between;
+    width: 340px;
+    margin: 50px auto 0;
+    font-size: 20px;
+}
+
+.b_inquiry_main .b_pager a{
+    color: #444;
+    padding: 0 3px;
+    margin: 0 3px;
+}
+
+.b_inquiry_main .b_pager a:hover{
+    color: rgb(176, 160, 56);
+}
+
+/*마진*/
+.margin_t10{margin-top: 10px;}
+.margin_t20{margin-top: 20px;}
+.margin_t30{margin-top: 30px;}
+.margin_t40{margin-top: 40px;}
+.margin_t50{margin-top: 50px;}
+.margin_t60{margin-top: 60px;}
+.margin_t70{margin-top: 70px;}
+.margin_t80{margin-top: 80px;}
+.margin_t90{margin-top: 90px;}
+.margin_t100{margin-top: 100px;}
+
+/*입력폼에서 폼사이즈 조절*/
+.b_inputform_main .b_content_width_s{width: 400px;}
+.b_inputform_main .b_content_width_m{width: 700px;}
+.b_inputform_main .b_content_width_l{width: 1000px;}
+
+/*버튼색상 및 사이즈 조절*/
+.btn_s_r>input,.btn_s_r>button{
+    display: block;
+    width: 63px;
+    height: 35px;
+    background-color: rgb(234, 82, 82);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0 3px;
+    text-align: center;
+    line-height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_s_b>input,.btn_s_b>button{
+    display: block;
+    width: 63px;
+    height: 35px;
+    background-color: rgb(71, 102, 227);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0 3px;
+    text-align: center;
+    line-height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_s_g>input,.btn_s_g>button{
+    display: block;
+    width: 63px;
+    height: 35px;
+    background-color: rgb(76, 223, 93);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0 3px;
+    text-align: center;
+    line-height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_s_y>input,.btn_s_y>button{
+    display: block;
+    width: 63px;
+    height: 35px;
+    background-color: rgb(235, 223, 88);
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 0 3px;
+    text-align: center;
+    line-height: 35px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_m_r>input,.btn_m_r>button{
+    background-color: rgb(234, 82, 82);
+    display: block;
+    width: 173px;
+    height: 60px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 23px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_m_b>input,.btn_m_b>button{
+    background-color: rgb(71, 102, 227);
+    display: block;
+    width: 173px;
+    height: 60px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 23px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_m_g>input,.btn_m_g>button{
+    background-color: rgb(76, 223, 93);
+    display: block;
+    width: 173px;
+    height: 60px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 23px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_m_y>input,.btn_m_y>button{
+    background-color: rgb(235, 223, 88);
+    display: block;
+    width: 173px;
+    height: 60px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 23px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 60px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_l_r>input,.btn_l_r>button{
+    background-color: rgb(234, 82, 82);
+    display: block;
+    width: 350px;
+    height: 80px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 80px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_l_b>input,.btn_l_b>button{
+    background-color: rgb(71, 102, 227);
+    display: block;
+    width: 350px;
+    height: 80px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 80px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_l_g>input,.btn_l_g>button{
+    background-color: rgb(76, 223, 93);
+    display: block;
+    width: 350px;
+    height: 80px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 80px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn_l_y>input,.btn_l_y>button{
+    background-color: rgb(235, 223, 88);
+    display: block;
+    width: 350px;
+    height: 80px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 28px;
+    padding: 0 15px;
+    text-align: center;
+    line-height: 80px;
+    border: none;
+    cursor: pointer;
+}
