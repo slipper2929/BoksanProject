@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.boksan.dao.MemberDao">
+	<insert id="MemberInsert">
+		insert into b_emp(dept_code, socialnum, name, address, id, password)
+		values(#{dept_code},#{socialnum},#{name},#{address},#{id},#{password})
+	</insert>
+</mapper>

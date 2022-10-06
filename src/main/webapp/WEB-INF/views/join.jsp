@@ -160,22 +160,22 @@
                     <h1>회원가입</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="">
+                    <form action="" method="post">
                         <p class="b_text b_inputform_name">
-                            <label><span>이름</span><input type="text" placeholder="이름을 입력해주세요" class="name_check"></label>
+                            <label><span>이름</span><input type="text" placeholder="이름을 입력해주세요" class="name_check" name="name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_text">
-                            <label><span>주민번호</span><input type="text" value="" class="residentNum_check"></label>
+                            <label><span>주민번호</span><input type="text" value="" class="residentNum_check" name="socialnum"></label>
                             <p class="b_explanation">주민번호는 숫자로만 입력해주세요</p>
                         </p>
                         <p class="b_text">
-                            <label><span>주소</span><input type="text" class="sc_check"></label>
+                            <label><span>주소</span><input type="text" class="sc_check" name="address"></label>
                             <p class="b_explanation">주소는 (일부특수기호)는 입력하시면안됩니다</p>
                         </p>
                         <p class="b_text b_select">
                             <label><span>부서명</span>
-                                <select>
+                                <select name="dept_code">
                                     <option value="">선택안함</option>
                                     <option value="1">자재관리부서</option>
                                     <option value="2">생산공장</option>
@@ -184,16 +184,16 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>아이디</span><input type="text" class="id_check"></label>
+                            <label><span>아이디</span><input type="text" class="id_check" name="id"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>비밀번호</span><input type="password" class="pw_check"></label>
+                            <label><span>비밀번호</span><input type="password" class="pw_check" name="password"></label>
                         </p>
                         <p class="b_text">
                             <label><span>비밀번호확인</span><input type="password" class="pw_check2"></label>
                         </p>
                         <div class="b_submit btn_l_b">
-                            <input type="button" value="회원가입 요청">
+                            <input type="submit" value="회원가입 요청">
                         </div>    
                     </form>
                 </div> <!--.b_content-->
