@@ -25,7 +25,7 @@
 
 
 
-    <title>복산김치WMS</title>
+    <title>복산김치WMS_관리자메인</title>
 </head>
 <body>
     <div id="wrap">
