@@ -38,7 +38,7 @@
             <section class="b_header_in">
                 <div class="b_header_top">
                     <article class="b_header_logo">
-                        <a href="/index">
+                        <a href="/">
                             <h1>로고입니다</h1>
                         </a>
                     </article>
