@@ -15,15 +15,15 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
     <!--초기화css-->
-    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../resources/css/reset.css">
     <!--헤더css-->
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../resources/css/header.css">
     <!--푸터css-->
-    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../resources/css/footer.css">
     <!--조회css-->
-    <link rel="stylesheet" href="../css/inquiry.css">
+    <link rel="stylesheet" href="../resources/css/inquiry.css">
     <!--메인css-->
-    <link rel="stylesheet" href="../css/arrive_list.css">
+    <link rel="stylesheet" href="../resources/css/arrive_list.css">
 
 
     <title>복산김치WMS_입고대기목록</title>
@@ -374,6 +374,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
     <!--헤더 js-->
-    <script src="../js/header.js"></script>
+    <script src="../resources/js/header.js"></script>
 </body>
 </html>
