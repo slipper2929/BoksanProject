@@ -12,6 +12,7 @@ public class MemberServiceImpl implements MemberService{
 	
 	public void MemberInsert(b_empDTO edto) {
 		mdao.MemberInsert(edto);
+		mdao.approveInsert();
 	}
 	
 }

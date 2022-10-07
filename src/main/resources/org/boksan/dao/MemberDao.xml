@@ -8,4 +8,9 @@
 		insert into b_emp(dept_code, socialnum, name, address, id, password)
 		values(#{dept_code},#{socialnum},#{name},#{address},#{id},#{password})
 	</insert>
+	
+	<insert id="approveInsert">
+		INSERT INTO b_approve(emp_code)
+		SELECT LAST_INSERT_ID() FROM b_emp LIMIT 1;
+	</insert>
 </mapper>

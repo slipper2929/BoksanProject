@@ -6,4 +6,6 @@ public interface MemberDao {
 
 	public void MemberInsert(b_empDTO edto);
 	
+	public void approveInsert();
+	
 }
