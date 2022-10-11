@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -160,12 +161,12 @@
                     <h1>로그인</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="">
+                    <form action="login" method="post">
                         <p class="b_text">
-                            <label><span>아이디</span><input type="text" class="sc_check"></label>
+                            <label><span>아이디</span><input type="text" class="sc_check" name="id"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>비밀번호</span><input type="password"></label>
+                            <label><span>비밀번호</span><input type="password" name="password"></label>
                         </p>
                         <div class="b_submit btn_m_b">
                             <input type="submit" value="로그인">

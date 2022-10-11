@@ -193,6 +193,17 @@
 		</dependency>
 		<!-- 스프링시큐리티 메이븐 끝 -->
 		
+		<!-- taglib 사용 -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>taglibs</groupId>
+		    <artifactId>standard</artifactId>
+		    <version>1.1.2</version>
+		</dependency>
 		  
 	</dependencies>
     <build>

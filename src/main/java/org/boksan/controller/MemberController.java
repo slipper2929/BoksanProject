@@ -1,5 +1,7 @@
 package org.boksan.controller;
 
+import javax.servlet.http.HttpSession;
+
 //import javax.inject.Inject;
 
 import org.boksan.model.b_empDTO;
@@ -9,6 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class MemberController {
@@ -29,4 +33,41 @@ public class MemberController {
 		mservice.MemberInsert(edto);
 		return "index";
 	}
+	
+	//로그인
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(b_empDTO edto, HttpSession session, RedirectAttributes rttr) {
+		session.getAttribute("member");
+		b_empDTO Login = mservice.Login(edto);
+		boolean pwdMatch = pwdEncoder.matches(edto.getPassword(), Login.getPassword());
+		
+		if(Login != null && pwdMatch == true) {
+			session.setAttribute("member", Login);
+		} else {
+			session.setAttribute("member", null);
+			rttr.addFlashAttribute("msg", false);
+		}
+		
+		return "redirect:/";
+	}
+	
+	//로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session){
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+	// 패스워드 체크
+//	@ResponseBody
+//	@RequestMapping(value="/passChk", method = RequestMethod.POST)
+//	public boolean passChk(b_empDTO edto){
+//
+//		b_empDTO Login = mservice.Login(edto);
+//		boolean pwdChk = pwdEncoder.matches(edto.getPassword(), Login.getPassword());
+//		return pwdChk;
+//	}
+	
 }

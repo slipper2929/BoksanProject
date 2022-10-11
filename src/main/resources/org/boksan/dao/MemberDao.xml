@@ -4,13 +4,31 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.boksan.dao.MemberDao">
+
+	<!-- 회원가입 -->
 	<insert id="MemberInsert">
 		insert into b_emp(dept_code, socialnum, name, address, id, password)
 		values(#{dept_code},#{socialnum},#{name},#{address},#{id},#{password})
 	</insert>
 	
+	<!-- 회원승인여부 -->
 	<insert id="approveInsert">
 		INSERT INTO b_approve(emp_code)
 		SELECT LAST_INSERT_ID() FROM b_emp LIMIT 1;
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="Login" resultType="org.boksan.model.b_empDTO">
+		select *
+		from b_emp
+		where id=#{id}
+		<!-- and password = #{userPass} -->
+	</select>
+	
+	<!-- 패스워드 체크 -->
+	<!--  <select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM b_emp
+		WHERE id = #{id}
+		  AND password = #{password}
+	</select>-->
 </mapper>

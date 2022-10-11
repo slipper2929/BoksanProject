@@ -15,4 +15,8 @@ public class MemberServiceImpl implements MemberService{
 		mdao.approveInsert();
 	}
 	
+	public b_empDTO Login(b_empDTO edto) {
+		return mdao.Login(edto);
+	}
+	
 }
