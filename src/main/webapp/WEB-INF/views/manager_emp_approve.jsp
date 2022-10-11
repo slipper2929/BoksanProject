@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -44,6 +45,11 @@
                         <div class="b_header_login"><a href="/login">로그인</a></div>
                         <div class="b_header_join"><a href="/join">회원가입</a></div>
                     </article>
+                    <c:if test="${member != null}">
+	                    <article class="b_beader_user">
+	                    	<p><span>${member.name}</span>님 반갑습니다.</p>
+	                    </article>
+                    </c:if>
                 </div>
                 <nav class="b_header_nav">
                     <ul class="b_header_nav_menu">

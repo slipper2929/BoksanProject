@@ -43,9 +43,9 @@
                         <div class="b_header_join"><a href="/join">회원가입</a></div>
                     </article>
                     <c:if test="${member != null}">
-                    <article class="b_beader_user">
-                    	<p><span>${member.name}</span>님 반갑습니다.</p>
-                    </article>
+	                    <article class="b_beader_user">
+	                    	<p><span>${member.name}</span>님 반갑습니다.</p>
+	                    </article>
                     </c:if>
                 </div>
                 <nav class="b_header_nav">
