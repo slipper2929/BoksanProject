@@ -160,9 +160,9 @@
                     <h1>상품분류추가</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="">
+                    <form action="" method="post">
                         <p class="b_text b_inputform_name">
-                            <label><span>상품분류명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check"></label>
+                            <label><span>상품분류명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check" name="product_group_name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <div class="b_submit btn_l_b">
