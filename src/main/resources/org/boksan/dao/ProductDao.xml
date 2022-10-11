@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="org.boksan.dao.ProductDao">
+	  <insert id="ProductInsert">
+	  	insert into b_product(product_name, price, place, business_name, pallet_in_ratio, product_group_code)
+	  	values(#{product_name},#{price},#{place},#{business_name}, #{pallet_in_ratio},#{product_group_code})
+	  </insert>
+  </mapper>

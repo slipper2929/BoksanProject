@@ -161,14 +161,14 @@
                     <h1>상품등록</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="">
+                    <form action="" method="post">
                         <p class="b_text b_inputform_name">
-                            <label><span>상품명</span><input type="text" placeholder="이름을 입력해주세요"></label>
+                            <label><span>상품명</span><input type="text" placeholder="이름을 입력해주세요" name="product_name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_text b_select">
                             <label><span>분류</span>
-                                <select>
+                                <select name="product_group_code">
                                     <option value="">선택안함</option>
                                     <option value="1">식자재</option>
                                     <option value="2">1차가공</option>
@@ -179,16 +179,16 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>원산지</span><input type="text" class="sc_check"></label>
+                            <label><span>원산지</span><input type="text" class="sc_check" name="place"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>업체명</span><input type="text" class="sc_check"></label>
+                            <label><span>업체명</span><input type="text" class="sc_check" name="business_name"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>구매가</span><input type="text" class="sc_check"></label>
+                            <label><span>구매가</span><input type="text" class="sc_check" name="price"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>파레트중량</span><input type="text" class="sc_check"></label>
+                            <label><span>파레트중량</span><input type="text" class="sc_check" name="pallet_in_ratio"></label>
                         </p>
                         <p class="b_product_ps">*1파레트에 들어갈수 있는 최대중량(KG단위)</p>
                         <div class="b_submit btn_l_b">
