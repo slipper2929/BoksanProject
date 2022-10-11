@@ -29,6 +29,7 @@
 	<context:component-scan base-package="org.boksan.controller"></context:component-scan>
 	<context:component-scan base-package="org.boksan.service"></context:component-scan>
 	
+	
 	<mybatis-spring:scan base-package="org.boksan.dao"/>
 	<mybatis-spring:scan base-package="org.boksan.mapper"/>
 </beans>

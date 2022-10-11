@@ -56,6 +56,8 @@ function check(){
             $(this).val("").focus();
         }
         
+        
+        
     })
 
     //회원가입_주민번호(숫자로만13자 입력)
@@ -101,7 +103,34 @@ function check(){
             $(this).val("").focus();
         }
         
+        let chch = "";
+        overlapId(id_check.val(),function(chch){
+     
+        	if(chch == "0"){
+        		alert("중복된 아이디입니다.");
+        		$(this).val("").focus();
+        	} else if(chch == "1"){
+        		alert("사용가능한 아이디입니다.");
+        	}
+        })
     })
+    
+    //아이디중복검사(ajax)
+    
+    function overlapId(id,callback){
+    	$.getJSON("/replies/overlapId/"+id+".json", function(data){
+    		if(data == ""){
+	        	chch = "1";
+	        }else if(data[0].id == id){
+				chch = "0"
+			}
+			
+			if(callback){
+				callback(chch);
+			}
+    	})
+    	return overlapId;
+    }
 
     ////회원가입_비밀번호(하나 이상의 영문자, 숫자, 특수문자를 포함한 길이 8~20자)
     pw_check.change(function(){

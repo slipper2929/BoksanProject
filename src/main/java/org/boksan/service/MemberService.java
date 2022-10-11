@@ -9,4 +9,7 @@ public interface MemberService {
 		
 		//로그인
 		public b_empDTO Login(b_empDTO edto);
+		
+		//아이디 중복 체크
+		
 }

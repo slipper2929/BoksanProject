@@ -60,6 +60,9 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
+	//아이디 중복 체크
+	
+	
 	// 패스워드 체크
 //	@ResponseBody
 //	@RequestMapping(value="/passChk", method = RequestMethod.POST)

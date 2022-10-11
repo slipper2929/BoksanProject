@@ -10,13 +10,18 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDao mdao;
 	
+	//회원가입
 	public void MemberInsert(b_empDTO edto) {
 		mdao.MemberInsert(edto);
-		mdao.approveInsert();
+		mdao.approveInsert(); //승인 여부 검사
 	}
 	
+	//로그인
 	public b_empDTO Login(b_empDTO edto) {
 		return mdao.Login(edto);
 	}
+	
+	//아이디 중복  체크
+	
 	
 }
