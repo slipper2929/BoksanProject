@@ -168,6 +168,7 @@
 
         
         <div id="container">
+        	${pglist}
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피추가</h1>
@@ -177,12 +178,9 @@
                     <div class="recipe_product_chois">
                         <h3 class="small_title">상품선택하기</h3>
                         <select name="" id="" class="recipe_product_selectbox">
-                            <option value="">선택안함</option>
-                            <option value="">식자재</option>
-                            <option value="">1차가공</option>
-                            <option value="">2차가공</option>
-                            <option value="">완재품</option>
-                            <option value="">공산품</option>
+                        	<c:forEach items="${pglist}" var="pg">
+                            <option value="${pg.product_group_code}">${pg.product_group_name}</option>
+                        	</c:forEach>
                         </select>
                         <select name="" id="" class="recipe_product_selectbox">
                             <option value="">선택안함</option>

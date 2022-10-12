@@ -1,6 +1,6 @@
 package org.boksan.controller;
 
-import org.boksan.service.ProductService;
+import org.boksan.service.RecipeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 	
+	@Autowired
+	RecipeService rservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -170,7 +172,9 @@ public class HomeController {
 	
 	//레시피추가
 	@RequestMapping(value = "/recipe_add", method = RequestMethod.GET)
-	public String recipe_add() {
+	public String recipe_add(Model model) {
+		
+		model.addAttribute("pglist",rservice.recipe_add_select());
 		
 		return "recipe_add";
 	}

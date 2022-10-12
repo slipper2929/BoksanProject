@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.boksan.dao.RecipeDao">
+	
+	<select id="recipe_add_select" resultType="org.boksan.model.Product_groupDTO">
+		select *
+		from b_product_group
+	</select>
+</mapper>
