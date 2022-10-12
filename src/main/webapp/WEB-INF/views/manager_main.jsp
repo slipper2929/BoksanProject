@@ -39,8 +39,13 @@
                         </a>
                     </article>
                     <article class="b_header_util">
-                        <div class="b_header_login"><a href="/login">로그인</a></div>
-                        <div class="b_header_join"><a href="/join">회원가입</a></div>
+                    	<c:if test="${member == null }">
+	                        <div class="b_header_login"><a href="/login">로그인</a></div>
+	                        <div class="b_header_join"><a href="/join">회원가입</a></div>
+                        </c:if>
+                        <c:if test="${member != null }">
+                        	<div class="b_header_logout"><a href="/logout">로그아웃</a></div>
+                        </c:if>
                     </article>
                     <c:if test="${member != null}">
 	                    <article class="b_beader_user">
@@ -167,19 +172,19 @@
                 <h2 class="b_main1_title">관리자메인</h2>
                 <div class="b_manager_content">
                     <article>
-                        <h3><a href="./manager_emp_inquiry.jsp">직원조회</a></h3>
+                        <h3><a href="/manager_emp_inquiry">직원조회</a></h3>
                     </article>
                     <article>
-                        <h3><a href="./manager_authority.jsp">업무권한부여</a></h3>
+                        <h3><a href="/manager_authority">업무권한부여</a></h3>
                     </article>
                     <article>
-                        <h3><a href="./manager_emp_approve.jsp">가입요청승인</a></h3>
+                        <h3><a href="/manager_emp_approve">가입요청승인</a></h3>
                     </article>
                     <article>
-                        <h3><a href="./manager_emp_approve.jsp">부서등록</a></h3>
+                        <h3><a href="/manager_emp_approve">부서등록</a></h3>
                     </article>
                     <article>
-                        <h3><a href="./manager_emp_approve.jsp">창고등록</a></h3>
+                        <h3><a href="/manager_emp_approve">창고등록</a></h3>
                     </article>
                 </div>
             </section>
