@@ -8,4 +8,11 @@
 		select *
 		from b_product_group
 	</select>
+	
+	<select id="recipe_add_pselect" resultType="org.boksan.model.Product_selectDTO">
+		select product_code, product_name
+		from b_product
+		where product_group_code = #{data}
+	</select>
+	
 </mapper>
