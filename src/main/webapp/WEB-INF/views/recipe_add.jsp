@@ -178,16 +178,14 @@
                 <div class="b_content b_content_width_m">
                     <div class="recipe_product_chois">
                         <h3 class="small_title">상품선택하기</h3>
-                        <select name="" id="pg_box" class="recipe_product_selectbox">
+                        <select name="" id="" class="recipe_product_selectbox pg_box">
+                        	<option value="">선택안함</option>
                         	<c:forEach items="${pglist}" var="pg">
                             	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
                         	</c:forEach>
                         </select>
-                        <select name="" id="" class="recipe_product_selectbox">
+                        <select name="" id="" class="recipe_product_selectbox p_box">
                             <option value="">선택안함</option>
-                            <option value="">배추(00)</option>
-                            <option value="">무(01)</option>
-                            <option value="">파(02)</option>
                         </select>
                     </div>
                     <table class="b_table margin_t50">
@@ -207,19 +205,14 @@
                         <tr class="b_table_data">
                             <td>
                                 <p>
-                                    <select name="" id="" class="recipe_product_selectbox">
+                                    <select name="" id="" class="recipe_product_selectbox pg_box">
                                         <option value="">선택안함</option>
-                                        <option value="">식자재</option>
-                                        <option value="">1차가공</option>
-                                        <option value="">2차가공</option>
-                                        <option value="">완재품</option>
-                                        <option value="">공산품</option>
+                                        <c:forEach items="${pglist}" var="pg">
+			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+			                        	</c:forEach>
                                     </select>
                                     <select name="" id="" class="recipe_product_selectbox">
                                         <option value="">선택안함</option>
-                                        <option value="">배추(00)</option>
-                                        <option value="">무(01)</option>
-                                        <option value="">파(02)</option>
                                     </select>
                                 </div>
                                 </p>
