@@ -6,8 +6,6 @@
  	
  	$(".pg_box").on("change", function(){
  	
- 		alert($(this).val())
- 		
  		let pgCode = $(this).val();
  		let objdata = {"data" : pgCode};
  		$(this).addClass("myChoice")
@@ -20,10 +18,10 @@
 	 		dataType:'json',
 	 		success: function(data){
 	 			console.log(data)
-	 			console.log(data[0].product_code)
 	 			
 	 			
-	 			//$(".myChoice").next().children.remove()
+	 			$(".myProduct *").remove()
+	 			$(".myProduct").append("<option>선택안함</option>")
 	 			
 	 			for(let i = 0; i < data.length; i++){
 	 				var optionTag = $("<option value='"+ data[i].product_code +"'>" + data[i].product_name + "(" + data[i].product_code + ")</option>");
