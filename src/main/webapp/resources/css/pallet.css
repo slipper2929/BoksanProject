@@ -10,7 +10,7 @@
     border-bottom: 3px solid rgb(200, 200, 200);
 }
 
-#container .b_content{
+#container .b_content>form{
     position: relative;
     display: flex;
     justify-content: space-between;

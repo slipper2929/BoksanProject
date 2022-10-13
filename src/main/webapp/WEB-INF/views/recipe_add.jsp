@@ -190,7 +190,7 @@
                     </div>
                     <table class="b_table margin_t50">
                         <h3 class="small_title">재료선택하기</h3>
-                        <p class="btn_s_b table_btn"><input type="submit" value="재료추가"></p>
+                        <p class="btn_s_b table_btn"><input type="submit" value="재료추가" id="add_btn"></p>
                         <tr class="b_table_title">
                             <th>
                                 <p>재료선택</p>
@@ -202,6 +202,15 @@
                                 <p>삭제</p>
                             </th>
                         </tr>
+                        <script>
+							let code_list = []
+							let name_list = []
+
+							<c:forEach items="${pglist}" var="pg">
+								code_list.push("${pg.product_group_code}")
+								name_list.push("${pg.product_group_name}")
+							</c:forEach>
+                        </script>
                         <tr class="b_table_data">
                             <td>
                                 <p>
@@ -331,5 +340,10 @@
     
     <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
     <script src="../resources/js/product_select.js"></script>
+    
+    <!-- recipe_add js -->
+    <script src="../resources/js/recipe_add.js"></script>
+    
+    
 </body>
 </html>

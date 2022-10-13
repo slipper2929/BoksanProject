@@ -4,8 +4,10 @@
  
  $(function(){
  	
- 	$(".pg_box").on("change", function(){
+ 	jQuery.pg_box_change = function(){
  	
+ 	$(".pg_box").on("change", function(){
+ 		
  		let pgCode = $(this).val();
  		let objdata = {"data" : pgCode};
  		$(this).addClass("myChoice")
@@ -45,5 +47,6 @@
  	
  	
  	
- 	
+ 	}
+ 	jQuery.pg_box_change();
  })

@@ -178,6 +178,7 @@
                 </div>
                 <h2 class="small_title">추가</h2>
                 <div class="b_content b_content_width_l">
+                <form>
                     <p class="b_text b_select b_select1">
                         <label><span>상품선택</span>
                             <select>
@@ -202,7 +203,9 @@
                         </label>
                     </p>
                     <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기"></p>
+                	</form>
                 </div>
+                
             </section>
             <section class="b_inquiry_main">
                 <h2 class="small_title">삭제</h2>
