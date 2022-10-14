@@ -49,8 +49,9 @@
 
 .pallet_add_btn{
     position: absolute;
-    top: 80px;
+    top: 0px;
     right: 20px;
+    
 }
 
 .pallet_add_btn>input{

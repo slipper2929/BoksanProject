@@ -178,34 +178,6 @@
                 </div>
                 <h2 class="small_title">추가</h2>
                 <div class="b_content b_content_width_l">
-<<<<<<< HEAD
-                <form>
-                    <p class="b_text b_select b_select1">
-                        <label><span>상품선택</span>
-                            <select>
-                                <option value="">선택안함</option>
-                                <option value="1">식자재</option>
-                                <option value="2">1차가공</option>
-                                <option value="3">2차가공</option>
-                                <option value="3">완재품</option>
-                                <option value="3">공산품</option>
-                            </select>
-                            <select>
-                                <option value="">선택안함</option>
-                                <option value="1">배추(00)</option>
-                                <option value="2">무(01)</option>
-                                <option value="3">파(02)</option>
-                            </select>
-                        </label>
-                    </p>
-                    <p class="b_text b_select b_inputBox">
-                        <label><span>수량</span>
-                            <input type="text" placeholder="수량을 입력하세요" class="num_check">
-                        </label>
-                    </p>
-                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기"></p>
-                	</form>
-=======
                 	<form action="/pallet" method="post" id="form_add">
 	                    <p class="b_text b_select b_select1">
 	                    	
@@ -228,7 +200,6 @@
 	                    </p>
 	                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기" id="pallet_add_btn"></p>
                     </form>
->>>>>>> e7b30d3 (service)
                 </div>
                 
             </section>
