@@ -144,8 +144,8 @@ public class HomeController {
 	
 	//파레트관리
 	@RequestMapping(value = "/pallet", method = RequestMethod.GET)
-	public String pallet() {
-		
+	public String pallet(Model model) {
+		model.addAttribute("pglist",rservice.recipe_add_select());
 		return "pallet";
 	}
 	

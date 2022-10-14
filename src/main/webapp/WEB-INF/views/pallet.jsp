@@ -172,12 +172,13 @@
 
         
         <div id="container">
-            <section class="b_inputform_main">
+            <section class="b_inputform_main" >
                 <div class="b_inputform_title">
                     <h1>파레트관리</h1>
                 </div>
                 <h2 class="small_title">추가</h2>
                 <div class="b_content b_content_width_l">
+<<<<<<< HEAD
                 <form>
                     <p class="b_text b_select b_select1">
                         <label><span>상품선택</span>
@@ -204,31 +205,58 @@
                     </p>
                     <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기"></p>
                 	</form>
+=======
+                	<form action="/pallet" method="post" id="form_add">
+	                    <p class="b_text b_select b_select1">
+	                    	
+	                        <label><span>상품선택</span>
+	                             <select name="" id="" class="pg_box">
+	                                        <option value="">선택안함</option>
+	                                        <c:forEach items="${pglist}" var="pg">
+				                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+				                        	</c:forEach>
+	                                    </select>
+	                                    <select name="product_code" id="" class="">
+	                                        <option value="">선택안함</option>
+	                                    </select>
+	                        </label>
+	                    </p>
+	                    <p class="b_text b_select b_inputBox">
+	                        <label><span>수량</span>
+	                            <input type="text" name="pallet_count" value="" class="num_check" id="pallet_count">
+	                        </label>
+	                    </p>
+	                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기" id="pallet_add_btn"></p>
+                    </form>
+>>>>>>> e7b30d3 (service)
                 </div>
                 
             </section>
             <section class="b_inquiry_main">
                 <h2 class="small_title">삭제</h2>
                 <p class="b_pallet_ps">*상품코드에 해당하는 파레트 중 빈 파레트만 찾아서 리스트를 만듭니다.</p>
-                <p class="b_text b_select b_select3">
-                    <label><span>상품선택</span>
-                        <select>
-                            <option value="">선택안함</option>
-                            <option value="1">식자재</option>
-                            <option value="2">1차가공</option>
-                            <option value="3">2차가공</option>
-                            <option value="3">완재품</option>
-                            <option value="3">공산품</option>
-                        </select>
-                        <select>
-                            <option value="">선택안함</option>
-                            <option value="1">배추(00)</option>
-                            <option value="2">무(01)</option>
-                            <option value="3">파(02)</option>
-                        </select>
-                    </label>
-                </p>
-                <p class="btn_s_b pallet_delete_list_btn"><input type="submit" value="삭제목록불러오기"></p>
+                <form>
+	                <p class="b_text b_select b_select3">
+	                    <label><span>상품선택</span>
+	                        <select class="">
+	                            <option value="">선택안함</option>
+	                            <option value="1">식자재</option>
+	                            <option value="2">1차가공</option>
+	                            <option value="3">2차가공</option>
+	                            <option value="3">완재품</option>
+	                            <option value="3">공산품</option>
+	                        </select>
+	                        <select>
+	                            <option value="">선택안함</option>
+	                            <option value="1">배추(00)</option>
+	                            <option value="2">무(01)</option>
+	                            <option value="3">파(02)</option>
+	                        </select>
+	                    </label>
+	                </p>
+	                <p class="btn_s_b pallet_delete_list_btn"><input type="submit" value="삭제목록불러오기"></p>
+                </form>
+                
                 <table class="b_table margin_t50">
                     <tr class="b_table_title">
                         <th>
@@ -300,5 +328,11 @@
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    
+    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
+    <script src="../resources/js/product_select.js"></script>
+    
+    <!-- pallet.js -->
+    <script src="../resources/js/pallet.js"></script>
 </body>
 </html>
