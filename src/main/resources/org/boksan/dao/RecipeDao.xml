@@ -15,4 +15,14 @@
 		where product_group_code = #{data}
 	</select>
 	
+	<insert id="recipe_add_insert">
+		INSERT INTO b_recipe
+		VALUES(#{recipe_code},#{product_name},#{gross_weight},#{content},#{production_date},#{emp_code});
+	</insert>
+	
+	<insert id="recipe_add_insert_material">
+		INSERT INTO material(recipe_code, product_code, material_num)
+			VALUES(#{recipe_code},#{product_code},#{material_num})
+	</insert>
+	
 </mapper>

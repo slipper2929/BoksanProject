@@ -33,7 +33,7 @@ function check(){
     })
 
     //숫자만 받기
-    num_check.change(function(){
+    $(document).on("change", ".num_check", function(){
         
         var regExp = /^[0-9]+$/g;
         
@@ -108,7 +108,8 @@ function check(){
      
         	if(chch == "0"){
         		alert("중복된 아이디입니다.");
-        		$(this).val("").focus();
+        		console.log($(this))
+        		$(".user_id").val("").focus();
         	} else if(chch == "1"){
         		alert("사용가능한 아이디입니다.");
         	}

@@ -2,6 +2,9 @@ package org.boksan.model;
 
 public class b_empDTO {
 	
+	//emp_code
+	private int emp_code;
+	
 	//name
 	private String name;
 	
@@ -19,9 +22,23 @@ public class b_empDTO {
 	
 	//password
 	private String password;
+	
+	
+	
+	
 
 	
+	
+
 	//getter and setter
+	public int getEmp_code() {
+		return emp_code;
+	}
+
+	public void setEmp_code(int emp_code) {
+		this.emp_code = emp_code;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -72,8 +89,8 @@ public class b_empDTO {
 
 	@Override
 	public String toString() {
-		return "b_empDTO [name=" + name + ", socialnum=" + socialnum + ", address=" + address + ", dept_code="
-				+ dept_code + ", id=" + id + ", password=" + password + "]";
+		return "b_empDTO [emp_code=" + emp_code + ", name=" + name + ", socialnum=" + socialnum + ", address=" + address
+				+ ", dept_code=" + dept_code + ", id=" + id + ", password=" + password + "]";
 	}
 	
 	

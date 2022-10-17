@@ -195,7 +195,7 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>아이디</span><input type="text" class="id_check" name="id"></label>
+                            <label><span>아이디</span><input type="text" class="id_check user_id" name="id"></label>
                         </p>
                         <p class="b_text">
                             <label><span>비밀번호</span><input type="password" class="pw_check" name="password"></label>
@@ -204,6 +204,7 @@
                             <label><span>비밀번호확인</span><input type="password" class="pw_check2"></label>
                         </p>
                         <div class="b_submit btn_l_b">
+                        	
                             <input type="submit" value="회원가입 요청">
                         </div>    
                     </form>

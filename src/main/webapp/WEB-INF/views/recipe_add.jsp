@@ -169,7 +169,7 @@
         
         <div id="container">
         	${pglist}
-        	${plist}
+        	${member}
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피추가</h1>
@@ -184,13 +184,14 @@
                             	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
                         	</c:forEach>
                         </select>
-                        <select name="" id="" class="recipe_product_selectbox">
+                        <select name="" id="recipe_product_code_select" class="recipe_product_selectbox">
                             <option value="">선택안함</option>
                         </select>
                     </div>
+                    <form method="post"> <!-- teble 이랑 밑에 버튼까지 전체 포함 -->
                     <table class="b_table margin_t50">
                         <h3 class="small_title">재료선택하기</h3>
-                        <p class="btn_s_b table_btn"><input type="submit" value="재료추가" id="add_btn"></p>
+                        <p class="btn_s_b table_btn"><input type="button" value="재료추가" id="add_btn"></p>
                         <tr class="b_table_title">
                             <th>
                                 <p>재료선택</p>
@@ -220,79 +221,41 @@
 			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
 			                        	</c:forEach>
                                     </select>
-                                    <select name="" id="" class="recipe_product_selectbox">
+                                    <select id="" class="recipe_product_selectbox product_code_list">
                                         <option value="">선택안함</option>
                                     </select>
                                 </div>
                                 </p>
                             </td>
                             <td class="recipe_weight">
-                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check"></p>
+                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num"></p>
                             </td>
                             <td class="recipe_delete">
-                                <p class="btn_s_r recipe_delete_btn"><input type="submit" value="재료삭제"></p>
+                                <p class="btn_s_r recipe_delete_btn"><input type="button" value="재료삭제" class="delete_btn"></p>
                             </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td>
-                                <p>
-                                    <select name="" id="" class="recipe_product_selectbox pg_box">
-                                        <option value="">선택안함</option>
-                                        <c:forEach items="${pglist}" var="pg">
-			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
-			                        	</c:forEach>
-                                    </select>
-                                    <select name="" id="" class="recipe_product_selectbox">
-                                        <option value="">선택안함</option>
-                                        
-                                    </select>
-                                </div>
-                                </p>
-                            </td>
-                            <td class="recipe_weight">
-                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check"></p>
-                            </td>
-                            <td class="recipe_delete">
-                                <p class="btn_s_r recipe_delete_btn"><input type="submit" value="재료삭제"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td>
-                                <p>
-                                    <select name="" id="" class="recipe_product_selectbox pg_box">
-                                        <option value="">선택안함</option>
-                                        <c:forEach items="${pglist}" var="pg">
-			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
-			                        	</c:forEach>
-                                    </select>
-                                    <select name="" id="" class="recipe_product_selectbox">
-                                        <option value="">선택안함</option>
-                                        
-                                    </select>
-                                </div>
-                                </p>
-                            </td>
-                            <td class="recipe_weight">
-                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check"></p>
-                            </td>
-                            <td class="recipe_delete">
-                                <p class="btn_s_r recipe_delete_btn"><input type="submit" value="재료삭제"></p>
-                            </td>
-                        </tr>
+                        
                         
                     </table>
                     <div>
                         <h3 class="small_title mar_t_recipe">상세내용</h3>
                         <div class="recipe_content_info">
-                            <textarea name="" id=""></textarea>
+                            <textarea name="content" id=""></textarea>
                             <div>
-                                <p>총중량 : <span>550</span></p>
-                                <p>제작일 : <span>2022-09-19</span></p>
-                                <p>레시피제작자 : <span>홍길동</span></p>
-                                <p class="btn_l_b recipe_save_btn"><input type="submit" value="레시피저장"></p>
+                            	<input type="text" id="recipe_product_code" name="recipe_code">
+                            	<input type="text" id="recipe_product_name" name="product_name">
+                            	<input type="text" id="recipe_weight" name="gross_weight">
+                            	<input type="text" id="recipe_date" name="production_date">
+                            	<input type="text" id="" name="emp_code" value="${member.emp_code}">
+                                <p class="weight">총중량 : <span>0</span></p>
+                                <p class="date_now">제작일 : <span></span></p>
+                                <p>레시피제작자 : <span>${member.name}</span></p>
+                                <p class="btn_l_b recipe_save_btn"><input type="button" value="레시피저장"></p>
+                            	
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
