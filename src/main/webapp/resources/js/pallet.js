@@ -56,7 +56,7 @@ $(function(){
 			$("#pallet_all_check").prop("checked", false)
 		} else{
 			$("#pallet_all_check").prop("checked", true);
-		}
+		} 
 	}
 	
 	$(document).on("click", "#pallet_all_check", function(){
