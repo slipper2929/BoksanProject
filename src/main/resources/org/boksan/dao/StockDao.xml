@@ -12,4 +12,10 @@
 		AS pallet_num, #{product_code} AS product_code
 		FROM b_stock
 	</insert>
+	
+	<select id="DeletePalletSelect" resultType="string">
+		SELECT pallet_num 
+		FROM b_stock
+		WHERE product_code = #{data} and stock_num is null
+	</select>
 </mapper>

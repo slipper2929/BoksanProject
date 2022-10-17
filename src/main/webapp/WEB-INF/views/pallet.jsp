@@ -206,29 +206,24 @@
             <section class="b_inquiry_main">
                 <h2 class="small_title">삭제</h2>
                 <p class="b_pallet_ps">*상품코드에 해당하는 파레트 중 빈 파레트만 찾아서 리스트를 만듭니다.</p>
-                <form>
+                
 	                <p class="b_text b_select b_select3">
 	                    <label><span>상품선택</span>
-	                        <select class="">
-	                            <option value="">선택안함</option>
-	                            <option value="1">식자재</option>
-	                            <option value="2">1차가공</option>
-	                            <option value="3">2차가공</option>
-	                            <option value="3">완재품</option>
-	                            <option value="3">공산품</option>
-	                        </select>
-	                        <select>
-	                            <option value="">선택안함</option>
-	                            <option value="1">배추(00)</option>
-	                            <option value="2">무(01)</option>
-	                            <option value="3">파(02)</option>
-	                        </select>
+	                        <select name="" id="" class="pg_box">
+	                                        <option value="">선택안함</option>
+	                                        <c:forEach items="${pglist}" var="pg">
+				                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+				                        	</c:forEach>
+	                                    </select>
+	                                    <select name="product_code" id="Pcode" class="">
+	                                        <option value="">선택안함</option>
+	                                    </select>
 	                    </label>
 	                </p>
-	                <p class="btn_s_b pallet_delete_list_btn"><input type="submit" value="삭제목록불러오기"></p>
-                </form>
+	                <p class="btn_s_b pallet_delete_list_btn"><input type="button" value="삭제목록불러오기" id="pallet_select_btn"></p>
                 
-                <table class="b_table margin_t50">
+                <form>
+                <table class="b_table margin_t50" id = "PS_table">
                     <tr class="b_table_title">
                         <th>
                             <p>파레트번호</p>
@@ -236,26 +231,12 @@
                         <th>
                             <p>삭제</p>
                         </th>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>013</p></td>
-                        <td><p><input type="checkbox"></p></td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>014</p></td>
-                        <td><p><input type="checkbox"></p></td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>015</p></td>
-                        <td><p><input type="checkbox"></p></td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>019</p></td>
-                        <td><p><input type="checkbox"></p></td>
-                    </tr>
+                    </tr>   
+                    	<tr><td><input type="checkbox" class="pallet_check"></td></tr>               
                 </table>
-                <p class="pallet_all_check"><input type="checkbox">전체체크하기</p>
+                <p class="pallet_all_check"><input type="checkbox" id="pallet_all_check">전체체크하기</p>
                 <p class="btn_l_r pallet_delete_check_btn"><input type="submit" value="체크된 파레트 삭제하기"></p>
+                </form>
             </section>
         </div> <!--#container-->
 

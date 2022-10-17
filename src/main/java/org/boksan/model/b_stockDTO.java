@@ -13,23 +13,16 @@ public class b_stockDTO {
 	
 	private int product_group_code;
 	
-	private List<b_stockDTO> list;
-	
-	
-
 
 	
 	
 
 
-	public List<b_stockDTO> getList() {
-		return list;
-	}
+	
+	
 
-	public void setList(List<b_stockDTO> list) {
-		this.list = list;
-	}
 
+	
 	public int getProduct_group_code() {
 		return product_group_code;
 	}
@@ -73,9 +66,10 @@ public class b_stockDTO {
 	@Override
 	public String toString() {
 		return "b_stockDTO [pallet_num=" + pallet_num + ", product_code=" + product_code + ", pallet_count="
-				+ pallet_count + ", product_name=" + product_name + ", product_group_code=" + product_group_code
-				+ ", list=" + list + "]";
+				+ pallet_count + ", product_name=" + product_name + ", product_group_code=" + product_group_code + "]";
 	}
+
+
 
 	
 

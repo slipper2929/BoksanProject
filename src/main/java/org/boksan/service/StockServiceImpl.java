@@ -1,6 +1,8 @@
 package org.boksan.service;
 
 
+import java.util.ArrayList;
+
 import org.boksan.dao.StockDao;
 import org.boksan.model.b_stockDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +21,12 @@ public class StockServiceImpl implements StockService{
 		}
 		
 	}
+	
+	public ArrayList<b_stockDTO> DeletePalletSelect(String data){
+		System.out.println("서비스단" + data);
+		return sdao.DeletePalletSelect(data);
+		
+	}
+	
+	
 }
