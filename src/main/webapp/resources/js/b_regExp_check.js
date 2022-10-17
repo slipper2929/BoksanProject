@@ -140,7 +140,7 @@ function check(){
         
         if(!regExp.test($(this).val())){
             alert("하나 이상의 영문자, 숫자, 특수기호를 넣어서 8~20자 이내로 입력하세요");
-            $(this).val("").focus();
+          	$(this).val("").focus();
         }
         
     })

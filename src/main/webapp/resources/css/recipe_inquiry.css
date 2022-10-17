@@ -1,5 +1,9 @@
 @charset "utf-8";
 
-.recipe_btn>input{
+.recipe_btn>button{
     width: 90px;
+}
+
+.recipe_btn>button>a{
+	color: #fff;
 }

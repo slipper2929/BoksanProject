@@ -188,7 +188,9 @@ public class HomeController {
 	
 	//레시피 목록
 	@RequestMapping(value = "/recipe_inquiry", method = RequestMethod.GET)
-	public String recipe_inquiry() {
+	public String recipe_inquiry(Model model) {
+		
+		model.addAttribute("rlist",rservice.recipe_inquiry());
 		
 		return "recipe_inquiry";
 	}

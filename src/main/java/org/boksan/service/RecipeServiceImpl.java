@@ -48,4 +48,21 @@ public class RecipeServiceImpl implements RecipeService{
 		
 		
 	}
+	
+	//레시피 목록 조회
+	public ArrayList<Recipe_addDTO> recipe_inquiry(){
+		return rdao.recipe_inquiry();
+	}
+	
+	//레시피 삭제
+	public void recipe_delete(String recipe_code) {
+		
+		rdao.recipe_delete(recipe_code);
+		
+	}
+	
+	//레시피 검색 목록 조회
+	public ArrayList<Recipe_addDTO> recipe_inquiry_search(String search_text){
+		return rdao.recipe_inquiry_search(search_text);
+	}
 }

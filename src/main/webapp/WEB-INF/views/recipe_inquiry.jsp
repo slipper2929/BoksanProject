@@ -173,13 +173,14 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피목록</h1>
+                    ${rlist}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">
-                        <form action="">
-                            <input type="button" class="b_submit">
-                            <input type="text" class="b_input_text sc_check">
+                        <form action="/recipe_inquiry" method="post">
+                            <input type="submit" class="b_submit">
+                            <input type="text" class="b_input_text sc_check" name="search_text">
                         </form>
                         <p class="b_explain">*상품명으로 검색가능합니다.</p>
                     </div> <!--b_search-->
@@ -204,30 +205,23 @@
                                 <p>삭제</p>
                             </th>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>01</p></td>
-                            <td><p>절인배추</p></td>
-                            <td><p>5000kg</p></td>
-                            <td><p>2022-07-01</p></td>
-                            <td><p class="recipe_btn btn_s_b"><input type="submit" value="상세보기"></p></td>
-                            <td><p class="btn_s_r"><input type="submit" value="삭제"></p></td>
+                        <c:forEach items="${rlist}" var="rlist">
+                        	<tr class="b_table_data">
+                            <td><p>${rlist.recipe_code}</p></td>
+                            <td><p>${rlist.product_name}</p></td>
+                            <td><p>${rlist.gross_weight}kg</p></td>
+                            <td><p>${rlist.production_date}</p></td>
+                            <td><p class="recipe_btn btn_s_b"><button><a href="recipe_detail?recipe_code=${rlist.recipe_code}">상세보기</a></button></p></td>
+                            <td>
+                            	<form action="/recipe_delete" method="post">
+	                            	<p class="btn_s_r">
+	                           			<input type="submit" value="삭제">
+	                           			<input type="text" value="${rlist.recipe_code}" name="recipe_code" style="display:none">
+	                            	</p>
+                            	</form>
+                            </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>02</p></td>
-                            <td><p>배추김치5kg</p></td>
-                            <td><p>5kg</p></td>
-                            <td><p>2022-07-08</p></td>
-                            <td><p class="recipe_btn btn_s_b"><input type="submit" value="상세보기"></p></td>
-                            <td><p class="btn_s_r"><input type="submit" value="삭제"></p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>03</p></td>
-                            <td><p>깍두기양념장</p></td>
-                            <td><p>100kg</p></td>
-                            <td><p>2022-09-10</p></td>
-                            <td><p class="recipe_btn btn_s_b"><input type="submit" value="상세보기"></p></td>
-                            <td><p class="btn_s_r"><input type="submit" value="삭제"></p></td>
-                        </tr>
+                        </c:forEach>
                     </table>
                     <div class="b_pager">
                         <div><a href=""><span>이전</span></a></div>

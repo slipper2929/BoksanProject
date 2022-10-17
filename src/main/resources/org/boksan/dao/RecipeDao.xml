@@ -25,4 +25,20 @@
 			VALUES(#{recipe_code},#{product_code},#{material_num})
 	</insert>
 	
+	<select id="recipe_inquiry" resultType="org.boksan.model.Recipe_addDTO">
+		select recipe_code, product_name, gross_weight, production_date
+		from b_recipe
+	</select>
+	
+	<delete id="recipe_delete">
+		delete from b_recipe
+		where recipe_code = #{recipe_code}
+	</delete>
+	
+	<select id="recipe_inquiry_search" resultType="org.boksan.model.Recipe_addDTO">
+		select recipe_code, product_name, gross_weight, production_date
+		from b_recipe
+		where product_name like concat('%', #{search_text}, '%')
+	</select>
+	
 </mapper>
