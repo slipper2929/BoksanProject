@@ -11,4 +11,6 @@ public interface StockService {
 	
 	public ArrayList<b_stockDTO> DeletePalletSelect(String data);
 	
+	public void pallet_delete(b_stockDTO sdto);
+	
 }

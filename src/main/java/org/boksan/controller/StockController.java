@@ -2,11 +2,13 @@ package org.boksan.controller;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -19,15 +21,17 @@ public class StockController {
 	@RequestMapping(value="/pallet", method=RequestMethod.POST)
 	public String PostPallet(b_stockDTO sdto){
 		sservice.PalletInsert(sdto);
-		return "pallet";
+		return "redirect:/pallet";
 	
 	}
 	
-	//@RequestMapping(value="/Dpallet_select", method=RequestMethod.POST)
-	//public String DpalletSelect(Model model) {
-	//	model.addAttribute("dps",sservice.DeletePalletSelect());
-	//	System.out.println("ok");
-	//	return "pallet";
-	//}
-
+	@RequestMapping(value="/pallet_delete", method=RequestMethod.POST)
+	public String pallet_delete(b_stockDTO sdto) {
+		System.out.println("리스트:"+sdto.getPallet_num_list().get(0).getPallet_num());
+		System.out.println("리스트:"+sdto.getPallet_num_list().get(1).getPallet_num());
+		//System.out.println("리스트:"+sdto[1].getPallet_num());
+		sservice.pallet_delete(sdto);
+		
+		return "redirect:/pallet";
+	}
 }

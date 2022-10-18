@@ -18,4 +18,8 @@
 		FROM b_stock
 		WHERE product_code = #{data} and stock_num is null
 	</select>
+	<delete id="pallet_delete">
+		DELETE FROM b_stock
+		WHERE pallet_num = #{pallet_num}
+	</delete>
 </mapper>

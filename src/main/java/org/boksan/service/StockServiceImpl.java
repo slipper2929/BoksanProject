@@ -28,5 +28,15 @@ public class StockServiceImpl implements StockService{
 		
 	}
 	
+	//파레트 삭제
+	public void pallet_delete(b_stockDTO sdto) {
+		
+		for(int i = 0; i < sdto.getPallet_num_list().size(); i++) {
+			sdto.setPallet_num(sdto.getPallet_num_list().get(i).getPallet_num());
+			sdao.pallet_delete(sdto);
+		}
+		
+	}
+	
 	
 }

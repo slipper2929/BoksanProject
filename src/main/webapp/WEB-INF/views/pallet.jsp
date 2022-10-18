@@ -222,7 +222,7 @@
 	                </p>
 	                <p class="btn_s_b pallet_delete_list_btn"><input type="button" value="삭제목록불러오기" id="pallet_select_btn"></p>
                 
-                <form>
+                <form action="/pallet_delete" method="post" id="pallet_delete_form">
                 <table class="b_table margin_t50" id = "PS_table">
                     <tr class="b_table_title">
                         <th>
@@ -232,10 +232,10 @@
                             <p>삭제</p>
                         </th>
                     </tr>   
-                    	<tr><td><input type="checkbox" class="pallet_check"></td></tr>               
+                    	           
                 </table>
                 <p class="pallet_all_check"><input type="checkbox" id="pallet_all_check">전체체크하기</p>
-                <p class="btn_l_r pallet_delete_check_btn"><input type="submit" value="체크된 파레트 삭제하기"></p>
+                <p class="btn_l_r pallet_delete_check_btn"><input type="button" value="체크된 파레트 삭제하기"></p>
                 </form>
             </section>
         </div> <!--#container-->

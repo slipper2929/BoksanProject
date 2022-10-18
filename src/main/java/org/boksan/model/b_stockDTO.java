@@ -1,5 +1,6 @@
 package org.boksan.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class b_stockDTO {
@@ -13,6 +14,8 @@ public class b_stockDTO {
 	
 	private int product_group_code;
 	
+	private List<b_stockDTO> pallet_num_list;
+	
 
 	
 	
@@ -23,6 +26,12 @@ public class b_stockDTO {
 
 
 	
+
+
+	public void setPallet_num_list(ArrayList<b_stockDTO> pallet_num_list) {
+		this.pallet_num_list = pallet_num_list;
+	}
+
 	public int getProduct_group_code() {
 		return product_group_code;
 	}
@@ -63,11 +72,24 @@ public class b_stockDTO {
 		this.product_code = product_code;
 	}
 
+	public List<b_stockDTO> getPallet_num_list() {
+		return pallet_num_list;
+	}
+
+	public void setPallet_num_list(List<b_stockDTO> pallet_num_list) {
+		this.pallet_num_list = pallet_num_list;
+	}
+
 	@Override
 	public String toString() {
 		return "b_stockDTO [pallet_num=" + pallet_num + ", product_code=" + product_code + ", pallet_count="
-				+ pallet_count + ", product_name=" + product_name + ", product_group_code=" + product_group_code + "]";
+				+ pallet_count + ", product_name=" + product_name + ", product_group_code=" + product_group_code
+				+ ", pallet_num_list=" + pallet_num_list + "]";
 	}
+
+	
+
+	
 
 
 

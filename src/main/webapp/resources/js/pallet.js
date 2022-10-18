@@ -13,7 +13,6 @@ $(function(){
 			data: dpsobj,
 			dataType:'json',
 			success: function(data){
-				console.log("성공시")
 				console.log(data)
 				
 				console.log(data[0]);
@@ -23,16 +22,16 @@ $(function(){
 					
 					Sdps += '<tr class="b_table_data" id="dps" >'
 					Sdps += ' <td><p>'+ Ddps +'</p></td>'	
-					Sdps += '<td><p><input type="checkbox" class="pallet_check"></p></td>'
+					Sdps += '<td><p><input type="checkbox" class="pallet_check" value="'+ Ddps +'"></p></td>'
 					Sdps += '</tr>'
 						
 					return Sdps;
 				}
-
 				
 				for(let i = 0; i < data.length; i++){
 					$("#PS_table").append(dps_select(data[i]));
 				}
+				
 			},
 			error: function(e){
 				alert("error : " + e)
@@ -40,6 +39,18 @@ $(function(){
 		})
 		
 	})
+	pallet_num_list = []
+	$(document).on("click", ".pallet_check", function(){
+					if($(".pallet_check").is(":checked")){
+						$(this).val();	
+						console.log($(this).val())
+						
+						//pallet_num_list.push($(this).val())
+					} else {
+						$(this).attr("name", "")
+						//배열에 값 빼주기(내가 클릭한 체크박스의 값을 비교해서)
+					}
+				})
 	
 	function checkAll() {
 		if($("#pallet_all_check").is(':checked')) {
@@ -66,6 +77,44 @@ $(function(){
 	$(document).on("click", ".pallet_check", function(){
 		checkfalse()
 	})
+	
+	$(document).on("click", ".pallet_delete_check_btn input", function(){
+		alert("ddd")
+		let count = 0;
+		for(let i = 0; i < $(".pallet_check").length; i++){
+			
+			if($(".pallet_check").eq(i).is(":checked")){
+				$(".pallet_check").eq(i).attr("name", "pallet_num_list["+count+"].pallet_num")
+				count++
+			}
+		}
+		
+		console.log($(".pallet_check").eq(0).attr("name"))
+		console.log($(".pallet_check").eq(1).attr("name"))
+		console.log($(".pallet_check").eq(2).attr("name"))
+		console.log($(".pallet_check").eq(3).attr("name"))
+		$("#pallet_delete_form").submit();
+		
+	})
+	
+		/*let CheckValue = [];
+		function CheckValue(event){
+			let result = "";
+			if(event.target.checked){
+				result = event.target.value;
+			}else{
+				result="";
+			}
+			return CheckValue.push(result); 
+		}
+		CheckValue();
+		console.log(CheckValue);
+		//$(this).submit();
+	})*/
+	
+	
+	
+	
 	
 	
 })
