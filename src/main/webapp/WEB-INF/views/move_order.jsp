@@ -176,12 +176,13 @@
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">
-                        <form action="">
-                            <input type="button" class="b_submit">
-                            <input type="text" class="b_input_text sc_check">
+                        <form action="/move_orderList" method="post">
+                            <input type="submit" class="b_submit">
+                            <input type="text" class="b_input_text sc_check" name="move_search">
                         </form>
                         <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
                     </div> <!--b_search-->
+                    <form action="move_order/update" method="post" id="move_form">
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
                             <th>
@@ -206,46 +207,26 @@
                                 <p>이동지시</p>
                             </th>
                         </tr>
+                        
+                        <c:forEach items="${mlist}" var="mlist">
                         <tr class="b_table_data">
-                            <td><p>001</p></td>
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>2022-09-09</p></td>
-                            <td><p>A11</p></td>
+                            <td><p>${mlist.pallet_num }</p></td>
+                            <td><p>${mlist.product_code }</p></td>
+                            <td><p>${mlist.product_name }</p></td>
+                            <td><p>${mlist.arrive_date }</p></td>
+                            <td><p>${mlist.house_code }</p></td>
                             <td class="move_house">
                                 <p>
-                                    <input type="text" placeholder="이동할 창고번지를 입력하세요">
+                                	<input type="hidden" class="pallet_num" value="${mlist.pallet_num}">
+                                    <input type="text" class="move_address" placeholder="이동할 창고번지를 입력하세요">
                                 </p>
                             </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동지시"></p></td>
+                            <td><p class="move_order_btn btn_s_b"><input type="button" class="move_btn"value="이동지시"></p></td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>002</p></td>
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>2022-09-09</p></td>
-                            <td><p>A1A</p></td>
-                            <td class="move_house">
-                                <p>
-                                    <input type="text" placeholder="이동할 창고번지를 입력하세요">
-                                </p>
-                            </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동지시"></p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>011</p></td>
-                            <td><p>01</p></td>
-                            <td><p>무</p></td>
-                            <td><p>2022-09-08</p></td>
-                            <td><p>A29</p></td>
-                            <td class="move_house">
-                                <p>
-                                    <input type="text" placeholder="이동할 창고번지를 입력하세요">
-                                </p>
-                            </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동지시"></p></td>
-                        </tr>
+                        </c:forEach>
+                        
                     </table>
+                    </form>
                     <div class="b_pager">
                         <div><a href=""><span>이전</span></a></div>
                         <div><a href=""><span>1</span></a></div>
@@ -304,5 +285,8 @@
 
     <!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    
+    <!-- move_order.js -->
+    <script src="../resources/js/move_order.js"></script>
 </body>
 </html>

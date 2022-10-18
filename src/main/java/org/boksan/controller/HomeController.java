@@ -1,8 +1,14 @@
 package org.boksan.controller;
 
-import org.boksan.model.Criteria;
-import org.boksan.model.PageDTO;
+
+
+
+import java.util.ArrayList;
+
+import org.boksan.model.b_stockDTO;
+
 import org.boksan.service.RecipeService;
+import org.boksan.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +17,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-/**
- * Handles requests for the application home page.
- */
+
 @Controller
 public class HomeController {
 	
 	@Autowired
 	RecipeService rservice;
 	
+	@Autowired
+	StockService sservice;
+	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
 		
@@ -132,8 +137,11 @@ public class HomeController {
 	
 	//이동지시
 	@RequestMapping(value = "/move_order", method = RequestMethod.GET)
-	public String move_order() {
+	public String GetMoveorder(Model model) {
+		model.addAttribute("mlist", sservice.moveList());
 		
+		//ArrayList<b_stockDTO> list = sservice.moveList();
+		//System.out.println(list);
 		return "move_order";
 	}
 	

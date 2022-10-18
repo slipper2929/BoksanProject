@@ -2,6 +2,7 @@ package org.boksan.service;
 
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.boksan.dao.StockDao;
 import org.boksan.model.b_stockDTO;
@@ -22,6 +23,8 @@ public class StockServiceImpl implements StockService{
 		
 	}
 	
+	//빈 파레트 조회
+	
 	public ArrayList<b_stockDTO> DeletePalletSelect(String data){
 		System.out.println("서비스단" + data);
 		return sdao.DeletePalletSelect(data);
@@ -36,6 +39,20 @@ public class StockServiceImpl implements StockService{
 			sdao.pallet_delete(sdto);
 		}
 		
+	}
+	
+	//이동지시 리스트
+	public ArrayList<b_stockDTO> moveList(){
+		return sdao.moveList();
+	}
+	
+	public ArrayList<b_stockDTO> move_list_search(String move_search){
+		return sdao.move_list_search(move_search);
+	}
+	
+	//이동지시 -> 이동목록 insert
+	public void move_change(Map<String, Object> map) {
+		sdao.move_change(map);
 	}
 	
 	

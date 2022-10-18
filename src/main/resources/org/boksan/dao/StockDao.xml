@@ -22,4 +22,23 @@
 		DELETE FROM b_stock
 		WHERE pallet_num = #{pallet_num}
 	</delete>
+	
+	<select id="moveList" resultType="org.boksan.model.b_stockDTO">
+		SELECT s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.house_code 
+		FROM b_stock s JOIN b_product p
+		ON s.product_code = p.product_code
+	</select>
+	
+	<select id="move_list_search" resultType="org.boksan.model.b_stockDTO">
+		SELECT s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.stock_num 
+		FROM b_stock s JOIN b_product p
+		ON s.product_code = p.product_code
+		where s.pallet_num = #{pallet_num}
+		or p.product_name = #{product_name}
+	</select>
+	
+	<insert id="move_change" parameterType="Map">
+		insert into b_movement_order
+		values(#{pallet_num}, #{movement_address})
+	</insert>
 </mapper>
