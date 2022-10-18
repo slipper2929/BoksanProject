@@ -101,7 +101,7 @@
 .b_inquiry_main .b_pager{
     display: flex;
     justify-content: space-between;
-    width: 340px;
+    width: 450px;
     margin: 50px auto 0;
     font-size: 20px;
 }

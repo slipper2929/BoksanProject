@@ -20,4 +20,5 @@ public class ProductServiceImpl implements ProductService{
 	public void Product_group_addInsert(b_product_group_addDTO pgdto) {
 		pdao.Product_group_addInsert(pgdto);
 	}
+	
 }

@@ -173,14 +173,16 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피목록</h1>
-                    ${rlist}
+                    
+                    ${pageMaker}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">
-                        <form action="/recipe_inquiry" method="post">
-                            <input type="submit" class="b_submit">
-                            <input type="text" class="b_input_text sc_check" name="search_text">
+                        <form id="searchForm" action="/recipe_inquiry">
+                            <input type="button" class="b_submit" id="searchbtn">
+                            <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+                            <!--  <input type="text" class="b_input_text sc_check" name="search_text">-->
                         </form>
                         <p class="b_explain">*상품명으로 검색가능합니다.</p>
                     </div> <!--b_search-->
@@ -223,20 +225,31 @@
                         </tr>
                         </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                    <form id="pageForm" action="/recipe_inquiry">
+                    	<div class="b_pager">
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -281,5 +294,8 @@
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    
+    <!--recipe_inquiry js-->
+    <script src="../resources/js/recipe_inquiry.js"></script>
 </body>
 </html>

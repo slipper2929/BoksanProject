@@ -1,5 +1,7 @@
 package org.boksan.controller;
 
+import org.boksan.model.Criteria;
+import org.boksan.model.PageDTO;
 import org.boksan.service.RecipeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -188,9 +190,12 @@ public class HomeController {
 	
 	//레시피 목록
 	@RequestMapping(value = "/recipe_inquiry", method = RequestMethod.GET)
-	public String recipe_inquiry(Model model) {
+	public String recipe_inquiry(Model model, Criteria cri) {
 		
-		model.addAttribute("rlist",rservice.recipe_inquiry());
+		model.addAttribute("rlist",rservice.recipe_inquiry(cri));
+		
+		//페이징처리
+		model.addAttribute("pageMaker",new PageDTO(cri,rservice.getTotalCount(cri)));
 		
 		return "recipe_inquiry";
 	}

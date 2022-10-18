@@ -1,7 +1,6 @@
 package org.boksan.service;
 
-import java.util.ArrayList;
-
+import org.boksan.model.Criteria;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_product_group_addDTO;
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.boksan.dao.RecipeDao;
+import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.Product_selectDTO;
 import org.boksan.model.Recipe_addDTO;
@@ -50,8 +51,8 @@ public class RecipeServiceImpl implements RecipeService{
 	}
 	
 	//레시피 목록 조회
-	public ArrayList<Recipe_addDTO> recipe_inquiry(){
-		return rdao.recipe_inquiry();
+	public ArrayList<Recipe_addDTO> recipe_inquiry(Criteria cri){
+		return rdao.recipe_inquiry(cri);
 	}
 	
 	//레시피 삭제
@@ -64,5 +65,12 @@ public class RecipeServiceImpl implements RecipeService{
 	//레시피 검색 목록 조회
 	public ArrayList<Recipe_addDTO> recipe_inquiry_search(String search_text){
 		return rdao.recipe_inquiry_search(search_text);
+	}
+	
+	//페이징 처리를 위한 전체건수
+	public int getTotalCount(Criteria cri) {
+		
+		return rdao.getTotalCount(cri);
+		
 	}
 }

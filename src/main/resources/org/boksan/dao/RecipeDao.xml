@@ -26,8 +26,29 @@
 	</insert>
 	
 	<select id="recipe_inquiry" resultType="org.boksan.model.Recipe_addDTO">
+		<if test = "keyword == null">
 		select recipe_code, product_name, gross_weight, production_date
-		from b_recipe
+		from(
+			select @rownum:=@rownum+1 as rownum, p.*
+			from (select @rownum:=0) as tmp, b_recipe p			
+			order by recipe_code desc
+			) as b_recipe
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select recipe_code, product_name, gross_weight, production_date
+			from(
+			select @rownum:=@rownum+1 as rownum, p.*
+			from (select @rownum:=0) as tmp, b_recipe p		
+			where product_name like concat('%',#{keyword},'%')	
+			order by recipe_code desc
+			) as b_recipe
+			<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
 	</select>
 	
 	<delete id="recipe_delete">
@@ -40,5 +61,17 @@
 		from b_recipe
 		where product_name like concat('%', #{search_text}, '%')
 	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_recipe
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_recipe
+		 	where product_name like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
 	
 </mapper>
