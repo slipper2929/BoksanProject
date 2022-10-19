@@ -30,5 +30,5 @@ public interface RecipeService {
 	public int getTotalCount(Criteria cri);
 	
 	//레시피 상세
-	public RecipeDTO recipe_detail(int rc);
+	public ArrayList<Recipe_addDTO> recipe_detail(int rc);
 }

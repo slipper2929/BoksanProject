@@ -13,6 +13,8 @@ public class Recipe_addDTO {
 	
 	private int product_code;
 	private int material_num;
+	private String material_name;
+	private String maker_name;
 	
 	private List<Recipe_addDTO> product_code_list;
 	private List<Recipe_addDTO> material_num_list;
@@ -77,6 +79,21 @@ public class Recipe_addDTO {
 	}
 	public void setMaterial_num(int material_num) {
 		this.material_num = material_num;
+	}
+	
+	public String getMaterial_name() {
+		return material_name;
+	}
+	public void setMaterial_name(String material_name) {
+		this.material_name = material_name;
+	}
+	
+
+	public String getMaker_name() {
+		return maker_name;
+	}
+	public void setMaker_name(String maker_name) {
+		this.maker_name = maker_name;
 	}
 	@Override
 	public String toString() {

@@ -75,7 +75,7 @@ public class RecipeServiceImpl implements RecipeService{
 	}
 	
 	//레시피 상세
-	public RecipeDTO recipe_detail(int rc) {
+	public ArrayList<Recipe_addDTO> recipe_detail(int rc) {
 		
 		return rdao.recipe_detail(rc);
 		

@@ -176,7 +176,7 @@
                 <div class="b_content b_content_width_m">
                     <div class="recipe_product_name">
                         <h3 class="small_title">상품명</h3>
-                        <p>절인배추(11)</p>
+                        <p>${choiseRecipe[0].product_name}(${choiseRecipe[0].recipe_code})</p>
                     </div>
                     <table class="b_table margin_t50">
                         <h3 class="small_title">재료목록</h3>
@@ -189,32 +189,26 @@
                                 <p>중량(KG)</p>
                             </th>
                         </tr>
+                        <c:forEach items="${choiseRecipe}" var="material">
                         <tr class="b_table_data">
                             <td>
-                                <p>배추(00)</p>
+                                <p>${material.material_name}(${material.product_code})</p>
                             </td>
                             <td>
-                                <p>500</p>
+                                <p>${material.material_num}</p>
                             </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td>
-                                <p>소금(07)</p>
-                            </td>
-                            <td>
-                                <p>50</p>
-                            </td>
-                        </tr>
+                        </c:forEach>
                         
                     </table>
                     <div>
                         <h3 class="small_title mar_t_recipe">상세내용</h3>
                         <div class="recipe_content_info">
-                            <textarea name="" id="" readonly>fdgfdgdfgdgdf</textarea>
+                            <textarea name="" id="" readonly>${choiseRecipe[0].content}</textarea>
                             <div>
-                                <p>총중량 : <span>550</span></p>
-                                <p>제작일 : <span>2022-09-19</span></p>
-                                <p>레시피제작자 : <span>홍길동</span></p>
+                                <p>총중량 : <span>${choiseRecipe[0].gross_weight}kg</span></p>
+                                <p>제작일 : <span>${choiseRecipe[0].production_date}</span></p>
+                                <p>레시피제작자 : <span>${choiseRecipe[0].maker_name}</span></p>
                                 <p class="btn_l_g recipe_update_btn"><input type="submit" value="레시피수정하기"></p>
                                 <p class="btn_l_b recipe_out_btn"><input type="submit" value="레시피나가기"></p>
                             </div>

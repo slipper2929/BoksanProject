@@ -74,10 +74,15 @@
 	 	</if>
  	</select>
  	
- 	<select id="recipe_detail" resultType="org.boksan.model.RecipeDTO">
- 		select *
- 		from b_recipe
- 		where recipe_code = #{rc}
+ 	<select id="recipe_detail" resultType="org.boksan.model.Recipe_addDTO">
+ 		SELECT r.*, m.product_code, m.material_num, p.product_name AS material_name, e.name AS maker_name
+		FROM b_recipe r JOIN material m
+		ON r.recipe_code = m.recipe_code
+		LEFT JOIN b_product p
+		ON m.product_code = p.product_code
+		LEFT JOIN b_emp e
+		ON r.emp_code = e.emp_code
+		WHERE r.recipe_code = #{rc}
  	</select>
 	
 </mapper>
