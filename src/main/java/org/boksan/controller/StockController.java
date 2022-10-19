@@ -41,15 +41,7 @@ public class StockController {
 		
 		return "redirect:/pallet";
 	}
-	
 
-	//이동지시 검색
-	@RequestMapping(value="/move_orderList" , method=RequestMethod.POST)
-	public String movelist(@RequestParam("move_search") String move_search, Model model) {
-		model.addAttribute("MSlist", sservice.move_list_search(move_search));
-		
-		return "move_order";
-	}
 	
 	//이동목록 추가
 	@RequestMapping(value="/move_order/update" , method=RequestMethod.POST)

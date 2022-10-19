@@ -24,21 +24,65 @@
 	</delete>
 	
 	<select id="moveList" resultType="org.boksan.model.b_stockDTO">
-		SELECT s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.house_code 
-		FROM b_stock s JOIN b_product p
-		ON s.product_code = p.product_code
-	</select>
 	
-	<select id="move_list_search" resultType="org.boksan.model.b_stockDTO">
-		SELECT s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.stock_num 
-		FROM b_stock s JOIN b_product p
-		ON s.product_code = p.product_code
-		where s.pallet_num = #{pallet_num}
-		or p.product_name = #{product_name}
+		<if test = "keyword == null">
+		select s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.house_code 
+		from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp,(
+			SELECT * 
+			FROM b_stock s
+			WHERE s.pallet_num NOT IN (SELECT pallet_num FROM b_movement_order)  
+			) s 		
+			order BY s.pallet_num 
+			) as s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select s.pallet_num, p.product_code, p.product_name, s.arrive_date, s.house_code 
+			from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, (
+			SELECT * 
+			FROM b_stock s
+			WHERE s.pallet_num NOT IN (SELECT pallet_num FROM b_movement_order)  
+			) s left JOIN b_product p
+			ON s.product_code = p.product_code
+			where s.pallet_num like CONCAT('%',"",'%')
+			or p.product_code like CONCAT('%',"",'%')
+			or p.product_name like CONCAT('%',"",'%')
+			or s.house_code like CONCAT('%',"",'%')
+			order BY s.pallet_num 
+			) as s left join b_product p
+			ON s.product_code = p.product_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
 	</select>
 	
 	<insert id="move_change" parameterType="Map">
 		insert into b_movement_order
 		values(#{pallet_num}, #{movement_address})
 	</insert>
+	
+	<select id="getTotalCount" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_stock s join b_product p
+	 		on s.product_code = p.product_code
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_stock s join b_product p
+	 		ON s.product_code = p.product_code
+		 	where s.pallet_num like concat('%',#{keyword},'%')
+			or p.product_code like concat('%',#{keyword},'%')
+			or p.product_name like concat('%',#{keyword},'%')
+			or s.house_code like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
 </mapper>

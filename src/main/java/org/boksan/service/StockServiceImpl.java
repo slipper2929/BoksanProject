@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.boksan.dao.StockDao;
+import org.boksan.model.Criteria;
 import org.boksan.model.b_stockDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,17 +43,17 @@ public class StockServiceImpl implements StockService{
 	}
 	
 	//이동지시 리스트
-	public ArrayList<b_stockDTO> moveList(){
-		return sdao.moveList();
-	}
-	
-	public ArrayList<b_stockDTO> move_list_search(String move_search){
-		return sdao.move_list_search(move_search);
+	public ArrayList<b_stockDTO> moveList(Criteria cri){
+		return sdao.moveList(cri);
 	}
 	
 	//이동지시 -> 이동목록 insert
 	public void move_change(Map<String, Object> map) {
 		sdao.move_change(map);
+	}
+	
+	public int getTotalCount(Criteria cri) {
+		return sdao.getTotalCount(cri);
 	}
 	
 	

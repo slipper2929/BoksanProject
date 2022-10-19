@@ -135,8 +135,11 @@ public class HomeController {
 	
 	//이동지시
 	@RequestMapping(value = "/move_order", method = RequestMethod.GET)
-	public String GetMoveorder(Model model) {
-		model.addAttribute("mlist", sservice.moveList());
+	public String GetMoveorder(Model model, Criteria cri) {
+		
+		model.addAttribute("mlist", sservice.moveList(cri));
+		
+		model.addAttribute("pageMaker",new PageDTO(cri,sservice.getTotalCount(cri)));
 		
 		//ArrayList<b_stockDTO> list = sservice.moveList();
 		//System.out.println(list);
