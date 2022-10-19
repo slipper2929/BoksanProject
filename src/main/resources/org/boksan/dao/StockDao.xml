@@ -85,4 +85,31 @@
 			or s.house_code like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
+ 	
+ 	<select id="move_list" resultType="org.boksan.model.b_stockDTO">
+ 		SELECT s.pallet_num, p.product_code, p.product_name, s.house_code, mo.movement_address
+		FROM b_stock s JOIN b_product p
+		ON s.product_code = p.product_code
+		JOIN b_movement_order mo
+		ON s.pallet_num = mo.pallet_num
+ 	</select>
+ 	
+ 	<select id="movement" resultType="String">
+ 		select movement_address from b_movement_order
+ 	</select>
+ 	
+ 	<update id="move_compare">
+ 		UPDATE 
+		b_stock s JOIN b_product p
+		ON s.product_code = p.product_code
+		JOIN b_movement_order mo
+		ON s.pallet_num = mo.pallet_num
+		SET s.house_code = mo.movement_address
+		WHERE s.pallet_num = mo.pallet_num
+ 	</update>
+ 	
+ 	<delete id="move_delete">
+ 		delete from b_movement_order where pallet_num = #{pallet_num} 
+ 	</delete>
+ 	
 </mapper>

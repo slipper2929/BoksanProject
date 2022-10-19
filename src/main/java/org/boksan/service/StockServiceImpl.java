@@ -56,5 +56,20 @@ public class StockServiceImpl implements StockService{
 		return sdao.getTotalCount(cri);
 	}
 	
+	public ArrayList<b_stockDTO> move_list(){
+		return sdao.move_list();
+	}
+	
+	public ArrayList<String> movement(){
+		return sdao.movement();
+	}
+	
+	public void move_compare(b_stockDTO sdto) {
+		
+		sdao.move_compare(sdto);
+		System.out.println(sdto.getPallet_num());
+		sdao.move_delete(sdto);
+	}
+	
 	
 }

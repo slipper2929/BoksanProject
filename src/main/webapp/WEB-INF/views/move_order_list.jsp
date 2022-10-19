@@ -162,20 +162,16 @@
                 </nav> <!--메뉴바 끝-->
             </section><!--.b_header_in-->
         </header> <!--header 끝-->
-        
-        
 
-
-
-        
         <div id="container">
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>이동목록</h1>
+                    
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    
+                    <form action="/move_order_compare" method="post" id="compare_form">
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
                             <th>
@@ -200,45 +196,31 @@
                                 <p>이동완료</p>
                             </th>
                         </tr>
+                        
+                        <c:forEach var="molist" items="${molist}" varStatus="status">
                         <tr class="b_table_data">
-                            <td><p>001</p></td>
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>A11</p></td>
-                            <td><p>A12</p></td>
+                        	<td><p>${molist.pallet_num }</p></td>
+                            <td><p>${molist.product_code }</p></td>
+                            <td><p>${molist.product_name }</p></td>
+                            <td><p>${molist.house_code }</p></td>
+                            <td><p><input type="hidden" class="movement_value"value="${movement[status.index]}">${movement[status.index]}</p></td>
                             <td class="move_location_bacode">
                                 <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요" class="sc_check">
+                                    <input type="text" placeholder="로케이션바코드를 입력하세요" class="sc_check move_compare">
                                 </p>
                             </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동완료"></p></td>
+                            <td>
+                            <p class="move_order_btn btn_s_b">
+                            	<input type="hidden" value="${molist.pallet_num }">
+                            	<input type="button" class="move_compare_btn" value="이동완료">
+                            </p>
+                            
+                            </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>001</p></td>
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>A11</p></td>
-                            <td><p>A12</p></td>
-                            <td class="move_location_bacode">
-                                <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요" class="sc_check">
-                                </p>
-                            </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동완료"></p></td>
-                        </tr><tr class="b_table_data">
-                            <td><p>001</p></td>
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>A11</p></td>
-                            <td><p>A12</p></td>
-                            <td class="move_location_bacode">
-                                <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요" class="sc_check">
-                                </p>
-                            </td>
-                            <td><p class="move_order_btn btn_s_b"><input type="submit" value="이동완료"></p></td>
-                        </tr>
+                        </c:forEach>
+                        
                     </table>
+                    </form>
                     <div class="b_pager">
                         <div><a href=""><span>이전</span></a></div>
                         <div><a href=""><span>1</span></a></div>
@@ -297,5 +279,7 @@
 
     <!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    <!-- move_order_list.js -->
+    <script src="../resources/js/move_order_list.js"></script>
 </body>
 </html>

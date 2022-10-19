@@ -22,4 +22,11 @@ public interface StockService {
 	
 	public int getTotalCount(Criteria cri);
 	
+	public ArrayList<b_stockDTO> move_list();
+	
+	public ArrayList<String> movement();
+	
+	public void move_compare(b_stockDTO sdto);
+	
+	
 }

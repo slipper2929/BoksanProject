@@ -3,6 +3,9 @@ package org.boksan.controller;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
 import org.boksan.service.ProductService;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -132,7 +136,11 @@ public class HomeController {
 	
 	//이동지시목록
 	@RequestMapping(value = "/move_order_list", method = RequestMethod.GET)
-	public String move_order_list() {
+	public String move_order_list(Model model) {
+		
+		model.addAttribute("molist",sservice.move_list());
+		
+		model.addAttribute("movement",sservice.movement());
 		
 		return "move_order_list";
 	}

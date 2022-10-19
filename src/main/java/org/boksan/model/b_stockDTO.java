@@ -29,6 +29,8 @@ public class b_stockDTO {
 	
 
 
+
+
 	public String getArrive_date() {
 		return arrive_date;
 	}
@@ -129,6 +131,7 @@ public class b_stockDTO {
 				+ ", product_group_code=" + product_group_code + ", pallet_num_list=" + pallet_num_list + ", moveList="
 				+ moveList + "]";
 	}
+
 
 	
 
