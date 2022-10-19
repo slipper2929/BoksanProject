@@ -213,7 +213,7 @@
                             <td><p>${rlist.product_name}</p></td>
                             <td><p>${rlist.gross_weight}kg</p></td>
                             <td><p>${rlist.production_date}</p></td>
-                            <td><p class="recipe_btn btn_s_b"><button><a href="recipe_detail?recipe_code=${rlist.recipe_code}">상세보기</a></button></p></td>
+                            <td><p class="recipe_btn btn_s_b"><button><a href="recipe_detail?rc=${rlist.recipe_code}">상세보기</a></button></p></td>
                             <td>
                             	<form action="/recipe_delete" method="post">
 	                            	<p class="btn_s_r">

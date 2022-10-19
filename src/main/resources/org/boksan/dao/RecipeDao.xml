@@ -73,5 +73,11 @@
 		 	where product_name like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
+ 	
+ 	<select id="recipe_detail" resultType="org.boksan.model.RecipeDTO">
+ 		select *
+ 		from b_recipe
+ 		where recipe_code = #{rc}
+ 	</select>
 	
 </mapper>

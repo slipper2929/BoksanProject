@@ -206,7 +206,9 @@ public class HomeController {
 	
 	//레시피상세보기
 	@RequestMapping(value = "/recipe_detail", method = RequestMethod.GET)
-	public String recipe_detail() {
+	public String recipe_detail(int rc, Model model) {
+		
+		model.addAttribute("choiseRecipe", rservice.recipe_detail(rc));
 		
 		return "recipe_detail";
 	}

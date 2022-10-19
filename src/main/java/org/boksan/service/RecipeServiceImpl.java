@@ -1,12 +1,12 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.boksan.dao.RecipeDao;
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.RecipeDTO;
 import org.boksan.model.Recipe_addDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,6 +71,13 @@ public class RecipeServiceImpl implements RecipeService{
 	public int getTotalCount(Criteria cri) {
 		
 		return rdao.getTotalCount(cri);
+		
+	}
+	
+	//레시피 상세
+	public RecipeDTO recipe_detail(int rc) {
+		
+		return rdao.recipe_detail(rc);
 		
 	}
 }

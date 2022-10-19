@@ -1,11 +1,11 @@
 package org.boksan.dao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.RecipeDTO;
 import org.boksan.model.Recipe_addDTO;
 
 public interface RecipeDao {
@@ -31,4 +31,7 @@ public interface RecipeDao {
 	
 	//페이징 처리를 위한 전체건수
 	public int getTotalCount(Criteria cri);
+	
+	//레시피 상세
+	public RecipeDTO recipe_detail(int rc);
 }

@@ -170,6 +170,7 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피상세보기</h1>
+                    ${choiseRecipe}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
