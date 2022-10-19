@@ -181,11 +181,9 @@
                             <label><span>분류</span>
                                 <select name="product_group_code">
                                     <option value="">선택안함</option>
-                                    <option value="1">식자재</option>
-                                    <option value="2">1차가공</option>
-                                    <option value="3">2차가공</option>
-                                    <option value="4">완제품</option>
-                                    <option value="5">공산품</option>
+                                    <c:forEach items="${plist }" var="plist">     
+                                    <option value="${plist.product_group_code }">${plist.product_group_name }</option>
+                                    </c:forEach>                                
                                 </select>
                             </label>
                         </p>

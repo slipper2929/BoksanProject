@@ -5,6 +5,7 @@ package org.boksan.controller;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
+import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
 import org.slf4j.Logger;
@@ -24,6 +25,9 @@ public class HomeController {
 	
 	@Autowired
 	StockService sservice;
+	
+	@Autowired
+	ProductService pservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -177,7 +181,7 @@ public class HomeController {
 	//상품등록
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) {
-		
+		model.addAttribute("plist",pservice.product_group_select());
 		return "product";
 	}
 	
