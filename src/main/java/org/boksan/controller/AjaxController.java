@@ -3,6 +3,7 @@ package org.boksan.controller;
 import java.util.ArrayList;
 
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
@@ -47,6 +48,16 @@ public class AjaxController {
 		ArrayList<b_stockDTO> dps = sservice.DeletePalletSelect(data);
 		System.out.println(dps);
 		return dps;
+	}
+	
+	
+	@PostMapping(value="/changeHouse",
+			produces = "application/json; charset=utf-8")
+	public String changeHouse(String data){
+		System.out.println(data);
+		String change = sservice.changeHouse(data);
+		System.out.println(change);
+		return change;
 	}
 	
 	

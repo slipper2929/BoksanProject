@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.boksan.model.Criteria;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 
 public interface StockDao {
@@ -34,5 +35,7 @@ public interface StockDao {
 	public void move_compare(b_stockDTO sdto);
 	
 	public void move_delete(b_stockDTO sdto);
+	
+	public String changeHouse(String data);
 	
 }

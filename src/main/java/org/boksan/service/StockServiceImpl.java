@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.boksan.dao.StockDao;
 import org.boksan.model.Criteria;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,6 +74,10 @@ public class StockServiceImpl implements StockService{
 		sdao.move_compare(sdto);
 		System.out.println(sdto.getPallet_num());
 		sdao.move_delete(sdto);
+	}
+	
+	public String changeHouse(String data){
+		return sdao.changeHouse(data);
 	}
 	
 	

@@ -218,10 +218,12 @@
                             <td class="move_house">
                                 <p>
                                 	<input type="hidden" class="pallet_num" value="${mlist.pallet_num}">
-                                    <input type="text" class="move_address" placeholder="이동할 창고번지를 입력하세요">
+                                	<input type="hidden" class="" value="${mlist.house_code }">
+                                    <input type="text" class="move_address" name="house_code" placeholder="이동할 창고번지를 입력하세요">
                                 </p>
                             </td>
                             <td><p class="move_order_btn btn_s_b"><input type="button" class="move_btn"value="이동지시"></p></td>
+                            
                         </tr>
                         </c:forEach>
                         

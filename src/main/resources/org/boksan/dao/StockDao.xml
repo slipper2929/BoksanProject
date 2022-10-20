@@ -169,4 +169,11 @@
  		delete from b_movement_order where pallet_num = #{pallet_num} 
  	</delete>
  	
+ 	<select id="changeHouse" resultType="String">
+ 		SELECT COUNT(*)
+ 		FROM b_house
+ 		where house_code = #{data}
+ 		
+ 	</select>
+ 	
 </mapper>
