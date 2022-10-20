@@ -20,6 +20,15 @@ public interface RecipeDao {
 	//레시피추가_재료목록(맵핑테이블)
 	public void recipe_add_insert_material(Recipe_addDTO rdto);
 	
+	//레시피수정post
+	public void recipe_update_post(Recipe_addDTO rdto);
+	
+	//레시피수정post_재료목록_삭제
+	public void recipe_update_post_material_d(Recipe_addDTO rdto);
+	
+	//레시피수정post_재료목록_삽입
+	public void recipe_update_post_material_i(Recipe_addDTO rdto);
+	
 	//레시피 목록
 	public ArrayList<Recipe_addDTO> recipe_inquiry(Criteria cri);
 	
@@ -34,4 +43,7 @@ public interface RecipeDao {
 	
 	//레시피 상세
 	public ArrayList<Recipe_addDTO> recipe_detail(int rc);
+	
+	//레시피 수정
+	public ArrayList<Recipe_addDTO> recipe_update_get(int product_code);
 }

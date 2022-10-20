@@ -14,5 +14,4 @@ public interface ProductService {
 	
 	public void Product_group_addInsert(Product_groupDTO pgdto);
 	
-	
 }

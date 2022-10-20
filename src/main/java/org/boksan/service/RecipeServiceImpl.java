@@ -50,6 +50,21 @@ public class RecipeServiceImpl implements RecipeService{
 		
 	}
 	
+	//레시피수정post
+	public void recipe_update_post(Recipe_addDTO rdto) {
+		rdao.recipe_update_post(rdto);
+		
+		rdao.recipe_update_post_material_d(rdto);
+		
+		for(int i = 0; i < rdto.getProduct_code_list().size(); i++) {
+			rdto.setProduct_code(rdto.getProduct_code_list().get(i).getProduct_code());
+			rdto.setMaterial_num(rdto.getMaterial_num_list().get(i).getMaterial_num());
+			
+			rdao.recipe_update_post_material_i(rdto);
+		}
+		
+	}
+	
 	//레시피 목록 조회
 	public ArrayList<Recipe_addDTO> recipe_inquiry(Criteria cri){
 		return rdao.recipe_inquiry(cri);
@@ -78,6 +93,13 @@ public class RecipeServiceImpl implements RecipeService{
 	public ArrayList<Recipe_addDTO> recipe_detail(int rc) {
 		
 		return rdao.recipe_detail(rc);
+		
+	}
+	
+	//레시피수정
+	public ArrayList<Recipe_addDTO> recipe_update_get(int product_code) {
+		
+		return rdao.recipe_update_get(product_code);
 		
 	}
 }

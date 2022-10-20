@@ -204,6 +204,18 @@ public class HomeController {
 		return "recipe_add";
 	}
 	
+	//레시피수정
+	@RequestMapping(value = "/recipe_update", method = RequestMethod.GET)
+	public String recipe_update(Model model, @RequestParam("product_code") int product_code) {
+		System.out.println("프로덕트코드야 넘어와라 : " + product_code);
+		
+		model.addAttribute("product",rservice.recipe_update_get(product_code));
+		
+		model.addAttribute("pglist",rservice.recipe_add_select());
+		
+		return "recipe_update";
+	}
+	
 	//레시피상세보기
 	@RequestMapping(value = "/recipe_detail", method = RequestMethod.GET)
 	public String recipe_detail(int rc, Model model) {

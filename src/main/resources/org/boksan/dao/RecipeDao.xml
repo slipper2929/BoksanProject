@@ -5,23 +5,42 @@
 <mapper namespace="org.boksan.dao.RecipeDao">
 	
 	<select id="recipe_add_select" resultType="org.boksan.model.Product_groupDTO">
-		select *
-		from b_product_group
+		select 	*
+		from 	b_product_group
 	</select>
 	
 	<select id="recipe_add_pselect" resultType="org.boksan.model.Product_selectDTO">
-		select product_code, product_name
-		from b_product
-		where product_group_code = #{data}
+		select 	product_code, product_name
+		from 	b_product
+		where 	product_group_code = #{data}
 	</select>
 	
 	<insert id="recipe_add_insert">
-		INSERT INTO b_recipe
-		VALUES(#{recipe_code},#{product_name},#{gross_weight},#{content},#{production_date},#{emp_code});
+		INSERT 	INTO b_recipe
+		VALUES	(#{recipe_code},#{product_name},#{gross_weight},#{content},#{production_date},#{emp_code});
 	</insert>
 	
 	<insert id="recipe_add_insert_material">
 		INSERT INTO material(recipe_code, product_code, material_num)
+			VALUES(#{recipe_code},#{product_code},#{material_num})
+	</insert>
+	
+	<update id="recipe_update_post">
+		UPDATE 	b_recipe
+		SET 	gross_weight = #{gross_weight},
+				content = #{content},
+				production_date = #{production_date},
+				emp_code = #{emp_code}
+		WHERE 	recipe_code = #{recipe_code}
+	</update>
+		
+	<delete id="recipe_update_post_material_d">
+		DELETE FROM  material
+		WHERE recipe_code = #{recipe_code}
+	</delete>
+	
+	<insert id="recipe_update_post_material_i">
+		 INSERT INTO material(recipe_code, product_code, material_num)
 			VALUES(#{recipe_code},#{product_code},#{material_num})
 	</insert>
 	
@@ -84,5 +103,19 @@
 		ON r.emp_code = e.emp_code
 		WHERE r.recipe_code = #{rc}
  	</select>
+	
+	<select id="recipe_update_get" resultType="org.boksan.model.Recipe_addDTO">
+		<!-- SELECT r.*, m.product_code, m.material_num, p.product_name AS material_name, e.name AS maker_name
+		FROM b_recipe r JOIN material m
+		ON r.recipe_code = m.recipe_code
+		LEFT JOIN b_product p
+		ON m.product_code = p.product_code
+		LEFT JOIN b_emp e
+		ON r.emp_code = e.emp_code
+		WHERE r.recipe_code = #{recipe_code} -->
+		select recipe_code, product_name
+		from b_recipe
+		where recipe_code = #{recipe_code}
+	</select>
 	
 </mapper>

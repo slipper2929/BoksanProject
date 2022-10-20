@@ -28,6 +28,19 @@ public class RecipeController {
 		return "recipe_add";
 	}
 	
+	//레시피 수정
+	@RequestMapping(value = "/recipe_update", method = RequestMethod.POST)
+	public String recipe_update_post(Recipe_addDTO rdto) {
+//		System.out.println("가나다라");
+//		System.out.println(rdto);
+//		System.out.println("레시피코드 : " + rdto.getRecipe_code());
+		//System.out.println("상품코드 : " + rdto.getProduct_code());
+		//System.out.println("상품중량 : " + rdto.getMaterial_num());
+		rservice.recipe_update_post(rdto);
+		
+		return "recipe_add";
+	}
+	
 	//레시피삭제
 	@RequestMapping(value = "/recipe_delete", method = RequestMethod.POST)
 	public String recipe_delete(@RequestParam("recipe_code") String recipe_code) {

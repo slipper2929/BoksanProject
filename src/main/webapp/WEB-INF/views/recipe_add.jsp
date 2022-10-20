@@ -212,6 +212,7 @@
 								name_list.push("${pg.product_group_name}")
 							</c:forEach>
                         </script>
+                        
                         <tr class="b_table_data">
                             <td>
                                 <p>
@@ -224,7 +225,6 @@
                                     <select id="" class="recipe_product_selectbox product_code_list">
                                         <option value="">선택안함</option>
                                     </select>
-                                </div>
                                 </p>
                             </td>
                             <td class="recipe_weight">

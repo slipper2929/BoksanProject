@@ -17,6 +17,9 @@ public interface RecipeService {
 	//레시피추가
 	public void recipe_add_insert(Recipe_addDTO rdto);
 	
+	//레시피수정post
+	public void recipe_update_post(Recipe_addDTO rdto);
+	
 	//레시피 목록 조회
 	public ArrayList<Recipe_addDTO> recipe_inquiry(Criteria cri);
 	
@@ -31,4 +34,7 @@ public interface RecipeService {
 	
 	//레시피 상세
 	public ArrayList<Recipe_addDTO> recipe_detail(int rc);
+	
+	//레시피수정get
+	public ArrayList<Recipe_addDTO> recipe_update_get(int product_code);
 }

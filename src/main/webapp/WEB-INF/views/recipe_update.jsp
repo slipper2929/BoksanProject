@@ -24,9 +24,9 @@
     <!--조회css-->
     <link rel="stylesheet" href="../resources/css/inquiry.css">
     <!--메인css-->
-    <link rel="stylesheet" href="../resources/css/recipe_detail.css">
+    <link rel="stylesheet" href="../resources/css/recipe_add.css">
 
-    <title>복산김치WMS_레시피상세보기</title>
+    <title>복산김치WMS_레시피수정</title>
 </head>
 <body>
    <div id="wrap">
@@ -162,64 +162,95 @@
             </section><!--.b_header_in-->
         </header> <!--header 끝-->
         
+        
 
 
 
         
         <div id="container">
+        	
+ 
             <section class="b_inquiry_main">
                 <div class="b_title">
-                    <h1>레시피상세보기</h1>
-                    ${choiseRecipe}
+                    <h1>레시피수정</h1>
+                    ${product}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <div class="recipe_product_name">
+                    <div class="recipe_product_chois">
+                        <div class="recipe_product_name">
                         <h3 class="small_title">상품명</h3>
-                        <p>${choiseRecipe[0].product_name}(${choiseRecipe[0].recipe_code})</p>
+                        <p>${product[0].product_name}(${product[0].recipe_code})</p>
                     </div>
-                    <table class="b_table margin_t50">
-                        <h3 class="small_title">재료목록</h3>
                         
+                    </div>
+                    <form method="post"> <!-- teble 이랑 밑에 버튼까지 전체 포함 -->
+                    
+                    <table class="b_table margin_t50">
+                        <h3 class="small_title">재료선택하기</h3>
+                        <p class="btn_s_b table_btn"><input type="button" value="재료추가" id="add_btn"></p>
                         <tr class="b_table_title">
                             <th>
-                                <p>재료명</p>
+                                <p>재료선택</p>
                             </th>
                             <th>
                                 <p>중량(KG)</p>
                             </th>
+                            <th>
+                                <p>삭제</p>
+                            </th>
                         </tr>
-                        <c:forEach items="${choiseRecipe}" var="material">
+                       <script>
+							let code_list = []
+							let name_list = []
+
+							<c:forEach items="${pglist}" var="pg">
+								code_list.push("${pg.product_group_code}")
+								name_list.push("${pg.product_group_name}")
+							</c:forEach>
+                        </script>
+                        
                         <tr class="b_table_data">
                             <td>
-                                <p>${material.material_name}(${material.product_code})</p>
+                                <p>
+                                    <select name="" id="" class="recipe_product_selectbox pg_box">
+                                        <option value="">선택안함</option>
+                                        <c:forEach items="${pglist}" var="pg">
+			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+			                        	</c:forEach>
+                                    </select>
+                                    <select id="" class="recipe_product_selectbox product_code_list">
+                                        <option value="">선택안함</option>
+                                    </select>
+                                </p>
                             </td>
-                            <td>
-                                <p>${material.material_num}</p>
+                            <td class="recipe_weight">
+                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num"></p>
+                            </td>
+                            <td class="recipe_delete">
+                                <p class="btn_s_r recipe_delete_btn"><input type="button" value="재료삭제" class="delete_btn"></p>
                             </td>
                         </tr>
-                        </c:forEach>
-                        
                     </table>
                     <div>
                         <h3 class="small_title mar_t_recipe">상세내용</h3>
                         <div class="recipe_content_info">
-                            <textarea name="" id="" readonly>${choiseRecipe[0].content}</textarea>
+                            <textarea name="content" id=""></textarea>
                             <div>
-                                <p>총중량 : <span>${choiseRecipe[0].gross_weight}kg</span></p>
-                                <p>제작일 : <span>${choiseRecipe[0].production_date}</span></p>
-                                <p>레시피제작자 : <span>${choiseRecipe[0].maker_name}</span></p>
-                                <p class="btn_l_g recipe_update_btn">
-                                	<input type="button" value="레시피수정하기">
-                                	<a href="recipe_update?product_code=${choiseRecipe[0].recipe_code}" style="display:hidden" id="update_link"></a>
-                                </p>
-                                <p class="btn_l_b recipe_out_btn">
-                                	<input type="submit" value="레시피나가기">
-                                	<a href="recipe_inquiry" style="display:none" id="recipe_exit"></a>
-                                </p>
+                            	<input type="text" name="recipe_code" value="${product[0].recipe_code}">
+                    			<input type="text" name="product_name" value="${product[0].product_name}">
+                            	<input type="text" id="recipe_weight" name="gross_weight">
+                            	<input type="text" id="recipe_date" name="production_date">
+                            	<input type="text" id="" name="emp_code" value="${member.emp_code}">
+                                <p class="weight">총중량 : <span>0</span></p>
+                                <p class="date_now">제작일 : <span></span></p>
+                                <p>레시피제작(수정)자 : <span>${member.name}</span></p>
+                                <p class="btn_l_b recipe_save_btn"><input type="button" value="레시피수정하기"></p>
+                            	
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -261,8 +292,16 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+
+    <!--유효성검사 js-->
+    <script src="../resources/js/b_regExp_check.js"></script>
     
-    <!-- recipe_detail js -->
-    <script src="../resources/js/recipe_detail.js"></script>
+    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
+    <script src="../resources/js/product_select.js"></script>
+    
+    <!-- recipe_add js -->
+   <script src="../resources/js/recipe_add.js"></script>
+    
+    
 </body>
 </html>
