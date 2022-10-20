@@ -162,7 +162,9 @@ public class HomeController {
 	
 	//발주신청
 	@RequestMapping(value = "/order", method = RequestMethod.GET)
-	public String order() {
+	public String order(Model model) {
+		
+		model.addAttribute("pglist",rservice.recipe_add_select());
 		
 		return "order";
 	}
