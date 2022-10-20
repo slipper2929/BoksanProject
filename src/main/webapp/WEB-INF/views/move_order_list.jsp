@@ -167,10 +167,17 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>이동목록</h1>
-                    
+                    ${pageMaker }
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
+                <div class="b_search">
+                        <form action="/move_order_list" id="searchForm">
+                            <input type="button" class="b_submit" id="searchbtn">
+                            <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword }">
+                        </form>
+                        <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
+                    </div> <!--b_search-->
                     <form action="/move_order_compare" method="post" id="compare_form">
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
@@ -221,20 +228,31 @@
                         
                     </table>
                     </form>
+                    <form id="pageForm" action="/move_order_list">
                     <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/move_order_list?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/move_order_list?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/move_order_list?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/move_order_list?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -281,5 +299,7 @@
     <script src="../resources/js/b_regExp_check.js"></script>
     <!-- move_order_list.js -->
     <script src="../resources/js/move_order_list.js"></script>
+    <!-- pageMaker.js -->
+     <script src="../resources/js/pageMaker.js"></script>
 </body>
 </html>

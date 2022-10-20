@@ -64,12 +64,7 @@
 		</if>
 	</select>
 	
-	<insert id="move_change" parameterType="Map">
-		insert into b_movement_order
-		values(#{pallet_num}, #{movement_address})
-	</insert>
-	
-	<select id="getTotalCount" resultType="int">
+	<select id="getTotalCountMo" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
 	 		from b_stock s join b_product p
@@ -86,12 +81,74 @@
 	 	</if>
  	</select>
  	
+ 	<insert id="move_change" parameterType="Map">
+		insert into b_movement_order
+		values(#{pallet_num}, #{movement_address})
+	</insert>
+ 	
  	<select id="move_list" resultType="org.boksan.model.b_stockDTO">
- 		SELECT s.pallet_num, p.product_code, p.product_name, s.house_code, mo.movement_address
-		FROM b_stock s JOIN b_product p
-		ON s.product_code = p.product_code
-		JOIN b_movement_order mo
-		ON s.pallet_num = mo.pallet_num
+		<if test = "keyword == null">
+		select s.pallet_num, p.product_code, p.product_name, s.house_code, mo.movement_address
+		from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s	
+			LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+			JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num	
+			order BY s.pallet_num 
+			) as s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+			JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select s.pallet_num, p.product_code, p.product_name, s.house_code, mo.movement_address
+			from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+			JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num
+			where s.pallet_num like CONCAT('%',#{keyword},'%')
+			or p.product_code like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			or s.house_code like CONCAT('%',#{keyword},'%')
+			or mo.movement_address like CONCAT('%',#{keyword},'%')
+			order BY s.pallet_num 
+			) as s left join b_product p
+			ON s.product_code = p.product_code	
+			JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+ 	</select>
+ 	
+ 	<select id="getTotalCountMol" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_stock s join b_product p
+	 		on s.product_code = p.product_code
+	 		JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_stock s join b_product p
+	 		ON s.product_code = p.product_code
+	 		JOIN b_movement_order mo
+			ON s.pallet_num = mo.pallet_num
+		 	where s.pallet_num like concat('%',#{keyword},'%')
+			or p.product_code like concat('%',#{keyword},'%')
+			or p.product_name like concat('%',#{keyword},'%')
+			or s.house_code like concat('%',#{keyword},'%')
+			or mo.movement_address like CONCAT('%',#{keyword},'%')
+	 	</if>
  	</select>
  	
  	<select id="movement" resultType="String">

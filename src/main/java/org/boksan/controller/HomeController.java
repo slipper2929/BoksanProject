@@ -136,11 +136,13 @@ public class HomeController {
 	
 	//이동지시목록
 	@RequestMapping(value = "/move_order_list", method = RequestMethod.GET)
-	public String move_order_list(Model model) {
+	public String move_order_list(Model model,Criteria cri) {
 		
-		model.addAttribute("molist",sservice.move_list());
+		model.addAttribute("molist",sservice.move_list(cri));
 		
-		model.addAttribute("movement",sservice.movement());
+		model.addAttribute("movement",sservice.movement(cri));
+		
+		model.addAttribute("pageMaker", new PageDTO(cri,sservice.getTotalCountMol(cri)));
 		
 		return "move_order_list";
 	}
@@ -151,7 +153,7 @@ public class HomeController {
 		
 		model.addAttribute("mlist", sservice.moveList(cri));
 		
-		model.addAttribute("pageMaker",new PageDTO(cri,sservice.getTotalCount(cri)));
+		model.addAttribute("pageMaker",new PageDTO(cri,sservice.getTotalCountMo(cri)));
 		
 		//ArrayList<b_stockDTO> list = sservice.moveList();
 		//System.out.println(list);

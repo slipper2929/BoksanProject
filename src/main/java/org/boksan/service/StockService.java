@@ -20,11 +20,13 @@ public interface StockService {
 	//이동지시 -> 이동목록 insert
 	public void move_change(Map<String, Object> map);
 	
-	public int getTotalCount(Criteria cri);
+	public int getTotalCountMo(Criteria cri);
 	
-	public ArrayList<b_stockDTO> move_list();
+	public int getTotalCountMol(Criteria cri);
 	
-	public ArrayList<String> movement();
+	public ArrayList<b_stockDTO> move_list(Criteria cri);
+	
+	public ArrayList<String> movement(Criteria cri);
 	
 	public void move_compare(b_stockDTO sdto);
 	

@@ -52,16 +52,20 @@ public class StockServiceImpl implements StockService{
 		sdao.move_change(map);
 	}
 	
-	public int getTotalCount(Criteria cri) {
-		return sdao.getTotalCount(cri);
+	public int getTotalCountMo(Criteria cri) {
+		return sdao.getTotalCountMo(cri);
 	}
 	
-	public ArrayList<b_stockDTO> move_list(){
-		return sdao.move_list();
+	public int getTotalCountMol(Criteria cri) {
+		return sdao.getTotalCountMol(cri);
 	}
 	
-	public ArrayList<String> movement(){
-		return sdao.movement();
+	public ArrayList<b_stockDTO> move_list(Criteria cri){
+		return sdao.move_list(cri);
+	}
+	
+	public ArrayList<String> movement(Criteria cri){
+		return sdao.movement(cri);
 	}
 	
 	public void move_compare(b_stockDTO sdto) {
