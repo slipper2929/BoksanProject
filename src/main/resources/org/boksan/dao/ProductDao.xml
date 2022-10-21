@@ -17,4 +17,10 @@
 	  	insert into b_product_group(product_group_name)
 	  	value(#{product_group_name})
 	  </insert>
+	  
+	  <select id="price_select" resultType="String">
+	  	select price
+	  	from b_product
+	  	where product_code = #{data}
+	  </select>
   </mapper>

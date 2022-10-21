@@ -13,4 +13,6 @@ public interface ProductDao {
 	public void ProductInsert(b_productDTO pdto);
 	
 	public void Product_group_addInsert(Product_groupDTO pgdto);
+	
+	public String price_select(String data);
 }

@@ -186,11 +186,11 @@
                             </label>
                         </p>
                         <p class="b_text b_inputform_name">
-                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" name="arrive_num"></label>
+                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" id="arrive_num" name="arrive_num"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_order_ps">*해당상품은 키로(KG)단위로 발주합니다.</p>
-                        <p class="b_text b_inputform_name" id="b_order_price">예상구매액<span>중량 * 상품구매가</span></p>
+                        <p class="b_text b_inputform_name" id="b_order_price">예상구매액<span></span></p>
                         <div class="b_submit btn_l_b">
                             <input type="submit" value="발주신청">
                         </div>    
@@ -249,5 +249,7 @@
     
     <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
     <script src="../resources/js/product_select.js"></script>
+    
+    <script src="../resources/js/order.js"></script>
 </body>
 </html>

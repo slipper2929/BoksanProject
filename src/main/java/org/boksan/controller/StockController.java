@@ -35,7 +35,7 @@ public class StockController {
 	@RequestMapping(value="/pallet_delete", method=RequestMethod.POST)
 	public String pallet_delete(b_stockDTO sdto) {
 		System.out.println("리스트:"+sdto.getPallet_num_list().get(0).getPallet_num());
-		System.out.println("리스트:"+sdto.getPallet_num_list().get(1).getPallet_num());
+		//System.out.println("리스트:"+sdto.getPallet_num_list().get(1).getPallet_num());
 		//System.out.println("리스트:"+sdto[1].getPallet_num());
 		sservice.pallet_delete(sdto);
 		

@@ -3,12 +3,11 @@ package org.boksan.controller;
 import java.util.ArrayList;
 
 import org.boksan.model.Product_selectDTO;
-import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +19,9 @@ public class AjaxController {
 	
 	@Autowired
 	StockService sservice;
+	
+	@Autowired
+	ProductService pservice;
 	
 	@GetMapping(value = "/testajax",
 			produces = "application/json; charset=utf-8")
@@ -58,6 +60,16 @@ public class AjaxController {
 		String change = sservice.changeHouse(data);
 		System.out.println(change);
 		return change;
+	}
+	
+	@GetMapping(value="/price_select",
+			produces = "application/json; charset=utf-8")
+	public String price_select(String data) {
+		
+		String res = pservice.price_select(data);
+		
+		return res;
+		
 	}
 	
 	

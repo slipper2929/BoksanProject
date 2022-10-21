@@ -14,4 +14,7 @@ public interface ProductService {
 	
 	public void Product_group_addInsert(Product_groupDTO pgdto);
 	
+	//ajax 상품 가격 select
+	public String price_select(String data);
+	
 }

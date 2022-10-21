@@ -27,4 +27,10 @@ public class ProductServiceImpl implements ProductService{
 		pdao.Product_group_addInsert(pgdto);
 	}
 	
+	public String price_select(String data) {
+		
+		return pdao.price_select(data);
+		
+	}
+	
 }

@@ -6,6 +6,7 @@
  	
  	jQuery.pg_box_change = function(){
  	
+ 	
  	$(".pg_box").on("change", function(){
  		
  		let pgCode = $(this).val();
@@ -36,6 +37,7 @@
 	 			
 	 			$(".pg_box").removeClass("myChoice")
 	 			$(".pg_box").next().removeClass("myProduct")
+	 			
 	 		},
 	 		error: function(e,data){
 	 			alert(data)
@@ -43,6 +45,7 @@
 	 			
 	 		}
  		}) //에이젝스끝
+ 		
  	})
  	
  	
