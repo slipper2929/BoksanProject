@@ -3,13 +3,14 @@ package org.boksan.controller;
 
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
+
 import org.boksan.model.Product_groupDTO;
 import org.boksan.service.MemberService;
+
+import org.boksan.service.ArriveService;
+
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
@@ -36,7 +37,11 @@ public class HomeController {
 	ProductService pservice;
 	
 	@Autowired
+
 	MemberService mservice;
+
+	ArriveService aservice;
+
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -49,10 +54,20 @@ public class HomeController {
 	
 	//입고 대기 리스트
 	@RequestMapping(value = "/arrive_list", method = RequestMethod.GET)
-	public String arrive_list() {
+	public String arrive_list(Model model, Criteria cri) {
+		
+		model.addAttribute("alist",aservice.arrive_list_select(cri));
+		
+		//페이징 처리
+		model.addAttribute("pageMaker",new PageDTO(cri,aservice.getTotalCount(cri)));
+		
+		model.addAttribute("plist",aservice.arrive_list_select_pallet());
+		
+		model.addAttribute("total",aservice.arrive_total_list());
 		
 		return "arrive_list";
 	}
+	
 	
 	//입고요청
 	@RequestMapping(value = "/arrive", method = RequestMethod.GET)

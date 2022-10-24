@@ -176,7 +176,7 @@
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     
-                    <table class="b_table margin_t50">
+                    <table class="b_table margin_t50" id="arrive_list_table">
                         <tr class="b_table_title">
                             <th>
                                 <p>상품정보코드</p>
@@ -200,90 +200,55 @@
                                 <p>바코드발행</p>
                             </th>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>20kg</p></td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고일을 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="파레트번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고시킬 창고번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="arrive_bacode_btn btn_s_b"><input type="submit" value="바코드발행하기"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>01</p></td>
-                            <td><p>무</p></td>
-                            <td><p>200kg</p></td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고일을 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="파레트번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고시킬 창고번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="arrive_bacode_btn btn_s_b"><input type="submit" value="바코드발행하기"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>02</p></td>
-                            <td><p>파</p></td>
-                            <td><p>320kg</p></td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고일을 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="파레트번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td class="arrive_info">
-                                <p>
-                                    <input type="text" placeholder="입고시킬 창고번호를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="arrive_bacode_btn btn_s_b"><input type="submit" value="바코드발행하기"></p>
-                            </td>
-                        </tr>
+                        <c:forEach items="${alist}" var="al">
+	                        <tr class="b_table_data">
+	                            <td><p class="product_code">${al.product_code}</p></td>
+	                            <td><p>${al.product_name}</p></td>
+	                            <td><p class="arrive_num_check">${al.arrive_num}kg</p></td>
+	                            <td class="arrive_info">
+	                                <p>
+	                                    <input class="datepick arrive_date" type="text" placeholder="입고일을 입력하세요">
+	                                </p>
+	                            </td>
+	                            <td class="arrive_info">
+	                                <p class="pallet_info">
+	                                    <select class="pallet_num_selectbox">
+	                                    			<option value="">파레트번호 선택</option>
+	                                    	<c:forEach items="${plist}" var="pl">
+		                                    	<c:if test="${pl.product_code eq al.product_code}">
+		                                    		<option value="${pl.pallet_num}">${pl.pallet_num}</option>
+		                                    	</c:if>
+	                                    	</c:forEach>
+	                                    </select>
+	                                </p>
+	                            </td>
+	                            <td class="arrive_info">
+	                                <p>
+	                                    <input class="arrive_house" type="text" placeholder="입고시킬 창고번호를 입력하세요">
+	                                </p>
+	                            </td>
+	                            <td>
+	                                <p class="arrive_bacode_btn btn_s_b"><input class="barcode_btn" type="button" value="바코드발행하기"></p>
+	                            </td>
+	                        </tr>
+                        </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                    <a href="#" class="check_link"></a>
+                    
+                    <form id="pageForm" action="arrive_list">
+                    	<div class="b_pager">
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+	                   		<div><a class="pageBtn" href="/arrive_list?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+	                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+	                        	</c:forEach>
+	                        <div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+
+                    	</div>
+                    </form>
                 </div>
             </section>
             <section class="b_inquiry_main">
@@ -317,33 +282,45 @@
                                 <p>중량</p>
                             </th>
                         </tr>
+                        <c:forEach items="${total}" var="to">
                         <tr class="b_table_data">
-                            <td><p>00</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>하나푸드</p></td>
-                            <td><p>제주도</p></td>
-                            <td><p>1200원</p></td>
-                            <td><p>300kg</p></td>
+                            <td><p>${to.product_code}</p></td>
+                            <td><p>${to.product_name}</p></td>
+                            <td><p>${to.product_group_name}</p></td>
+                            <td>
+                            	<c:choose>
+                            		<c:when test="${to.business_name != null}">
+                            			<p>${to.business_name}</p>
+                            		</c:when>
+                            		<c:otherwise>
+                            			<p>없음</p>
+                            		</c:otherwise>
+                            	</c:choose>
+                            </td>
+                            <td>
+                            	<c:choose>
+                            		<c:when test="${to.place != null}">
+                            			<p>${to.place}</p>
+                            		</c:when>
+                            		<c:otherwise>
+                            			<p>없음</p>
+                            		</c:otherwise>
+                            	</c:choose>
+                            </td>
+                            <td>
+                            	<c:choose>
+                            		<c:when test="${to.price != 0}">
+                            			<p>${to.price}원</p>	
+                            		</c:when>
+                            		<c:otherwise>
+                            			<p>없음</p>
+                            		</c:otherwise>
+                            	</c:choose>
+                            </td>
+                            <td><p>${to.arrive_num_total}kg</p></td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>47</p></td>
-                            <td><p>깍두기양념장</p></td>
-                            <td><p>양념장</p></td>
-                            <td><p>복산김치</p></td>
-                            <td><p>복산김치</p></td>
-                            <td><p>없음</p></td>
-                            <td><p>150kg</p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>32</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>진성상회</p></td>
-                            <td><p>평양</p></td>
-                            <td><p>1130원</p></td>
-                            <td><p>500kg</p></td>
-                        </tr>
+                        </c:forEach>
+                        
                     </table>
                 </div>
             </section>
@@ -386,5 +363,11 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+    
+    <!-- arrive_list js -->
+    <script src="../resources/js/arrive_list.js"></script>
+    
+    <!-- pageMaker js -->
+    <script src="../resources/js/pageMaker.js"></script>
 </body>
 </html>

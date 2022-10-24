@@ -171,19 +171,25 @@
                     <h1>입고대기목록_검증</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l" id="b_content_check">
-                    <form action="">
+                    <form method="post">
                         <p class="b_text b_inputform_name">
-                            <label><span class="b_check_bacode">발행한 입고상품바코드</span><input type="text" placeholder="내용을 입력해주세요." class="B_input"></label>
-                            <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
+                            <label><span class="b_check_bacode">발행한 입고상품바코드</span>
+                            	<input type="text" placeholder="내용을 입력해주세요." class="B_input check_barcode_text">
+                            </label>
+                            
                         </p>
                         <p class="b_text b_inputform_name">
-                            <label><span>로케이션 바코드</span><input type="text" placeholder="내용을 입력해주세요."></label>
-                            <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
+                            <label><span>로케이션 바코드</span><input name="house_code" class="check_house_barcode" type="text" placeholder="내용을 입력해주세요."></label>
+                            
                         </p>
                         <p class="b_check_ps">*검증에 실패하면 새로 바코드발행을 해야합니다.</p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="검증 후 입고완료하기">
-                        </div>    
+                            <input class="check_btn" type="button" value="검증 후 입고완료하기">
+                        </div>
+                        	<input type="text" class="product_code" name="product_code">
+                        	<input type="text" class="arrive_num" name="stock_num">
+                        	<input type="date" class="arrive_date" name="arrive_date">
+                        	<input type="text" class="pallet_num" name="pallet_num">
                     </form>
                 </div> <!--.b_content-->
             </section>
@@ -233,5 +239,8 @@
 
     <!--입력폼 js-->
     <script src="../resources/js/inputform.js"></script>
+    
+    <!-- check js -->
+    <script src="../resources/js/check.js"></script>
 </body>
 </html>

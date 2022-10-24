@@ -1,10 +1,18 @@
 package org.boksan.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.boksan.model.Product_selectDTO;
+
 import org.boksan.model.b_productDTO;
+
+import org.boksan.model.TestDTO;
+
 import org.boksan.model.b_stockDTO;
+import org.boksan.service.ArriveService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
@@ -24,6 +32,9 @@ public class AjaxController {
 	
 	@Autowired
 	ProductService pservice;
+	
+	@Autowired
+	ArriveService aservice;
 	
 	@GetMapping(value = "/testajax",
 			produces = "application/json; charset=utf-8")
@@ -73,5 +84,6 @@ public class AjaxController {
 		return res;
 		
 	}	
-	
+
+
 }

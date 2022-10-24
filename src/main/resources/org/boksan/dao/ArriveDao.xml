@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="org.boksan.dao.ArriveDao">
+	
+	<select id="arrive_list_select" resultType="org.boksan.model.b_arriveDTO">
+		SELECT a.product_code, a.arrive_num, p.product_name
+		FROM(
+			select @rownum:=@rownum+1 as rownum, a.*
+			from (select @rownum:=0) as tmp, b_arrive a
+			order by arrive_code desc
+			) as a
+		LEFT JOIN b_product p
+		ON a.product_code = p.product_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+	</select>
+	
+	<select id="arrive_list_select_pallet" resultType="org.boksan.model.Arrive_palletDTO">
+			SELECT product_code, pallet_num
+			FROM b_stock
+			WHERE product_barcode IS null
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+	 		select count(*)
+	 		from b_arrive
+ 	</select>
+ 	
+ 	<select id="arrive_total_list" resultType="org.boksan.model.Arrive_totalDTO">
+ 		SELECT a.product_code, p.product_name, pg.product_group_name, p.business_name, p.place, p.price, arrive_num_total
+		FROM (
+				SELECT product_code, SUM(arrive_num) as arrive_num_total
+				FROM b_arrive
+				GROUP BY product_code
+		) AS a
+		LEFT JOIN b_product p
+		ON a.product_code = p.product_code
+		LEFT JOIN b_product_group pg
+		ON p.product_group_code = pg.product_group_code
+ 	</select>
+ 	
+ 	<update id="Arrive_insert">
+ 		UPDATE b_stock
+		SET	arrive_date = #{arrive_date},
+			stock_num = #{stock_num},
+			house_code = #{house_code},
+			product_barcode = #{product_barcode}
+		WHERE pallet_num = #{pallet_num}
+ 	</update>
+	
+</mapper>

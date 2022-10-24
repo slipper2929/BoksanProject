@@ -4,6 +4,8 @@
  
  $(function(){
  
+
+ 
  		let result = "";
  
  		$("#recipe_product_code_select").on("change", function(){

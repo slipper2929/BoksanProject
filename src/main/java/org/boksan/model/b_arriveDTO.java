@@ -4,6 +4,7 @@ public class b_arriveDTO {
 	
 	private int product_code;
 	private int arrive_num;
+	private String product_name;
 	
 	public int getProduct_code() {
 		return product_code;
@@ -17,10 +18,22 @@ public class b_arriveDTO {
 	public void setArrive_num(int arrive_num) {
 		this.arrive_num = arrive_num;
 	}
+	
+	
+	public String getProduct_name() {
+		return product_name;
+	}
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+	
 	@Override
 	public String toString() {
-		return "b_arriveDTO [product_code=" + product_code + ", arrive_num=" + arrive_num + "]";
+		return "b_arriveDTO [product_code=" + product_code + ", arrive_num=" + arrive_num + ", product_name="
+				+ product_name + "]";
 	}
+	
+	
 	
 	
 }
