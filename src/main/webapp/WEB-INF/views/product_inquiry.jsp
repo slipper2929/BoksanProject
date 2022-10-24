@@ -218,7 +218,9 @@
                             <td><p>${pilist.price }</p></td>
                             <td><p>${pilist.pallet_in_ratio }</p></td>
                             <td>
-                                <p class="btn_s_g"><input type="submit" value="수정"></p>
+                            	
+                                <p class="btn_s_g Upilist"><input type="button" class="up_btn" value="수정"></p>
+                                <p class="btn_s_b Ppilist"><input type="button" class="success_btn" value="완료"></p>
                                 <p class="btn_s_r"><input type="submit" value="삭제"></p>
                             </td>
                         </tr>
@@ -282,5 +284,7 @@
 
     <!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    <!-- product_inquiry -->
+    <script src="../resources/js/product_inquiry.js"></script>
 </body>
 </html>

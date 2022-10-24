@@ -3,11 +3,13 @@ package org.boksan.controller;
 import java.util.ArrayList;
 
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +26,7 @@ public class AjaxController {
 	ProductService pservice;
 	
 	@GetMapping(value = "/testajax",
-			produces = "application/json; charset=utf-8")
+			produces = "application/text; charset=utf-8")
 	
 	//@GetMapping("/testajax")
 	public ArrayList<Product_selectDTO> product_select_ajax(String data) {
@@ -70,7 +72,6 @@ public class AjaxController {
 		
 		return res;
 		
-	}
-	
+	}	
 	
 }

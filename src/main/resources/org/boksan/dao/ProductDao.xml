@@ -29,4 +29,18 @@
 		FROM b_product p JOIN b_product_group pg
 		ON p.product_group_code = pg.product_group_code
 	  </select>
+	  
+	 <!--  <update id="update_product">
+	  	UPDATE b_product p JOIN b_product_group pg
+		ON p.product_group_code = pg.product_group_code
+		SET p.product_name = #{product_name}
+			p.product_group_code = #{product_group_code},
+			p.place = #{place},
+			p.business_name = #{business_name},
+			p.price = #{price},
+			p.pallet_in_ratio = #{pallet_in_ratio}
+		WHERE p.product_code = #{product_code}
+	  </update>
+	   -->
+	   
   </mapper>
