@@ -23,4 +23,10 @@
 	  	from b_product
 	  	where product_code = #{data}
 	  </select>
+	  
+	  <select id="piproduct_select" resultType="org.boksan.model.b_productDTO">
+	  	SELECT p.*, pg.product_group_name
+		FROM b_product p JOIN b_product_group pg
+		ON p.product_group_code = pg.product_group_code
+	  </select>
   </mapper>

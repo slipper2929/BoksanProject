@@ -32,11 +32,13 @@ $(function(){
 					$("#PS_table").append(dps_select(data[i]));
 				}
 				
+				
 			},
 			error: function(e){
 				alert("error : " + e)
 			}
 		})
+		$("#PS_table").html('<tr class="b_table_title"><th><p>파레트번호</p></th><th><p>삭제</p></th></tr>')
 		
 	})
 	pallet_num_list = []
@@ -79,7 +81,6 @@ $(function(){
 	})
 	
 	$(document).on("click", ".pallet_delete_check_btn input", function(){
-		alert("ddd")
 		let count = 0;
 		for(let i = 0; i < $(".pallet_check").length; i++){
 			

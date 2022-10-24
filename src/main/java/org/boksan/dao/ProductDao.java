@@ -15,4 +15,6 @@ public interface ProductDao {
 	public void Product_group_addInsert(Product_groupDTO pgdto);
 	
 	public String price_select(String data);
+	
+	public ArrayList<b_productDTO> piproduct_select();
 }

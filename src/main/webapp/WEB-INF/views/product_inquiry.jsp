@@ -165,15 +165,11 @@
         </header> <!--header 끝-->
         
         
-
-
-
-        
         <div id="container">
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>상품조회</h1>
-                    <h2>상품조회</h2>
+
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">
@@ -181,6 +177,7 @@
                             <input type="button" class="b_submit">
                             <input type="text" class="b_input_text sc_check">
                         </form>
+                     
                         <p class="b_explain">*어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고</p>
                     </div> <!--b_search-->
                     <table class="b_table margin_t50">
@@ -210,45 +207,22 @@
                                 <p>관리</p>
                             </th>
                         </tr>
+                        
+                        <c:forEach var="pilist" items="${pilist }">
                         <tr class="b_table_data">
-                            <td><p>01</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>해남</p></td>
-                            <td><p>제일푸드</p></td>
-                            <td><p>1300</p></td>
-                            <td><p>2000</p></td>
+                            <td><p>${pilist.product_code }</p></td>
+                            <td><p>${pilist.product_name }</p></td>
+                            <td><p>${pilist.product_group_name }</p></td>
+                            <td><p>${pilist.place }</p></td>
+                            <td><p>${pilist.business_name }</p></td>
+                            <td><p>${pilist.price }</p></td>
+                            <td><p>${pilist.pallet_in_ratio }</p></td>
                             <td>
                                 <p class="btn_s_g"><input type="submit" value="수정"></p>
                                 <p class="btn_s_r"><input type="submit" value="삭제"></p>
                             </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>02</p></td>
-                            <td><p>무</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>해남</p></td>
-                            <td><p>제일푸드</p></td>
-                            <td><p>1000</p></td>
-                            <td><p>1500</p></td>
-                            <td>
-                                <p class="btn_s_g"><input type="submit" value="수정"></p>
-                                <p class="btn_s_r"><input type="submit" value="삭제"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>03</p></td>
-                            <td><p>파</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>제주도</p></td>
-                            <td><p>금산상회</p></td>
-                            <td><p>4000</p></td>
-                            <td><p>3000</p></td>
-                            <td>
-                                <p class="btn_s_g"><input type="submit" value="수정"></p>
-                                <p class="btn_s_r"><input type="submit" value="삭제"></p>
-                            </td>
-                        </tr>
+                        </c:forEach>
                     </table>
                     <div class="b_pager">
                         <div><a href=""><span>이전</span></a></div>

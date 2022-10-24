@@ -17,4 +17,6 @@ public interface ProductService {
 	//ajax 상품 가격 select
 	public String price_select(String data);
 	
+	public ArrayList<b_productDTO> piproduct_select();
+	
 }

@@ -33,4 +33,8 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 	
+	public ArrayList<b_productDTO> piproduct_select(){
+		return pdao.piproduct_select();
+	}
+	
 }

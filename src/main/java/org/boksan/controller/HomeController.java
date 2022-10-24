@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
+import org.boksan.model.Product_groupDTO;
+import org.boksan.service.MemberService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
@@ -32,6 +34,9 @@ public class HomeController {
 	
 	@Autowired
 	ProductService pservice;
+	
+	@Autowired
+	MemberService mservice;
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -87,8 +92,8 @@ public class HomeController {
 	
 	//회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join() {
-		
+	public String join(Model model) {
+		model.addAttribute("dept",mservice.dept_select());
 		return "join";
 	}
 	
@@ -166,6 +171,7 @@ public class HomeController {
 		
 		model.addAttribute("pglist",rservice.recipe_add_select());
 		
+		
 		return "order";
 	}
 	
@@ -178,8 +184,8 @@ public class HomeController {
 	
 	//상품조회
 	@RequestMapping(value = "/product_inquiry", method = RequestMethod.GET)
-	public String product_inquiry() {
-		
+	public String product_inquiry(Model model) {
+		model.addAttribute("pilist",pservice.piproduct_select());
 		return "product_inquiry";
 	}
 	

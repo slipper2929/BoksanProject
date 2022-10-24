@@ -2,6 +2,8 @@ package org.boksan.model;
 
 public class b_productDTO {
 	
+	private int product_code;
+	
 	private String product_name;
 	
 	private int price;
@@ -13,6 +15,28 @@ public class b_productDTO {
 	private int pallet_in_ratio;
 	
 	private int product_group_code;
+	
+	private String product_group_name;
+	
+
+
+	
+
+	public String getProduct_group_name() {
+		return product_group_name;
+	}
+
+	public void setProduct_group_name(String product_group_name) {
+		this.product_group_name = product_group_name;
+	}
+
+	public int getProduct_code() {
+		return product_code;
+	}
+
+	public void setProduct_code(int product_code) {
+		this.product_code = product_code;
+	}
 
 	public String getProduct_name() {
 		return product_name;
@@ -61,4 +85,12 @@ public class b_productDTO {
 	public void setProduct_group_code(int product_group_code) {
 		this.product_group_code = product_group_code;
 	}
+
+	@Override
+	public String toString() {
+		return "b_productDTO [product_code=" + product_code + ", product_name=" + product_name + ", price=" + price
+				+ ", place=" + place + ", business_name=" + business_name + ", pallet_in_ratio=" + pallet_in_ratio
+				+ ", product_group_code=" + product_group_code + "]";
+	}
+	
 }

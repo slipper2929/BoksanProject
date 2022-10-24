@@ -188,9 +188,9 @@
                             <label><span>부서명</span>
                                 <select name="dept_code">
                                     <option value="">선택안함</option>
-                                    <option value="1">자재관리부서</option>
-                                    <option value="2">생산공장</option>
-                                    <option value="3">물류창고</option>
+                                    <c:forEach items="${dept }" var="dept">
+                                    <option value="${dept.dept_code }">${dept.dept_name }</option>
+                                    </c:forEach>
                                 </select>
                             </label>
                         </p>
