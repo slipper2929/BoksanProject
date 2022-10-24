@@ -26,7 +26,7 @@ public class AjaxController {
 	ProductService pservice;
 	
 	@GetMapping(value = "/testajax",
-			produces = "application/text; charset=utf-8")
+			produces = "application/json; charset=utf-8")
 	
 	//@GetMapping("/testajax")
 	public ArrayList<Product_selectDTO> product_select_ajax(String data) {
