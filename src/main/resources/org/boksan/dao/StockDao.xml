@@ -6,6 +6,7 @@
 
 <mapper namespace="org.boksan.dao.StockDao" >
 
+	<!-- 파레트 추가 -->
 	<insert id="PalletInsert">
 		INSERT INTO b_stock(pallet_num, product_code)
 		SELECT LPAD(CONVERT(MAX(pallet_num),SIGNED)+1,3,'0') 
@@ -13,16 +14,20 @@
 		FROM b_stock
 	</insert>
 	
+	<!-- 삭제할 파레트 찾기 -->
 	<select id="DeletePalletSelect" resultType="string">
 		SELECT pallet_num 
 		FROM b_stock
 		WHERE product_code = #{data} and stock_num is null
 	</select>
+	
+	<!--  파레트 삭제 -->
 	<delete id="pallet_delete">
 		DELETE FROM b_stock
 		WHERE pallet_num = #{pallet_num}
 	</delete>
 	
+	<!--  이동지시 리스트 -->
 	<select id="moveList" resultType="org.boksan.model.b_stockDTO">
 	
 		<if test = "keyword == null">
@@ -63,7 +68,7 @@
 		]]>
 		</if>
 	</select>
-	
+	<!-- 페이징 처리를 위한 전체건수 이동지시 -->
 	<select id="getTotalCountMo" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
@@ -81,11 +86,13 @@
 	 	</if>
  	</select>
  	
+ 	<!-- 이동지시 -> 이동목록 INSERT -->
  	<insert id="move_change" parameterType="Map">
 		insert into b_movement_order
 		values(#{pallet_num}, #{movement_address})
 	</insert>
  	
+ 	<!-- 이동목록 리스트 -->
  	<select id="move_list" resultType="org.boksan.model.b_stockDTO">
 		<if test = "keyword == null">
 		select s.pallet_num, p.product_code, p.product_name, s.house_code, mo.movement_address
@@ -129,6 +136,7 @@
 		</if>
  	</select>
  	
+ 	<!-- 페이징 처리를 위한 전체건수 이동목록 -->
  	<select id="getTotalCountMol" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
@@ -151,10 +159,12 @@
 	 	</if>
  	</select>
  	
+ 	<!-- 이동목록 이동할 주소 -->
  	<select id="movement" resultType="String">
  		select movement_address from b_movement_order
  	</select>
  	
+ 	<!-- 이동목록 주소 확인버튼 -->
  	<update id="move_compare">
  		UPDATE 
 		b_stock s JOIN b_product p
@@ -165,10 +175,12 @@
 		WHERE s.pallet_num = mo.pallet_num
  	</update>
  	
+ 	<!-- 이동목록 확인버튼 누르면 이동목록 리스트에서 삭제 -->
  	<delete id="move_delete">
  		delete from b_movement_order where pallet_num = #{pallet_num} 
  	</delete>
  	
+ 	<!-- 이동목록 주소 동일한지 확인 -->
  	<select id="changeHouse" resultType="String">
  		SELECT COUNT(*)
  		FROM b_house

@@ -59,6 +59,7 @@ public class StockController {
 		return "redirect:/move_order";
 	}
 	
+	//이동목록 확인버튼
 	@RequestMapping(value="/move_order_compare", method=RequestMethod.POST)
 	public String moveCompare(b_stockDTO sdto) {
 		sservice.move_compare(sdto);

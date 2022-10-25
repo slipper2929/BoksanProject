@@ -10,26 +10,33 @@ import org.boksan.model.b_stockDTO;
 
 public interface StockService {
 	
-	public void PalletInsert(b_stockDTO sdto);
-	
-	public ArrayList<b_stockDTO> DeletePalletSelect(String data);
-	
-	public void pallet_delete(b_stockDTO sdto);
-	
-	public ArrayList<b_stockDTO> moveList(Criteria cri);
-	
-	//이동지시 -> 이동목록 insert
-	public void move_change(Map<String, Object> map);
-	
-	public int getTotalCountMo(Criteria cri);
-	
-	public int getTotalCountMol(Criteria cri);
-	
-	public ArrayList<b_stockDTO> move_list(Criteria cri);
-	
-	public ArrayList<String> movement(Criteria cri);
-	
-	public void move_compare(b_stockDTO sdto);
-	
-	public String changeHouse(String data);
+		//파레트 추가
+		public void PalletInsert(b_stockDTO sdto);
+		//삭제할 빈 파레트 찾기
+		public ArrayList<b_stockDTO> DeletePalletSelect(String data);
+		//파레트 삭제
+		public void pallet_delete(b_stockDTO sdto);
+		//이동지시 리스트
+		public ArrayList<b_stockDTO> moveList(Criteria cri);
+		
+		
+		
+		//이동지시 -> 이동목록 insert
+		public void move_change(Map<String, Object> map);
+		
+		//페이징 처리를 위한 전체건수 이동지시
+		public int getTotalCountMo(Criteria cri);
+		//페이징 처리를 위한 전체건수 이동목록
+		public int getTotalCountMol(Criteria cri);
+		
+		//이동목록 리스트
+		public ArrayList<b_stockDTO> move_list(Criteria cri);
+		//이동목록 이동할주소
+		public ArrayList<String> movement(Criteria cri);
+		//이동목록 주소 확인버튼
+		public void move_compare(b_stockDTO sdto);
+		
+		//이동목록 주소 동일한지 확인
+		public String changeHouse(String data);
+		
 }

@@ -11,7 +11,7 @@ public class OrderServiceImpl implements OrderService{
 
 	@Autowired
 	OrderDao odao;
-	
+	//발주신청버튼
 	public void recipe_add_insert(b_arriveDTO adto) {
 		
 		odao.recipe_add_insert(adto);

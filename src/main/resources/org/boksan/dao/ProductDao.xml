@@ -5,25 +5,31 @@
   
   <mapper namespace="org.boksan.dao.ProductDao">
   
+  	<!-- 상품분류 select box -->
   	<select id="product_group_select" resultType="org.boksan.model.Product_groupDTO">
   		select * from b_product_group
   	</select>
   	
+  	<!-- 상품등록 버튼 -->
 	  <insert id="ProductInsert">
 	  	insert into b_product(product_name, price, place, business_name, pallet_in_ratio, product_group_code)
 	  	values(#{product_name},#{price},#{place},#{business_name}, #{pallet_in_ratio},#{product_group_code})
 	  </insert>
+	  
+	  <!-- 상품분류추가 버튼 -->
 	  <insert id="Product_group_addInsert">
 	  	insert into b_product_group(product_group_name)
 	  	value(#{product_group_name})
 	  </insert>
 	  
+	  <!-- 발주 예상 구매액 -->
 	  <select id="price_select" resultType="String">
 	  	select price
 	  	from b_product
 	  	where product_code = #{data}
 	  </select>
 	  
+	  <!-- 상품조회 리스트 -->
 	  <select id="piproduct_select" resultType="org.boksan.model.b_productDTO">
 	  	SELECT p.*, pg.product_group_name
 		FROM b_product p JOIN b_product_group pg

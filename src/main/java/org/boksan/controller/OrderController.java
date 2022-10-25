@@ -13,6 +13,7 @@ public class OrderController {
 	@Autowired
 	OrderService oservice;
 	
+	//발주신청버튼
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
 	public String order_insert(b_arriveDTO adto) {
 		

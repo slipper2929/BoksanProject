@@ -16,13 +16,13 @@ public class RecipeServiceImpl implements RecipeService{
 	
 	@Autowired
 	RecipeDao rdao;
-	
+	//레시피 상품분류 찾기
 	public ArrayList<Product_groupDTO>recipe_add_select(){
 		
 		return rdao.recipe_add_select();
 		
 	}
-	
+	//레시피 상품분류에따른 상품이름
 	public ArrayList<Product_selectDTO>recipe_add_pselect(String data){
 		
 		return rdao.recipe_add_pselect(data);

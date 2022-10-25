@@ -9,9 +9,10 @@ import org.boksan.model.RecipeDTO;
 import org.boksan.model.Recipe_addDTO;
 
 public interface RecipeService {
-
-	public ArrayList<Product_groupDTO>recipe_add_select();
 	
+	//레시피 상품분류 찾기
+	public ArrayList<Product_groupDTO>recipe_add_select();
+	//레시피 상품분류에따른 상품이름
 	public ArrayList<Product_selectDTO>recipe_add_pselect(String data);
 	
 	//레시피추가

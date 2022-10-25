@@ -154,7 +154,7 @@ public class HomeController {
 		return "manager_main";
 	}
 	
-	//이동지시목록
+	//이동목록
 	@RequestMapping(value = "/move_order_list", method = RequestMethod.GET)
 	public String move_order_list(Model model,Criteria cri) {
 		
@@ -200,7 +200,7 @@ public class HomeController {
 	//상품조회
 	@RequestMapping(value = "/product_inquiry", method = RequestMethod.GET)
 	public String product_inquiry(Model model) {
-		model.addAttribute("pilist",pservice.piproduct_select());
+		model.addAttribute("pilist",pservice.piproduct_select()); //상품조회 리스트
 		return "product_inquiry";
 	}
 	
@@ -214,7 +214,7 @@ public class HomeController {
 	//상품등록
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) {
-		model.addAttribute("plist",pservice.product_group_select());
+		model.addAttribute("plist",pservice.product_group_select()); //상품분류 select box
 		return "product";
 	}
 	

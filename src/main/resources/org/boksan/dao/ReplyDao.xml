@@ -4,6 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="org.boksan.dao.ReplyDao">
+
+	<!-- 아이디 중복 확인 -->
 	<select id="overlapId" resultType="org.boksan.model.ReplyDTO">
 		SELECT *
 		FROM b_emp

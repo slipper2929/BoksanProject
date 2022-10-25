@@ -3,7 +3,8 @@ package org.boksan.dao;
 import org.boksan.model.b_arriveDTO;
 
 public interface OrderDao {
-
+	
+	//발주신청버튼
 	public void recipe_add_insert(b_arriveDTO adto);
 	
 }

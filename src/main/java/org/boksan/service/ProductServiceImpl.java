@@ -15,24 +15,26 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	ProductDao pdao;
 	
+	
+	//상품분류 select box
 	public ArrayList<Product_groupDTO> product_group_select(){
 		return pdao.product_group_select();
 	}
-	
+	//상품등록 버튼
 	public void ProductInsert(b_productDTO pdto) {
 		pdao.ProductInsert(pdto);
 	}
-	
+	//상품분류추가 버튼
 	public void Product_group_addInsert(Product_groupDTO pgdto) {
 		pdao.Product_group_addInsert(pgdto);
 	}
-	
+	//발주 예상구매액
 	public String price_select(String data) {
 		
 		return pdao.price_select(data);
 		
 	}
-	
+	//상품조회 리스트
 	public ArrayList<b_productDTO> piproduct_select(){
 		return pdao.piproduct_select();
 	}

@@ -24,18 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AjaxController {
-	@Autowired
-	RecipeService rservice;
+	
 	
 	@Autowired
-	StockService sservice;
+	RecipeService rservice; 
 	
 	@Autowired
-	ProductService pservice;
+	StockService sservice; 
 	
 	@Autowired
 	ArriveService aservice;
 	
+	@Autowired
+	ProductService pservice; 
+	
+	
+	
+	//이중 select box  (product_select.js)
 	@GetMapping(value = "/testajax",
 			produces = "application/json; charset=utf-8")
 	
@@ -54,6 +59,8 @@ public class AjaxController {
 		return res;
 	}
 	
+	
+	//빈 파레트 조회 (pallet.js)
 	@GetMapping(value = "/delete_pallet_select",
 			produces = "application/json; charset=utf-8")
 	
@@ -66,6 +73,7 @@ public class AjaxController {
 	}
 	
 	
+	//이동지시완료 (move_order.js)
 	@PostMapping(value="/changeHouse",
 			produces = "application/json; charset=utf-8")
 	public String changeHouse(String data){
@@ -75,6 +83,8 @@ public class AjaxController {
 		return change;
 	}
 	
+	
+	//발주 예상구매액 (order.js)
 	@GetMapping(value="/price_select",
 			produces = "application/json; charset=utf-8")
 	public String price_select(String data) {

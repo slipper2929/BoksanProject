@@ -16,7 +16,7 @@ public class StockServiceImpl implements StockService{
 	
 	@Autowired
 	StockDao sdao;
-	
+	//파레트 추가
 	public void PalletInsert(b_stockDTO sdto) {
 		
 		for(int i = 0; i < sdto.getPallet_count(); i++) {
@@ -26,7 +26,6 @@ public class StockServiceImpl implements StockService{
 	}
 	
 	//빈 파레트 조회
-	
 	public ArrayList<b_stockDTO> DeletePalletSelect(String data){
 		System.out.println("서비스단" + data);
 		return sdao.DeletePalletSelect(data);
@@ -52,30 +51,31 @@ public class StockServiceImpl implements StockService{
 	public void move_change(Map<String, Object> map) {
 		sdao.move_change(map);
 	}
-	
+	//페이징 처리를 위한 전체건수 이동지시
 	public int getTotalCountMo(Criteria cri) {
 		return sdao.getTotalCountMo(cri);
 	}
-	
+	//페이징 처리를 위한 전체건수 이동목록
 	public int getTotalCountMol(Criteria cri) {
 		return sdao.getTotalCountMol(cri);
 	}
-	
+	//이동목록 리스트
 	public ArrayList<b_stockDTO> move_list(Criteria cri){
 		return sdao.move_list(cri);
 	}
-	
+	//이동목록 이동할주소
 	public ArrayList<String> movement(Criteria cri){
 		return sdao.movement(cri);
 	}
 	
+	//이동목록 주소 확인버튼
 	public void move_compare(b_stockDTO sdto) {
 		
 		sdao.move_compare(sdto);
 		System.out.println(sdto.getPallet_num());
-		sdao.move_delete(sdto);
+		sdao.move_delete(sdto); //이동목록 확인버튼 누르면 이동목록 리스트에서 삭제
 	}
-	
+	//이동목록 주소 동일한지 확인
 	public String changeHouse(String data){
 		return sdao.changeHouse(data);
 	}

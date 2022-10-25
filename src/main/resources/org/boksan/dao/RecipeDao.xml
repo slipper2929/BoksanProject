@@ -4,27 +4,32 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.boksan.dao.RecipeDao">
 	
+	<!-- 레시피 상품분류 찾기 -->
 	<select id="recipe_add_select" resultType="org.boksan.model.Product_groupDTO">
 		select 	*
 		from 	b_product_group
 	</select>
 	
+	<!-- 레시피 상품분류에 따른 상품이름찾기 -->
 	<select id="recipe_add_pselect" resultType="org.boksan.model.Product_selectDTO">
 		select 	product_code, product_name
 		from 	b_product
 		where 	product_group_code = #{data}
 	</select>
 	
+	<!-- 레시피 추가 -->
 	<insert id="recipe_add_insert">
 		INSERT 	INTO b_recipe
 		VALUES	(#{recipe_code},#{product_name},#{gross_weight},#{content},#{production_date},#{emp_code});
 	</insert>
 	
+	<!-- 레시피 추가 _ 재료목록(맵핑테이블) -->
 	<insert id="recipe_add_insert_material">
 		INSERT INTO material(recipe_code, product_code, material_num)
 			VALUES(#{recipe_code},#{product_code},#{material_num})
 	</insert>
 	
+	<!-- 레시피 수정 POST -->
 	<update id="recipe_update_post">
 		UPDATE 	b_recipe
 		SET 	gross_weight = #{gross_weight},
@@ -34,16 +39,19 @@
 		WHERE 	recipe_code = #{recipe_code}
 	</update>
 		
+	<!-- 레시피수정 POST _ 재료목록 _ 삭제 -->
 	<delete id="recipe_update_post_material_d">
 		DELETE FROM  material
 		WHERE recipe_code = #{recipe_code}
 	</delete>
 	
+	<!-- 레시피수정 POST _ 재료목록 _ 삽입 -->
 	<insert id="recipe_update_post_material_i">
 		 INSERT INTO material(recipe_code, product_code, material_num)
 			VALUES(#{recipe_code},#{product_code},#{material_num})
 	</insert>
 	
+	<!-- 레시피 목록 -->
 	<select id="recipe_inquiry" resultType="org.boksan.model.Recipe_addDTO">
 		<if test = "keyword == null">
 		select recipe_code, product_name, gross_weight, production_date
@@ -70,17 +78,20 @@
 		</if>
 	</select>
 	
+	<!-- 레시피 삭제 -->
 	<delete id="recipe_delete">
 		delete from b_recipe
 		where recipe_code = #{recipe_code}
 	</delete>
 	
+	<!-- 레시피 검색목록 조회 -->
 	<select id="recipe_inquiry_search" resultType="org.boksan.model.Recipe_addDTO">
 		select recipe_code, product_name, gross_weight, production_date
 		from b_recipe
 		where product_name like concat('%', #{search_text}, '%')
 	</select>
 	
+	<!-- 페이징 처리를 위한 전체건수 -->
 	<select id="getTotalCount" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
@@ -93,6 +104,7 @@
 	 	</if>
  	</select>
  	
+ 	<!-- 레시피 상세 -->
  	<select id="recipe_detail" resultType="org.boksan.model.Recipe_addDTO">
  		SELECT r.*, m.product_code, m.material_num, p.product_name AS material_name, e.name AS maker_name
 		FROM b_recipe r JOIN material m
@@ -104,6 +116,7 @@
 		WHERE r.recipe_code = #{rc}
  	</select>
 	
+	<!-- 레시피 수정 -->
 	<select id="recipe_update_get" resultType="org.boksan.model.Recipe_addDTO">
 		<!-- SELECT r.*, m.product_code, m.material_num, p.product_name AS material_name, e.name AS maker_name
 		FROM b_recipe r JOIN material m

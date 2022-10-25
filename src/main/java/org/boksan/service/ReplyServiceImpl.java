@@ -12,7 +12,7 @@ public class ReplyServiceImpl  implements ReplyService {
 	@Autowired
 	ReplyDao rdao;
 	
-	
+	// 아이디 중복 확인
 	public ArrayList<ReplyDTO> overlapId(String id){
 		return rdao.overlapId(id);
 	}

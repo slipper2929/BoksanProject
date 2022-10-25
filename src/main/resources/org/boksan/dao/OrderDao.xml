@@ -4,6 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.boksan.dao.OrderDao">
+	
+	
+	<!-- 발주신청 -->
 	<insert id="recipe_add_insert">
 		insert into b_arrive (arrive_num, product_code)
 		values (#{arrive_num}, #{product_code})
