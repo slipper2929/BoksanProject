@@ -37,9 +37,9 @@ public class HomeController {
 	ProductService pservice;
 	
 	@Autowired
-
 	MemberService mservice;
 
+	@Autowired
 	ArriveService aservice;
 
 	
