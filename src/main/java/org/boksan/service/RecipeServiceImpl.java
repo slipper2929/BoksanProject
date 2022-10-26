@@ -42,11 +42,6 @@ public class RecipeServiceImpl implements RecipeService{
 		}
 		
 		
-		System.out.println("첫번째목록 상품코드 : "+rdto.getProduct_code_list().get(0).getProduct_code());
-		System.out.println("첫번째목록 상품중량 : "+rdto.getMaterial_num_list().get(0).getMaterial_num());
-		System.out.println("두번째목록 상품코드 : "+rdto.getProduct_code_list().get(1).getProduct_code());
-		System.out.println("두번째목록 상품중량 : "+rdto.getProduct_code_list().get(1).getMaterial_num());
-		
 		
 	}
 	

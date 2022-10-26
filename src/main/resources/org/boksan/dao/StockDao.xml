@@ -56,10 +56,10 @@
 			WHERE s.pallet_num NOT IN (SELECT pallet_num FROM b_movement_order)  
 			) s left JOIN b_product p
 			ON s.product_code = p.product_code
-			where s.pallet_num like CONCAT('%',"",'%')
-			or p.product_code like CONCAT('%',"",'%')
-			or p.product_name like CONCAT('%',"",'%')
-			or s.house_code like CONCAT('%',"",'%')
+			where s.pallet_num like CONCAT('%',#{keyword},'%')
+			or p.product_code like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			or s.house_code like CONCAT('%',#{keyword},'%')
 			order BY s.pallet_num 
 			) as s left join b_product p
 			ON s.product_code = p.product_code	

@@ -18,7 +18,7 @@ public class ProductController {
 	@RequestMapping(value="/product", method = RequestMethod.POST)
 	public String PostProduct(b_productDTO pdto) {
 		pservice.ProductInsert(pdto);
-		return "product";
+		return "redirect:/product";
 	}
 	//상품분류추가 버튼
 	@RequestMapping(value="/group_add", method = RequestMethod.POST)

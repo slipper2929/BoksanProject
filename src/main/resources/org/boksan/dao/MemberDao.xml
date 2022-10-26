@@ -13,7 +13,7 @@
 	
 	<!-- 회원가입 부서 select -->
 	<select id="dept_select" resultType="org.boksan.model.b_deptDTO">
-		select dept_name from b_dept
+		select * from b_dept
 	</select>
 	
 	<!-- 회원승인여부 -->

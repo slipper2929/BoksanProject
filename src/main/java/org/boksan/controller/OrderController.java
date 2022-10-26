@@ -20,6 +20,6 @@ public class OrderController {
 		
 		oservice.recipe_add_insert(adto);
 		
-		return "order";
+		return "redirect:/order";
 	}
 }
