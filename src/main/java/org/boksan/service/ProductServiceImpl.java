@@ -3,6 +3,7 @@ package org.boksan.service;
 import java.util.ArrayList;
 
 import org.boksan.dao.ProductDao;
+import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,26 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 	//상품조회 리스트
-	public ArrayList<b_productDTO> piproduct_select(){
-		return pdao.piproduct_select();
+	public ArrayList<b_productDTO> piproduct_select(Criteria cri){
+		return pdao.piproduct_select(cri);
 	}
 	
+	//상품조회 리스트 수정
+	public void update_product(b_productDTO pdto) {
+		System.out.println(pdto);
+		pdao.update_product(pdto);
+		
+	}
+	//상품조회 리스트 수정의 상품분류코드 selectBox
+	public ArrayList<b_productDTO> gproduct_select(Criteria cri) {
+		return pdao.gproduct_select(cri);
+	}
+	//상품조회 리스트 삭제
+	public void product_list_delete(b_productDTO pdto) {
+		pdao.product_list_delete(pdto);
+	}
+	//페이징 처리를 위한 전체건수 상품조회
+	public int getTotalCountPI(Criteria cri) {
+		return pdao.getTotalCountPI(cri);
+	}
 }

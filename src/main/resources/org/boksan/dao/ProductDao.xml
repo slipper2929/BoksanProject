@@ -31,22 +31,80 @@
 	  
 	  <!-- 상품조회 리스트 -->
 	  <select id="piproduct_select" resultType="org.boksan.model.b_productDTO">
-	  	SELECT p.*, pg.product_group_name
-		FROM b_product p JOIN b_product_group pg
-		ON p.product_group_code = pg.product_group_code
+		
+		<if test = "keyword == null">
+		select p.*, pg.product_group_name
+		from(
+			select @rownum:=@rownum+1 as rownum, p.*
+			from (select @rownum:=0) as tmp, b_product p	
+			LEFT JOIN b_product_group pg
+			ON p.product_group_code = pg.product_group_code
+			order BY p.product_code
+			) as p LEFT JOIN b_product_group pg
+			ON p.product_group_code = pg.product_group_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select p.*, pg.product_group_name
+			from(
+			select @rownum:=@rownum+1 as rownum, p.*
+			from (select @rownum:=0) as tmp, b_product p LEFT JOIN b_product_group pg
+			ON p.product_group_code = pg.product_group_code
+			where p.product_code like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			or pg.product_group_name like CONCAT('%',#{keyword},'%')
+			or p.place like CONCAT('%',#{keyword},'%')
+			or p.business_name like CONCAT('%',#{keyword},'%')
+			or p.pallet_in_ratio like CONCAT('%',#{keyword},'%')
+			order BY p.product_code 
+			) as p left join b_product_group pg
+			ON p.product_group_code = pg.product_group_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
 	  </select>
 	  
-	 <!--  <update id="update_product">
-	  	UPDATE b_product p JOIN b_product_group pg
-		ON p.product_group_code = pg.product_group_code
-		SET p.product_name = #{product_name}
-			p.product_group_code = #{product_group_code},
-			p.place = #{place},
-			p.business_name = #{business_name},
-			p.price = #{price},
-			p.pallet_in_ratio = #{pallet_in_ratio}
-		WHERE p.product_code = #{product_code}
+	  <!-- 페이징 처리를 위한 전체건수 상품조회 -->
+ 	<select id="getTotalCountPI" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		FROM b_product p JOIN b_product_group pg
+			ON p.product_group_code = pg.product_group_code
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		FROM b_product p JOIN b_product_group pg
+			ON p.product_group_code = pg.product_group_code
+		 	where p.product_name like concat('%',#{keyword},'%')
+			or p.business_name like concat('%',#{keyword},'%')
+			or p.place like concat('%',#{keyword},'%')
+			or pg.product_group_name like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
+	  
+	  <!-- 상품조회 리스트 수정 -->
+	 <update id="update_product">
+	  	UPDATE b_product
+		SET product_name = #{product_name},
+			product_group_code = #{product_group_code},
+			place = #{place},
+			business_name = #{business_name},
+			price = #{price},
+			pallet_in_ratio = #{pallet_in_ratio}
+		WHERE product_code = #{product_code}
 	  </update>
-	   -->
+	  
+	  <!-- 상품조회 리스트 수정의 상품분류코드 selectBox -->
+	  <select id="gproduct_select" resultType="org.boksan.model.b_productDTO">
+	  	SELECT *FROM b_product_group
+	  </select>
+	  <!-- 상품조회 리스트 삭제 -->
+	  <delete id="product_list_delete">
+	  	delete from b_product
+	  	where product_code = #{product_code}
+	  </delete>
 	   
   </mapper>

@@ -26,4 +26,10 @@ public class ProductController {
 		pservice.Product_group_addInsert(pgdto);
 		return "group_add";
 	}
+	//상품조회 리스트 삭제
+	@RequestMapping(value="/product_delete", method= RequestMethod.POST)
+	public String product_list_delete(b_productDTO pdto) {
+		pservice.product_list_delete(pdto);
+		return "redirect:/product_inquiry";
+	}
 }

@@ -1,23 +1,17 @@
 package org.boksan.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.boksan.model.Product_selectDTO;
-
 import org.boksan.model.b_productDTO;
-
-import org.boksan.model.TestDTO;
-
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.ArriveService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -94,6 +88,17 @@ public class AjaxController {
 		return res;
 		
 	}	
+	
+	//상품조회 리스트 수정
+	@PostMapping(value = "/product_Iupdate",
+			produces = "application/json; charset=utf-8")
+	public b_productDTO product_Iupdate_ajax(b_productDTO pdto) {
+		//System.out.println("전 : " + pdto);
+		pservice.update_product(pdto);
+		//System.out.println("후 : " + pdto);
+		
+		return pdto;
+	}
 
 
 }

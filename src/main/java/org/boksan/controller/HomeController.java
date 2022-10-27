@@ -199,8 +199,11 @@ public class HomeController {
 	
 	//상품조회
 	@RequestMapping(value = "/product_inquiry", method = RequestMethod.GET)
-	public String product_inquiry(Model model) {
-		model.addAttribute("pilist",pservice.piproduct_select()); //상품조회 리스트
+	public String product_inquiry(Model model,Criteria cri) {
+		model.addAttribute("pilist",pservice.piproduct_select(cri)); //상품조회 리스트
+		model.addAttribute("pglist", pservice.gproduct_select(cri));
+		//페이징 처리
+		model.addAttribute("pageMaker",new PageDTO(cri,pservice.getTotalCountPI(cri)));
 		return "product_inquiry";
 	}
 	

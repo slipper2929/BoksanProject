@@ -172,15 +172,16 @@
 
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <div class="b_search">
-                        <form action="">
-                            <input type="button" class="b_submit">
-                            <input type="text" class="b_input_text sc_check">
+                  <div class="b_search">
+                        <form action="/product_inquiry" id="searchForm">
+                            <input type="button" class="b_submit" id="searchbtn">
+                            <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword }">
                         </form>
-                     
-                        <p class="b_explain">*어쩌고저쩌고어쩌고저쩌고어쩌고저쩌고</p>
+                        <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
                     </div> <!--b_search-->
+                    <form action="product_delete" method="post" class="product_delete">
                     <table class="b_table margin_t50">
+                    
                         <tr class="b_table_title">
                             <th>
                                 <p>상품코드</p>
@@ -210,36 +211,84 @@
                         
                         <c:forEach var="pilist" items="${pilist }">
                         <tr class="b_table_data">
-                            <td><p>${pilist.product_code }</p></td>
-                            <td><p>${pilist.product_name }</p></td>
-                            <td><p>${pilist.product_group_name }</p></td>
-                            <td><p>${pilist.place }</p></td>
-                            <td><p>${pilist.business_name }</p></td>
-                            <td><p>${pilist.price }</p></td>
-                            <td><p>${pilist.pallet_in_ratio }</p></td>
+                            <td>
+                            	<p>${pilist.product_code }</p>
+                            	<p class="pilist_out"><input type="hidden" class="product_value_code" value="${pilist.product_code }"></p>                            	
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.product_name }</p>
+                            	<p class="pilist_out"><input type="text" class="product_value_name" value="${pilist.product_name }"></p>
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.product_group_name }</p>
+                            	<p class="pilist_out">
+                            		<!-- <input type="hidden" class="product_value_Gcode" value="${pilist.product_group_code }"> -->
+                            		<select class="product_value_Gcode">
+                            			<option value="${pilist.product_group_code }">${pilist.product_group_name }</option>
+                            			<c:forEach var="pglist" items="${pglist}">
+                            				<c:if test="${pilist.product_group_code != pglist.product_group_code}">
+                            				<option value="${pglist.product_group_code }">${pglist.product_group_name }</option>
+                            				</c:if>
+                            			</c:forEach>
+                            		</select>
+                            	</p>
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.place }</p>
+                            	<p class="pilist_out"><input type="text" class="product_value_place" value="${pilist.place }"></p>
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.business_name }</p>
+                            	<p class="pilist_out"><input type="text" class="product_value_Bname" value="${pilist.business_name }"></p>
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.price }</p>
+                            	<p class="pilist_out"><input type="text" class="product_value_price" value="${pilist.price }"></p>
+                            </td>
+                            <td>
+                            	<p class="pilist_on">${pilist.pallet_in_ratio }</p>
+                            	<p class="pilist_out"><input type="text" class="product_value_pir" value="${pilist.pallet_in_ratio }"></p>
+                            </td>
                             <td>
                             	
-                                <p class="btn_s_g Upilist"><input type="button" class="up_btn" value="수정"></p>
-                                <p class="btn_s_b Ppilist"><input type="button" class="success_btn" value="완료"></p>
-                                <p class="btn_s_r"><input type="submit" value="삭제"></p>
+                                <p class="btn_s_g"><input type="button" class="up_btn" value="수정"></p>
+                                <p class="btn_s_b">
+	                                <input type="button" class="success_btn" value="완료">
+                                </p>
+                                <p class="btn_s_r">
+                                	<input type="button" class="inquiry_delete" value="삭제">
+                                	<input type="hidden" value="${pilist.product_code }">
+                                </p>
                             </td>
                         </tr>
                         </c:forEach>
                     </table>
+                    </form>
+                    <form id="pageForm" action="/product_inquiry">
                     <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/product_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/product_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/product_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/product_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -286,5 +335,7 @@
     <script src="../resources/js/b_regExp_check.js"></script>
     <!-- product_inquiry -->
     <script src="../resources/js/product_inquiry.js"></script>
+    <!-- pageMaker.js -->
+    <script src="../resources/js/pageMaker.js"></script>
 </body>
 </html>
