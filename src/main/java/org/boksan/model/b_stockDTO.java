@@ -35,6 +35,8 @@ public class b_stockDTO {
 	private Criteria criteria;
 	
 	
+	
+
 
 
 

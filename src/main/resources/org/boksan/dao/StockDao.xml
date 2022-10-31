@@ -109,7 +109,7 @@
  	</resultMap>
 	
  	<resultMap type="org.boksan.model.b_stockDTO" id="move_list_b_stockDTO">
-		<result property="pallet_num" column="Pallet_num"></result>
+		<id property="pallet_num" column="Pallet_num"></id>
 		<result property="product_code" column="Product_code"></result>
 		<result property="arrive_date" column="Arrive_date"></result>
 		<result property="house_code" column="House_code"></result>
@@ -189,26 +189,8 @@
  		select movement_address from b_movement_order
  	</select>
  	
- 	
- 	<resultMap type="org.boksan.model.b_productDTO" id="compare_b_productDTO">
-		<id property="product_code" column="Product_code"></id>
-	</resultMap>
-	
- 	<resultMap type="org.boksan.model.b_movement_orderDTO" id="compare_b_movement_orderDTO">
- 		<id property="pallet_num" column="Pallet_num"></id>
- 		<result property="movement_address" column="Movement_address"></result>
- 	</resultMap>
- 	
- 	<resultMap type="org.boksan.model.b_stockDTO" id="move_compare_b_stockDTO">
-		<id property="pallet_num" column="Pallet_num"></id>
-		<result property="product_code" column="Product_code"></result>
-		<result property="house_code" column="House_code"></result>
-		<collection property="b_productdto" resultMap="compare_b_productDTO"></collection>
-		<collection property="b_movement_orderdto" resultMap="compare_b_movement_orderDTO"></collection>
-	</resultMap>
-	
  	<!-- 이동목록 주소 확인버튼 -->
- 	<update id="move_compare" parameterType="org.boksan.model.b_stockDTO">
+ 	<update id="move_compare">
  		UPDATE 
 		b_stock s JOIN b_product p
 		ON s.product_code = p.product_code
