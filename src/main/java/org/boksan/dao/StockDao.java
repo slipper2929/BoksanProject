@@ -39,5 +39,9 @@ public interface StockDao {
 	public void move_delete(b_stockDTO sdto);
 	//이동목록 주소 동일한지 확인
 	public String changeHouse(String data);
+	//로케이션별 위치조회
+	public ArrayList<b_stockDTO> location_select(Criteria cri);		
+	//페이징 처리를 위한 전체건수 로케이션별
+	public int getTotalCountLI(Criteria cri);
 	
 }

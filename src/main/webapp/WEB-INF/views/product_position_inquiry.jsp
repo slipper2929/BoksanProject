@@ -176,11 +176,11 @@
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">
-                        <form action="">
-                            <input type="button" class="b_submit">
-                            <input type="text" class="b_input_text sc_check">
+                        <form action="/product_position_inquiry" id="searchForm">
+                            <input type="button" class="b_submit" id="searchbtn">
+                            <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword }">
                         </form>
-                        <p class="b_explain">*파레트번호, 상품명, 분류로 검색가능합니다.</p>
+                        <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
                     </div> <!--b_search-->
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
@@ -206,48 +206,44 @@
                                 <p>상세위치</p>
                             </th>
                         </tr>
+                        ${pageMaker }
+                        <c:forEach var="pplist" items="${pplist }">
                         <tr class="b_table_data">
-                            <td><p>001</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>2022-09-09</p></td>
-                            <td><p>냉장</p></td>
-                            <td><p>창고번지</p></td>
-                            <td><p>공장좌측1번냉장창고1열</p></td>
+                            <td><p>${pplist.pallet_num }</p></td>
+                            <td><p>${pplist.product_name }</p></td>
+                            <td><p>${pplist.product_group_name }</p></td>
+                            <td><p>${pplist.arrive_date }</p></td>
+                            <td><p>${pplist.b_housedto.house_function }</p></td>
+                            <td><p>${pplist.b_housedto.house_code }</p></td>
+                            <td><p>${pplist.b_housedto.detail_position }</p></td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>002</p></td>
-                            <td><p>배추</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>2022-09-10</p></td>
-                            <td><p>냉장</p></td>
-                            <td><p>1C</p></td>
-                            <td><p>공장좌측1번냉장창고C열</p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>021</p></td>
-                            <td><p>무</p></td>
-                            <td><p>식자재</p></td>
-                            <td><p>2022-09-09</p></td>
-                            <td><p>냉장</p></td>
-                            <td><p>3A</p></td>
-                            <td><p>검수장우측3번냉장창고A열</p></td>
-                        </tr>
+                        </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                     <form id="pageForm" action="/product_position_inquiry">
+	                    <div class="b_pager">
+		                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+								<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+		                        
+								<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+								
+								<c:choose>
+									<c:when test="pageMaker.cri.keyword == null">
+			                    		<div><a class="pageBtn" href="/product_position_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+				                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+				                        	</c:forEach>
+				                        <div><a class="pageBtn" href="/product_position_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+	                    			</c:when>
+	                    			<c:otherwise>
+	                    				<div><a class="pageBtn" href="/product_position_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+				                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+				                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+				                        	</c:forEach>
+				                        <div><a class="pageBtn" href="/product_position_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+	                    			</c:otherwise>
+	                    		</c:choose>
+	                    	</div>
+                    	</form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -292,5 +288,7 @@
 
     <!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>
+     <!-- pageMaker.js -->
+     <script src="../resources/js/pageMaker.js"></script>
 </body>
 </html>

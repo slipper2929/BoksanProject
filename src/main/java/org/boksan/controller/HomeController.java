@@ -3,10 +3,14 @@ package org.boksan.controller;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
 
 import org.boksan.model.Product_groupDTO;
+import org.boksan.model.b_stockDTO;
 import org.boksan.service.MemberService;
 
 import org.boksan.service.ArriveService;
@@ -114,8 +118,9 @@ public class HomeController {
 	
 	//상품별 위치조회
 	@RequestMapping(value = "/location_inquiry", method = RequestMethod.GET)
-	public String location_inquiry() {
-		
+	public String location_inquiry(Model model, Criteria cri) {
+		model.addAttribute("lilist", sservice.location_select(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri,sservice.getTotalCountLI(cri)));
 		return "location_inquiry";
 	}
 	
@@ -209,8 +214,9 @@ public class HomeController {
 	
 	//상품별 위치조회
 	@RequestMapping(value = "/product_position_inquiry", method = RequestMethod.GET)
-	public String product_position_inquiry() {
-		
+	public String product_position_inquiry(Model model,Criteria cri) {
+		model.addAttribute("pplist",pservice.pplist_select(cri));
+		model.addAttribute("pageMaker",new PageDTO(cri,pservice.getTotalCountPP(cri)));
 		return "product_position_inquiry";
 	}
 	

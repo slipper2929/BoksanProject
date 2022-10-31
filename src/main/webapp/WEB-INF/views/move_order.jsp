@@ -28,6 +28,7 @@
 
 
     <title>복산김치WMS_이동지시</title>
+    ${pageMaker }
 </head>
 <body>
    <div id="wrap">

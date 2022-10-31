@@ -2,9 +2,11 @@ package org.boksan.service;
 
 import java.util.ArrayList;
 
+
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
+import org.boksan.model.b_stockDTO;
 
 public interface ProductService {
 	
@@ -26,5 +28,9 @@ public interface ProductService {
 	public void product_list_delete(b_productDTO pdto);
 	//페이징 처리를 위한 전체건수 상품조회
 	public int getTotalCountPI(Criteria cri);
+	//상품별조회
+	public ArrayList<b_stockDTO> pplist_select(Criteria cri);
+	//페이징 처리를 위한 전체건수 상품별조회	
+	public int getTotalCountPP(Criteria cri);
 	
 }

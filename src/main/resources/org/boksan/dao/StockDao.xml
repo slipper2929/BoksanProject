@@ -185,7 +185,64 @@
  		SELECT COUNT(*)
  		FROM b_house
  		where house_code = #{data}
- 		
+ 	</select>
+
+ 	<!-- 로케이션별 위치조회 -->
+ 	<select id="location_select" resultType="org.boksan.model.b_stockDTO">
+ 		<if test = "keyword == null">
+		select s.house_code,
+ 			   s.pallet_num,
+ 			   p.product_name,
+ 			   s.arrive_date,
+ 			   s.product_barcode
+		from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s	
+			LEFT JOIN b_product p
+			ON s.product_code = p.product_code		
+			) as s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select s.house_code,
+ 			   s.pallet_num,
+ 			   p.product_name,
+ 			   s.arrive_date,
+ 			   s.product_barcode
+			from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+			where s.house_code like CONCAT('%',#{keyword},'%')
+			or s.pallet_num like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			order BY s.pallet_num 
+			) as s left join b_product p
+			ON s.product_code = p.product_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+ 	</select>
+ 	
+ 	 	<!-- 페이징 처리를 위한 전체건수 로케이션별 -->
+ 	<select id="getTotalCountLI" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_stock s join b_product p
+ 			ON s.product_code = p.product_code
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_stock s join b_product p
+	 		ON s.product_code = p.product_code
+		 	where s.house_code like concat('%',#{keyword},'%')
+			or s.pallet_num like concat('%',#{keyword},'%')
+			or p.product_name like concat('%',#{keyword},'%')
+	 	</if>
  	</select>
  	
 </mapper>

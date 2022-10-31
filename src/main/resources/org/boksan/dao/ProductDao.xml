@@ -106,5 +106,96 @@
 	  	delete from b_product
 	  	where product_code = #{product_code}
 	  </delete>
+	  
+	  <resultMap type="org.boksan.model.b_houseDTO" id="b_houseDTO">
+	  	<result property = "house_code" column="HOUSE_CODE"/>
+	  	<result property = "house_function" column="HOUSE_FUNCTION"/>
+	  	<result property = "detail_position" column="DETAIL_POSITION"/>
+	  </resultMap>
+
+	  <resultMap type="org.boksan.model.b_stockDTO" id="b_stockDTO">
+	  	<result property="pallet_num" column="PALLET_NUM"></result>
+	  	<result property="product_name" column="PRODUCT_NAME"></result>
+	  	<result property="product_group_name" column="PRODUCT_GROUP_NAME"></result>
+	  	<result property="arrive_date" column="ARRIVE_DATE"></result>
+		<collection property="b_housedto" resultMap="b_houseDTO"></collection>
+		
+	  </resultMap>
+	  
+	  <select id="pplist_select" resultMap="b_stockDTO">
+	  	<if test = "keyword == null">
+		SELECT s.PALLET_NUM, p.PRODUCT_NAME, pg.PRODUCT_GROUP_NAME,
+	  	s.ARRIVE_DATE, h.HOUSE_FUNCTION, h.HOUSE_CODE, h.DETAIL_POSITION
+		from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s	
+			LEFT JOIN b_product p
+			ON s.product_code = p.PRODUCT_CODE
+	  		LEFT JOIN b_product_group pg
+	  		ON p.product_group_code = pg.PRODUCT_GROUP_CODE
+	  		LEFT JOIN b_house h
+	  		ON s.house_code = h.HOUSE_CODE
+	  		ORDER BY s.pallet_num
+			) as s LEFT JOIN b_product p
+			ON s.product_code = p.PRODUCT_CODE
+	 	 	LEFT JOIN b_product_group pg
+	 	 	ON p.product_group_code = pg.PRODUCT_GROUP_CODE
+	  		LEFT JOIN b_house h
+	  		ON s.house_code = h.HOUSE_CODE
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select s.pallet_num, p.product_name, pg.product_group_code,
+	  		s.arrive_date, h.house_function, h.house_code, h.detail_position
+			from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, b_stock s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+	  		LEFT JOIN b_product_group pg
+	  		ON p.product_group_code = pg.product_group_code
+	  		LEFT JOIN b_house h
+	  		ON s.house_code = h.house_code
+			where s.pallet_num like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			or pg.product_group_name like CONCAT('%',#{keyword},'%')
+			order BY s.pallet_num 
+			) as s left join b_product p
+			ON s.product_code = p.product_code
+	  		LEFT JOIN b_product_group pg
+	  		ON p.product_group_code = pg.product_group_code
+	  		LEFT JOIN b_house h
+	  		ON s.house_code = h.house_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+	  </select>
+	  
+	   <!-- 페이징 처리를 위한 전체건수 상품별조회 -->
+ 	<select id="getTotalCountPP" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_stock s join b_product p
+	  		ON s.product_code = p.product_code
+	  		JOIN b_product_group pg
+	  		ON p.product_group_code = pg.product_group_code
+	  		JOIN b_house h
+	  		ON s.house_code = h.house_code
+	  	
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_stock s join b_product p
+	  		ON s.product_code = p.product_code
+	  		JOIN b_product_group pg
+	  		ON p.product_group_code = pg.product_group_code
+		 	where s.pallet_num like concat('%',#{keyword},'%')
+			or p.product_name like concat('%',#{keyword},'%')
+			or pg.product_group_name like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
+ 	
 	   
   </mapper>

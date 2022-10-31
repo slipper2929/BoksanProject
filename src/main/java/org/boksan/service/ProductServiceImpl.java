@@ -6,6 +6,7 @@ import org.boksan.dao.ProductDao;
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
+import org.boksan.model.b_stockDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,5 +58,14 @@ public class ProductServiceImpl implements ProductService{
 	//페이징 처리를 위한 전체건수 상품조회
 	public int getTotalCountPI(Criteria cri) {
 		return pdao.getTotalCountPI(cri);
+	}
+	
+	public ArrayList<b_stockDTO> pplist_select(Criteria cri){
+		System.out.println(cri);
+		return pdao.pplist_select(cri);
+	}
+	
+	public int getTotalCountPP(Criteria cri) {
+		return pdao.getTotalCountPP(cri);
 	}
 }

@@ -22,14 +22,44 @@ public class b_stockDTO {
 	
 	private int product_group_code;
 	
+	private String product_group_name;
+	
 	private List<b_stockDTO> pallet_num_list;
 	
 	private b_productDTO moveList;
 	
+	private b_houseDTO b_housedto;
+	
+	private Criteria criteria;
+	
 	
 
 
 
+
+	public Criteria getCriteria() {
+		return criteria;
+	}
+
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
+	}
+
+	public b_houseDTO getB_housedto() {
+		return b_housedto;
+	}
+
+	public void setB_housedto(b_houseDTO b_housedto) {
+		this.b_housedto = b_housedto;
+	}
+
+	public String getProduct_group_name() {
+		return product_group_name;
+	}
+
+	public void setProduct_group_name(String product_group_name) {
+		this.product_group_name = product_group_name;
+	}
 
 	public String getArrive_date() {
 		return arrive_date;
@@ -128,9 +158,17 @@ public class b_stockDTO {
 		return "b_stockDTO [pallet_num=" + pallet_num + ", product_code=" + product_code + ", arrive_date="
 				+ arrive_date + ", stock_num=" + stock_num + ", house_code=" + house_code + ", product_barcode="
 				+ product_barcode + ", pallet_count=" + pallet_count + ", product_name=" + product_name
-				+ ", product_group_code=" + product_group_code + ", pallet_num_list=" + pallet_num_list + ", moveList="
-				+ moveList + "]";
+				+ ", product_group_code=" + product_group_code + ", product_group_name=" + product_group_name
+				+ ", pallet_num_list=" + pallet_num_list + ", moveList=" + moveList + ", b_housedto=" + b_housedto
+				+ ", criteria=" + criteria + "]";
 	}
+
+	
+
+
+
+
+
 
 
 	
