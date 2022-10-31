@@ -220,11 +220,11 @@
                             	<p class="pilist_out"><input type="text" class="product_value_name" value="${pilist.product_name }"></p>
                             </td>
                             <td>
-                            	<p class="pilist_on">${pilist.product_group_name }</p>
+                            	<p class="pilist_on">${pilist.product_groupdto.product_group_name }</p>
                             	<p class="pilist_out">
                             		<!-- <input type="hidden" class="product_value_Gcode" value="${pilist.product_group_code }"> -->
                             		<select class="product_value_Gcode">
-                            			<option value="${pilist.product_group_code }">${pilist.product_group_name }</option>
+                            			<option value="${pilist.product_group_code }">${pilist.product_groupdto.product_group_name }</option>
                             			<c:forEach var="pglist" items="${pglist}">
                             				<c:if test="${pilist.product_group_code != pglist.product_group_code}">
                             				<option value="${pglist.product_group_code }">${pglist.product_group_name }</option>

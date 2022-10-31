@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.b_houseDTO;
+import org.boksan.model.b_movement_orderDTO;
 import org.boksan.model.b_stockDTO;
 
 public interface StockDao {
@@ -36,7 +37,7 @@ public interface StockDao {
 	//이동목록 주소 확인버튼
 	public void move_compare(b_stockDTO sdto);
 	//이동목록 확인버튼 누르면 이동목록 리스트에서 삭제
-	public void move_delete(b_stockDTO sdto);
+	public void move_delete(b_movement_orderDTO modto);
 	//이동목록 주소 동일한지 확인
 	public String changeHouse(String data);
 	//로케이션별 위치조회

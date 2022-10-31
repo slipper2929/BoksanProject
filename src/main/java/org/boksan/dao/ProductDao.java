@@ -23,7 +23,7 @@ public interface ProductDao {
 	//상품조회 리스트 수정
 	public void update_product(b_productDTO pdto);
 	//상품조회 리스트 수정의 상품분류코드 selectBox
-	public ArrayList<b_productDTO> gproduct_select(Criteria cri);
+	public ArrayList<Product_groupDTO> gproduct_select(Criteria cri);
 	//상품조회 리스트 삭제
 	public void product_list_delete(b_productDTO pdto);
 	//페이징 처리를 위한 전체건수 상품조회

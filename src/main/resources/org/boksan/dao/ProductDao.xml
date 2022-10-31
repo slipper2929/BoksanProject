@@ -29,8 +29,24 @@
 	  	where product_code = #{data}
 	  </select>
 	  
+	  
+	  <resultMap type="org.boksan.model.Product_groupDTO" id="Product_groupDTO">
+	  	<result property="product_group_name" column="Product_group_name"></result>
+	  </resultMap>
+	  
+	  <resultMap type="org.boksan.model.b_productDTO" id="b_productDTO">
+	  	<result property="product_code" column="Product_code"></result>
+	  	<result property="product_name" column="Product_name"></result>
+	  	<result property="place" column="Place"></result>
+	  	<result property="business_name" column="Business_name"></result>
+	  	<result property="price" column="price"></result>
+	  	<result property="pallet_in_ratio" column="Pallet_in_ratio"></result>
+	  	<result property="product_group_code" column="Product_group_code"></result>
+	  	<collection property="product_groupdto" resultMap="Product_groupDTO"></collection>
+	  </resultMap>
+	  
 	  <!-- 상품조회 리스트 -->
-	  <select id="piproduct_select" resultType="org.boksan.model.b_productDTO">
+	  <select id="piproduct_select" resultMap="b_productDTO">
 		
 		<if test = "keyword == null">
 		select p.*, pg.product_group_name
@@ -98,7 +114,7 @@
 	  </update>
 	  
 	  <!-- 상품조회 리스트 수정의 상품분류코드 selectBox -->
-	  <select id="gproduct_select" resultType="org.boksan.model.b_productDTO">
+	  <select id="gproduct_select" resultType="org.boksan.model.Product_groupDTO">
 	  	SELECT *FROM b_product_group
 	  </select>
 	  <!-- 상품조회 리스트 삭제 -->

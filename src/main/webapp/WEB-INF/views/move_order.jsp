@@ -213,7 +213,7 @@
                         <tr class="b_table_data">
                             <td><p>${mlist.pallet_num }</p></td>
                             <td><p>${mlist.product_code }</p></td>
-                            <td><p>${mlist.product_name }</p></td>
+                            <td><p>${mlist.b_productdto.product_name }</p></td>
                             <td><p>${mlist.arrive_date }</p></td>
                             <td><p>${mlist.house_code }</p></td>
                             <td class="move_house">

@@ -16,18 +16,18 @@ public class b_productDTO {
 	
 	private int product_group_code;
 	
-	private String product_group_name;
+	private Product_groupDTO product_groupdto;
 	
 
 
 	
 
-	public String getProduct_group_name() {
-		return product_group_name;
+	public Product_groupDTO getProduct_groupdto() {
+		return product_groupdto;
 	}
 
-	public void setProduct_group_name(String product_group_name) {
-		this.product_group_name = product_group_name;
+	public void setProduct_groupdto(Product_groupDTO product_groupdto) {
+		this.product_groupdto = product_groupdto;
 	}
 
 	public int getProduct_code() {

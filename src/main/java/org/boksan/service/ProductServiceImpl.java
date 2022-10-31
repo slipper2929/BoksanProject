@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 	//상품조회 리스트 수정의 상품분류코드 selectBox
-	public ArrayList<b_productDTO> gproduct_select(Criteria cri) {
+	public ArrayList<Product_groupDTO> gproduct_select(Criteria cri) {
 		return pdao.gproduct_select(cri);
 	}
 	//상품조회 리스트 삭제

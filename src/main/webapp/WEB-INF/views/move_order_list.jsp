@@ -207,7 +207,7 @@
                         <tr class="b_table_data">
                         	<td><p>${molist.pallet_num }</p></td>
                             <td><p>${molist.product_code }</p></td>
-                            <td><p>${molist.product_name }</p></td>
+                            <td><p>${molist.b_productdto.product_name }</p></td>
                             <td><p>${molist.house_code }</p></td>
                             <td><p><input type="hidden" class="movement_value"value="${movement[status.index]}">${movement[status.index]}</p></td>
                             <td class="move_location_bacode">

@@ -18,8 +18,6 @@ public class b_stockDTO {
 	
 	private int pallet_count;
 	
-	private String product_name;
-	
 	private int product_group_code;
 	
 	private String product_group_name;
@@ -27,6 +25,10 @@ public class b_stockDTO {
 	private List<b_stockDTO> pallet_num_list;
 	
 	private b_productDTO moveList;
+	
+	private b_productDTO b_productdto;
+	
+	private b_movement_orderDTO b_movement_orderdto;
 	
 	private b_houseDTO b_housedto;
 	
@@ -36,6 +38,23 @@ public class b_stockDTO {
 
 
 
+
+
+	public b_movement_orderDTO getB_movement_orderdto() {
+		return b_movement_orderdto;
+	}
+
+	public void setB_movement_orderdto(b_movement_orderDTO b_movement_orderdto) {
+		this.b_movement_orderdto = b_movement_orderdto;
+	}
+
+	public b_productDTO getB_productdto() {
+		return b_productdto;
+	}
+
+	public void setB_productdto(b_productDTO b_productdto) {
+		this.b_productdto = b_productdto;
+	}
 
 	public Criteria getCriteria() {
 		return criteria;
@@ -113,14 +132,6 @@ public class b_stockDTO {
 		this.product_group_code = product_group_code;
 	}
 
-	public String getProduct_name() {
-		return product_name;
-	}
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
-
 	public int getPallet_count() {
 		return pallet_count;
 	}
@@ -157,13 +168,15 @@ public class b_stockDTO {
 	public String toString() {
 		return "b_stockDTO [pallet_num=" + pallet_num + ", product_code=" + product_code + ", arrive_date="
 				+ arrive_date + ", stock_num=" + stock_num + ", house_code=" + house_code + ", product_barcode="
-				+ product_barcode + ", pallet_count=" + pallet_count + ", product_name=" + product_name
-				+ ", product_group_code=" + product_group_code + ", product_group_name=" + product_group_name
-				+ ", pallet_num_list=" + pallet_num_list + ", moveList=" + moveList + ", b_housedto=" + b_housedto
-				+ ", criteria=" + criteria + "]";
+				+ product_barcode + ", pallet_count=" + pallet_count + ", product_group_code=" + product_group_code
+				+ ", product_group_name=" + product_group_name + ", pallet_num_list=" + pallet_num_list + ", moveList="
+				+ moveList + ", b_productdto=" + b_productdto + ", b_movement_orderdto=" + b_movement_orderdto
+				+ ", b_housedto=" + b_housedto + ", criteria=" + criteria + "]";
 	}
 
 	
+
+
 
 
 

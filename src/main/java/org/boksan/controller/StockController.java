@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.boksan.model.b_movement_orderDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,9 +62,9 @@ public class StockController {
 	
 	//이동목록 확인버튼
 	@RequestMapping(value="/move_order_compare", method=RequestMethod.POST)
-	public String moveCompare(b_stockDTO sdto) {
+	public String moveCompare(b_stockDTO sdto,b_movement_orderDTO modto) {
 		sservice.move_compare(sdto);
-		
+		sservice.move_delete(modto);
 		return "redirect:/move_order_list";
 	}
 	
