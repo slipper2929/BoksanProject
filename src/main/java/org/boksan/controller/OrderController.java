@@ -18,7 +18,7 @@ public class OrderController {
 	public String order_insert(b_arriveDTO adto) {
 		
 		
-		oservice.recipe_add_insert(adto);
+		oservice.order_insert(adto);
 		
 		return "redirect:/order";
 	}

@@ -190,6 +190,7 @@
                         	<input type="text" class="arrive_num" name="stock_num">
                         	<input type="date" class="arrive_date" name="arrive_date">
                         	<input type="text" class="pallet_num" name="pallet_num">
+                        	<input type="text" class="arrive_code" name="arrive_code">
                     </form>
                 </div> <!--.b_content-->
             </section>

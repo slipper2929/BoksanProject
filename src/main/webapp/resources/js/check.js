@@ -9,7 +9,9 @@ $(function(){
 	let product_code = param.get('product_code');
 	let arrive_num = param.get('arrive_num');
 	let product_barcode = param.get('product_barcode');
+	let arrive_code = param.get('arrive_code');
 	
+	$(".arrive_code").val(arrive_code);
 	$(".product_code").val(product_code)
 	$(".arrive_num").val(arrive_num)
 	let yyyy = "20" + product_barcode.substr(3,2)

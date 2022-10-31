@@ -6,7 +6,7 @@
 <mapper namespace="org.boksan.dao.ArriveDao">
 	
 	<select id="arrive_list_select" resultType="org.boksan.model.b_arriveDTO">
-		SELECT a.product_code, a.arrive_num, p.product_name
+		SELECT a.arrive_code, a.product_code, a.arrive_num, p.product_name
 		FROM(
 			select @rownum:=@rownum+1 as rownum, a.*
 			from (select @rownum:=0) as tmp, b_arrive a
@@ -51,5 +51,10 @@
 			product_barcode = #{product_barcode}
 		WHERE pallet_num = #{pallet_num}
  	</update>
+	
+	<delete id="Arrive_delete">
+		DELETE FROM b_arrive
+		WHERE arrive_code = #{arrive_code}
+	</delete>
 	
 </mapper>

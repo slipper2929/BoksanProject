@@ -25,4 +25,6 @@ public interface ArriveDao {
 	//입고대기목록_검증 insert
 	public void Arrive_insert(b_stockDTO sdto);
 	
+	//입고대기목록_검증 후 delete
+	public void Arrive_delete(int arrive_code);
 }

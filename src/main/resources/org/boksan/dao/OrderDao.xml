@@ -5,9 +5,15 @@
 
 <mapper namespace="org.boksan.dao.OrderDao">
 	
+	<!-- 상품허용중량 체크 -->
+	<select id="pallet_in_ratio_select" resultType="int">
+		select pallet_in_ratio
+		from b_product
+		where product_code = #{product_code}
+	</select>
 	
 	<!-- 발주신청 -->
-	<insert id="recipe_add_insert">
+	<insert id="order_insert">
 		insert into b_arrive (arrive_num, product_code)
 		values (#{arrive_num}, #{product_code})
 	</insert>

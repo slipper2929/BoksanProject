@@ -46,9 +46,11 @@ public class ArriveServiceImpl implements ArriveService{
 	}
 	
 	//입고대기목록_검증 insert
-	public void Arrive_insert(b_stockDTO sdto) {
+	public void Arrive_insert(b_stockDTO sdto, int arrive_code) {
 		
 		adao.Arrive_insert(sdto);
+		
+		adao.Arrive_delete(arrive_code);
 		
 	}
 }

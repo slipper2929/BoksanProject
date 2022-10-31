@@ -14,13 +14,14 @@ public class ArriveController {
 	ArriveService aservice;
 	
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public String Arrive_insert(b_stockDTO sdto) {
+	public String Arrive_insert(b_stockDTO sdto, int arrive_code) {
 		
 		System.out.println("dddddddddd");
 		System.out.println(sdto.toString());
+		System.out.println(arrive_code);
 		
 		
-		aservice.Arrive_insert(sdto);
+		aservice.Arrive_insert(sdto, arrive_code);
 		
 		return "redirect:/arrive_list";
 		

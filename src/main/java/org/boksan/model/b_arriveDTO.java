@@ -2,10 +2,19 @@ package org.boksan.model;
 
 public class b_arriveDTO {
 	
+	private int arrive_code;
 	private int product_code;
 	private int arrive_num;
 	private String product_name;
 	
+	
+	
+	public int getArrive_code() {
+		return arrive_code;
+	}
+	public void setArrive_code(int arrive_code) {
+		this.arrive_code = arrive_code;
+	}
 	public int getProduct_code() {
 		return product_code;
 	}

@@ -23,6 +23,6 @@ public interface ArriveService {
 	public ArrayList<Arrive_totalDTO> arrive_total_list();
 	
 	//입고대기목록_검증 insert
-	public void Arrive_insert(b_stockDTO sdto);
+	public void Arrive_insert(b_stockDTO sdto, int arrive_code);
 	
 }

@@ -46,6 +46,7 @@
 	
 	//바코드 만들기
 	$(".barcode_btn").on("click", function(){
+		let arrive_code = $(this).parents("tr").find(".arrive_code").val()
 		let barcode = "";
 		let pc_atag = $(this).parents("tr").find(".product_code").text()
 		let an_atag = $(this).parents("tr").find(".arrive_num_check").text().slice(0,-2)
@@ -78,7 +79,7 @@
 		if(pallet_num != "" &&  arrive_date != "" && arrive_house_barcode != ""){
 			
 			alert("생성된 바코드 : " + barcode)
-			$(".check_link").attr("href","/check?product_barcode=" + barcode + "&product_code=" + pc_atag + "&arrive_num=" + an_atag)
+			$(".check_link").attr("href","/check?product_barcode=" + barcode + "&product_code=" + pc_atag + "&arrive_num=" + an_atag + "&arrive_code=" + arrive_code)
 			$(".check_link").get(0).click();
 		} else {
 			alert("입고일, 파레트번호, 창고번지를 입력하셔야합니다.")
