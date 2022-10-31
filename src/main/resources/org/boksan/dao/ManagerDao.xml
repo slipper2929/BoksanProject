@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.boksan.dao.ManagerDao">
+
+
+	<resultMap type="org.boksan.model.b_deptDTO" id="b_deptDTO">
+		<result property="dept_name" column="Dept_name"></result>
+	</resultMap>
+	
+	<resultMap type="org.boksan.model.b_empDTO" id="b_empDTO">
+		<result property="emp_code" column="Emp_code"></result>
+		<result property="dept_code" column="Dept_code"></result>
+		<result property="socialnum" column="Socialnum"></result>
+		<result property="name" column="Name"></result>
+		<result property="address" column="Address"></result>
+		<collection property="b_dept" resultMap="b_deptDTO"></collection>
+	</resultMap>
+	
+	
+	<!-- 직원조회 -->
+	<select id="emp_select" resultMap="b_empDTO">
+		<if test = "keyword == null">
+		select e.emp_code,
+			   e.name,
+		 	   e.socialnum,
+		 	   e.address,
+		 	   d.dept_name
+		from(
+			select @rownum:=@rownum+1 as rownum, e.*
+			from (select @rownum:=0) as tmp, b_emp e	
+			LEFT JOIN b_dept d
+			ON e.dept_code = d.dept_code
+			ORDER BY e.emp_code
+			) as e LEFT JOIN b_dept d
+			ON e.dept_code = d.dept_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select  e.emp_code,
+			  	    e.name,
+		 		    e.socialnum,
+		 		    e.address,
+		 		    d.dept_name
+			from(
+			select @rownum:=@rownum+1 as rownum, e.*
+			from (select @rownum:=0) as tmp, b_emp e LEFT JOIN b_dept d
+			ON e.dept_code = d.dept_code
+			where e.emp_code like CONCAT('%',#{keyword},'%')
+			or e.dept_code like CONCAT('%',#{keyword},'%')
+			or e.name like CONCAT('%',#{keyword},'%')
+			or d.dept_name like CONCAT('%',#{keyword},'%')
+			order BY e.emp_code 
+			) as e left join b_dept d
+			ON e.dept_code = d.dept_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+	</select>
+	  
+	  <!-- 페이징 처리를 위한 전체건수 직원조회 -->
+ 	<select id="getTotalCountEMP" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		FROM b_emp e JOIN b_dept d
+			ON e.dept_code = d.dept_code
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		FROM b_emp e JOIN b_dept d
+			ON e.dept_code = d.dept_code
+		 	where e.emp_code like CONCAT('%',#{keyword},'%')
+			or e.dept_code like CONCAT('%',#{keyword},'%')
+			or e.name like CONCAT('%',#{keyword},'%')
+			or d.dept_name like CONCAT('%',#{keyword},'%')
+	 	</if>
+ 	</select>
+ 	
+ 	<select id="dept_selectbox" resultType="org.boksan.model.b_deptDTO">
+ 		SELECT *
+ 		FROM b_dept
+ 	</select>
+</mapper>

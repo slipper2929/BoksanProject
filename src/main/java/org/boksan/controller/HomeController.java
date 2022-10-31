@@ -14,7 +14,7 @@ import org.boksan.model.b_stockDTO;
 import org.boksan.service.MemberService;
 
 import org.boksan.service.ArriveService;
-
+import org.boksan.service.ManagerService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.StockService;
@@ -45,6 +45,9 @@ public class HomeController {
 
 	@Autowired
 	ArriveService aservice;
+	
+	@Autowired
+	ManagerService mgservice;
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -147,8 +150,11 @@ public class HomeController {
 	
 	//包府磊_流盔炼雀
 	@RequestMapping(value = "/manager_emp_inquiry", method = RequestMethod.GET)
-	public String manager_emp_inquiry() {
-		
+	public String manager_emp_inquiry(Model model, Criteria cri) {
+		model.addAttribute("emplist",mgservice.emp_select(cri));
+		model.addAttribute("deptlist",mgservice.dept_selectbox());
+		//其捞隆 贸府
+		model.addAttribute("pageMaker",new PageDTO(cri,mgservice.getTotalCountEMP(cri)));
 		return "manager_emp_inquiry";
 	}
 	

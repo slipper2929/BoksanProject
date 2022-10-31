@@ -23,12 +23,22 @@ public class b_empDTO {
 	//password
 	private String password;
 	
+	private b_deptDTO b_dept;
+	
 	
 	
 	
 
 	
 	
+
+	public b_deptDTO getB_dept() {
+		return b_dept;
+	}
+
+	public void setB_dept(b_deptDTO b_dept) {
+		this.b_dept = b_dept;
+	}
 
 	//getter and setter
 	public int getEmp_code() {
