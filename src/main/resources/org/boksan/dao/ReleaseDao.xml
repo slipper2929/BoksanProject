@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.boksan.dao.ReleaseDao">
+
+	<select id="gross_weight_select" resultType="int">
+		SELECT gross_weight
+		FROM b_recipe
+		WHERE recipe_code = #{recipe_code};
+	</select>
+
+	<select id="release_recipe_select" resultType="org.boksan.model.materiaDTO">
+		SELECT m.product_code, p.product_name, m.material_num
+		FROM material m
+		LEFT JOIN b_product p
+		ON m.product_code = p.product_code
+		WHERE m.recipe_code = #{recipe_code};
+	</select>
+
+</mapper>

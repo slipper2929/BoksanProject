@@ -202,7 +202,7 @@
                         </tr>
                         <c:forEach items="${alist}" var="al">
 	                        <tr class="b_table_data">
-	                        	<td><input type="hidden" class="arrive_code" value="${al.arrive_code}"></td>
+	                        	<input type="hidden" class="arrive_code" value="${al.arrive_code}">
 	                            <td><p class="product_code">${al.product_code}</p></td>
 	                            <td><p>${al.product_name}</p></td>
 	                            <td><p class="arrive_num_check">${al.arrive_num}kg</p></td>

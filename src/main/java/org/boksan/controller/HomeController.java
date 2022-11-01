@@ -78,7 +78,9 @@ public class HomeController {
 	
 	//입고요청
 	@RequestMapping(value = "/arrive", method = RequestMethod.GET)
-	public String arrive() {
+	public String arrive(Model model) {
+		
+		model.addAttribute("pglist",rservice.recipe_add_select());
 		
 		return "arrive";
 	}
@@ -300,7 +302,9 @@ public class HomeController {
 	
 	//출고요청
 	@RequestMapping(value = "/release", method = RequestMethod.GET)
-	public String release() {
+	public String release(Model model) {
+		
+		model.addAttribute("pglist",rservice.recipe_add_select());
 		
 		return "release";
 	}

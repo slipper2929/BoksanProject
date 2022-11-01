@@ -25,4 +25,6 @@ public interface ArriveService {
 	//입고대기목록_검증 insert
 	public void Arrive_insert(b_stockDTO sdto, int arrive_code);
 	
+	//입고대기목록 insert
+	public void Arrive_list_insert(b_arriveDTO adto);
 }

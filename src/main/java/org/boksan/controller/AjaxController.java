@@ -1,19 +1,21 @@
 package org.boksan.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.boksan.model.Product_selectDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.model.materiaDTO;
 import org.boksan.service.ArriveService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
+import org.boksan.service.ReleaseService;
 import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -30,7 +32,10 @@ public class AjaxController {
 	ArriveService aservice;
 	
 	@Autowired
-	ProductService pservice; 
+	ProductService pservice;
+	
+	@Autowired
+	ReleaseService relservice;
 	
 	
 	
@@ -100,5 +105,14 @@ public class AjaxController {
 		return pdto;
 	}
 
+	
+	//출고요청 레시피기준 조회(release.js)materiaDTO
+	@GetMapping(value="/release_recipe_select",
+			produces = "application/json; charset=utf-8")
+	public ArrayList<materiaDTO> release_recipe_select(@RequestParam Map<String, Object> objdata) {
+		
+		System.out.println(objdata);
+		return relservice.release_recipe_select(objdata);
+	}
 
 }
