@@ -57,4 +57,10 @@
 		WHERE arrive_code = #{arrive_code}
 	</delete>
 	
+	<!-- 입고신청 -->
+	<insert id="Arrive_list_insert">
+		insert into b_arrive (arrive_num, product_code)
+		values (#{arrive_num}, #{product_code})
+	</insert>
+	
 </mapper>

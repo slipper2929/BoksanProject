@@ -27,4 +27,7 @@ public interface ArriveDao {
 	
 	//입고대기목록_검증 후 delete
 	public void Arrive_delete(int arrive_code);
+	
+	//입고대기목록 insert
+	public void Arrive_list_insert(b_arriveDTO adto);
 }

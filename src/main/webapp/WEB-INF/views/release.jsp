@@ -176,28 +176,24 @@
                     <form action="" id="b_release">
                         <p class="b_text b_select">
                             <label><span>출고할 상품</span>
-                                <select>
-                                    <option value="">선택안함</option>
-                                    <option value="1">식자재</option>
-                                    <option value="2">1차가공</option>
-                                    <option value="3">2차가공</option>
-                                    <option value="4">완제품</option>
-                                    <option value="5">공산품</option>
-                                </select>
-                                <select class="b_release_select">
-                                    <option value="">선택안함</option>
-                                    <option value="1">무(01)</option>
-                                    <option value="2">양파(02)</option>
-                                </select>
+                                <select name="" id="" class="recipe_product_selectbox pg_box">
+		                        	<option value="">선택안함</option>
+		                        	<c:forEach items="${pglist}" var="pg">
+		                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+		                        	</c:forEach>
+		                        </select>
+                                <select name="" id="recipe_product_code_select" class="recipe_product_selectbox release_selectbox">
+		                            <option value="">선택안함</option>
+		                        </select>
                             </label>
                         </p>
                         <p class="b_text b_inputform_name">
-                            <label><span>중량</span><input type="text" placeholder="중량을 입력해주세요." class="num_check"></label>
+                            <label><span>중량</span><input type="text" placeholder="중량을 입력해주세요." class="num_check release_weight"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_release_ps">*해당상품은 키로(KG)단위로 출고합니다.</p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="검색해서 출고요청 추가">
+                            <input type="button" value="검색해서 출고요청 추가" id="release_search_btn">
                         </div>    
                     </form>
                 </div> <!--.b_content-->
@@ -207,20 +203,15 @@
                 <div class="b_content b_content_width_l">
                     <p class="b_text b_select b_select1">
                         <label><span>출고상품선택</span>
-                            <select>
-                                <option value="">선택안함</option>
-                                <option value="1">식자재</option>
-                                <option value="2">1차가공</option>
-                                <option value="3">2차가공</option>
-                                <option value="3">완재품</option>
-                                <option value="3">공산품</option>
-                            </select>
-                            <select>
-                                <option value="">선택안함</option>
-                                <option value="1">배추(00)</option>
-                                <option value="2">무(01)</option>
-                                <option value="3">파(02)</option>
-                            </select>
+                            <select name="" id="" class="recipe_product_selectbox pg_box">
+	                        	<option value="">선택안함</option>
+	                        	<c:forEach items="${pglist}" var="pg">
+	                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+	                        	</c:forEach>
+	                        </select>
+                            <select name="" id="recipe_product_code_select" class="recipe_product_selectbox release_selectbox">
+	                            <option value="">선택안함</option>
+	                        </select>
                         </label>
                     </p>
                     <p class="b_text b_select b_inputBox">
@@ -228,7 +219,8 @@
                             <input type="text" placeholder="중량을 입력하세요" class="num_check">
                         </label>
                     </p>
-                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기"></p>
+                    <p class="btn_s_b pallet_add_btn"><input type="button" value="추가하기" id="release_padd_btn"></p>
+            		</div>
             </section>
             <section class="b_inquiry_main">
                 <table class="b_table">
@@ -245,62 +237,6 @@
                         <th>
                             <p>삭제</p>
                         </th>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>41</p></td>
-                        <td><p>절인배추</p></td>
-                        <td class="release_weight_textbox">
-                            <p>
-                                <input type="text" placeholder="중량을 입력하세요">
-                            </p>
-                        </td>
-                        <td>
-                            <p class="btn_s_r">
-                                <input type="submit" value="삭제">
-                            </p>
-                        </td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>48</p></td>
-                        <td><p>배추김치양념장</p></td>
-                        <td class="release_weight_textbox">
-                            <p>
-                                <input type="text" placeholder="중량을 입력하세요">
-                            </p>
-                        </td>
-                        <td>
-                            <p class="btn_s_r">
-                                <input type="submit" value="삭제">
-                            </p>
-                        </td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>02</p></td>
-                        <td><p>무</p></td>
-                        <td class="release_weight_textbox">
-                            <p>
-                                <input type="text" placeholder="중량을 입력하세요">
-                            </p>
-                        </td>
-                        <td>
-                            <p class="btn_s_r">
-                                <input type="submit" value="삭제">
-                            </p>
-                        </td>
-                    </tr>
-                    <tr class="b_table_data">
-                        <td><p>07</p></td>
-                        <td><p>부추</p></td>
-                        <td class="release_weight_textbox">
-                            <p>
-                                <input type="text" placeholder="중량을 입력하세요">
-                            </p>
-                        </td>
-                        <td>
-                            <p class="btn_s_r">
-                                <input type="submit" value="삭제">
-                            </p>
-                        </td>
                     </tr>
                 </table>
                 <p class="btn_l_b release_list_btn"><input type="submit" value="출고요청하기"></p>
@@ -354,5 +290,11 @@
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    
+    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
+    <script src="../resources/js/product_select.js"></script>
+    
+    <!-- release js -->
+    <script src="../resources/js/release.js"></script>
 </body>
 </html>

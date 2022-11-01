@@ -171,26 +171,22 @@
                     <h1>입고신청</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l">
-                    <form action="" id="b_arrive">
+                    <form id="b_arrive" method="post">
                         <p class="b_text b_select">
                             <label><span>입고할 상품</span>
-                                <select>
-                                    <option value="">선택안함</option>
-                                    <option value="1">식자재</option>
-                                    <option value="2">1차가공</option>
-                                    <option value="3">2차가공</option>
-                                    <option value="4">완제품</option>
-                                    <option value="5">공산품</option>
+                                <select class="recipe_product_selectbox pg_box">
+                                	<option value="">선택안함</option>
+                                	<c:forEach items="${pglist}" var="pg">
+                                    	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+                             		</c:forEach>
                                 </select>
-                                <select class="b_arrive_select">
+                                <select name="product_code" id="recipe_product_code_select" class="recipe_product_selectbox b_arrive_select">
                                     <option value="">선택안함</option>
-                                    <option value="1">무(01)</option>
-                                    <option value="2">양파(02)</option>
                                 </select>
                             </label>
                         </p>
                         <p class="b_text b_inputform_name">
-                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check"></label>
+                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" id="arrive_num" name="arrive_num"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_arrive_ps">*해당상품은 키로(KG)단위로 입고합니다.</p>
@@ -249,5 +245,8 @@
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
+    
+    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
+    <script src="../resources/js/product_select.js"></script>
 </body>
 </html>
