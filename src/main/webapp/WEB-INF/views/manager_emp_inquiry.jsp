@@ -207,7 +207,7 @@
                                 <p>부서명</p>
                             </th>
                             <th>
-                                <p>삭제aa</p>
+                                <p>삭제임</p>
                             </th>
                         </tr>
                         <c:forEach var="emplist" items="${emplist }">
