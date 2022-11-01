@@ -66,7 +66,7 @@
 	    
  	})
  	
- 	$(document).on("click", "#release_padd_btn", function(){
+ 	$(document).on("click","#release_padd_btn", function(){
  	
  		let pc_padd = $(this).parent("section").find("#recipe_product_code_select").val();
  		let pn_padd = $("#recipe_product_code_select option:selected").text()
