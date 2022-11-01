@@ -212,19 +212,17 @@
                         </tr>
                         <c:forEach var="emplist" items="${emplist }">
                         <tr class="b_table_data">
-                            <td><p>${emplist.emp_code }</p></td>
+                            <td><p><input type="hidden" class="emp_value" value="${emplist.emp_code }">${emplist.emp_code }</p></td>
                             <td><p>${emplist.name }</p></td>
                             <td><p>${emplist.socialnum }</p></td>
                             <td><p>${emplist.address }</p></td>
                             <td>
                             	<p class="dept_value">${emplist.b_dept.dept_name }</p>
                             	<p class="dept_select">
-                            		<select>
-                            			<option value="${emplist.dept_code }">${emplist.b_dept.dept_name }</option>
+                            		<select class="dept_choice">
+                            			<option value="${emplist.dept_code }" class="dept_value">${emplist.b_dept.dept_name }</option>
                             			<c:forEach var="deptlist" items="${deptlist }">
-                            			<c:if test="${emplist.dept_code != deptlist.dept_code}">
-                            				<option value="${deptlist.dept_code }">${deptlist.dept_name }</option>
-                            			</c:if>
+                            				<option value="${deptlist.dept_code }" >${deptlist.dept_name }</option>
                             			</c:forEach>
                             		</select>
                             	</p>

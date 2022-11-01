@@ -1,13 +1,16 @@
 package org.boksan.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.b_empDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.materiaDTO;
 import org.boksan.service.ArriveService;
+import org.boksan.service.ManagerService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.ReleaseService;
@@ -15,8 +18,14 @@ import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+
+
+
 
 @RestController
 public class AjaxController {
@@ -36,6 +45,9 @@ public class AjaxController {
 	
 	@Autowired
 	ReleaseService relservice;
+	
+	@Autowired
+	ManagerService mgservice;
 	
 	
 	
@@ -114,5 +126,16 @@ public class AjaxController {
 		System.out.println(objdata);
 		return relservice.release_recipe_select(objdata);
 	}
+	
+	//직원조회 수정완료
+	@PostMapping(value = "/emp_update",
+			produces = "application/json; charset=utf-8")
+	
+	public String emp_update(@RequestBody List<b_empDTO> arr) {
+		System.out.println(arr);
+		
+		return "";
+	}
+	
 
 }

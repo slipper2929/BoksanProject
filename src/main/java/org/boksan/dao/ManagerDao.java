@@ -1,6 +1,8 @@
 package org.boksan.dao;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.b_deptDTO;
@@ -13,4 +15,6 @@ public interface ManagerDao {
 	public int getTotalCountEMP(Criteria cri);
 	//직원조회 페이지 부서 수정버튼 select box
 	public ArrayList<b_deptDTO> dept_selectbox();
+	//직원조회 수정완료
+	//public b_empDTO emp_update(List<String> choice);
 }

@@ -25,12 +25,6 @@ public class b_empDTO {
 	
 	private b_deptDTO b_dept;
 	
-	
-	
-	
-
-	
-	
 
 	public b_deptDTO getB_dept() {
 		return b_dept;

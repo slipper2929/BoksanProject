@@ -115,7 +115,7 @@
 	  
 	  <!-- 상품조회 리스트 수정의 상품분류코드 selectBox -->
 	  <select id="gproduct_select" resultType="org.boksan.model.Product_groupDTO">
-	  	SELECT *FROM b_product_group
+	  	SELECT * FROM b_product_group
 	  </select>
 	  <!-- 상품조회 리스트 삭제 -->
 	  <delete id="product_list_delete">

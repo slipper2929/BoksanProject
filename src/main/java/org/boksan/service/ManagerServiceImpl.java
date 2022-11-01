@@ -1,6 +1,7 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.boksan.dao.ManagerDao;
 import org.boksan.model.Criteria;
@@ -28,4 +29,8 @@ public class ManagerServiceImpl implements ManagerService{
 	public ArrayList<b_deptDTO> dept_selectbox(){
 		return mgdao.dept_selectbox();
 	}
+	//직원조회 수정완료
+	//public b_empDTO emp_update(b_empDTO edto) {
+	//	return mgdao.emp_update(edto);
+	//}
 }

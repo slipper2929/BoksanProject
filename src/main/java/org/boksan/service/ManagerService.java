@@ -1,6 +1,7 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.b_deptDTO;
@@ -14,4 +15,6 @@ public interface ManagerService {
 	public int getTotalCountEMP(Criteria cri);
 	//직원조회 페이지 부서 수정버튼 select box
 	public ArrayList<b_deptDTO> dept_selectbox();
+	//직원조회 수정완료
+	//public b_empDTO emp_update(b_empDTO edto);
 }
