@@ -27,6 +27,7 @@
 			   e.name,
 		 	   e.socialnum,
 		 	   e.address,
+		 	   e.dept_code,
 		 	   d.dept_name
 		from(
 			select @rownum:=@rownum+1 as rownum, e.*

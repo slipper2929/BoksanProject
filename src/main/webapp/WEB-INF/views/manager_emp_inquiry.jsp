@@ -220,8 +220,11 @@
                             	<p class="dept_value">${emplist.b_dept.dept_name }</p>
                             	<p class="dept_select">
                             		<select>
+                            			<option value="${emplist.dept_code }">${emplist.b_dept.dept_name }</option>
                             			<c:forEach var="deptlist" items="${deptlist }">
+                            			<c:if test="${emplist.dept_code != deptlist.dept_code}">
                             				<option value="${deptlist.dept_code }">${deptlist.dept_name }</option>
+                            			</c:if>
                             			</c:forEach>
                             		</select>
                             	</p>
