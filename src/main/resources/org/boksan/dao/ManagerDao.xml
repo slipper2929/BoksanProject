@@ -197,10 +197,11 @@
 			ON a.emp_code = e.emp_code
 			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code	
+			WHERE a.approve = 0
 			<![CDATA[
-			WHERE rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			AND rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
-			ON a.approve = 0		
+					
 		</if>
  	</select>
  	
@@ -221,10 +222,10 @@
 			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
 			where a.approve = 0
-		 	AND (e.emp_code like CONCAT('%','','%')
-		 	or e.socialnum like CONCAT('%','','%')
-			or e.name like CONCAT('%','','%')
-			or d.dept_name like CONCAT('%','','%'))
+		 	AND (e.emp_code like CONCAT('%',#{keyword},'%')
+		 	or e.socialnum like CONCAT('%',#{keyword},'%')
+			or e.name like CONCAT('%',#{keyword},'%')
+			or d.dept_name like CONCAT('%',#{keyword},'%'))
 	 	</if>
  	</select>
  	
