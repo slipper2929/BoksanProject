@@ -209,20 +209,21 @@
 	                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
 	                        	</c:forEach>
 	                        </select>
-                            <select name="" id="recipe_product_code_select" class="recipe_product_selectbox release_selectbox">
+                            <select name="recipe_product_code_select" id="" class="recipe_product_selectbox release_selectbox">
 	                            <option value="">선택안함</option>
 	                        </select>
                         </label>
                     </p>
                     <p class="b_text b_select b_inputBox">
                         <label><span>중량</span>
-                            <input type="text" placeholder="중량을 입력하세요" class="num_check">
+                            <input type="text" placeholder="중량을 입력하세요" class="num_check" id="pw_padd">
                         </label>
                     </p>
                     <p class="btn_s_b pallet_add_btn"><input type="button" value="추가하기" id="release_padd_btn"></p>
             		</div>
             </section>
             <section class="b_inquiry_main">
+            	<form method="post" id="release_insert_form">
                 <table class="b_table">
                     <tr class="b_table_title">
                         <th>
@@ -239,7 +240,8 @@
                         </th>
                     </tr>
                 </table>
-                <p class="btn_l_b release_list_btn"><input type="submit" value="출고요청하기"></p>
+                <p class="btn_l_b release_list_btn"><input type="button" value="출고요청하기"></p>
+            	</form>
             </section>
         </div>
 

@@ -3,20 +3,14 @@ package org.boksan.controller;
 
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
-
-import org.boksan.model.Product_groupDTO;
-import org.boksan.model.b_stockDTO;
-import org.boksan.service.MemberService;
-
 import org.boksan.service.ArriveService;
 import org.boksan.service.ManagerService;
+import org.boksan.service.MemberService;
 import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
+import org.boksan.service.ReleaseService;
 import org.boksan.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +42,9 @@ public class HomeController {
 	
 	@Autowired
 	ManagerService mgservice;
+	
+	@Autowired
+	ReleaseService relservice;
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -295,7 +292,12 @@ public class HomeController {
 	
 	//출고요청처리현황
 	@RequestMapping(value = "/release_state_inquiry", method = RequestMethod.GET)
-	public String release_state_inquiry() {
+	public String release_state_inquiry(Model model, Criteria cri) {
+		
+		model.addAttribute("rslist", relservice.release_state_inquiry_select(cri));
+		
+		//페이징처리
+		model.addAttribute("pageMaker",new PageDTO(cri,relservice.getTotalCount(cri)));
 		
 		return "release_state_inquiry";
 	}

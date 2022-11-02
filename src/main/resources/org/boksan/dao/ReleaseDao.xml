@@ -17,5 +17,49 @@
 		ON m.product_code = p.product_code
 		WHERE m.recipe_code = #{recipe_code};
 	</select>
+	
+	<insert id="release_insert">
+		INSERT INTO b_release (product_code, product_name, release_num)
+		VALUES(#{product_code}, #{product_name}, #{release_num})
+	</insert>
+	
+	<select id="release_state_inquiry_select" resultType="org.boksan.model.b_releaseDTO">
+		<if test = "keyword == null">
+		SELECT *
+		FROM (
+			select @rownum:=@rownum+1 as rownum, r.*
+			from (select @rownum:=0) as tmp, b_release r
+			order by release_code
+			) as b_release
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			SELECT *
+			FROM(
+				select @rownum:=@rownum+1 as rownum, r.*
+				from(select @rownum:=0) as tmp, b_release r
+				where situation like concat('%',#{keyword},'%')
+				order by release_code
+				) as b_release
+			<![CDATA[
+				where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+			]]>
+		</if>
+	</select>
+	
+	<!-- 페이징 처리를 위한 전체건수 -->
+	<select id="getTotalCount" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_release
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_release
+		 	where situation like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
 
 </mapper>
