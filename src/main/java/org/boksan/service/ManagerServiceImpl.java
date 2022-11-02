@@ -58,7 +58,18 @@ public class ManagerServiceImpl implements ManagerService{
 		}
 		
 		//가입승인
-		public ArrayList<b_empDTO> emp_approve(){
-			return mgdao.emp_approve();
+		public ArrayList<b_empDTO> emp_approve(Criteria cri){
+			return mgdao.emp_approve(cri);
 		}
+		
+		//가입승인 부서 selectbox
+		public ArrayList<b_deptDTO> emp_apdept(Criteria cri){
+			return mgdao.emp_apdept(cri);
+		}
+		
+		//페이징 처리를 위한 전체건수 가입승인
+		public int getTotalCountAP(Criteria cri) {
+			return mgdao.getTotalCountAP(cri);
+		}
+		
 }

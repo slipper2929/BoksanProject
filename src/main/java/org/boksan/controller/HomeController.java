@@ -145,8 +145,11 @@ public class HomeController {
 	
 	//관리자_가입요청승인
 	@RequestMapping(value = "/manager_emp_approve", method = RequestMethod.GET)
-	public String manager_emp_approve(Model model) {
-		model.addAttribute("applist",mgservice.emp_approve());
+	public String manager_emp_approve(Model model,Criteria cri) {
+		model.addAttribute("applist",mgservice.emp_approve(cri));
+		model.addAttribute("apdept",mgservice.emp_apdept(cri));
+		//페이징 처리
+		model.addAttribute("pageMaker",new PageDTO(cri,mgservice.getTotalCountAP(cri)));
 		return "manager_emp_approve";
 	}
 	

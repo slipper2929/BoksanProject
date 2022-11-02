@@ -20,5 +20,9 @@ public interface ManagerService {
 	//직원삭제
 	public String emp_delete(String[] edto);
 	//가입승인
-	public ArrayList<b_empDTO> emp_approve();
+	public ArrayList<b_empDTO> emp_approve(Criteria cri);
+	//가입승인 부서 selectbox
+	public ArrayList<b_deptDTO> emp_apdept(Criteria cri);
+	//페이징 처리를 위한 전체건수 가입승인
+	public int getTotalCountAP(Criteria cri);
 }
