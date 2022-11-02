@@ -204,7 +204,7 @@
                         <tr class="b_table_data">
                             <td><p>${lilist.house_code }</p></td>
                             <td><p>${lilist.pallet_num }</p></td>
-                            <td><p>${lilist.product_name }</p></td>
+                            <td><p>${lilist.b_productdto.product_name }</p></td>
                             <td><p>${lilist.arrive_date }</p></td>
                             <td><p>${lilist.product_barcode }</p></td>
                         </tr>

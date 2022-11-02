@@ -1,7 +1,9 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.boksan.dao.ManagerDao;
 import org.boksan.model.Criteria;
@@ -30,7 +32,14 @@ public class ManagerServiceImpl implements ManagerService{
 		return mgdao.dept_selectbox();
 	}
 	//직원조회 수정완료
-	//public b_empDTO emp_update(b_empDTO edto) {
-	//	return mgdao.emp_update(edto);
-	//}
+	public String emp_update(String[] emp_arr, String[] dept_arr) {
+		
+		for(int i= 0; i<emp_arr.length; i++) {
+			Map<String,Object> map = new HashMap<String,Object>();
+			map.put("emp_arr", emp_arr[i]);
+			map.put("dept_arr", dept_arr[i]);
+			mgdao.emp_update(map);
+		}
+		return "";
+	}
 }

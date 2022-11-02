@@ -210,7 +210,7 @@
                         <c:forEach var="pplist" items="${pplist }">
                         <tr class="b_table_data">
                             <td><p>${pplist.pallet_num }</p></td>
-                            <td><p>${pplist.product_name }</p></td>
+                            <td><p>${pplist.b_productdto.product_name }</p></td>
                             <td><p>${pplist.product_group_name }</p></td>
                             <td><p>${pplist.arrive_date }</p></td>
                             <td><p>${pplist.b_housedto.house_function }</p></td>

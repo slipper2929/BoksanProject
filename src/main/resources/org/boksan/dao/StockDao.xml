@@ -211,9 +211,19 @@
  		FROM b_house
  		where house_code = #{data}
  	</select>
-
+	<resultMap type="org.boksan.model.b_productDTO" id="location_b_productDTO">
+		<result property="product_name" column="Product_name"></result>
+	</resultMap>
+	  
+	<resultMap type="org.boksan.model.b_stockDTO" id="location_b_stockDTO">
+		<result property="pallet_num" column="Pallet_num"></result>
+		<result property="arrive_date" column="Arrive_date"></result>
+		<result property="house_code" column="House_code"></result>
+		<result property="product_barcode" column="Product_barcode"></result>
+		<collection property="b_productdto" resultMap="location_b_productDTO"></collection>
+	</resultMap>
  	<!-- 로케이션별 위치조회 -->
- 	<select id="location_select" resultType="org.boksan.model.b_stockDTO">
+ 	<select id="location_select" resultMap="location_b_stockDTO">
  		<if test = "keyword == null">
 		select s.house_code,
  			   s.pallet_num,

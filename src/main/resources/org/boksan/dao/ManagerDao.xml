@@ -87,12 +87,13 @@
  		FROM b_dept
  	</select>
  	
- 	<!-- 
- 	<update id="emp_update">
- 		UPDATE b_emp e JOIN b_dept d
-		ON e.dept_code = d.dept_code
-		SET e.dept_code = d.dept_code
-		WHERE e.emp_code = #{emp_code}
+ 	
+ 	<update id="emp_update" parameterType="hashMap">
+ 		
+ 		UPDATE b_emp 
+		SET dept_code = #{dept_arr}
+		WHERE emp_code = #{emp_arr}
+	
  	</update>
- 	 -->
+ 	
 </mapper>

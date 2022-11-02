@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.boksan.model.Product_selectDTO;
-import org.boksan.model.b_empDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.materiaDTO;
@@ -18,7 +17,8 @@ import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -128,13 +128,12 @@ public class AjaxController {
 	}
 	
 	//직원조회 수정완료
-	@PostMapping(value = "/emp_update",
+	@PostMapping(value="/emp_update",
 			produces = "application/json; charset=utf-8")
-	
-	public String emp_update(@RequestBody List<b_empDTO> arr) {
-		System.out.println(arr);
+	public String emp_update(@RequestParam(value="emp_arr") String[] emp_arr, @RequestParam(value="dept_arr") String[] dept_arr) {
+		mgservice.emp_update(emp_arr,dept_arr);
 		
-		return "";
+		return "부서가 변경되었습니다.";
 	}
 	
 

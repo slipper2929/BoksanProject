@@ -122,7 +122,11 @@
 	  	delete from b_product
 	  	where product_code = #{product_code}
 	  </delete>
-	  
+	   
+	  <resultMap type="org.boksan.model.b_productDTO" id="select_b_productDTO">
+	  	<result property="product_name" column="Product_name"></result>
+	  </resultMap>
+	   
 	  <resultMap type="org.boksan.model.b_houseDTO" id="b_houseDTO">
 	  	<result property = "house_code" column="HOUSE_CODE"/>
 	  	<result property = "house_function" column="HOUSE_FUNCTION"/>
@@ -131,13 +135,13 @@
 
 	  <resultMap type="org.boksan.model.b_stockDTO" id="b_stockDTO">
 	  	<result property="pallet_num" column="PALLET_NUM"></result>
-	  	<result property="product_name" column="PRODUCT_NAME"></result>
 	  	<result property="product_group_name" column="PRODUCT_GROUP_NAME"></result>
 	  	<result property="arrive_date" column="ARRIVE_DATE"></result>
+		<collection property="b_productdto" resultMap="select_b_productDTO"></collection>
 		<collection property="b_housedto" resultMap="b_houseDTO"></collection>
 		
 	  </resultMap>
-	  
+	  <!-- 상품별조회 -->
 	  <select id="pplist_select" resultMap="b_stockDTO">
 	  	<if test = "keyword == null">
 		SELECT s.PALLET_NUM, p.PRODUCT_NAME, pg.PRODUCT_GROUP_NAME,
