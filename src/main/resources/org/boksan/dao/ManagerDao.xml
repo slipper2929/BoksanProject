@@ -10,6 +10,10 @@
 		<result property="dept_name" column="Dept_name"></result>
 	</resultMap>
 	
+	<resultMap type="org.boksan.model.b_approveDTO" id="select_b_approveDTO">
+		<result property="approve" column="Approve"></result>
+	</resultMap>
+	
 	<resultMap type="org.boksan.model.b_empDTO" id="b_empDTO">
 		<result property="emp_code" column="Emp_code"></result>
 		<result property="dept_code" column="Dept_code"></result>
@@ -17,69 +21,91 @@
 		<result property="name" column="Name"></result>
 		<result property="address" column="Address"></result>
 		<collection property="b_dept" resultMap="b_deptDTO"></collection>
+		<collection property="b_approve" resultMap="select_b_approveDTO"></collection>
 	</resultMap>
 	
 	
 	<!-- 직원조회 -->
 	<select id="emp_select" resultMap="b_empDTO">
-		<if test = "keyword == null">
-		select e.emp_code,
-			   e.name,
-		 	   e.socialnum,
-		 	   e.address,
-		 	   e.dept_code,
-		 	   d.dept_name
+			<if test = "keyword == null">
+		select a.approve,
+				e.emp_code,
+				e.name,
+				e.socialnum,
+				e.address,
+				e.dept_code,
+				d.dept_name
 		from(
-			select @rownum:=@rownum+1 as rownum, e.*
-			from (select @rownum:=0) as tmp, b_emp e	
+			select @rownum:=@rownum+1 as rownum, a.*
+			from (select @rownum:=0) as tmp, b_approve a	
+			LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
 			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
 			ORDER BY e.emp_code
-			) as e LEFT JOIN b_dept d
+			) as a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
+			WHERE a.approve = 1
 		<![CDATA[
-			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+			AND rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
+			
 		</if>
 		<if test = "keyword != null">
-			select  e.emp_code,
-			  	    e.name,
-		 		    e.socialnum,
-		 		    e.address,
-		 		    e.dept_code,
-		 		    d.dept_name
+			select  a.approve,
+					e.emp_code,
+					e.name,
+					e.socialnum,
+					e.address,
+					e.dept_code,
+					d.dept_name
 			from(
-			select @rownum:=@rownum+1 as rownum, e.*
-			from (select @rownum:=0) as tmp, b_emp e LEFT JOIN b_dept d
+			select @rownum:=@rownum+1 as rownum, a.*
+			from (select @rownum:=0) as tmp, b_approve a	
+			LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
 			where e.emp_code like CONCAT('%',#{keyword},'%')
-			or e.dept_code like CONCAT('%',#{keyword},'%')
+			or e.socialnum like CONCAT('%',#{keyword},'%')
 			or e.name like CONCAT('%',#{keyword},'%')
 			or d.dept_name like CONCAT('%',#{keyword},'%')
 			order BY e.emp_code 
-			) as e left join b_dept d
+			) as a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code	
+			WHERE a.approve = 1 
 			<![CDATA[
-			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			AND rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
+					
 		</if>
-	</select>
-	  
-	  <!-- 페이징 처리를 위한 전체건수 직원조회 -->
+ 	</select>
+ 	
+ 	  <!-- 페이징 처리를 위한 전체건수 직원조회 -->
  	<select id="getTotalCountEMP" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
-	 		FROM b_emp e JOIN b_dept d
+	 		FROM b_approve a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
+			WHERE a.approve = 1
 	 	</if>
 	 	<if test = "keyword != null">
-		 	select count(*)
-	 		FROM b_emp e JOIN b_dept d
+		 	select count (*)
+	 		FROM b_approve a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
-		 	where e.emp_code like CONCAT('%',#{keyword},'%')
-			or e.dept_code like CONCAT('%',#{keyword},'%')
+			where a.approve = 1
+		 	AND (e.emp_code like CONCAT('%',#{keyword},'%')
+		 	or e.socialnum like CONCAT('%',#{keyword},'%')
 			or e.name like CONCAT('%',#{keyword},'%')
-			or d.dept_name like CONCAT('%',#{keyword},'%')
+			or d.dept_name like CONCAT('%',#{keyword},'%'))
 	 	</if>
  	</select>
  	
@@ -99,49 +125,82 @@
  		delete from b_emp
  		where emp_code = #{emp_code}
  	</delete>
-
+	
+	
+	<resultMap type="org.boksan.model.b_deptDTO" id="approve_b_deptDTO">
+		<result property="dept_name" column="Dept_name"></result>
+	</resultMap>
+	
+	<resultMap type="org.boksan.model.b_approveDTO" id="b_approveDTO">
+		<result property="approve" column="Approve"></result>
+	</resultMap>
+	
+	<resultMap type="org.boksan.model.b_empDTO" id="approve_b_empDTO">
+		<result property="emp_code" column="Emp_code"></result>
+		<result property="dept_code" column="Dept_code"></result>
+		<result property="socialnum" column="Socialnum"></result>
+		<result property="name" column="Name"></result>
+		<result property="address" column="Address"></result>
+		<collection property="b_approve" resultMap="b_approveDTO"></collection>
+		<collection property="b_dept" resultMap="approve_b_deptDTO"></collection>
+	</resultMap>
+	
  	<!-- 가입승인 -->
- 	<select id="emp_approve" resultMap="b_empDTO">
+ 	<select id="emp_approve" resultMap="approve_b_empDTO">
  		<if test = "keyword == null">
-		select e.emp_code,
-			   e.name,
-		 	   SUBSTR(e.socialnum,1,6) socialnum,
-		 	   e.address,
-		 	   e.dept_code,
-		 	   d.dept_name
+		select a.approve,
+				e.emp_code,
+				e.name,
+				SUBSTR(e.socialnum,1,6) socialnum,
+				e.address,
+				e.dept_code,
+				d.dept_name
 		from(
-			select @rownum:=@rownum+1 as rownum, e.*
-			from (select @rownum:=0) as tmp, b_emp e	
+			select @rownum:=@rownum+1 as rownum, a.*
+			from (select @rownum:=0) as tmp, b_approve a	
+			LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
 			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
 			ORDER BY e.emp_code
-			) as e LEFT JOIN b_dept d
+			) as a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
+			WHERE a.approve = 0
 		<![CDATA[
-			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+			AND rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
+			
 		</if>
 		<if test = "keyword != null">
-			select  e.emp_code,
-			  	    e.name,
-		 		    SUBSTR(e.socialnum,1,6) socialnum,
-		 		    e.address,
-		 		    e.dept_code,
-		 		    d.dept_name
+			select  a.approve,
+					e.emp_code,
+					e.name,
+					SUBSTR(e.socialnum,1,6) socialnum,
+					e.address,
+					e.dept_code,
+					d.dept_name
 			from(
-			select @rownum:=@rownum+1 as rownum, e.*
-			from (select @rownum:=0) as tmp, b_emp e LEFT JOIN b_dept d
+			select @rownum:=@rownum+1 as rownum, a.*
+			from (select @rownum:=0) as tmp, b_approve a	
+			LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
 			where e.emp_code like CONCAT('%',#{keyword},'%')
 			or e.socialnum like CONCAT('%',#{keyword},'%')
 			or e.name like CONCAT('%',#{keyword},'%')
 			or d.dept_name like CONCAT('%',#{keyword},'%')
 			order BY e.emp_code 
-			) as e left join b_dept d
+			) as a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code	
 			<![CDATA[
-			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			WHERE rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
+			ON a.approve = 0		
 		</if>
  	</select>
  	
@@ -149,17 +208,23 @@
  	<select id="getTotalCountAP" resultType="int">
 		<if test = "keyword == null">
 	 		select count(*)
-	 		FROM b_emp e JOIN b_dept d
+	 		FROM b_approve a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
+			WHERE a.approve = 0
 	 	</if>
 	 	<if test = "keyword != null">
-		 	select count(*)
-	 		FROM b_emp e JOIN b_dept d
+		 	select count (*)
+	 		FROM b_approve a LEFT JOIN b_emp e
+			ON a.emp_code = e.emp_code
+			LEFT JOIN b_dept d
 			ON e.dept_code = d.dept_code
-		 	where e.emp_code like CONCAT('%',#{keyword},'%')
-		 	or e.socialnum like CONCAT('%',#{keyword},'%')
-			or e.name like CONCAT('%',#{keyword},'%')
-			or d.dept_name like CONCAT('%',#{keyword},'%')
+			where a.approve = 0
+		 	AND (e.emp_code like CONCAT('%','','%')
+		 	or e.socialnum like CONCAT('%','','%')
+			or e.name like CONCAT('%','','%')
+			or d.dept_name like CONCAT('%','','%'))
 	 	</if>
  	</select>
  	

@@ -25,6 +25,16 @@ public class b_empDTO {
 	
 	private b_deptDTO b_dept;
 	
+	private b_approveDTO b_approve;
+	
+
+	public b_approveDTO getB_approve() {
+		return b_approve;
+	}
+
+	public void setB_approve(b_approveDTO b_approve) {
+		this.b_approve = b_approve;
+	}
 
 	public b_deptDTO getB_dept() {
 		return b_dept;

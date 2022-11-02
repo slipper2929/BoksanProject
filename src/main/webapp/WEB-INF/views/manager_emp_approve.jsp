@@ -219,6 +219,7 @@
                             <td><p>${applist.socialnum }</p></td>
                             <td><p>${applist.address }</p></td>
                             <td><p>${applist.b_dept.dept_name }</p></td>
+             
                             
                             <td class="deptcode_select">
                                 <p>
