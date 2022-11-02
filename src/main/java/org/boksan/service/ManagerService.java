@@ -19,4 +19,6 @@ public interface ManagerService {
 	public String emp_update(String[] emp_arr, String[] dept_arr);
 	//직원삭제
 	public String emp_delete(String[] edto);
+	//가입승인
+	public ArrayList<b_empDTO> emp_approve();
 }

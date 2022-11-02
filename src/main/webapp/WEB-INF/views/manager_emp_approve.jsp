@@ -205,12 +205,14 @@
                                 <p>승인</p>
                             </th>
                         </tr>
+                        <c:forEach var="applist" items="${applist }">
                         <tr class="b_table_data">
-                            <td><p>1</p></td>
-                            <td><p>홍길동</p></td>
-                            <td><p>020228</p></td>
-                            <td><p>부산시 동래구 사직2동</p></td>
-                            <td><p>자재관리부서</p></td>
+                            <td><p>${applist.emp_code }</p></td>
+                            <td><p>${applist.name }</p></td>
+                            <td><p>${applist.socialnum }</p></td>
+                            <td><p>${applist.address }</p></td>
+                            <td><p>${applist.b_dept.dept_name }</p></td>
+                            
                             <td class="deptcode_select">
                                 <p>
                                     <select>
@@ -225,46 +227,7 @@
                                 <p><input type="checkbox"></p>
                             </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>2</p></td>
-                            <td><p>김철수</p></td>
-                            <td><p>980711</p></td>
-                            <td><p>울산 남구 신정4동</p></td>
-                            <td><p>자재관리부서</p></td>
-                            <td class="deptcode_select">
-                                <p>
-                                    <select>
-                                        <option value="">선택안함</option>
-                                        <option value="">자재관리부서</option>
-                                        <option value="">생산공장</option>
-                                        <option value="">물류창고</option>
-                                    </select>
-                                </p>
-                            </td>
-                            <td>
-                                <p><input type="checkbox"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>3</p></td>
-                            <td><p>박영희</p></td>
-                            <td><p>960119</p></td>
-                            <td><p>울산 북구 염포1동</p></td>
-                            <td><p>물류창고</p></td>
-                            <td class="deptcode_select">
-                                <p>
-                                    <select>
-                                        <option value="">선택안함</option>
-                                        <option value="">자재관리부서</option>
-                                        <option value="">생산공장</option>
-                                        <option value="">물류창고</option>
-                                    </select>
-                                </p>
-                            </td>
-                            <td>
-                                <p><input type="checkbox"></p>
-                            </td>
-                        </tr>
+                        </c:forEach>
                     </table>
                     <div class="b_pager">
                         <div><a href=""><span>이전</span></a></div>

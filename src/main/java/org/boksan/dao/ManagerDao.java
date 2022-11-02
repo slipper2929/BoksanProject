@@ -20,4 +20,6 @@ public interface ManagerDao {
 	public void emp_update(Map<String,Object> map);
 	//직원삭제
 	public void emp_delete(String edto);
+	//가입승인
+	public ArrayList<b_empDTO> emp_approve();
 }

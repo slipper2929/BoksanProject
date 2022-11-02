@@ -98,6 +98,18 @@
  		delete from b_emp
  		where emp_code = #{emp_code}
  	</delete>
+
+ 	<!-- 가입승인 -->
+ 	<select id="emp_approve" resultMap="b_empDTO">
+ 		select e.emp_code,
+			   e.name,
+		 	   e.socialnum,
+		 	   e.address,
+		 	   e.dept_code,
+		 	   d.dept_name
+		from b_emp e join b_dept d
+		ON e.dept_code = d.dept_code
+ 	</select>
  	
  	
 </mapper>

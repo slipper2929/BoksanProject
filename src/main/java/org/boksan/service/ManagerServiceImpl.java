@@ -56,4 +56,9 @@ public class ManagerServiceImpl implements ManagerService{
 			
 			return "";
 		}
+		
+		//°¡ÀÔ½ÂÀÎ
+		public ArrayList<b_empDTO> emp_approve(){
+			return mgdao.emp_approve();
+		}
 }
