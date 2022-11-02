@@ -26,4 +26,6 @@ public interface ManagerDao {
 	public ArrayList<b_deptDTO> emp_apdept(Criteria cri);
 	//페이징 처리를 위한 전체건수 가입승인
 	public int getTotalCountAP(Criteria cri);
+	//가입요청
+	public void manager_approve(String emp_val);
 }

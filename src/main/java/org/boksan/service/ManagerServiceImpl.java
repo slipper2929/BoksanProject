@@ -52,7 +52,7 @@ public class ManagerServiceImpl implements ManagerService{
 				
 				mgdao.emp_delete(emp_code_choice);
 			}
-			System.out.println(edto);
+			System.out.println("서비스" + edto);
 			
 			return "";
 		}
@@ -70,6 +70,19 @@ public class ManagerServiceImpl implements ManagerService{
 		//페이징 처리를 위한 전체건수 가입승인
 		public int getTotalCountAP(Criteria cri) {
 			return mgdao.getTotalCountAP(cri);
+		}
+		//가입요청
+		public String manager_approve(String[] emp_val) {
+
+			for(int i=0; i<emp_val.length; i++) {
+		
+				System.out.println("서비스 1: " + emp_val[i]);
+				mgdao.manager_approve(emp_val[i]);
+				System.out.println("서비스 2: " + emp_val[i]);
+			}
+			System.out.println("서비스 3: " + emp_val);
+			
+			return "";
 		}
 		
 }

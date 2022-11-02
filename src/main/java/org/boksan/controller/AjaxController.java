@@ -136,5 +136,15 @@ public class AjaxController {
 		return "부서가 변경되었습니다.";
 	}
 	
+	//승인요청
+	@PostMapping(value="/approve_success",
+			produces = "application/json; charset=utf-8")
+	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val) {
+		System.out.println("컨트롤러 : " + emp_val[0]);
+		System.out.println("컨트롤러 : " + emp_val[1]);
+		System.out.println("컨트롤러 : " + emp_val[2]);
+		mgservice.manager_approve(emp_val);
+		return "";
+	}
 
 }
