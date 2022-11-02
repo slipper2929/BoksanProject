@@ -185,7 +185,7 @@
                         <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
                     </div> <!--b_search-->
                     <div class="emp_btn">
-                        <p class="btn_s_b"><input type="submit" value="승인"></p>
+                        <p class="btn_s_b"><input type="button" id="approve_btn" value="승인"></p>
                         <p class="btn_s_r"><input type="submit" value="거절"></p>
                     </div>
                     <table class="b_table margin_t50">
@@ -214,7 +214,7 @@
                         </tr>
                         <c:forEach var="applist" items="${applist }">
                         <tr class="b_table_data">
-                            <td><p>${applist.emp_code }</p></td>
+                            <td><p><input type="hidden" class="emp_approve" value="${applist.emp_code }">${applist.emp_code }</p></td>
                             <td><p>${applist.name }</p></td>
                             <td><p>${applist.socialnum }</p></td>
                             <td><p>${applist.address }</p></td>
@@ -232,7 +232,7 @@
                                 </p>
                             </td>
                             <td>
-                                <p><input type="checkbox"></p>
+                                <p><input type="checkbox" class="approve_check"></p>
                             </td>
                         </tr>
                         </c:forEach>
@@ -306,5 +306,7 @@
     
     <!-- pageMaker.js -->
     <script src="../resources/js/pageMaker.js"></script>
+     <!-- manager_emp_approve.js -->
+    <script src="../resources/js/manager_emp_approve.js"></script>
 </body>
 </html>
