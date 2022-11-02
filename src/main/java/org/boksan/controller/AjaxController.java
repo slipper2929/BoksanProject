@@ -136,6 +136,7 @@ public class AjaxController {
 		return "부서가 변경되었습니다.";
 	}
 	
+
 	//승인요청
 	@PostMapping(value="/approve_success",
 			produces = "application/json; charset=utf-8")
@@ -146,5 +147,4 @@ public class AjaxController {
 		mgservice.manager_approve(emp_val);
 		return "";
 	}
-
 }
