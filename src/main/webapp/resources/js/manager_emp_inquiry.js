@@ -3,13 +3,13 @@
  */
 
 $(function(){
-	$(".dept_select").hide();
-	$(".emp_success").hide()
+	$(".emp_delete_form").find(".dept_select").hide();
+	$(".emp_delete_form").find(".emp_success").hide();
 	$(document).on("click",".emp_update", function(){
 		$(".dept_select").show();
-		$(".emp_success").show()
-		$(".dept_value").hide()
-		$(".emp_update").hide()	
+		$(".emp_success").show();
+		$(".dept_value").hide();
+		$(".emp_update").hide();
 	})
 	
 	$(document).on("click",".emp_success", function(){
@@ -64,5 +64,19 @@ $(function(){
 			}
 		})
 	})
+	
+	$(document).on("click",".delete_check",function(){
+		if($(".delete_check").is(':checked')){
+			$(this).val($(this).parents("tr").find(".emp_value").val());
+			$(this).attr("name","emp_code");
+		}else{
+			$(this).val("");
+			$(this).attr("name","");
+		}
+		//$(".emp_delete_form").submit();
+	})
+//	$(document).on("click","#emp_delete_button", function(){
+//		
+//	})
 	
 })

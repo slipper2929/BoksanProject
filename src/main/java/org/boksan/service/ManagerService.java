@@ -17,4 +17,6 @@ public interface ManagerService {
 	public ArrayList<b_deptDTO> dept_selectbox();
 	//직원조회 수정완료
 	public String emp_update(String[] emp_arr, String[] dept_arr);
+	//직원삭제
+	public String emp_delete(String[] edto);
 }

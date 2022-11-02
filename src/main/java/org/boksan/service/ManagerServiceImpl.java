@@ -42,4 +42,18 @@ public class ManagerServiceImpl implements ManagerService{
 		}
 		return "";
 	}
+	
+	//직원삭제
+		public String emp_delete(String[] edto) {
+			
+			for(int i = 0; i<edto.length; i++) {
+				
+				String emp_code_choice = edto[i];
+				
+				mgdao.emp_delete(emp_code_choice);
+			}
+			System.out.println(edto);
+			
+			return "";
+		}
 }

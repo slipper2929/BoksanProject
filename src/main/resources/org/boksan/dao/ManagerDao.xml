@@ -87,13 +87,17 @@
  		FROM b_dept
  	</select>
  	
- 	
+ 	<!-- 직원부서수정 -->
  	<update id="emp_update" parameterType="hashMap">
- 		
  		UPDATE b_emp 
 		SET dept_code = #{dept_arr}
 		WHERE emp_code = #{emp_arr}
-	
  	</update>
+ 	<!-- 체크된 직원삭제 -->
+ 	<delete id="emp_delete">
+ 		delete from b_emp
+ 		where emp_code = #{emp_code}
+ 	</delete>
+ 	
  	
 </mapper>

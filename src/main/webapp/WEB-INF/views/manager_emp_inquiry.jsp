@@ -184,10 +184,11 @@
                         </form>
                         <p class="b_explain">*상품명, 상품코드, 파레트번호, 창고번지로 검색가능합니다.</p>
                     </div> <!--b_search-->
+                    <form action="/emp_delete" method="post" class="emp_delete_form">
                     <div class="emp_btn">
                         <p class="btn_s_g emp_update"><input type="button" value="수정"></p>
                         <p class="btn_s_b emp_success"><input type="button" value="완료"></p>
-                        <p class="btn_s_r"><input type="submit" value="삭제"></p>
+                        <p class="btn_s_r"><input type="submit" id="emp_delete_button" value="삭제"></p>
                     </div>
                     <table class="b_table margin_t50 emp_talbe" >
                         <tr class="b_table_title">
@@ -228,11 +229,12 @@
                             	</p>
                             </td>
                             <td>
-                                <p><input type="checkbox"></p>
+                                <p><input type="checkbox" class="delete_check"></p>
                             </td>
                         </tr>
                         </c:forEach>
                     </table>
+                    </form>
                     <form id="pageForm" action="/manager_emp_inquiry">
                     <div class="b_pager">
 	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">

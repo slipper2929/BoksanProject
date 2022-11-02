@@ -18,4 +18,6 @@ public interface ManagerDao {
 	public ArrayList<b_deptDTO> dept_selectbox();
 	//직원조회 수정완료
 	public void emp_update(Map<String,Object> map);
+	//직원삭제
+	public void emp_delete(String edto);
 }
