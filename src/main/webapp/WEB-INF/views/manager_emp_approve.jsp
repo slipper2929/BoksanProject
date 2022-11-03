@@ -186,7 +186,7 @@
                     </div> <!--b_search-->
                     <div class="emp_btn">
                         <p class="btn_s_b"><input type="button" id="approve_btn" value="승인"></p>
-                        <p class="btn_s_r"><input type="submit" value="거절"></p>
+                        <p class="btn_s_r"><input type="button" id="approve_sorry_btn"value="거절"></p>
                     </div>
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
@@ -223,7 +223,7 @@
                             
                             <td class="deptcode_select">
                                 <p>
-                                    <select>
+                                    <select class="dept_value">
                                         <option value="">선택안함</option>
                                         <c:forEach var="apdept" items="${apdept }">
                                         	<option value="${apdept.dept_code }">${apdept.dept_name }</option>

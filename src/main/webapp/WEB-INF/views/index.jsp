@@ -17,8 +17,6 @@
 
     <!--초기화css-->
     <link rel="stylesheet" href="../resources/css/reset.css">
-    <!--헤더css-->
-    <link rel="stylesheet" href="../resources/css/header.css">
     <!--푸터css-->
     <link rel="stylesheet" href="../resources/css/footer.css">
     <!--메인css-->
@@ -30,7 +28,7 @@
 </head>
 <body>
   <div id="wrap">
-        <header class="b_header">
+        <%-- <header class="b_header">
             <section class="b_header_in">
                 <div class="b_header_top">
                     <article class="b_header_logo">
@@ -160,11 +158,11 @@
                     </ul>
                 </nav> <!--메뉴바 끝-->
             </section><!--.b_header_in-->
-        </header> <!--header 끝-->
+        </header> <!--header 끝--> --%>
         
         
 
-
+		<jsp:include page="header.jsp"></jsp:include>
 
         
         <div id="container">
@@ -305,8 +303,7 @@
     <!-- 3. jQuery 연결 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-
-    <!--헤더 js-->
-    <script src="../resources/js/header.js"></script>
+    
+    
 </body>
 </html>

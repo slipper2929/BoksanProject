@@ -26,5 +26,5 @@ public interface ManagerService {
 	//페이징 처리를 위한 전체건수 가입승인
 	public int getTotalCountAP(Criteria cri);
 	//가입요청
-	public String manager_approve(String[] emp_val);
+	public String manager_approve(String[] emp_val, String[] dept_val);
 }

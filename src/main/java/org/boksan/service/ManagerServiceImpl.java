@@ -72,15 +72,23 @@ public class ManagerServiceImpl implements ManagerService{
 			return mgdao.getTotalCountAP(cri);
 		}
 		//가입요청
-		public String manager_approve(String[] emp_val) {
-
+		public String manager_approve(String[] emp_val, String[] dept_val) {
+			
+			
+			
 			for(int i=0; i<emp_val.length; i++) {
-		
-				System.out.println("서비스 1: " + emp_val[i]);
-				mgdao.manager_approve(emp_val[i]);
-				System.out.println("서비스 2: " + emp_val[i]);
+				Map<String, Object> map = new HashMap<String, Object>();
+				String emp_val_list = emp_val[i];
+				String dept_val_list = dept_val[i];
+				map.put("emp_code", emp_val_list);
+				map.put("dept_code", dept_val_list);
+				mgdao.manager_dept_code(map);				
+				System.out.println("서비스 1: " + emp_val_list);
+				mgdao.manager_approve(emp_val_list);//가입승인
+				System.out.println("서비스 2: " + emp_val_list);
+				
 			}
-			System.out.println("서비스 3: " + emp_val);
+			
 			
 			return "";
 		}

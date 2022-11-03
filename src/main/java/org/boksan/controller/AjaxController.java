@@ -140,11 +140,20 @@ public class AjaxController {
 	//승인요청
 	@PostMapping(value="/approve_success",
 			produces = "application/json; charset=utf-8")
-	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val) {
+	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val,@RequestParam(value="dept_val") String[] dept_val) {
 		System.out.println("컨트롤러 : " + emp_val[0]);
 		System.out.println("컨트롤러 : " + emp_val[1]);
-		System.out.println("컨트롤러 : " + emp_val[2]);
-		mgservice.manager_approve(emp_val);
-		return "";
+		mgservice.manager_approve(emp_val, dept_val);
+		return "가입이 승인되었습니다.";
+	}
+	
+	@PostMapping(value="/approve_sorry",
+			produces = "application/json; charset=utf-8")
+	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val) {
+		System.out.println("개수 : " + emp_val.length);
+		System.out.println("컨트롤러 : " + emp_val[0]);
+		System.out.println("컨트롤러 : " + emp_val[1]);
+		mgservice.emp_delete(emp_val);
+		return "삭제되었습니다.";
 	}
 }
