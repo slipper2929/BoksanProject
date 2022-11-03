@@ -246,5 +246,12 @@
  	WHERE emp_code = #{emp_code}
  	</update>
  	
+ 	<insert id ="dept_group_add">
+ 		INSERT INTO b_dept
+		SELECT (MAX(dept_code)+1) AS dept_code,
+		#{dept_name} AS dept_name
+		FROM b_dept
+ 	</insert>
+ 	
  	
 </mapper>

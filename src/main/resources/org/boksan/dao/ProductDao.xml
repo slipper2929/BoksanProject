@@ -18,8 +18,10 @@
 	  
 	  <!-- 상품분류추가 버튼 -->
 	  <insert id="Product_group_addInsert">
-	  	insert into b_product_group(product_group_name)
-	  	value(#{product_group_name})
+	  	INSERT INTO b_product_group
+	  	SELECT (MAX(product_group_code)+1) AS product_group_code,
+	  	#{product_group_name} AS product_group_name
+	  	FROM b_product_group
 	  </insert>
 	  
 	  <!-- 발주 예상 구매액 -->

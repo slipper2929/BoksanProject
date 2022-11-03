@@ -92,5 +92,9 @@ public class ManagerServiceImpl implements ManagerService{
 			
 			return "";
 		}
+		//부서등록
+		public void dept_group_add(b_deptDTO ddto) {
+			mgdao.dept_group_add(ddto);
+		}
 		
 }

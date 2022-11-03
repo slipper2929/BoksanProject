@@ -27,4 +27,6 @@ public interface ManagerService {
 	public int getTotalCountAP(Criteria cri);
 	//가입요청
 	public String manager_approve(String[] emp_val, String[] dept_val);
+	//부서등록
+	public void dept_group_add(b_deptDTO ddto);
 }

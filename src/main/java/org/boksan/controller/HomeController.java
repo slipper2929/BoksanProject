@@ -163,6 +163,12 @@ public class HomeController {
 		return "manager_emp_inquiry";
 	}
 	
+	@RequestMapping(value = "/manager_dept_group", method = RequestMethod.GET)
+	public String manager_dept_group() {
+		
+		return "manager_dept_group";
+	}
+	
 	//관리자_메인
 	@RequestMapping(value = "/manager_main", method = RequestMethod.GET)
 	public String manager_main() {

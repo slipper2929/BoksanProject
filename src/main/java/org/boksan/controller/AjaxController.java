@@ -146,7 +146,7 @@ public class AjaxController {
 		mgservice.manager_approve(emp_val, dept_val);
 		return "가입이 승인되었습니다.";
 	}
-	
+	//가입거절
 	@PostMapping(value="/approve_sorry",
 			produces = "application/json; charset=utf-8")
 	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val) {

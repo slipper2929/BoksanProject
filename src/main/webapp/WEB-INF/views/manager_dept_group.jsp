@@ -21,15 +21,18 @@
     <link rel="stylesheet" href="../resources/css/header.css">
     <!--푸터css-->
     <link rel="stylesheet" href="../resources/css/footer.css">
+    <!--입력폼css-->
+    <link rel="stylesheet" href="../resources/css/inputform.css">
     <!--메인css-->
-    <link rel="stylesheet" href="../resources/css/manager_main.css">
+    <link rel="stylesheet" href="../resources/css/group_add.css">
 
 
 
-    <title>복산김치WMS_관리자메인</title>
+
+    <title>복산김치WMS_부서추가등록</title>
 </head>
 <body>
-   <div id="wrap">
+     <div id="wrap">
         <header class="b_header">
             <section class="b_header_in">
                 <div class="b_header_top">
@@ -162,34 +165,29 @@
             </section><!--.b_header_in-->
         </header> <!--header 끝-->
         
-        
-
-
-
-        
         <div id="container">
-            <section class="b_main1">
-                <h2 class="b_main1_title">관리자메인</h2>
-                <div class="b_manager_content">
-                    <article>
-                        <h3><a href="/manager_emp_inquiry">직원조회</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_authority">업무권한부여</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_emp_approve">가입요청승인</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_dept_group">부서등록</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_emp_approve">창고등록</a></h3>
-                    </article>
-                </div>
+            <section class="b_inputform_main">
+                <div class="b_inputform_title">
+                    <h1>부서추가등록</h1>
+                </div> <!--.b_main-->
+                <div class="b_content b_content_width_m">
+                    <form action="" method="post">
+                        <p class="b_text b_inputform_name">
+                            <label><span>부서명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check" name="dept_name"></label>
+                            <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
+                        </p>
+                        <div class="b_submit btn_l_b">
+                            <input type="submit" value="부서등록">
+                        </div>    
+                    </form>
+                </div> <!--.b_content-->
             </section>
-        </div> <!--#container-->
+        </div>
 
+
+
+        
+        
 
 
 
@@ -227,5 +225,11 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+
+    <!--입력폼 js-->
+    <script src="../resources/js/inputform.js"></script>
+
+    <!--유효성검사-->
+    <script src="../resources/js/b_regExp_check.js"></script>
 </body>
 </html>

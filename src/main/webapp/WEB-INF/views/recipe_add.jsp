@@ -251,6 +251,7 @@
                                 <p class="date_now">제작일 : <span></span></p>
                                 <p>레시피제작자 : <span>${member.name}</span></p>
                                 <p class="btn_l_b recipe_save_btn"><input type="button" value="레시피저장"></p>
+
                             </div>
                         </div>
                     </div>

@@ -28,6 +28,8 @@ public interface ManagerDao {
 	public int getTotalCountAP(Criteria cri);
 	//가입요청
 	public void manager_approve(String emp_val);
-	
+	//가입거절
 	public void manager_dept_code(Map<String, Object> map);
+	//부서등록
+	public void dept_group_add(b_deptDTO ddto);
 }
