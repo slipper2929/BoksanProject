@@ -114,5 +114,15 @@ public class AjaxController {
 		System.out.println(objdata);
 		return relservice.release_recipe_select(objdata);
 	}
+	
+	//출고요청결제 취소
+	@PostMapping(value = "/release_cancel",
+			produces = "application/json; charset=utf-8")
+	public String release_cancel(int data) {
+		
+		relservice.release_cancel(data);
+		
+		return "취소가 되었습니다.";
+	}
 
 }

@@ -172,6 +172,7 @@
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l">
                     <form action="" id="b_order" method="post">
+                    	<c:if test="${release_order == 0}">
                         <p class="b_text b_select">
                             <label><span>발주할 상품</span>
                                 <select name="" id="" class="recipe_product_selectbox pg_box">
@@ -185,6 +186,16 @@
 		                        </select>
                             </label>
                         </p>
+                        </c:if>
+                        <c:if test="${release_order != 0}">
+                        	<p class="b_text b_select">
+	                            <label>
+	                            	<span>발주할 상품</span>
+	                                <span>${release_order_name}</span>
+	                                <input type="hidden" value="${release_order}" name="product_code" id="release_order_pc">
+	                            </label>
+	                        </p>
+                        </c:if>
                         <p class="b_text b_inputform_name">
                             <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" id="arrive_num" name="arrive_num"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>

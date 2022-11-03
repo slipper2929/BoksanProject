@@ -5,6 +5,8 @@ import java.util.List;
 
 public class b_releaseDTO {
 	
+	private int release_code;
+	
 	private int product_code;
 	
 	private String product_name;
@@ -15,7 +17,26 @@ public class b_releaseDTO {
 	
 	private List<b_releaseDTO> release_insert_list;
 	
+	private int res;
 	
+	
+	
+
+	public int getRelease_code() {
+		return release_code;
+	}
+
+	public void setRelease_code(int release_code) {
+		this.release_code = release_code;
+	}
+
+	public int getRes() {
+		return res;
+	}
+
+	public void setRes(int res) {
+		this.res = res;
+	}
 
 	public String getSituation() {
 		return situation;

@@ -61,5 +61,109 @@
 		 	where situation like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
-
+ 	
+ 	<!-- 출고요청결제 select -->
+ 	<select id="release_pay_select" resultType="org.boksan.model.b_releaseDTO">
+			SELECT release_pay.*
+			FROM(
+				SELECT @rownum:=@rownum+1 as rownum, r.*, s.psum, IFNULL(SIGN(s.psum-r.release_num), -1) AS res
+				FROM (select @rownum:=0) as tmp, b_release r
+				LEFT JOIN (
+					SELECT product_code, SUM(stock_num) AS psum
+					FROM b_stock 
+					GROUP BY product_code
+				) AS s
+				ON r.product_code = s.product_code
+				WHERE r.situation = "대기"
+				) AS release_pay
+			<![CDATA[
+			WHERE rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+			]]>
+ 	</select>
+ 	
+ 	<!-- 페이징 처리를 위한 전체건수(결제) -->
+	<select id="getTotalCount_pay" resultType="int">
+			SELECT COUNT(*)
+			FROM b_release r
+			LEFT JOIN (
+				SELECT product_code, SUM(stock_num) AS psum
+				FROM b_stock 
+				GROUP BY product_code
+			) AS s
+			ON r.product_code = s.product_code
+			WHERE r.situation = "대기"
+	</select>
+	
+	<!-- 출고요청목록을 위한 파레트목록 select -->
+	<select id="getPalletList" resultType="org.boksan.model.b_release_listDTO">
+		SET @va = 0;
+		SET @va2 = 0;
+		SELECT bbb.*
+		FROM(
+			SELECT aaa.*,
+			(case<![CDATA[
+				when cumsum_num <= #{release_num} then "1"
+				when cumsum_num > #{release_num} then "0"
+			END]]>
+			) AS cumsum_num_check
+			FROM (
+				SELECT s.pallet_num AS release_list_code,
+						s.product_code,
+						s.stock_num AS release_num,
+						house_code AS house_address,
+						(@va := @va + s.stock_num) AS cumsum_num
+				FROM b_stock s
+				WHERE product_code = #{product_code} AND product_barcode IS NOT NULL
+				ORDER BY arrive_date
+			) AS aaa
+		) AS bbb
+		WHERE bbb.cumsum_num_check = 1
+		UNION
+		SELECT ccc.*
+		FROM(
+			SELECT bbb.*
+			FROM(
+				SELECT aaa.*,
+				(case<![CDATA[
+					when cumsum_num <= #{release_num} then "1"
+					when cumsum_num > #{release_num} then "0"
+				END]]>
+				) AS cumsum_num_check
+				FROM (
+					SELECT s.pallet_num AS release_list_code,
+					s.product_code,
+					s.stock_num AS release_num,
+					house_code AS house_address,
+					(@va2 := @va2 + s.stock_num) AS cumsum_num
+					FROM b_stock s
+					WHERE product_code = #{product_code} AND product_barcode IS NOT NULL
+					ORDER BY arrive_date
+				) AS aaa
+			) AS bbb
+			WHERE bbb.cumsum_num_check = 0
+			LIMIT 1
+		) AS ccc
+	</select>
+	
+	<insert id="release_order_list_insert">
+		INSERT INTO b_release_list
+		VALUES (#{release_list_code}, #{product_name}, #{release_num}, #{house_address}, #{release_code}, 0)
+	</insert>
+	
+	<update id="release_update">
+		UPDATE b_release
+		SET situation = "수락"
+		WHERE release_code = #{release_code}
+	</update>
+	
+	<update id="release_cancel">
+		UPDATE b_release
+		SET situation = "취소"
+		WHERE release_code = #{release_code}
+	</update>
+	
+	<select id="release_order_list" resultType="org.boksan.model.b_release_listDTO">
+		SELECT *
+		FROM b_release_list
+	</select>
 </mapper>

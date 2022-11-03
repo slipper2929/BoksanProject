@@ -191,7 +191,6 @@
                                 <option value="대기">대기</option>
                                 <option value="취소">취소</option>
                                 <option value="수락">수락</option>
-                                <option value="출고완료">출고완료</option>
                             </select>
                             <p class="btn_s_b"><input type="button" value="보기" id="situation_search_btn"></p>
                         </div>

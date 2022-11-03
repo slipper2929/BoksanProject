@@ -175,7 +175,16 @@
                     <h1>출고요청결제</h1>
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
+                <div class="b_search" style="display:none">
+                    <form id="searchForm" action="/recipe_inquiry">
+                        <input type="button" class="b_submit" id="searchbtn">
+                        <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+                        <!--  <input type="text" class="b_input_text sc_check" name="search_text">-->
+                    </form>
+                    <p class="b_explain">*상품명으로 검색가능합니다.</p>
+                </div> <!--b_search-->
                 <div class="b_content b_content_width_m">
+                	<form action="" method="post" id="release_pay_form">
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
                             <th>
@@ -194,60 +203,59 @@
                                 <p>결제</p>
                             </th>
                         </tr>
+                        <c:forEach items="${rplist}" var="rp">
                         <tr class="b_table_data">
-                            <td><p>41</p></td>
-                            <td><p>절인배추</p></td>
-                            <td><p>40kg</p></td>
-                            <td><p>재고부족</p></td>
+                            <td><p class="rp_product_code">${rp.product_code}</p></td>
+                            <td><p class="rp_product_name">${rp.product_name}</p></td>
+                            <td><p>${rp.release_num}kg</p></td>
+                            <td><p>${rp.situation}</p></td>
+                            <c:if test="${rp.res == -1}">
                             <td class="pay_btn">
-                                <p class="btn_s_r"><input type="submit" value="발주하기"></p>
+                                <p class="btn_s_g"><input type="button" value="발주하기" class="order_btn"></p>
+                                <p class="btn_s_r"><input type="button" value="취소하기" class="order_cancel"></p>
+                                <input type="hidden" value="${rp.release_code}" class="release_code">
                             </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>48</p></td>
-                            <td><p>배추김치양념장</p></td>
-                            <td><p>20kg</p></td>
-                            <td><p>대기</p></td>
+                            </c:if>
+                            <c:if test="${rp.res == 1 || rp.res == 0}">
                             <td class="pay_btn">
-                                <p class="btn_s_b"><input type="submit" value="출고지시"></p>
-                                <p class="btn_s_r"><input type="submit" value="취소하기"></p>
+                                <p class="btn_s_b"><input type="button" value="출고지시" class="release_btn"></p>
+                                <p class="btn_s_r"><input type="button" value="취소하기" class="order_cancel"></p>
+                                <input type="hidden" value="${rp.product_code}" class="product_code">
+	                        	<input type="hidden" value="${rp.release_num}" class="release_num">
+	                        	<input type="hidden" value="${rp.release_code}" class="release_code">
+	                        	<input type="hidden" value="${rp.product_name}" class="product_name">
                             </td>
+                            </c:if>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>02</p></td>
-                            <td><p>무</p></td>
-                            <td><p>3kg</p></td>
-                            <td><p>대기</p></td>
-                            <td class="pay_btn">
-                                <p class="btn_s_b"><input type="submit" value="출고지시"></p>
-                                <p class="btn_s_r"><input type="submit" value="취소하기"></p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>07</p></td>
-                            <td><p>부추</p></td>
-                            <td><p>2kg</p></td>
-                            <td><p>대기</p></td>
-                            <td class="pay_btn">
-                                <p class="btn_s_b"><input type="submit" value="출고지시"></p>
-                                <p class="btn_s_r"><input type="submit" value="취소하기"></p>
-                            </td>
-                        </tr>
+                        </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                    </form>
+                    <a id="order_link" style="display : none"></a>
+                    <form id="pageForm" action="/release_pay">
+                    	<div class="b_pager">
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/release_pay?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_pay?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/release_pay?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_pay?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -289,5 +297,12 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+    
+    <!-- pageMaker js -->
+    <script src="../resources/js/pageMaker.js"></script>
+    
+    <!-- release_pay js -->
+    <script src="../resources/js/release_pay.js"></script>
+    
 </body>
 </html>
