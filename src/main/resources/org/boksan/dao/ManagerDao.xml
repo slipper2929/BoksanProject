@@ -275,6 +275,9 @@
  		<collection property="house_functiondto" column="House_function"></collection>
  	</resultMap>
  	<!-- 창고등록 -->
+ 	<insert id="manager_house_add">
+ 		
+ 	</insert>
  	
  	
 </mapper>
