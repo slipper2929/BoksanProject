@@ -92,27 +92,12 @@ public class HomeController {
 		return "check";
 	}
 	
-	//부서등록
-	@RequestMapping(value = "/dept_add", method = RequestMethod.GET)
-	public String dept_add() {
-		
-		return "dept_add";
-	}
-	
 	//상품분류추가
 	@RequestMapping(value = "/group_add", method = RequestMethod.GET)
 	public String group_add() {
 		
 		return "group_add";
 	}
-	
-	//창고등록
-	@RequestMapping(value = "/house_add", method = RequestMethod.GET)
-	public String house_add() {
-		
-		return "house_add";
-	}
-	
 	
 	//회원가입
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
@@ -135,6 +120,14 @@ public class HomeController {
 		
 		return "login";
 	}
+	
+	//창고등록
+	@RequestMapping(value = "/manager_house_add", method = RequestMethod.GET)
+	public String manager_house_add(Model model) {
+		model.addAttribute("hlist",mgservice.manager_house());
+		return "manager_house_add";
+	}
+	
 	
 	//업무권한부여
 	@RequestMapping(value = "/manager_authority", method = RequestMethod.GET)
@@ -163,6 +156,7 @@ public class HomeController {
 		return "manager_emp_inquiry";
 	}
 	
+	//부서등록
 	@RequestMapping(value = "/manager_dept_group", method = RequestMethod.GET)
 	public String manager_dept_group() {
 		

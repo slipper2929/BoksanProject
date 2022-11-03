@@ -21,12 +21,14 @@
     <link rel="stylesheet" href="../resources/css/header.css">
     <!--푸터css-->
     <link rel="stylesheet" href="../resources/css/footer.css">
-    <!--메인css-->
-    <link rel="stylesheet" href="../resources/css/manager_main.css">
+    <!--입력 폼css-->
+    <link rel="stylesheet" href="../resources/css/inputform.css">
+    <!--메인 css-->
+    <link rel="stylesheet" href="../resources/css/product.css">
 
 
 
-    <title>복산김치WMS_관리자메인</title>
+    <title>복산김치WMS_창고등록</title>
 </head>
 <body>
    <div id="wrap">
@@ -164,32 +166,44 @@
         
         
 
-
+        <div id="container">
+            <section class="b_inputform_main">
+                <div class="b_inputform_title">
+                    <h1>창고등록</h1>
+                </div> <!--.b_main-->
+                <div class="b_content b_content_width_m">
+                    <form action="" method="post">
+                        <p class="b_text b_inputform_name">
+                            <label><span>창고번지</span><input type="text" placeholder="이름을 입력해주세요" name="house_code"></label>
+                        <p class="b_text b_select">
+                            <label><span>기능</span>
+                                <select name="house_function">
+                                    <option value="">선택안함</option>
+                                    <c:forEach items="${hlist }" var="hlist">     
+                                    <option value="${hlist.house_function }">${hlist.function_name }</option>
+                                    </c:forEach>                                
+                                </select>
+                            </label>
+                        </p>
+                        <p class="b_text">
+                            <label><span>out_num</span><input type="text" class="sc_check" name="out_num"></label>
+                        </p>
+                        <p class="b_text">
+                            <label><span>in_num</span><input type="text" class="sc_check" name="in_num"></label>
+                        </p>
+                        <p class="b_text">
+                            <label><span>detail_position</span><input type="text" class="sc_check" name="detail_position"></label>
+                        </p>                       
+                        <div class="b_submit btn_l_b">
+                            <input type="submit" value="창고등록">
+                        </div>    
+                    </form>
+                </div> <!--.b_content-->
+            </section>
+        </div>
 
         
-        <div id="container">
-            <section class="b_main1">
-                <h2 class="b_main1_title">관리자메인</h2>
-                <div class="b_manager_content">
-                    <article>
-                        <h3><a href="/manager_emp_inquiry">직원조회</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_authority">업무권한부여</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_emp_approve">가입요청승인</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_dept_group">부서등록</a></h3>
-                    </article>
-                    <article>
-                        <h3><a href="/manager_house_add">창고등록</a></h3>
-                    </article>
-                </div>
-            </section>
-        </div> <!--#container-->
-
+       
 
 
 
@@ -227,5 +241,7 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+
+    <script src="../resources/js/b_regExp_check.js"></script>
 </body>
 </html>

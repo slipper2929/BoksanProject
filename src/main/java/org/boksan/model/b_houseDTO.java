@@ -11,6 +11,16 @@ public class b_houseDTO {
 	private String in_num;
 	
 	private String detail_position;
+	
+	private house_functionDTO house_functiondto;
+
+	public house_functionDTO getHouse_functiondto() {
+		return house_functiondto;
+	}
+
+	public void setHouse_functiondto(house_functionDTO house_functiondto) {
+		this.house_functiondto = house_functiondto;
+	}
 
 	public String getHouse_code() {
 		return house_code;
@@ -55,6 +65,7 @@ public class b_houseDTO {
 	@Override
 	public String toString() {
 		return "b_houseDTO [house_code=" + house_code + ", house_function=" + house_function + ", out_num=" + out_num
-				+ ", in_num=" + in_num + ", detail_position=" + detail_position + "]";
+				+ ", in_num=" + in_num + ", detail_position=" + detail_position + ", house_functiondto="
+				+ house_functiondto + "]";
 	}
 }

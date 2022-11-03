@@ -8,6 +8,8 @@ import java.util.Map;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_deptDTO;
 import org.boksan.model.b_empDTO;
+import org.boksan.model.b_houseDTO;
+import org.boksan.model.house_functionDTO;
 
 public interface ManagerDao {
 	//직원조회
@@ -32,4 +34,8 @@ public interface ManagerDao {
 	public void manager_dept_code(Map<String, Object> map);
 	//부서등록
 	public void dept_group_add(b_deptDTO ddto);
+	//창고등록화면
+	public ArrayList<house_functionDTO> manager_house();
+	//창고등록
+	public void manager_house_add(b_houseDTO hdto);
 }
