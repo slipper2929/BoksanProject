@@ -44,6 +44,18 @@ function check(){
         
     })
     
+    //한글자만 받기
+    $(document).on("change", ".only_one_check", function(){
+        
+    var regExp = /^.{1}$/g;
+    
+    if(!regExp.test($(this).val())){
+        alert("한글자로만 입력해주세요");
+        $(this).val("").focus();
+    }
+    
+}) 
+    
     //영어대문자만 받기
         $(document).on("change", ".english_upper_check", function(){
         
@@ -55,6 +67,8 @@ function check(){
         }
         
     })
+        
+
 
     //회원가입관련 검사---------------------
 

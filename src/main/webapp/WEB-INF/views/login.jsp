@@ -181,6 +181,7 @@
                         <p class="b_text">
                             <label><span>비밀번호</span><input type="password" name="password"></label>
                         </p>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                         <div class="b_submit btn_m_b">
                             <input type="submit" value="로그인">
                             <input type="submit" value="취소" class="btn_m_r">

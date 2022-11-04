@@ -185,10 +185,10 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>out_num</span><input type="text" class="sc_check" name="out_num"></label>
+                            <label><span>out_num</span><input type="text" class="sc_check only_one_check num_check" name="out_num" placeholder="숫자로 한글자만 입력"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>in_num</span><input type="text" class="sc_check english_upper_check" name="in_num"></label>
+                            <label><span>in_num</span><input type="text" class="sc_check only_one_check english_upper_check" name="in_num" placeholder="영어대문자로 한글자만 입력"></label>
                         </p>
                         <p class="b_text">
                             <label><span>detail_position</span><input type="text" class="sc_check" name="detail_position"></label>

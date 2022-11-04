@@ -192,6 +192,18 @@
 		    <artifactId>spring-security-config</artifactId>
 		    <version>5.0.8.RELEASE</version>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-taglibs</artifactId>
+		    <version>5.0.8.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-acl</artifactId>
+		    <version>5.0.8.RELEASE</version>
+		</dependency>
 		<!-- 스프링시큐리티 메이븐 끝 -->
 		
 		<!-- taglib 사용 -->

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,13 +36,19 @@
                         </a>
                     </article>
                     <article class="b_header_util">
-                    	<c:if test="${member == null }">
+                    	<sec:authorize access="isAnonymous()">
 	                        <div class="b_header_login"><a href="/login">로그인</a></div>
 	                        <div class="b_header_join"><a href="/join">회원가입</a></div>
-                        </c:if>
-                        <c:if test="${member != null }">
-                        	<div class="b_header_logout"><a href="/logout">로그아웃</a></div>
-                        </c:if>
+                        </sec:authorize>
+                        <sec:authorize access="isAuthenticated()">
+                        	<div class="b_header_logout">
+                        		<form action="/logout" method="post" id="logout">
+                       			<input id="logout_a_btn" type="submit" value="로그아웃">
+                       			<input name="${_csrf.parameterName}" type="hidden" value="${_csrf.token}"/>		
+                       			</form>
+                        	</div>
+                        	</sec:authorize>
+                        
                     </article>
                     <c:if test="${member != null}">
 	                    <article class="b_beader_user">

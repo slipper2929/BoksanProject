@@ -7,9 +7,73 @@
     http://www.springframework.org/schema/security
     http://www.springframework.org/schema/security/spring-security.xsd">
     
-   
+    
+<beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+  <!--  <http auto-config="true" use-expressions="true">
+    <csrf disabled="true"/>
+    <intercept-url pattern="/**" access="permitAll" />
+    <form-login login-page="/login" authentication-success-handler-ref="loginSuccessHandler"
+            authentication-failure-handler-ref="loginFailureHandler" login-processing-url="/auth"
+            username-parameter="id" password-parameter="pw" />
+    <logout logout-url="/logout" invalidate-session="true" logout-success-url="/login?status=logout" />
+    <session-management invalid-session-url="/login">
+        <concurrency-control max-sessions="1" error-if-maximum-exceeded="false" />
+    </session-management>
+</http> -->
+<!-- 
+use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false)
+ -->
+<http auto-config="true" use-expressions="true">
+	<csrf disabled="false"/>
+	<intercept-url pattern="/join" access="hasAnyRole('ROLE_USER','ROLE_GUEST')" />
+	<intercept-url pattern="/arrive" access="hasRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/**" access="permitAll" />
+	<form-login
+	username-parameter="id"
+	password-parameter="password"
+	login-processing-url="/login"
+	login-page="/login"
+	default-target-url="/" />
+	<logout
+	logout-url="/logout"
+	logout-success-url="/login"
+	delete-cookies="JSESSIONID"
+	/>
+</http>
+
+<authentication-manager>
+	<authentication-provider>
+		<!-- <user-service>
+			<user name="admin" password="{noop}admin" authorities="ROLE_ADMIN"/>
+			<user name="user" password="{noop}password" authorities="ROLE_USER"/>
+			<user name="a" password="{noop}a" authorities="ROLE_GUEST"/>
+		</user-service> -->
+		
+		<password-encoder hash="bcrypt"/>
+		<jdbc-user-service data-source-ref="dataSource" id="userService"
+	users-by-username-query="SELECT id as loginId, password as loginPwd, true as ENABLED FROM b_emp WHERE id=?"
+	authorities-by-username-query="SELECT id as loginID, AUTHORITY FROM b_emp WHERE id=?"/>
+	
+	
+	</authentication-provider>
+	
+</authentication-manager>
+
+<!--  secured method  -->
+<!-- <global-method-security secured-annotations="enabled" /> -->
+
+<!--  provider  -->
+<!-- <authentication-manager>
+    <authentication-provider ref="userAuthHelper" />
+</authentication-manager>-->
+
+
       
-    <beans:bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+      
+      
+      
+      
+    
 
 	
  

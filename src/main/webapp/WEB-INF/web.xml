@@ -6,7 +6,10 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+		<param-value>
+		/WEB-INF/spring/root-context.xml
+		/WEB-INF/spring/spring-security.xml
+		</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
@@ -46,6 +49,20 @@
 	<filter-mapping>
 		<filter-name>encoding</filter-name>
 		<servlet-name>appServlet</servlet-name>
+	</filter-mapping>
+
+	<!-- 한 유저가 다른 브라우저로 동시 로그인 막는 리스너 -->
+	<listener>
+	    <listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+	<!-- 스프링 시큐리티 프록시필터(이를 통해 인증,인가 수행) -->
+	<filter>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
 
 </web-app>
