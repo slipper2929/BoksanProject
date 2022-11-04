@@ -174,13 +174,12 @@
                 <div class="b_content b_content_width_m">
                     <form action="" method="post">
                         <p class="b_text b_inputform_name">
-                            <label><span>창고번지</span><input type="text" placeholder="이름을 입력해주세요" name="house_code"></label>
                         <p class="b_text b_select">
                             <label><span>기능</span>
                                 <select name="house_function">
                                     <option value="">선택안함</option>
                                     <c:forEach items="${hlist }" var="hlist">     
-                                    <option value="${hlist.house_function }">${hlist.function_name }</option>
+                                    <option value="${hlist.function_code }">${hlist.function_name }</option>
                                     </c:forEach>                                
                                 </select>
                             </label>
@@ -189,7 +188,7 @@
                             <label><span>out_num</span><input type="text" class="sc_check" name="out_num"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>in_num</span><input type="text" class="sc_check" name="in_num"></label>
+                            <label><span>in_num</span><input type="text" class="sc_check english_upper_check" name="in_num"></label>
                         </p>
                         <p class="b_text">
                             <label><span>detail_position</span><input type="text" class="sc_check" name="detail_position"></label>
@@ -241,7 +240,7 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
-
+	<!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>
 </body>
 </html>

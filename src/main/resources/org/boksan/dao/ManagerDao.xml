@@ -257,12 +257,12 @@
  	</insert>
  	
  	<!-- 창고등록화면 -->
- 	<select id="manager_house_add" resultType="org.boksan.model.house_functionDTO">
+ 	<select id="manager_house" resultType="org.boksan.model.house_functionDTO">
  		SELECT * 
  		FROM house_function
  	</select>
  	
- 	<resultMap type="org.boksan.model.house_functionDTO" id="house_functionDTO">
+<!--  	<resultMap type="org.boksan.model.house_functionDTO" id="house_functionDTO">
  		<result property="function_name" column="Function_name"></result>
  	</resultMap>
  	
@@ -273,10 +273,15 @@
  		<result property="in_num" column="In_num"></result>
  		<result property="detail_position" column="Detail_position"></result>
  		<collection property="house_functiondto" column="House_function"></collection>
- 	</resultMap>
- 	<!-- 창고등록 -->
+ 	</resultMap> -->
+  	<!-- 창고등록 -->
  	<insert id="manager_house_add">
- 		
+ 	INSERT INTO b_house
+	SELECT CONCAT(h.house_function,h.out_num,h.in_num) AS house_code, h.*
+	FROM (	
+	SELECT #{house_function} AS house_function, #{out_num} AS out_num, #{in_num} AS in_num, #{detail_position} AS detail_position
+	FROM DUAL
+	)AS h
  	</insert>
  	
  	

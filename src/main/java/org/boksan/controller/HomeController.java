@@ -123,7 +123,7 @@ public class HomeController {
 	
 	//창고등록
 	@RequestMapping(value = "/manager_house_add", method = RequestMethod.GET)
-	public String manager_house_add(Model model) {
+	public String manager_house(Model model) {
 		model.addAttribute("hlist",mgservice.manager_house());
 		return "manager_house_add";
 	}

@@ -2,16 +2,20 @@ package org.boksan.model;
 
 public class house_functionDTO {
 	
-	private int house_function;
+	private int function_code;
 	
 	private String function_name;
 
 	public int getHouse_function() {
-		return house_function;
+		return function_code;
 	}
 
-	public void setHouse_function(int house_function) {
-		this.house_function = house_function;
+	public int getFunction_code() {
+		return function_code;
+	}
+
+	public void setFunction_code(int function_code) {
+		this.function_code = function_code;
 	}
 
 	public String getFunction_name() {
@@ -24,7 +28,11 @@ public class house_functionDTO {
 
 	@Override
 	public String toString() {
-		return "house_functionDTO [house_function=" + house_function + ", function_name=" + function_name + "]";
+		return "house_functionDTO [function_code=" + function_code + ", function_name=" + function_name + "]";
 	}
+
+	
+
+	
 
 }
