@@ -43,6 +43,18 @@ function check(){
         }
         
     })
+    
+    //영어대문자만 받기
+        $(document).on("change", ".english_upper_check", function(){
+        
+        var regExp = /^[A-Z]+$/g;
+        
+        if(!regExp.test($(this).val())){
+            alert("영어 대문자로만 입력해주세요");
+            $(this).val("").focus();
+        }
+        
+    })
 
     //회원가입관련 검사---------------------
 

@@ -3,12 +3,13 @@ package org.boksan.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.boksan.dao.ManagerDao;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_deptDTO;
 import org.boksan.model.b_empDTO;
+import org.boksan.model.b_houseDTO;
+import org.boksan.model.house_functionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -85,16 +86,22 @@ public class ManagerServiceImpl implements ManagerService{
 				mgdao.manager_dept_code(map);				
 				System.out.println("서비스 1: " + emp_val_list);
 				mgdao.manager_approve(emp_val_list);//가입승인
-				System.out.println("서비스 2: " + emp_val_list);
-				
+				System.out.println("서비스 2: " + emp_val_list);	
 			}
-			
 			
 			return "";
 		}
 		//부서등록
 		public void dept_group_add(b_deptDTO ddto) {
 			mgdao.dept_group_add(ddto);
+		}
+		//창고등록화면
+		public ArrayList<house_functionDTO> manager_house(){
+			return mgdao.manager_house();
+		}
+		//창고등록
+		public void manager_house_add(b_houseDTO hdto) {
+			mgdao.manager_house_add(hdto);
 		}
 		
 }

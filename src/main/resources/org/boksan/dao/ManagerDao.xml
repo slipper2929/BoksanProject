@@ -233,12 +233,14 @@
  	<select id="emp_apdept" resultType="org.boksan.model.b_deptDTO">
  		select * from b_dept
  	</select>
+ 	
  	<!-- 가입승인 -->
  	<update id="manager_approve">
  		UPDATE b_approve 
  		set approve = 1
  		WHERE emp_code = #{emp_code}
  	</update>
+ 	
  	<!-- 가입승인시 부서코드선택 -->
  	<update id="manager_dept_code">
  	UPDATE b_emp
@@ -246,11 +248,40 @@
  	WHERE emp_code = #{emp_code}
  	</update>
  	
+ 	<!-- 부서등록 -->
  	<insert id ="dept_group_add">
  		INSERT INTO b_dept
 		SELECT (MAX(dept_code)+1) AS dept_code,
 		#{dept_name} AS dept_name
 		FROM b_dept
+ 	</insert>
+ 	
+ 	<!-- 창고등록화면 -->
+ 	<select id="manager_house" resultType="org.boksan.model.house_functionDTO">
+ 		SELECT * 
+ 		FROM house_function
+ 	</select>
+ 	
+<!--  	<resultMap type="org.boksan.model.house_functionDTO" id="house_functionDTO">
+ 		<result property="function_name" column="Function_name"></result>
+ 	</resultMap>
+ 	
+ 	<resultMap type="org.boksan.model.b_houseDTO" id="b_houseDTO">
+ 		<result property="house_code" column="House_code"></result>
+ 		<result property="house_function" column="House_function"></result>
+ 		<result property="out_num" column="Out_num"></result>
+ 		<result property="in_num" column="In_num"></result>
+ 		<result property="detail_position" column="Detail_position"></result>
+ 		<collection property="house_functiondto" column="House_function"></collection>
+ 	</resultMap> -->
+  	<!-- 창고등록 -->
+ 	<insert id="manager_house_add">
+ 	INSERT INTO b_house
+	SELECT CONCAT(h.house_function,h.out_num,h.in_num) AS house_code, h.*
+	FROM (	
+	SELECT #{house_function} AS house_function, #{out_num} AS out_num, #{in_num} AS in_num, #{detail_position} AS detail_position
+	FROM DUAL
+	)AS h
  	</insert>
  	
  	
