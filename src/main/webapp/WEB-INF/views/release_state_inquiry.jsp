@@ -177,19 +177,22 @@
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="release_inquiry">
+                        <div class="b_search" style="display:none">
+	                        <form id="searchForm" action="/release_state_inquiry">
+	                            <input type="button" class="b_submit" id="searchbtn">
+	                            <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+	                            <!--  <input type="text" class="b_input_text sc_check" name="search_text">-->
+	                        </form>
+	                        <p class="b_explain">*상품명으로 검색가능합니다.</p>
+	                    </div> <!--b_search-->
                         <div>
-                            <p class="btn_s_g"><input type="submit" value="출고요청수정"></p>
-                            <p>*수정은 대기상태만 가능합니다.</p>                       
-                        </div>
-                        <div>
-                            <select name="" id="">
+                            <select name="" id="situation_choice">
                                 <option value="">선택안함</option>
-                                <option value="">대기</option>
-                                <option value="">취소</option>
-                                <option value="">수락</option>
-                                <option value="">출고완료</option>
+                                <option value="대기">대기</option>
+                                <option value="취소">취소</option>
+                                <option value="수락">수락</option>
                             </select>
-                            <p class="btn_s_b"><input type="submit" value="보기"></p>
+                            <p class="btn_s_b"><input type="button" value="보기" id="situation_search_btn"></p>
                         </div>
                     </div>
                     <table class="b_table margin_t50">
@@ -208,45 +211,40 @@
                             </th>
                             
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>01</p></td>
-                            <td><p>절인배추</p></td>
-                            <td><p>50kg</p></td>
-                            <td><p>대기</p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>02</p></td>
-                            <td><p>배추김치5kg</p></td>
-                            <td><p>55kg</p></td>
-                            <td><p>수락</p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>03</p></td>
-                            <td><p>깍두기양념장</p></td>
-                            <td><p>10kg</p></td>
-                            <td><p>취소(취소사유:재고부족/재신청요망)</p></td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>04</p></td>
-                            <td><p>부추</p></td>
-                            <td><p>20kg</p></td>
-                            <td><p>출고완료</p></td>
-                        </tr>
+                        <c:forEach items="${rslist}" var="rs">
+	                        <tr class="b_table_data">
+	                            <td><p>${rs.product_code}</p></td>
+	                            <td><p>${rs.product_name}</p></td>
+	                            <td><p>${rs.release_num}kg</p></td>
+	                            <td><p>${rs.situation}</p></td>
+	                        </tr>
+                        </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                    <form id="pageForm" action="/release_state_inquiry">
+                    	<div class="b_pager">
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/release_state_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_state_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/release_state_inquiry?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_state_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -288,5 +286,11 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
+    
+    <!--pageMaker js-->
+    <script src="../resources/js/pageMaker.js"></script>
+    
+    <!-- release_state_inquiry js -->
+    <script src="../resources/js/release_state_inquiry.js"></script>
 </body>
 </html>

@@ -127,6 +127,7 @@ public class AjaxController {
 		return relservice.release_recipe_select(objdata);
 	}
 	
+
 	//직원조회 수정완료
 	@PostMapping(value="/emp_update",
 			produces = "application/json; charset=utf-8")
@@ -136,6 +137,17 @@ public class AjaxController {
 		return "부서가 변경되었습니다.";
 	}
 	
+
+	//출고요청결제 취소
+	@PostMapping(value = "/release_cancel",
+			produces = "application/json; charset=utf-8")
+	public String release_cancel(int data) {
+		
+		relservice.release_cancel(data);
+		
+		return "취소가 되었습니다.";
+	}
+
 
 	//승인요청
 	@PostMapping(value="/approve_success",
