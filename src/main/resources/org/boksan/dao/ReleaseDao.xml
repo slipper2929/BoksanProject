@@ -164,6 +164,55 @@
 	
 	<select id="release_order_list" resultType="org.boksan.model.b_release_listDTO">
 		SELECT *
-		FROM b_release_list
+		FROM (
+			select @rownum:=@rownum+1 as rownum, r.*
+			from (select @rownum:=0) as tmp, b_release_list r
+		) as b_release_list
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
 	</select>
+	
+	<!-- 페이징 처리를 위한 전체건수(출고지시목록) -->
+	<select id="getTotalCount_order" resultType="int">
+	 		select count(*)
+	 		from b_release_list
+ 	</select>
+ 	
+ 	<select id="pallet_num_select" resultType="int">
+ 		select stock_num
+ 		from b_stock
+ 		where pallet_num = #{pallet_num}
+ 	</select>
+ 	
+ 	<update id="release_stock_update">
+ 		UPDATE b_stock
+		SET arrive_date = NULL,
+			stock_num = NULL,
+			house_code = NULL,
+			product_barcode = NULL
+		WHERE pallet_num = #{release_list_code}
+ 	</update>
+ 	
+ 	<update id="release_stock_update_zero">
+ 		UPDATE b_stock
+		SET stock_num = stock_num-#{release_num}
+		WHERE pallet_num = #{release_list_code}
+ 	</update>
+ 	
+ 	<delete id="release_list_delete">
+ 		DELETE FROM b_release_list
+ 		WHERE release_list_code = #{release_list_code}
+ 	</delete>
+ 	
+ 	<select id="release_list_check" resultType="int">
+ 		SELECT COUNT(*)
+		FROM b_release_list
+		WHERE release_code = #{release_code}
+ 	</select>
+ 	
+ 	<delete id="release_delete">
+ 		DELETE FROM b_release
+ 		WHERE release_code = #{release_code}
+ 	</delete>
 </mapper>

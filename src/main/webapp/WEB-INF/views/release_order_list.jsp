@@ -39,6 +39,7 @@
                             <h1>로고입니다</h1>
                         </a>
                     </article>
+                    
                     <article class="b_header_util">
                     	<c:if test="${member == null }">
 	                        <div class="b_header_login"><a href="/login">로그인</a></div>
@@ -175,12 +176,16 @@
                     ${rolist}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
+                <div class="b_search" style="display:none">
+                    <form id="searchForm" action="/release_order_list">
+                        <input type="button" class="b_submit" id="searchbtn">
+                        <input type="text" class="b_input_text sc_check" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+                        <!--  <input type="text" class="b_input_text sc_check" name="search_text">-->
+                    </form>
+                    <p class="b_explain">*상품명으로 검색가능합니다.</p>
+                </div> <!--b_search-->
                 <div class="b_content b_content_width_m">
-                        <select name="" id="">
-                            <option value="1">선택안함</option>
-                            <option value="2">출고대기</option>
-                            <option value="3">출고완료</option>
-                        </select>
+                    <form method="post" id="release_form" action="/release_stock_update">
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
                             <th>
@@ -202,82 +207,53 @@
                                 <p>출고완료</p>
                             </th>
                         </tr>
+                        <c:forEach items="${rolist}" var="ro">
                         <tr class="b_table_data">
-                            <td><p>026</p></td>
-                            <td class="ttt"><p>절인배추</p></td>
-                            <td><p>20kg</p></td>
-                            <td><p>B41</p></td>
+                            <td><p>${ro.release_list_code}</p></td>
+                            <td class="ttt"><p>${ro.product_name}</p></td>
+                            <td><p>${ro.release_num}kg</p></td>
+                            <td><p class="house_address_num">${ro.house_address}</p></td>
                             <td class="release_location_bacode">
                                 <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요">
+                                    <input type="text" placeholder="로케이션바코드를 입력하세요" class="check_house_address_num">
                                 </p>
                             </td>
                             <td>
-                                <p class="release_order_btn btn_s_b"><input type="submit" value="출고완료"></p>
+                                <p class="release_order_btn btn_s_b"><input type="button" value="출고완료" class="release_btn"></p>
                                 <p class="release_after">출고가 완료되었습니다.</p>
-                            </td>
-
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>027</p></td>
-                            <td class="ttt"><p>절인배추</p></td>
-                            <td><p>10kg</p></td>
-                            <td><p>B42</p></td>
-                            <td class="release_location_bacode">
-                                <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="release_order_btn btn_s_b"><input type="submit" value="출고완료"></p>
-                                <p class="release_after">출고가 완료되었습니다.</p>
+                                <input type="hidden" class="release_list_code" value="${ro.release_list_code}">
+                                <input type="hidden" class="release_num" value="${ro.release_num}">
+                                <input type="hidden" class="release_code" value="${ro.release_code}">
                             </td>
                         </tr>
-                        <tr class="b_table_data">
-                            <td><p>014</p></td>
-                            <td><p>무</p></td>
-                            <td><p>3kg</p></td>
-                            <td><p>A8D</p></td>
-                            <td class="release_location_bacode">
-                                <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="release_order_btn btn_s_b"><input type="submit" value="출고완료"></p>
-                                <p class="release_after">출고가 완료되었습니다.</p>
-                            </td>
-                        </tr>
-                        <tr class="b_table_data">
-                            <td><p>035</p></td>
-                            <td><p>부추</p></td>
-                            <td><p>2kg</p></td>
-                            <td><p>A97</p></td>
-                            <td class="release_location_bacode">
-                                <p>
-                                    <input type="text" placeholder="로케이션바코드를 입력하세요">
-                                </p>
-                            </td>
-                            <td>
-                                <p class="release_order_btn btn_s_b"><input type="submit" value="출고완료"></p>
-                                <p class="release_after">출고가 완료되었습니다.</p>
-                            </td>
-                        </tr>
+                        </c:forEach>
                     </table>
-                    <div class="b_pager">
-                        <div><a href=""><span>이전</span></a></div>
-                        <div><a href=""><span>1</span></a></div>
-                        <div><a href=""><span>2</span></a></div>
-                        <div><a href=""><span>3</span></a></div>
-                        <div><a href=""><span>4</span></a></div>
-                        <div><a href=""><span>5</span></a></div>
-                        <div><a href=""><span>6</span></a></div>
-                        <div><a href=""><span>7</span></a></div>
-                        <div><a href=""><span>8</span></a></div>
-                        <div><a href=""><span>9</span></a></div>
-                        <div><a href=""><span>10</span></a></div>
-                        <div><a href=""><span>다음</span></a></div>
-                    </div>
+                    </form>
+                    <form id="pageForm" action="/release_order_list">
+                    	<div class="b_pager">
+	                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
+							<input type="hidden" id="amount" name="amount" value="${pageMaker.cri.amount}">
+	                        
+							<input type="hidden" id="keyword" name="keyword" value="${pageMaker.cri.keyword}">
+							
+							<c:choose>
+								<c:when test="pageMaker.cri.keyword == null">
+		                    		<div><a class="pageBtn" href="/release_order_list?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_order_list?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+                    			</c:when>
+                    			<c:otherwise>
+                    				<div><a class="pageBtn" href="/release_order_list?pagenum=${pageMaker.startPage-1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>이전</span></a></div>
+			                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+			                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
+			                        	</c:forEach>
+			                        <div><a class="pageBtn" href="/release_order_list?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}&keyword=${pageMaker.cri.keyword}"><span>다음</span></a></div>
+                    			</c:otherwise>
+                    		</c:choose>
+                    	</div>
+                    </form>
                 </div>
             </section>
         </div> <!--#container-->
@@ -322,5 +298,8 @@
 
     <!--release js-->
     <script src="../resources/js/release_order_list.js"></script>
+    
+    <!-- pageMaker -->
+    <script src="../resources/js/pageMaker.js"></script>
 </body>
 </html>

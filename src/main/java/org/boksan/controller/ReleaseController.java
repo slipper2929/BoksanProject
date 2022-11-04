@@ -35,4 +35,15 @@ public class ReleaseController {
 		
 		return "redirect:/release_pay";
 	}
+	
+	//Àç°í update
+	@RequestMapping(value = "/release_stock_update", method = RequestMethod.POST)
+	public String release_stock_update(b_release_listDTO rldto) {
+		
+		System.out.println(rldto);
+		
+		rservice.release_stock_update(rldto);
+		
+		return "redirect:/release_order_list";
+	}
 }

@@ -35,5 +35,11 @@ public interface ReleaseService {
 	public void release_cancel(int data);
 	
 	//출고지시목록
-	public ArrayList<b_release_listDTO> release_order_list();
+	public ArrayList<b_release_listDTO> release_order_list(Criteria cri);
+	
+	//페이징 처리를 위한 전체건수(출고지시목록)
+	public int getTotalCount_order(Criteria cri);
+	
+	//재고 update
+	public void release_stock_update(b_release_listDTO rldto);
 }

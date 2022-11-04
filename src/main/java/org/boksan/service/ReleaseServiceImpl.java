@@ -126,10 +126,42 @@ public class ReleaseServiceImpl implements ReleaseService {
 	}
 	
 	//출고지시목록
-	public ArrayList<b_release_listDTO> release_order_list(){
+	public ArrayList<b_release_listDTO> release_order_list(Criteria cri){
 		
-		return rdao.release_order_list();
+		return rdao.release_order_list(cri);
 		
+	}
+	
+	//페이징 처리를 위한 전체건수(출고지시목록)
+	public int getTotalCount_order(Criteria cri) {
+		
+		return rdao.getTotalCount_order(cri);
+		
+	}
+	
+	//재고 update
+	public void release_stock_update(b_release_listDTO rldto) {
+		
+		int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
+		
+		System.out.println("파레트 넘 셀렉");
+		System.out.println(pallet_num);
+		
+		if(pallet_num == rldto.getRelease_num()) {
+			rdao.release_stock_update(rldto);
+		} else {
+			rdao.release_stock_update_zero(rldto);
+		}
+		
+		//b_release_list삭제
+		rdao.release_list_delete(rldto);
+		
+		//b_release삭제
+		int release_list_check = rdao.release_list_check(rldto);
+		
+		if(release_list_check == 0) {
+			rdao.release_delete(rldto);
+		}
 	}
 	
 }

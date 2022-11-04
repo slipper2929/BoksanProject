@@ -44,5 +44,26 @@ public interface ReleaseDao {
 	public void release_cancel(int data);
 	
 	//출고지시목록
-	public ArrayList<b_release_listDTO> release_order_list();
+	public ArrayList<b_release_listDTO> release_order_list(Criteria cri);
+	
+	//페이징 처리를 위한 전체건수(출고지시목록)
+	public int getTotalCount_order(Criteria cri);
+	
+	//pallet_num select
+	public int pallet_num_select(String pallet_num);
+	
+	//재고 update
+	public void release_stock_update(b_release_listDTO rldto);
+	
+	//재고 update(파레트넘이랑 출고)
+	public void release_stock_update_zero(b_release_listDTO rldto);
+	
+	//release_list 삭제
+	public void release_list_delete(b_release_listDTO rldto);
+	
+	//release 삭제를 위한 release_list 조회
+	public int release_list_check(b_release_listDTO rldto);
+	
+	//release 삭제
+	public void release_delete(b_release_listDTO rldto);
 }

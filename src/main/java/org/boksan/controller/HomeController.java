@@ -286,9 +286,12 @@ public class HomeController {
 	
 	//출고지시목록
 	@RequestMapping(value = "/release_order_list", method = RequestMethod.GET)
-	public String release_order_list(Model model) {
+	public String release_order_list(Model model, Criteria cri) {
 		
-		model.addAttribute("rolist", relservice.release_order_list());
+		model.addAttribute("rolist", relservice.release_order_list(cri));
+		
+		//페이징처리
+		model.addAttribute("pageMaker",new PageDTO(cri,relservice.getTotalCount_order(cri)));
 		
 		return "release_order_list";
 	}
