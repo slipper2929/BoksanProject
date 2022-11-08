@@ -103,8 +103,30 @@
 		 	where product_name like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
+ 	<!-- <resultMap type="org.boksan.model.b_productDTO" id="Detail_productDTO">
+ 		<result property="product_code" column="Product_code"></result>
+ 	</resultMap>
  	
+ 	<reslutMap type="org.boksan.model.materiaDTO" id="Detail_materiaDTO">
+ 		<result property="material_num" column="Material_num"></result>
+ 	</reslutMap>
+ 	
+ 	<resultMap type="org.boksan.model.b_empDTO" id="Detail_empDTO">
+ 		<result property="name" column="Name"></result>
+ 	</resultMap>
+ 	<resultMap type="org.boksan.model.RecipeDTO" id="RecipeDTO">
+ 		<result property="recipe_code" column="Recipe_code"></result>
+ 		<result property="product_name" column="Product_name"></result>
+ 		<result property="gross_weight" column="Gross_weight"></result>
+ 		<result property="content" column="Content"></result>
+ 		<result property="production_data" column="Production_data"></result>
+ 		<result property="emp_code" column="Emp_code"></result>
+ 		<collection property="productdto" resultMap="Detail_productDTO"></collection>
+ 		<collection property="materiadto" resultMap="Detail_materiaDTO"></collection>
+ 		<collection property="empdto" resultMap="Detail_empDTO"></collection>
+ 	</resultMap> -->	
  	<!-- 레시피 상세 -->
+ 	
  	<select id="recipe_detail" resultType="org.boksan.model.Recipe_addDTO">
  		SELECT r.*, m.product_code, m.material_num, p.product_name AS material_name, e.name AS maker_name
 		FROM b_recipe r JOIN material m

@@ -8,6 +8,28 @@ public class RecipeDTO {
 	private String content;
 	private String production_date;
 	private int emp_code;
+	
+	private b_productDTO productdto;
+	private materiaDTO materiadto;
+	private b_empDTO empdto;
+	public b_empDTO getEmpdto() {
+		return empdto;
+	}
+	public void setEmpdto(b_empDTO empdto) {
+		this.empdto = empdto;
+	}
+	public materiaDTO getMateriadto() {
+		return materiadto;
+	}
+	public void setMateriadto(materiaDTO materiadto) {
+		this.materiadto = materiadto;
+	}
+	public b_productDTO getProductdto() {
+		return productdto;
+	}
+	public void setProductdto(b_productDTO productdto) {
+		this.productdto = productdto;
+	}
 	public int getRecipe_code() {
 		return recipe_code;
 	}

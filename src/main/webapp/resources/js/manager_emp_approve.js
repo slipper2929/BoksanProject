@@ -3,6 +3,8 @@
  */
 
 $(function(){
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 	$(document).on("click", ".approve_check", function(){
 		if($(this).is(':checked')){
 			$(this).val($(this).parents("tr").find(".emp_approve").val());
@@ -27,11 +29,13 @@ $(function(){
 			}
 			
 		}
-	$
+	
 		
 		
 		console.log(emp_val);
 		console.log(dept_val);
+		
+		
 		
 		$.ajax({
 			type : "post",
@@ -42,6 +46,9 @@ $(function(){
 				"dept_val" : dept_val
 				},
 			dataType : "text",
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
 			success : function(data){
 				alert(data)
 				location.reload();
@@ -70,6 +77,9 @@ $(function(){
 			traditional : true,
 			data : {"emp_val" : emp_val},
 			dataType : "text",
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
 			success : function(data){
 				alert(data)
 				location.reload();

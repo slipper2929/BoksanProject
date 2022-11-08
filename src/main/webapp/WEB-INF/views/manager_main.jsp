@@ -175,9 +175,6 @@
                         <h3><a href="/manager_emp_inquiry">직원조회</a></h3>
                     </article>
                     <article>
-                        <h3><a href="/manager_authority">업무권한부여</a></h3>
-                    </article>
-                    <article>
                         <h3><a href="/manager_emp_approve">가입요청승인</a></h3>
                     </article>
                     <article>
