@@ -4,6 +4,16 @@ public class Product_groupDTO {
 	
 	private int product_group_code;
 	private String product_group_name;
+	private String product_group_type;
+	
+	
+	
+	public String getProduct_group_type() {
+		return product_group_type;
+	}
+	public void setProduct_group_type(String product_group_type) {
+		this.product_group_type = product_group_type;
+	}
 	public int getProduct_group_code() {
 		return product_group_code;
 	}
@@ -19,7 +29,9 @@ public class Product_groupDTO {
 	@Override
 	public String toString() {
 		return "Product_groupDTO [product_group_code=" + product_group_code + ", product_group_name="
-				+ product_group_name + "]";
+				+ product_group_name + ", product_group_type=" + product_group_type + "]";
 	}
+	
+	
 	
 }

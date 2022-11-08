@@ -4,8 +4,8 @@
 
 $(function(){
 	$("#pallet_select_btn").on("click", function(){
-		var dps = $("#Pcode").val();
-		var dpsobj = {"data" : dps}
+		//var dps = $("#Pcode").val();
+		var dpsobj = {"data" : "data"}
 		console.log(dpsobj)
 		$.ajax({
 			url:"/delete_pallet_select",

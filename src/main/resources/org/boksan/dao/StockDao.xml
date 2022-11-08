@@ -8,17 +8,17 @@
 
 	<!-- 파레트 추가 -->
 	<insert id="PalletInsert">
-		INSERT INTO b_stock(pallet_num, product_code)
+		INSERT INTO b_stock(pallet_num)
 		SELECT LPAD(CONVERT(MAX(pallet_num),SIGNED)+1,3,'0') 
-		AS pallet_num, #{product_code} AS product_code
+		AS pallet_num
 		FROM b_stock
 	</insert>
 	
 	<!-- 삭제할 파레트 찾기 -->
-	<select id="DeletePalletSelect" resultType="string">
+	<select id="DeletePalletSelect" resultType="org.boksan.model.b_stockDTO">
 		SELECT pallet_num 
 		FROM b_stock
-		WHERE product_code = #{data} and stock_num is null
+		WHERE stock_num is null
 	</select>
 	
 	<!--  파레트 삭제 -->

@@ -216,7 +216,9 @@
                                     <select name="" id="" class="recipe_product_selectbox pg_box">
                                         <option value="">선택안함</option>
                                         <c:forEach items="${pglist}" var="pg">
-			                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+                                        	<c:if test="${pg.product_group_type == 'A' || pg.product_group_type == 'B' }">
+			                            		<option value="${pg.product_group_code}">${pg.product_group_name}</option>
+			                            	</c:if>
 			                        	</c:forEach>
                                     </select>
                                     <select id="" class="recipe_product_selectbox product_code_list">

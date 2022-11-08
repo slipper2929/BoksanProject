@@ -172,59 +172,25 @@
 
         
         <div id="container">
-            <section class="b_inputform_main" >
+            <section class="b_inputform_main b_inquiry_main" >
                 <div class="b_inputform_title">
                     <h1>파레트관리</h1>
                 </div>
-                <h2 class="small_title">추가</h2>
-                <div class="b_content b_content_width_l">
+                <div class="b_content b_content_width_m">
                 	<form action="/pallet" method="post" id="form_add">
-	                    <p class="b_text b_select b_select1">
-	                    	
-	                        <label><span>상품선택</span>
-	                             <select name="" id="" class="pg_box">
-	                                        <option value="">선택안함</option>
-	                                        <c:forEach items="${pglist}" var="pg">
-				                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
-				                        	</c:forEach>
-	                                    </select>
-	                                    <select name="product_code" id="" class="">
-	                                        <option value="">선택안함</option>
-	                                    </select>
-	                        </label>
-	                    </p>
+	                   
 	                    <p class="b_text b_select b_inputBox">
-	                        <label><span>수량</span>
-	                            <input type="text" name="pallet_count" value="" class="num_check" id="pallet_count">
+	                        <label><span>수량추가</span>
+	                            <input type="text" name="pallet_count" value="" class="num_check" id="pallet_count" placeholder="수량을 입력하세요">
 	                        </label>
 	                    </p>
 	                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기" id="pallet_add_btn"></p>
 	                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
-                </div>
-                
-            </section>
-            <section class="b_inquiry_main">
-                <h2 class="small_title">삭제</h2>
-                <p class="b_pallet_ps">*상품코드에 해당하는 파레트 중 빈 파레트만 찾아서 리스트를 만듭니다.</p>
-                
-	                <p class="b_text b_select b_select3">
-	                    <label><span>상품선택</span>
-	                        <select name="" id="" class="pg_box">
-	                                        <option value="">선택안함</option>
-	                                        <c:forEach items="${pglist}" var="pg">
-				                            	<option value="${pg.product_group_code}">${pg.product_group_name}</option>
-				                        	</c:forEach>
-	                                    </select>
-	                                    <select name="product_code" id="Pcode" class="">
-	                                        <option value="">선택안함</option>
-	                                    </select>
-	                    </label>
-	                </p>
-	                <p class="btn_s_b pallet_delete_list_btn"><input type="button" value="삭제목록불러오기" id="pallet_select_btn"></p>
+                </div>    
                 
                 <form action="/pallet_delete" method="post" id="pallet_delete_form">
-                <table class="b_table margin_t50" id = "PS_table">
+                <table class="b_table margin_t50" id = "PS_table scroll">
                     <tr class="b_table_title">
                         <th>
                             <p>파레트번호</p>
@@ -232,14 +198,23 @@
                         <th>
                             <p>삭제</p>
                         </th>
-                    </tr>   
-                    	           
+                    </tr>
+                    
+                   	<c:forEach items="${plist}" var="pl">
+                   		<tr class="b_table_data">
+                   			<td><p>${pl.pallet_num}</p></td>
+                   			<td><p><input type="checkbox" class="pallet_check" value=""></p></td>
+                   		</tr>
+                   	</c:forEach>
+                   	     
                 </table>
                 <p class="pallet_all_check"><input type="checkbox" id="pallet_all_check">전체체크하기</p>
                 <p class="btn_l_r pallet_delete_check_btn"><input type="button" value="체크된 파레트 삭제하기"></p>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                 </form>
+                
             </section>
+            
         </div> <!--#container-->
 
 

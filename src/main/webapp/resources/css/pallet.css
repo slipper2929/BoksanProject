@@ -7,7 +7,7 @@
 
 .b_inputform_main{
     padding-bottom: 50px;
-    border-bottom: 3px solid rgb(200, 200, 200);
+    
 }
 
 #container .b_content>form{
@@ -21,36 +21,31 @@
 }
 
 #container .b_inputBox{
-    width: 50%;
-    
+    width: 60%;
+    margin-left : 100px;
 }
 
 #container .b_text>label>span{
-    width: 23%;
+    width: 30%;
     margin-right: 0;
 }
 
 #container .b_inputBox>label>span{
-    width: 15%;
+    width: 30%;
     margin-right: 0;
 }
 
 
 
-#container .b_select>label>select{
-    width: 32%;
 
-}
 
-#container .b_inputBox>label>select{
-    width: 32%;
-}
+
 
 
 .pallet_add_btn{
     position: absolute;
     top: 0px;
-    right: 20px;
+    right: 100px;
     
 }
 
@@ -106,9 +101,13 @@
     line-height: 39px;
 }
 
+#container #scroll{
+	overflow-y: scroll;
+    height:500px;
+}
+
 #container .b_table{
     width: 500px;
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 
@@ -125,7 +124,7 @@
 
 .pallet_delete_check_btn{
     position: absolute;
-    bottom: -100px;
+    bottom: -50px;
     left: 50%;
     margin-left: -175px;
 }

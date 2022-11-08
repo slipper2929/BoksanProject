@@ -20,7 +20,8 @@
 	  <insert id="Product_group_addInsert">
 	  	INSERT INTO b_product_group
 	  	SELECT (MAX(product_group_code)+1) AS product_group_code,
-	  	#{product_group_name} AS product_group_name
+	  	#{product_group_name} AS product_group_name,
+	  	#{product_group_type} AS product_group_type
 	  	FROM b_product_group
 	  </insert>
 	  
