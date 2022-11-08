@@ -262,18 +262,6 @@
  		FROM house_function
  	</select>
  	
-<!--  	<resultMap type="org.boksan.model.house_functionDTO" id="house_functionDTO">
- 		<result property="function_name" column="Function_name"></result>
- 	</resultMap>
- 	
- 	<resultMap type="org.boksan.model.b_houseDTO" id="b_houseDTO">
- 		<result property="house_code" column="House_code"></result>
- 		<result property="house_function" column="House_function"></result>
- 		<result property="out_num" column="Out_num"></result>
- 		<result property="in_num" column="In_num"></result>
- 		<result property="detail_position" column="Detail_position"></result>
- 		<collection property="house_functiondto" column="House_function"></collection>
- 	</resultMap> -->
   	<!-- 창고등록 -->
  	<insert id="manager_house_add">
  	INSERT INTO b_house

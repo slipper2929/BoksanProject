@@ -49,7 +49,7 @@ $(document).on("click" , ".success_btn", function(){
 	$(this).parents("tr").find(".inquiry_delete").show();
 	$(this).parents("tr").find(".success_btn").hide();
 	$(this).parents("tr").find(".pilist_out").hide();
-	location.reload();
+	//location.reload();
 })
 
 $(document).on("click",".inquiry_delete",function(){

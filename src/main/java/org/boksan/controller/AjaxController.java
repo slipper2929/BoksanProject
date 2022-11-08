@@ -110,9 +110,9 @@ public class AjaxController {
 	@PostMapping(value = "/product_Iupdate",
 			produces = "application/json; charset=utf-8")
 	public b_productDTO product_Iupdate_ajax(b_productDTO pdto) {
-		//System.out.println("전 : " + pdto);
+		System.out.println("전 : " + pdto);
 		pservice.update_product(pdto);
-		//System.out.println("후 : " + pdto);
+		System.out.println("후 : " + pdto);
 		
 		return pdto;
 	}

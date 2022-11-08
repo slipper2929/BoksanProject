@@ -29,7 +29,7 @@
 
 
 
-    <title>복산김치WMS_입고요청</title>
+    <title>복산김치WMS_입고신청</title>
 </head>
 <body>
    <div id="wrap">
