@@ -206,7 +206,8 @@
                         <div class="b_submit btn_l_b">
                         	
                             <input type="submit" value="회원가입 요청">
-                        </div>    
+                        </div>
+                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                 </div> <!--.b_content-->
             </section>

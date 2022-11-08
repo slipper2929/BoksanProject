@@ -1,4 +1,7 @@
 $(function(){
+	
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 
 	$(".order_btn").on("click", function(){
 	alert("dd")
@@ -35,6 +38,9 @@ $(function(){
 			type:"post",
 			data: {"data" : release_code_cancel},
 			dataType:'text',
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
 			success: function(data){
 				alert(data)
 				location.reload();

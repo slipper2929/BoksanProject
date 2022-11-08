@@ -24,19 +24,24 @@ $(document).on("click" , ".success_btn", function(){
 	}
 	
 	console.log(listv)
+	var token = $("meta[name='_csrf']").attr("content");
+	var header = $("meta[name='_csrf_header']").attr("content");
 	
 	$.ajax({
 		type : "post",
 		url : "/product_Iupdate",
 		data : listv,
 		dataType: "json",
+		beforeSend : function(xhr){
+		xhr.setRequestHeader(header, token);
+		},
 		success : function(result){
 			console.log(result)
 			alert("상품정보가 변경되었습니다.")
 			
 		},
-		error : function(e){
-			alert("error : " + e);
+		error : function(request,status,error){
+			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
 	})
 	$(this).parents("tr").find(".pilist_on").show();

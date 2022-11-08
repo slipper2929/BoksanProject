@@ -199,6 +199,7 @@
 	                        </label>
 	                    </p>
 	                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기" id="pallet_add_btn"></p>
+	                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                 </div>
                 
@@ -236,6 +237,7 @@
                 </table>
                 <p class="pallet_all_check"><input type="checkbox" id="pallet_all_check">전체체크하기</p>
                 <p class="btn_l_r pallet_delete_check_btn"><input type="button" value="체크된 파레트 삭제하기"></p>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                 </form>
             </section>
         </div> <!--#container-->

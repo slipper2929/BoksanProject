@@ -202,7 +202,8 @@
                         <p class="b_product_ps">*1파레트에 들어갈수 있는 최대중량(KG단위)</p>
                         <div class="b_submit btn_l_b">
                             <input type="submit" value="상품등록">
-                        </div>    
+                        </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     </form>
                 </div> <!--.b_content-->
             </section>

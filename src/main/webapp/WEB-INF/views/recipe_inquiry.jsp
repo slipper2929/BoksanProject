@@ -220,6 +220,7 @@
 	                           			<input type="submit" value="삭제">
 	                           			<input type="text" value="${rlist.recipe_code}" name="recipe_code" style="display:none">
 	                            	</p>
+	                            	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                             	</form>
                             </td>
                         </tr>

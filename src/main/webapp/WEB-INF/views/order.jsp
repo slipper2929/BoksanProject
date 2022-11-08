@@ -204,7 +204,8 @@
                         <p class="b_text b_inputform_name" id="b_order_price">예상구매액<span></span></p>
                         <div class="b_submit btn_l_b">
                             <input type="submit" value="발주신청">
-                        </div>    
+                        </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">  
                     </form>
                 </div> <!--.b_content-->
             </section>

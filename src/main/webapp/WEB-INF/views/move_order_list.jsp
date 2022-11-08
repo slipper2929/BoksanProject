@@ -226,6 +226,7 @@
                         </c:forEach>
                         
                     </table>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                     <form id="pageForm" action="/move_order_list">
                     <div class="b_pager">
@@ -251,6 +252,7 @@
                     			</c:otherwise>
                     		</c:choose>
                     	</div>
+                    	
                     </form>
                 </div>
             </section>

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!--노토산스 글꼴-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -254,6 +257,7 @@
                                 <p class="btn_s_g"><input type="button" class="up_btn" value="수정"></p>
                                 <p class="btn_s_b">
 	                                <input type="button" class="success_btn" value="완료">
+	                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 </p>
                                 <p class="btn_s_r">
                                 	<input type="button" class="inquiry_delete" value="삭제">
@@ -263,6 +267,7 @@
                         </tr>
                         </c:forEach>
                     </table>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     </form>
                     <form id="pageForm" action="/product_inquiry">
                     <div class="b_pager">

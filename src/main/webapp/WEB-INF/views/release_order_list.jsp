@@ -228,6 +228,7 @@
                         </tr>
                         </c:forEach>
                     </table>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                     <form id="pageForm" action="/release_order_list">
                     	<div class="b_pager">

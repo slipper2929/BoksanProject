@@ -241,6 +241,7 @@
                     </tr>
                 </table>
                 <p class="btn_l_b release_list_btn"><input type="button" value="출고요청하기"></p>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
             	</form>
             </section>
         </div>

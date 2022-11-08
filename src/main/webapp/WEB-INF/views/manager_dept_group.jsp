@@ -178,7 +178,8 @@
                         </p>
                         <div class="b_submit btn_l_b">
                             <input type="submit" value="부서등록">
-                        </div>    
+                        </div>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                 </div> <!--.b_content-->
             </section>
