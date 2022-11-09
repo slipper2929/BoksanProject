@@ -190,7 +190,7 @@
                 </div>    
                 
                 <form action="/pallet_delete" method="post" id="pallet_delete_form">
-                <table class="b_table margin_t50" id = "PS_table scroll">
+                <table class="b_table margin_t50" id = "PS_table">
                     <tr class="b_table_title">
                         <th>
                             <p>파레트번호</p>
@@ -199,15 +199,18 @@
                             <p>삭제</p>
                         </th>
                     </tr>
-                    
+                 </table>
+                 <div id = "scroll">
+                 <table class="b_table margin_t50 tablerd">
                    	<c:forEach items="${plist}" var="pl">
                    		<tr class="b_table_data">
                    			<td><p>${pl.pallet_num}</p></td>
-                   			<td><p><input type="checkbox" class="pallet_check" value=""></p></td>
+                   			<td><p><input type="checkbox" class="pallet_check" value="${pl.pallet_num}"></p></td>
                    		</tr>
                    	</c:forEach>
                    	     
                 </table>
+                </div>
                 <p class="pallet_all_check"><input type="checkbox" id="pallet_all_check">전체체크하기</p>
                 <p class="btn_l_r pallet_delete_check_btn"><input type="button" value="체크된 파레트 삭제하기"></p>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 

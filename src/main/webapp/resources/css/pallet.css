@@ -104,12 +104,26 @@
 #container #scroll{
 	overflow-y: scroll;
     height:500px;
+    width: 500px;
+    margin: 0 auto;
 }
 
 #container .b_table{
     width: 500px;
-    margin-bottom: 30px;
 }
+
+#container .b_table_title th:first-child{
+	width: 351px;
+}
+
+#container .tablerd{
+	width: 480px;
+}
+
+#container .tablerd tr td:first-child{
+	width: 350px;
+}
+
 
 .pallet_all_check{
     text-align: center;

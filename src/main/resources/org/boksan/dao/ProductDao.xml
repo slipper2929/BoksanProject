@@ -158,6 +158,7 @@
 	  		ON p.product_group_code = pg.PRODUCT_GROUP_CODE
 	  		LEFT JOIN b_house h
 	  		ON s.house_code = h.HOUSE_CODE
+	  		where s.product_barcode is not null
 	  		ORDER BY s.pallet_num
 			) as s LEFT JOIN b_product p
 			ON s.product_code = p.PRODUCT_CODE
@@ -183,6 +184,7 @@
 			where s.pallet_num like CONCAT('%',#{keyword},'%')
 			or p.product_name like CONCAT('%',#{keyword},'%')
 			or pg.product_group_name like CONCAT('%',#{keyword},'%')
+			and s.product_barcode is not null
 			order BY s.pallet_num 
 			) as s left join b_product p
 			ON s.product_code = p.product_code
@@ -192,6 +194,7 @@
 	  		ON s.house_code = h.house_code	
 			<![CDATA[
 			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			and s.product_barcode is not null
 		]]>
 		</if>
 	  </select>

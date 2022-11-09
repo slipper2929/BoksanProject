@@ -235,6 +235,7 @@
 			from (select @rownum:=0) as tmp, b_stock s	
 			LEFT JOIN b_product p
 			ON s.product_code = p.product_code		
+			where s.product_barcode is not null
 			) as s LEFT JOIN b_product p
 			ON s.product_code = p.product_code
 		<![CDATA[
@@ -254,11 +255,13 @@
 			where s.house_code like CONCAT('%',#{keyword},'%')
 			or s.pallet_num like CONCAT('%',#{keyword},'%')
 			or p.product_name like CONCAT('%',#{keyword},'%')
+			and s.product_barcode is not null
 			order BY s.pallet_num 
 			) as s left join b_product p
 			ON s.product_code = p.product_code	
 			<![CDATA[
 			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			and s.product_barcode is not null
 		]]>
 		</if>
  	</select>

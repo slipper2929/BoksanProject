@@ -87,13 +87,11 @@ $(function(){
 			if($(".pallet_check").eq(i).is(":checked")){
 				$(".pallet_check").eq(i).attr("name", "pallet_num_list["+count+"].pallet_num")
 				count++
+
 			}
 		}
 		
-		console.log($(".pallet_check").eq(0).attr("name"))
-		console.log($(".pallet_check").eq(1).attr("name"))
-		console.log($(".pallet_check").eq(2).attr("name"))
-		console.log($(".pallet_check").eq(3).attr("name"))
+		
 		$("#pallet_delete_form").submit();
 		
 	})
