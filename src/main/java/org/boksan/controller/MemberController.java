@@ -37,6 +37,7 @@ public class MemberController {
 	//로그인
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(b_empDTO edto, HttpSession session, RedirectAttributes rttr) {
+		System.out.println("로그인컨트롤러입니다~~~~~~ㄹ람쥐");
 		session.getAttribute("member");
 		b_empDTO Login = mservice.Login(edto);
 		boolean pwdMatch = pwdEncoder.matches(edto.getPassword(), Login.getPassword());

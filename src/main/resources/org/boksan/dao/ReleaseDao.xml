@@ -19,18 +19,20 @@
 	</select>
 	
 	<insert id="release_insert">
-		INSERT INTO b_release (product_code, product_name, release_num)
-		VALUES(#{product_code}, #{product_name}, #{release_num})
+		INSERT INTO b_release (product_code, product_name, release_num, emp_code)
+		VALUES(#{product_code}, #{product_name}, #{release_num}, #{emp_code})
 	</insert>
 	
 	<select id="release_state_inquiry_select" resultType="org.boksan.model.b_releaseDTO">
 		<if test = "keyword == null">
 		SELECT *
 		FROM (
-			select @rownum:=@rownum+1 as rownum, r.*
+			select @rownum:=@rownum+1 as rownum, r.*, e.name
 			from (select @rownum:=0) as tmp, b_release r
+			LEFT JOIN b_emp e
+			ON r.emp_code = e.emp_code
 			order by release_code
-			) as b_release
+			) as b_release 
 		<![CDATA[
 			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
 		]]>
@@ -38,8 +40,10 @@
 		<if test = "keyword != null">
 			SELECT *
 			FROM(
-				select @rownum:=@rownum+1 as rownum, r.*
+				select @rownum:=@rownum+1 as rownum, r.*, e.name
 				from(select @rownum:=0) as tmp, b_release r
+				LEFT JOIN b_emp e
+				ON r.emp_code = e.emp_code
 				where situation like concat('%',#{keyword},'%')
 				order by release_code
 				) as b_release
@@ -66,7 +70,7 @@
  	<select id="release_pay_select" resultType="org.boksan.model.b_releaseDTO">
 			SELECT release_pay.*
 			FROM(
-				SELECT @rownum:=@rownum+1 as rownum, r.*, s.psum, IFNULL(SIGN(s.psum-r.release_num), -1) AS res
+				SELECT @rownum:=@rownum+1 as rownum, r.*, s.psum, IFNULL(SIGN(s.psum-r.release_num), -1) AS res, e.name
 				FROM (select @rownum:=0) as tmp, b_release r
 				LEFT JOIN (
 					SELECT product_code, SUM(stock_num) AS psum
@@ -74,6 +78,8 @@
 					GROUP BY product_code
 				) AS s
 				ON r.product_code = s.product_code
+				LEFT JOIN b_emp e
+				ON r.emp_code = e.emp_code
 				WHERE r.situation = "대기"
 				) AS release_pay
 			<![CDATA[
@@ -215,4 +221,15 @@
  		DELETE FROM b_release
  		WHERE release_code = #{release_code}
  	</delete>
+ 	
+ 	<select id="recipe_select" resultType="String">
+ 		SELECT recipe_code
+ 		FROM b_recipe
+ 	</select>
+ 	
+ 	<select id="emp_select" resultType="org.boksan.model.b_empDTO">
+ 		SELECT *
+ 		FROM b_emp
+ 		where id = #{userId}
+ 	</select>
 </mapper>

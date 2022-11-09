@@ -3,6 +3,8 @@ package org.boksan.controller;
 
 
 
+import javax.servlet.http.HttpSession;
+
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
 import org.boksan.service.ArriveService;
@@ -15,6 +17,7 @@ import org.boksan.service.StockService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +54,15 @@ public class HomeController {
 	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(Authentication authentication,HttpSession session) {
+		
+		if(authentication != null) {
+			
+			String userId = authentication.getName();
+			session.getAttribute("member");
+			session.setAttribute("member", relservice.emp_select(userId));
+			
+		}
 		
 		return "index";
 	}
@@ -251,7 +262,7 @@ public class HomeController {
 	public String recipe_add(Model model) {
 		
 		model.addAttribute("pglist",rservice.recipe_add_select());
-		
+		model.addAttribute("rlist",relservice.recipe_select());
 		return "recipe_add";
 	}
 	
@@ -328,9 +339,16 @@ public class HomeController {
 	
 	//출고요청
 	@RequestMapping(value = "/release", method = RequestMethod.GET)
-	public String release(Model model) {
+	public String release(Model model,Authentication authentication) {
 		
+		System.out.println("ddd");
+		 String userId = authentication.getName();
+		 //System.out.println("zzz");
+		 System.out.println(userId);
+		 
 		model.addAttribute("pglist",rservice.recipe_add_select());
+		model.addAttribute("rlist",relservice.recipe_select());
+		//model.addAttribute("member",relservice.emp_select(userId));
 		
 		return "release";
 	}

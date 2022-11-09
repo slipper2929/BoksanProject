@@ -19,8 +19,38 @@ public class b_releaseDTO {
 	
 	private int res;
 	
+	private String release_time;
+	
+	private int emp_code;
+	
+	private String name;
 	
 	
+	
+
+	public String getRelease_time() {
+		return release_time;
+	}
+
+	public void setRelease_time(String release_time) {
+		this.release_time = release_time;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getEmp_code() {
+		return emp_code;
+	}
+
+	public void setEmp_code(int emp_code) {
+		this.emp_code = emp_code;
+	}
 
 	public int getRelease_code() {
 		return release_code;
@@ -80,9 +110,15 @@ public class b_releaseDTO {
 
 	@Override
 	public String toString() {
-		return "b_releaseDTO [product_code=" + product_code + ", product_name=" + product_name + ", release_num="
-				+ release_num + ", release_insert_list=" + release_insert_list + "]";
+		return "b_releaseDTO [release_code=" + release_code + ", product_code=" + product_code + ", product_name="
+				+ product_name + ", release_num=" + release_num + ", situation=" + situation + ", release_insert_list="
+				+ release_insert_list + ", res=" + res + ", release_time=" + release_time + ", emp_code=" + emp_code
+				+ ", name=" + name + "]";
 	}
+
+	
+
+	
 
 	
 

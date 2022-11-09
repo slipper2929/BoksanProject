@@ -264,7 +264,13 @@
                 </div>
             </section>
         </div> <!--#container-->
+		<script>
+			let sb_recipe_list = []
 
+			<c:forEach items="${rlist}" var="rl">
+				sb_recipe_list.push("${rl}")
+			</c:forEach>
+        </script>
 
 
 
@@ -305,10 +311,7 @@
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
-    
-    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
-    <script src="../resources/js/product_select.js"></script>
-    
+       
     <!-- recipe_add js -->
     <script src="../resources/js/recipe_add.js"></script>
     

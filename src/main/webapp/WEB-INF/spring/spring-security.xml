@@ -26,7 +26,7 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 <http auto-config="true" use-expressions="true">
 	<csrf disabled="false"/>
 	
-	<!-- <intercept-url pattern="/manager_authority" access="hasAnyRole('ROLE_ADMIN')" />
+	<intercept-url pattern="/manager_authority" access="hasAnyRole('ROLE_ADMIN')" />
 	<intercept-url pattern="/manager_dept_group" access="hasAnyRole('ROLE_ADMIN')" />
 	<intercept-url pattern="/manager_emp_approve" access="hasAnyRole('ROLE_ADMIN')" />
 	<intercept-url pattern="/manager_emp_inquiry" access="hasAnyRole('ROLE_ADMIN')" />
@@ -49,9 +49,9 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 	<intercept-url pattern="/release_order_list" access="hasAnyRole('ROLE_ADMIN','ROLE_STORE')" />
 	<intercept-url pattern="/release_pay" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS')" />
 	
-	<intercept-url pattern="/location_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />-->
+	<intercept-url pattern="/location_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	<!-- <intercept-url pattern="/location_inquiry" access="isRememberMe()" /> -->
-	<!-- <intercept-url pattern="/product_position_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
+	<intercept-url pattern="/product_position_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 		<intercept-url pattern="/recipe_detail" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	<intercept-url pattern="/recipe_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	<intercept-url pattern="/release_state_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
@@ -59,7 +59,7 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 	<intercept-url pattern="/header" access="permitAll" />
 	<intercept-url pattern="/index" access="permitAll" />
 	<intercept-url pattern="/join" access="permitAll" />
-	<intercept-url pattern="/login" access="permitAll" />  -->
+	<intercept-url pattern="/login" access="permitAll" />
 	
 	<intercept-url pattern="/**" access="permitAll" />
 	
@@ -68,11 +68,13 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 	password-parameter="password"
 	login-processing-url="/login"
 	login-page="/login"
+	always-use-default-target="true"
 	default-target-url="/" />
 	<logout
 	logout-url="/logout"
 	logout-success-url="/login"
 	delete-cookies="JSESSIONID"
+	invalidate-session="true"
 	/>
 	
 	<!-- ajax 세션 처리를 위한 필터 선언 -->

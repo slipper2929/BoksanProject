@@ -198,6 +198,12 @@
                     <table class="b_table margin_t50">
                         <tr class="b_table_title">
                             <th>
+                                <p>출고요청자</p>
+                            </th>
+                            <th>
+                                <p>출고요청시간</p>
+                            </th>
+                            <th>
                                 <p>상품코드</p>
                             </th>
                             <th>
@@ -210,9 +216,12 @@
                                 <p>상태</p>
                             </th>
                             
+                            
                         </tr>
                         <c:forEach items="${rslist}" var="rs">
 	                        <tr class="b_table_data">
+	                        	<td><p>${rs.name}</p></td>
+	                        	<td><p>${rs.release_time}</p></td>
 	                            <td><p>${rs.product_code}</p></td>
 	                            <td><p>${rs.product_name}</p></td>
 	                            <td><p>${rs.release_num}kg</p></td>

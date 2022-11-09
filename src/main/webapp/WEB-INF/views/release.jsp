@@ -32,6 +32,7 @@
 
 
     <title>복산김치WMS_출고요청</title>
+    
 </head>
 <body>
    <div id="wrap">
@@ -171,6 +172,7 @@
             <section class="b_inputform_main">
                 <div class="b_inputform_title">
                     <h1>출고요청</h1>
+                    
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l">
                     <form action="" id="b_release">
@@ -184,6 +186,7 @@
 		                            	</c:if>
 		                        	</c:forEach>
 		                        </select>
+		                        
                                 <select name="" id="recipe_product_code_select" class="recipe_product_selectbox release_selectbox">
 		                            <option value="">선택안함</option>
 		                        </select>
@@ -200,6 +203,13 @@
                     </form>
                 </div> <!--.b_content-->
             </section>
+            <script>
+				let sb_recipe_list = []
+	
+				<c:forEach items="${rlist}" var="rl">
+					sb_recipe_list.push("${rl}")
+				</c:forEach>
+	        </script>
             <section class="b_inputform_main section2">
                 <h2 class="small_title">출고요청 상품목록</h2>
                 <div class="b_content b_content_width_l">
@@ -243,7 +253,8 @@
                     </tr>
                 </table>
                 <p class="btn_l_b release_list_btn"><input type="button" value="출고요청하기"></p>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <input type="text" name="emp_code" value="${member.emp_code}">
             	</form>
             </section>
         </div>
@@ -296,9 +307,7 @@
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
     
-    <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
-    <script src="../resources/js/product_select.js"></script>
-    
+
     <!-- release js -->
     <script src="../resources/js/release.js"></script>
 </body>

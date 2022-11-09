@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.boksan.dao.ReleaseDao;
 import org.boksan.model.Criteria;
+import org.boksan.model.b_empDTO;
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
 import org.boksan.model.materiaDTO;
@@ -162,6 +163,15 @@ public class ReleaseServiceImpl implements ReleaseService {
 		if(release_list_check == 0) {
 			rdao.release_delete(rldto);
 		}
+	}
+	//recipe select
+	public ArrayList<String> recipe_select(){
+		return rdao.recipe_select();
+	}
+	
+	//출고요청 회원정보를 조회
+	public b_empDTO emp_select(String userId) {
+		return rdao.emp_select(userId);
 	}
 	
 }
