@@ -216,9 +216,7 @@
 	                                    <select class="pallet_num_selectbox">
 	                                    			<option value="">파레트번호 선택</option>
 	                                    	<c:forEach items="${plist}" var="pl">
-		                                    	<c:if test="${pl.product_code eq al.product_code}">
 		                                    		<option value="${pl.pallet_num}">${pl.pallet_num}</option>
-		                                    	</c:if>
 	                                    	</c:forEach>
 	                                    </select>
 	                                </p>

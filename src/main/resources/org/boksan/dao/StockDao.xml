@@ -33,6 +33,7 @@
 	</resultMap>
 	
 	<resultMap type="org.boksan.model.b_stockDTO" id="move_b_stockDTO">
+		<result property="product_code" column="Product_code"></result>
 		<result property="pallet_num" column="Pallet_num"></result>
 		<result property="arrive_date" column="Arrive_date"></result>
 		<result property="house_code" column="House_code"></result>
@@ -50,12 +51,14 @@
 			SELECT * 
 			FROM b_stock s
 			WHERE s.pallet_num NOT IN (SELECT pallet_num FROM b_movement_order)  
-			) s 		
+			) s
+			where s.product_barcode is not NULL	
 			order BY s.pallet_num 
 			) as s LEFT JOIN b_product p
 			ON s.product_code = p.product_code
 		<![CDATA[
 			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+			and s.product_barcode is not NULL
 		]]>
 		</if>
 		<if test = "keyword != null">
@@ -66,17 +69,20 @@
 			SELECT * 
 			FROM b_stock s
 			WHERE s.pallet_num NOT IN (SELECT pallet_num FROM b_movement_order)  
+			and s.product_barcode is not NULL	
 			) s left JOIN b_product p
 			ON s.product_code = p.product_code
 			where s.pallet_num like CONCAT('%',#{keyword},'%')
 			or p.product_code like CONCAT('%',#{keyword},'%')
 			or p.product_name like CONCAT('%',#{keyword},'%')
 			or s.house_code like CONCAT('%',#{keyword},'%')
+			and s.product_barcode is not NULL
 			order BY s.pallet_num 
 			) as s left join b_product p
 			ON s.product_code = p.product_code	
 			<![CDATA[
 			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+			and s.product_barcode is not NULL
 		]]>
 		</if>
 	</select>
@@ -197,7 +203,7 @@
 		JOIN b_movement_order mo
 		ON s.pallet_num = mo.pallet_num
 		SET s.house_code = mo.movement_address
-		WHERE s.pallet_num = mo.pallet_num
+		WHERE s.pallet_num = #{pallet_num}
  	</update>
  	
  	<!-- 이동목록 확인버튼 누르면 이동목록 리스트에서 삭제 -->

@@ -28,7 +28,6 @@
 
 
     <title>복산김치WMS_이동지시</title>
-    ${pageMaker }
 </head>
 <body>
    <div id="wrap">
@@ -173,6 +172,7 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>이동지시</h1>
+                    ${mlist}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">

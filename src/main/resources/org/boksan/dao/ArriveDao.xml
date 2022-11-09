@@ -20,7 +20,7 @@
 	</select>
 	
 	<select id="arrive_list_select_pallet" resultType="org.boksan.model.Arrive_palletDTO">
-			SELECT product_code, pallet_num
+			SELECT pallet_num
 			FROM b_stock
 			WHERE product_barcode IS null
 	</select>
