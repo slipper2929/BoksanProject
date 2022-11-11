@@ -22,6 +22,10 @@ public class StockServiceImpl implements StockService{
 	public ArrayList<b_stockDTO> stock(Criteria cri){
 		return sdao.stock(cri);
 	}
+	//ªÛ«∞√—¿Á∞Ì
+	public ArrayList<b_stockDTO> stockAll(){
+		return sdao.stockAll();
+	}
 	public int getTotalCountS(Criteria cri) {
 		return sdao.getTotalCountS(cri);
 	}

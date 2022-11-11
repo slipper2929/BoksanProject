@@ -64,6 +64,25 @@
 			or p.product_name like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
+ 	
+ 	<resultMap type="org.boksan.model.b_productDTO" id="stockAll_b_productDTO">
+		<result property="product_name" column="Product_name"></result>
+	</resultMap>
+	
+	<resultMap type="org.boksan.model.b_stockDTO" id="stockAll_b_stockDTO">
+		<result property="product_code" column="Product_code"></result>
+		<result property="stock_num" column="Stock_num"></result>
+		<collection property="b_productdto" resultMap="stockAll_b_productDTO"></collection>
+	</resultMap>
+	
+	<!-- 상품총 중량 -->
+ 	<select id="stockAll" resultMap="stockAll_b_stockDTO">
+ 		SELECT p.product_code,p.product_name,sum(s.stock_num) as stock_num
+		FROM b_stock s right JOIN b_product p
+		ON s.product_code = p.product_code
+		GROUP BY product_code
+		ORDER BY product_code
+ 	</select>
 	
 	<!-- 파레트 추가 -->
 	<insert id="PalletInsert">

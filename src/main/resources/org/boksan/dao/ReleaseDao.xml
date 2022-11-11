@@ -205,7 +205,8 @@
 		SET arrive_date = NULL,
 			stock_num = NULL,
 			house_code = NULL,
-			product_barcode = NULL
+			product_barcode = NULL,
+			product_code = NULL
 		WHERE pallet_num = #{release_list_code}
  	</update>
  	

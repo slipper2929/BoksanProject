@@ -34,8 +34,8 @@
 	       <div id="container">
             <section class="b_inquiry_main">
                 <div class="b_title">
-                    <h1>상품조회</h1>
-                    <h2>상품별 위치조회</h2>
+                    <h1>재고조회</h1>
+                    <h2>파레트별 조회</h2>
                     ${pageMaker }
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
@@ -65,7 +65,7 @@
                             <td><p>${slist.stock_num }kg</p></td>
                         </tr>
                    		</c:forEach> 
-                    </table>
+                    </table>       
                     	<form id="pageForm" action="/stock">
 	                    <div class="b_pager">
 		                        <input type="hidden" id="pagenum" name="pagenum" value="${pageMaker.cri.pagenum}">
@@ -93,6 +93,34 @@
                     	</form>
                 </div>
             </section>
+            <section class="b_inquiry_main">
+                <div class="b_title">
+                    <h1>재고조회</h1>
+                    <h2>총중량 조회</h2>
+                </div> <!--.b_main-->
+                <div class="b_content b_content_width_m">
+                    <table class="b_table margin_t50">
+                        <tr class="b_table_title">
+                            <th>
+                                <p>상품코드</p>
+                            </th>
+                            <th>
+                                <p>상품명</p>
+                            </th>
+                            <th>
+                                <p>총중량</p>
+                            </th>
+                        </tr>
+						<c:forEach var="plist" items="${plist}">                      
+                        <tr class="b_table_data">
+                            <td><p>${plist.product_code }</p></td>
+                            <td><p>${plist.b_productdto.product_name }</p></td>
+                            <td><p>${plist.stock_num }kg</p></td>
+                        </tr>
+                   		</c:forEach> 
+                    </table>
+            	</div>
+			</section>
         </div> <!--#container-->
         
 	       <footer class="b_footer">

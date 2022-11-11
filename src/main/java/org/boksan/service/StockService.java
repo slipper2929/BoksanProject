@@ -13,6 +13,8 @@ public interface StockService {
 	
 		//재고조회
 		public ArrayList<b_stockDTO> stock(Criteria cri);
+		//상품총재고
+		public ArrayList<b_stockDTO> stockAll();
 		//페이징 처리를 위한 전체건수 이동목록
 		public int getTotalCountS(Criteria cri);
 		//파레트 추가
