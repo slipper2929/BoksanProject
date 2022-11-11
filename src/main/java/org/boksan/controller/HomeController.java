@@ -353,5 +353,13 @@ public class HomeController {
 		return "release";
 	}
 	
+	//재고조회
+	@RequestMapping(value="/stock", method= RequestMethod.GET)
+	public String stock(Model model, Criteria cri) {
+		model.addAttribute("slist",sservice.stock(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri,sservice.getTotalCountS(cri)));
+		return "stock";
+	}
+	
 	
 }

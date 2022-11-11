@@ -48,7 +48,8 @@
 		SET	arrive_date = #{arrive_date},
 			stock_num = #{stock_num},
 			house_code = #{house_code},
-			product_barcode = #{product_barcode}
+			product_barcode = #{product_barcode},
+			product_code = #{product_code}
 		WHERE pallet_num = #{pallet_num}
  	</update>
 	

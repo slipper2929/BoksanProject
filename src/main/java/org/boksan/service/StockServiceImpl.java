@@ -17,6 +17,14 @@ public class StockServiceImpl implements StockService{
 	
 	@Autowired
 	StockDao sdao;
+	
+	//재고조회
+	public ArrayList<b_stockDTO> stock(Criteria cri){
+		return sdao.stock(cri);
+	}
+	public int getTotalCountS(Criteria cri) {
+		return sdao.getTotalCountS(cri);
+	}
 	//파레트 추가
 	public void PalletInsert(b_stockDTO sdto) {
 		

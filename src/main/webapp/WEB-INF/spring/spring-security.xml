@@ -55,6 +55,7 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 		<intercept-url pattern="/recipe_detail" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	<intercept-url pattern="/recipe_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	<intercept-url pattern="/release_state_inquiry" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
+	<intercept-url pattern="/stock" access="hasAnyRole('ROLE_ADMIN','ROLE_MATERIALS','ROLE_FACTORY','ROLE_STORE')" />
 	
 	<intercept-url pattern="/header" access="permitAll" />
 	<intercept-url pattern="/index" access="permitAll" />

@@ -156,7 +156,7 @@
 	
 	<!-- 출고요청목록 insert -->
 	<insert id="release_order_list_insert">
-		INSERT INTO b_release_list
+		INSERT INTO b_release_list (release_list_code,product_name,release_num,house_address,release_code,release_state)
 		VALUES (#{release_list_code}, #{product_name}, #{release_num}, #{house_address}, #{release_code}, 0)
 	</insert>
 	

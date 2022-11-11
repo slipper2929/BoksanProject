@@ -38,6 +38,7 @@ $(document).on("click" , ".success_btn", function(){
 		success : function(result){
 			console.log(result)
 			alert("상품정보가 변경되었습니다.")
+			location.reload();
 			
 		},
 		error : function(request,status,error){

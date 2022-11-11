@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+	
     <!--노토산스 글꼴-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -188,6 +189,7 @@
                     </div> <!--b_search-->
                     <div class="emp_btn">
                         <p class="btn_s_b"><input type="button" id="approve_btn" value="승인"></p>
+                        
                         <p class="btn_s_r"><input type="button" id="approve_sorry_btn"value="거절"></p>
                     </div>
                     <table class="b_table margin_t50">

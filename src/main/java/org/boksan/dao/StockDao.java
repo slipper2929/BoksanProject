@@ -11,6 +11,11 @@ import org.boksan.model.b_stockDTO;
 
 public interface StockDao {
 	
+	
+	//재고조회
+	public ArrayList<b_stockDTO> stock(Criteria cri);
+	//페이징 처리를 위한 전체건수 이동목록
+	public int getTotalCountS(Criteria cri);
 	//파레트 추가
 	public void PalletInsert(b_stockDTO sdto);
 	//삭제할 파레트 찾기
@@ -24,7 +29,6 @@ public interface StockDao {
 	
 	//이동지시 -> 이동목록 insert
 	public void move_change(Map<String, Object> map);
-	
 	//페이징 처리를 위한 전체건수 이동지시
 	public int getTotalCountMo(Criteria cri);
 	//페이징 처리를 위한 전체건수 이동목록

@@ -86,6 +86,9 @@
                         <li> <!--재고-->
                             <p><a href="#">재고</a></p>
                             <ul class="b_header_nav_menu_medium">
+                            	<li>
+                            		<p><a href="/stock">재고조회</a></p>
+                            	</li>
                                 <li>
                                     <p><a href="#">재고이동</a></p>
                                     <ul class="b_header_nav_menu_small">

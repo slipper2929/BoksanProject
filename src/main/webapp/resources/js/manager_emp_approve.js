@@ -3,8 +3,7 @@
  */
 
 $(function(){
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
+	
 	$(document).on("click", ".approve_check", function(){
 		if($(this).is(':checked')){
 			$(this).val($(this).parents("tr").find(".emp_approve").val());
@@ -16,6 +15,8 @@ $(function(){
 	})
 	
 	$(document).on("click", "#approve_btn", function(){
+		var token = $("meta[name='_csrf']").attr("content");
+		var header = $("meta[name='_csrf_header']").attr("content");
 		
 		let emp_val = [];
 		let dept_val = [];
@@ -34,8 +35,6 @@ $(function(){
 		
 		console.log(emp_val);
 		console.log(dept_val);
-		
-		
 		
 		$.ajax({
 			type : "post",

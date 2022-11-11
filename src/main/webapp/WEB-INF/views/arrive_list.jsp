@@ -244,7 +244,7 @@
 	                        	<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 	                        		<div><a class="pageNo" href="${num}"><span>${num}</span></a></div>
 	                        	</c:forEach>
-	                        <div><a class="pageBtn" href="/recipe_inquiry?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
+	                        <div><a class="pageBtn" href="/arrive_list?pagenum=${pageMaker.endPage+1}&amount=${pageMaker.cri.amount}"><span>다음</span></a></div>
 
                     	</div>
                     </form>

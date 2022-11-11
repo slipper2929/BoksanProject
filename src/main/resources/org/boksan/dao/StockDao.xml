@@ -5,7 +5,66 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.boksan.dao.StockDao" >
-
+	
+	<resultMap type="org.boksan.model.b_productDTO" id="stock_b_productDTO">
+		<result property="product_name" column="Product_name"></result>
+	</resultMap>
+	
+	<resultMap type="org.boksan.model.b_stockDTO" id="stock_b_stockDTO">
+		<result property="pallet_num" column="Pallet_num"></result>
+		<result property="stock_num" column="Stock_num"></result>
+		<collection property="b_productdto" resultMap="stock_b_productDTO"></collection>
+	</resultMap>
+	<!-- 재고조회 -->
+	<select id="stock" resultMap="stock_b_stockDTO">
+		<if test = "keyword == null">
+		select s.pallet_num, s.stock_num, p.product_name 
+		from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp,
+			b_stock s JOIN b_product p
+			ON s.product_code = p.product_code
+			order BY s.pallet_num 
+			) as s LEFT JOIN b_product p
+			ON s.product_code = p.product_code
+		<![CDATA[
+			where rownum > (#{pagenum} - 1 ) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+		<if test = "keyword != null">
+			select s.pallet_num, s.stock_num, p.product_name  
+			from(
+			select @rownum:=@rownum+1 as rownum, s.*
+			from (select @rownum:=0) as tmp, 
+			b_stock s JOIN b_product p
+			ON s.product_code = p.product_code
+			where s.pallet_num like CONCAT('%',#{keyword},'%')
+			or p.product_name like CONCAT('%',#{keyword},'%')
+			order BY s.pallet_num 
+			) as s left join b_product p
+			ON s.product_code = p.product_code	
+			<![CDATA[
+			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
+		]]>
+		</if>
+	</select>
+	
+	<!-- 페이징 처리를 위한 전체건수 재고조회 -->
+	<select id="getTotalCountS" resultType="int">
+		<if test = "keyword == null">
+	 		select count(*)
+	 		from b_stock s JOIN b_product p
+			ON s.product_code = p.product_code
+	 	</if>
+	 	<if test = "keyword != null">
+		 	select count(*)
+	 		from b_stock s JOIN b_product p
+			ON s.product_code = p.product_code
+		 	where s.pallet_num like concat('%',#{keyword},'%')
+			or p.product_name like concat('%',#{keyword},'%')
+	 	</if>
+ 	</select>
+	
 	<!-- 파레트 추가 -->
 	<insert id="PalletInsert">
 		INSERT INTO b_stock(pallet_num)
