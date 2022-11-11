@@ -219,7 +219,7 @@
  	<!-- release_list 삭제 -->
  	<delete id="release_list_delete">
  		DELETE FROM b_release_list
- 		WHERE release_list_code = #{release_list_code}
+ 		WHERE release_list_code_P = #{release_list_code_P}
  	</delete>
  	
  	<!-- release 삭제를 위한 release_list 조회 -->
@@ -244,5 +244,12 @@
  		SELECT *
  		FROM b_emp
  		where id = #{userId}
+ 	</select>
+ 	
+ 	<select id="release_order" resultType="String">
+ 		SELECT SUM(stock_num)
+		FROM b_stock
+		WHERE product_code = #{data}
+		GROUP BY product_code
  	</select>
 </mapper>

@@ -147,14 +147,24 @@ public class AjaxController {
 		
 		return "취소가 되었습니다.";
 	}
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 select
+	@GetMapping(value = "/release_order",
+			produces = "application/json; charset=utf-8")
+	public String release_order(int data) {
+		
+		String res = relservice.release_order(data);
+		
+		return res;
+	}
+	
 
 
 	//승인요청
 	@PostMapping(value="/approve_success",
 			produces = "application/json; charset=utf-8")
 	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val,@RequestParam(value="dept_val") String[] dept_val) {
-		System.out.println("컨트롤러 : " + emp_val[0]);
-		System.out.println("컨트롤러 : " + emp_val[1]);
+
 		mgservice.manager_approve(emp_val, dept_val);
 		return "가입이 승인되었습니다.";
 	}
@@ -163,8 +173,6 @@ public class AjaxController {
 			produces = "application/json; charset=utf-8")
 	public String manager_approve(@RequestParam(value="emp_val") String[] emp_val) {
 		System.out.println("개수 : " + emp_val.length);
-		System.out.println("컨트롤러 : " + emp_val[0]);
-		System.out.println("컨트롤러 : " + emp_val[1]);
 		mgservice.emp_delete(emp_val);
 		return "삭제되었습니다.";
 	}

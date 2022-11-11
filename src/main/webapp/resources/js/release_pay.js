@@ -4,12 +4,49 @@ $(function(){
 	var header = $("meta[name='_csrf_header']").attr("content");
 
 	$(".order_btn").on("click", function(){
-	alert("dd")
+
 		let order_pc = $(this).parents("tr").find(".rp_product_code").text()
 		let order_pn = $(this).parents("tr").find(".rp_product_name").text()
 		$("#order_link").attr("href","/order?product_code=" + order_pc + "&product_name=" + order_pn)
-		$("#order_link").get(0).click();
-	
+		//$("#order_link").get(0).click();
+		
+		$.ajax({
+			url:"/release_order",
+			type:"get",
+			data: {"data" : order_pc},
+			dataType:'text',
+			beforeSend : function(xhr){
+				xhr.setRequestHeader(header, token);
+			},
+			success: function(data){
+				alert(data)
+				
+				$(".modal").fadeIn();
+				
+				$("body").css({
+					"overflow": "hidden",
+					"margin-left" : "-17px"
+				})
+				
+				$(".modal_name span").text(order_pn)
+			},
+			error: function(e){
+				alert(e)
+			}
+		})
+		
+		
+	    
+		
+	 });
+	  
+	  $(".modal_out").click(function(){
+	    $(".modal").fadeOut();
+	    $("body").css({
+			"overflow": "visible",
+			"margin-left" : "0"
+		})
+	  
 	})
 	
 	$(".release_btn").on("click", function(){

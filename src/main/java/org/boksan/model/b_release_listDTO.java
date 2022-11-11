@@ -2,6 +2,8 @@ package org.boksan.model;
 
 public class b_release_listDTO {
 
+	private int release_list_code_P;
+	
 	private String release_list_code;
 	
 	private int product_code;
@@ -17,14 +19,13 @@ public class b_release_listDTO {
 	private String release_state;
 	
 	private int cumsum_num_check;
-	
 
-	public int getCumsum_num_check() {
-		return cumsum_num_check;
+	public int getRelease_list_code_P() {
+		return release_list_code_P;
 	}
 
-	public void setCumsum_num_check(int cumsum_num_check) {
-		this.cumsum_num_check = cumsum_num_check;
+	public void setRelease_list_code_P(int release_list_code_P) {
+		this.release_list_code_P = release_list_code_P;
 	}
 
 	public String getRelease_list_code() {
@@ -83,13 +84,24 @@ public class b_release_listDTO {
 		this.release_state = release_state;
 	}
 
+	public int getCumsum_num_check() {
+		return cumsum_num_check;
+	}
+
+	public void setCumsum_num_check(int cumsum_num_check) {
+		this.cumsum_num_check = cumsum_num_check;
+	}
+
 	@Override
 	public String toString() {
-		return "b_release_listDTO [release_list_code=" + release_list_code + ", product_code=" + product_code
-				+ ", product_name=" + product_name + ", release_num=" + release_num + ", house_address=" + house_address
-				+ ", release_code=" + release_code + ", release_state=" + release_state + ", cumsum_num_check="
-				+ cumsum_num_check + "]";
+		return "b_release_listDTO [release_list_code_P=" + release_list_code_P + ", release_list_code="
+				+ release_list_code + ", product_code=" + product_code + ", product_name=" + product_name
+				+ ", release_num=" + release_num + ", house_address=" + house_address + ", release_code=" + release_code
+				+ ", release_state=" + release_state + ", cumsum_num_check=" + cumsum_num_check + "]";
 	}
+
+	
+	
 
 	
 	

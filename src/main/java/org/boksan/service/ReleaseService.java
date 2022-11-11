@@ -48,4 +48,7 @@ public interface ReleaseService {
 	
 	//출고요청 회원정보를 조회
 	public b_empDTO emp_select(String userId);
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 select
+	public String release_order(int data);
 }

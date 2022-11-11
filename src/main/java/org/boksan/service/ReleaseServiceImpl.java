@@ -105,11 +105,32 @@ public class ReleaseServiceImpl implements ReleaseService {
 				rdao.release_order_list_insert(rldto);
 
 				count = count - rldto.getRelease_num();
+				
+				int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
+				
+				if(pallet_num == rldto.getRelease_num()) {
+					rdao.release_stock_update(rldto);
+
+				} else {
+					rdao.release_stock_update_zero(rldto);
+				}
 
 			} else if(count < pallet_list.get(i).getRelease_num()) {
 
 					rldto.setRelease_num(count);
+					System.out.println("---------------rldto-------------");
+					System.out.println(rldto);
 					rdao.release_order_list_insert(rldto);
+					
+					int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
+					
+					if(pallet_num == rldto.getRelease_num()) {
+						rdao.release_stock_update(rldto);
+
+					} else {
+						rdao.release_stock_update_zero(rldto);
+					}
+
 			}
 
 		}
@@ -143,16 +164,17 @@ public class ReleaseServiceImpl implements ReleaseService {
 	//재고 update
 	public void release_stock_update(b_release_listDTO rldto) {
 		
-		int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
+		//int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
 		
 		System.out.println("파레트 넘 셀렉");
-		System.out.println(pallet_num);
+		//System.out.println(pallet_num);
 		
-		if(pallet_num == rldto.getRelease_num()) {
-			rdao.release_stock_update(rldto);
-		} else {
-			rdao.release_stock_update_zero(rldto);
-		}
+		//if(pallet_num == rldto.getRelease_num()) {
+		//	rdao.release_stock_update(rldto);
+
+		//} else {
+		//	rdao.release_stock_update_zero(rldto);
+		//}
 		
 		//b_release_list삭제
 		rdao.release_list_delete(rldto);
@@ -172,6 +194,11 @@ public class ReleaseServiceImpl implements ReleaseService {
 	//출고요청 회원정보를 조회
 	public b_empDTO emp_select(String userId) {
 		return rdao.emp_select(userId);
+	}
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 select
+	public String release_order(int data) {
+		return rdao.release_order(data);
 	}
 	
 }

@@ -28,12 +28,54 @@
     <!--메인css-->
     <link rel="stylesheet" href="../resources/css/release_pay.css">
 
-
+	<style>
+		.modal{ 
+		  position: absolute; width:100%; height:100%; background: rgba(0,0,0,0.5); top: 0; left: 0;display:none; z-index: 5000;
+		}
+		
+		.modal_content{
+		  width:400px; height:200px;
+		  background:#fff; border-radius:10px;
+		  position:relative; top:50%; left:50%;
+		  margin-top:-100px; margin-left:-200px;
+		  text-align:center;
+		  box-sizing:border-box; padding:74px 0;
+		  line-height:23px;
+		}
+		
+		.modal_out{
+			width: 30px;
+			height: 30px;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			cursor:pointer;
+			background-image: url(../resources/b_img/page_out1.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 30px 30px;
+		}
+		
+		.modal_out:hover{
+			background-image: url(../resources/b_img/page_out2.png);
+		}
+	</style>
 
 
     <title>복산김치WMS_출고요청결제</title>
 </head>
 <body>
+	<div class="modal">
+ 		<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+ 			<div class="modal_out"></div>
+ 			<h1>발주신청</h1>
+ 			<p class="modal_name">상품명 : <span></span></p>
+ 			<form>
+ 				<p>수량 : <input type="text"></p>
+ 				
+ 			</form>
+ 		</div>
+	</div>
    <div id="wrap">
         <header class="b_header">
             <section class="b_header_in">
@@ -237,8 +279,10 @@
                             </td>
                             </c:if>
                         </tr>
+						
                         </c:forEach>
                     </table>
+                    
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                     <a id="order_link" style="display : none"></a>
