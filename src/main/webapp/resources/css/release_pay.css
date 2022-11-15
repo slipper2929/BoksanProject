@@ -47,14 +47,14 @@
 	top: 10px;
 	right: 10px;
 	cursor: pointer;
-	background-image: url(../resources/b_img/page_out1.png);
+	background-image: url(../b_img/page_out1.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 30px 30px;
 }
 
 .modal_out:hover {
-	background-image: url(../resources/b_img/page_out2.png);
+	background-image: url(../b_img/page_out2.png);
 }
 
 .modal_line {
