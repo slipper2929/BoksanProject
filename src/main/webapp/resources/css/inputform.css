@@ -67,7 +67,7 @@
     display: block;
     width: 63px;
     height: 35px;
-    background-color: rgb(234, 82, 82);
+    background-color: rgb(223, 99, 99);
     color: #fff;
     font-weight: 700;
     font-size: 18px;
@@ -82,7 +82,7 @@
     display: block;
     width: 63px;
     height: 35px;
-    background-color: rgb(71, 102, 227);
+    background-color: rgb(99, 99, 223);
     color: #fff;
     font-weight: 700;
     font-size: 18px;
@@ -97,7 +97,7 @@
     display: block;
     width: 63px;
     height: 35px;
-    background-color: rgb(76, 223, 93);
+    background-color: rgb(99, 223, 120);
     color: #fff;
     font-weight: 700;
     font-size: 18px;
@@ -112,7 +112,7 @@
     display: block;
     width: 63px;
     height: 35px;
-    background-color: rgb(235, 223, 88);
+    background-color: rgb(223, 223, 99);
     color: #fff;
     font-weight: 700;
     font-size: 18px;
@@ -124,7 +124,7 @@
 }
 
 .btn_m_r>input,.btn_m_r>button{
-    background-color: rgb(234, 82, 82);
+    background-color: rgb(223, 99, 99);
     display: block;
     width: 173px;
     height: 60px;
@@ -139,7 +139,7 @@
 }
 
 .btn_m_b>input,.btn_m_b>button{
-    background-color: rgb(71, 102, 227);
+    background-color: rgb(99, 99, 223);
     display: block;
     width: 173px;
     height: 60px;
@@ -154,7 +154,7 @@
 }
 
 .btn_m_g>input,.btn_m_g>button{
-    background-color: rgb(76, 223, 93);
+    background-color: rgb(99, 223, 120);
     display: block;
     width: 173px;
     height: 60px;
@@ -169,7 +169,7 @@
 }
 
 .btn_m_y>input,.btn_m_y>button{
-    background-color: rgb(235, 223, 88);
+    background-color: rgb(223, 223, 99);
     display: block;
     width: 173px;
     height: 60px;
@@ -184,7 +184,7 @@
 }
 
 .btn_l_r>input,.btn_l_r>button{
-    background-color: rgb(234, 82, 82);
+    background-color: rgb(223, 99, 99);
     display: block;
     width: 350px;
     height: 80px;
@@ -199,7 +199,7 @@
 }
 
 .btn_l_b>input,.btn_l_b>button{
-    background-color: rgb(71, 102, 227);
+    background-color: rgb(99, 99, 223);
     display: block;
     width: 350px;
     height: 80px;
@@ -214,7 +214,7 @@
 }
 
 .btn_l_g>input,.btn_l_g>button{
-    background-color: rgb(76, 223, 93);
+    background-color: rgb(99, 223, 120);
     display: block;
     width: 350px;
     height: 80px;
@@ -229,7 +229,7 @@
 }
 
 .btn_l_y>input,.btn_l_y>button{
-    background-color: rgb(235, 223, 88);
+    background-color: rgb(223, 223, 99);
     display: block;
     width: 350px;
     height: 80px;

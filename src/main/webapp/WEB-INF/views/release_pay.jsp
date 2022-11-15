@@ -34,12 +34,11 @@
 		}
 		
 		.modal_content{
-		  width:400px; height:200px;
+		  width:600px; height:350px;
 		  background:#fff; border-radius:10px;
 		  position:relative; top:50%; left:50%;
-		  margin-top:-100px; margin-left:-200px;
-		  text-align:center;
-		  box-sizing:border-box; padding:74px 0;
+		  margin-top:-175px; margin-left:-300px;
+		  box-sizing:border-box; padding:34px 0;
 		  line-height:23px;
 		}
 		
@@ -59,6 +58,129 @@
 		.modal_out:hover{
 			background-image: url(../resources/b_img/page_out2.png);
 		}
+		
+		.modal_line{
+			width: 600px;
+			height: 2px;
+			background-color: #ccc;
+			margin-top: 15px;
+			margin-bottom: 20px;
+		}
+		
+		.modal_line2{
+			width: 600px;
+			height: 2px;
+			background-color: #dde;
+			margin-top: 20px;
+			margin-bottom: 15px;
+		}
+		
+		.modal h1{
+			text-align: center;
+		}
+		
+		.modal_title{
+			width: 400px;
+			margin-left: 100px;
+			font-size: 18px;
+			line-height: 30px;
+		}
+		
+		.modal form{
+			margin-left: 100px;
+		}
+		
+		.modal_title p{
+			position: relative;
+		}
+		
+		.modal_title span{
+			position: absolute;
+            top: 0;
+            left: 100px;
+		}
+		
+		.modal_title button{
+			position: absolute;
+            top: 0;
+            left: 300px;
+            border: none;
+            background-color: rgb(99, 99, 223);
+            color: #fff;
+            padding: 5px;
+		}
+		
+		.modal_title button:hover{
+		background-color: rgb(72, 72, 220);
+		}
+		
+		.modal_order_form p{
+			position: relative;
+			font-size: 25px;
+			margin-top: 10px;
+		}
+		
+		.modal_order_form .order_result{
+			position: absolute;
+            top: 0;
+            left: 100px;
+            height: 25px;
+            width: 150px;
+            font-size: 18px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+		}
+		
+		.modal_order_form .order_result::placeholder{
+			font-size: 15px;
+			padding-left: 10px;
+		}
+		
+		.modal_order_form button{
+			position: absolute;
+            top: -3px;
+            left: 300px;
+            border: none;
+            background-color: rgb(99, 223, 120);
+            color: #fff;
+            padding: 7px 10px 7px 10px; 
+		}
+		
+		.modal_order_form button:hover{
+		background-color: rgb(52, 223, 81);
+		}
+		
+		.modal_order_form span{
+			position: absolute;
+            top: 0;
+            left: 255px;
+            font-size: 20px;
+		}
+		
+		.modal_price{
+			margin-left: 100px;
+		}
+		
+		.modal_price p{
+			position: relative;
+			font-size: 25px;
+		}
+		
+		.modal_price .res{
+			position: absolute;
+			top: 0;
+            left: 110px;
+            font-size: 20px;
+		}
+		
+		.modal_price .won{
+			position: absolute;
+			top: 0;
+            left: 200px;
+            font-size: 20px;
+		}
+		
 	</style>
 
 
@@ -69,11 +191,22 @@
  		<div class="modal_content" title="클릭하면 창이 닫힙니다.">
  			<div class="modal_out"></div>
  			<h1>발주신청</h1>
- 			<p class="modal_name">상품명 : <span></span></p>
- 			<form>
- 				<p>수량 : <input type="text"></p>
- 				
+ 			<div class="modal_line"></div>
+ 			<div class="modal_title">
+	 			<p class="modal_name">상품명 : <span></span></p>
+	 			<p class="modal_total_num">상품재고 : <span></span></p>
+	 			<p class="modal_order_num">요청중량 : <span></span><button>기입</button></p>
+	 			<p class="modal_total_product_num">총중량 : <span></span><button>기입</button></p>
+ 			</div>
+ 			<div class="modal_line2"></div>
+ 			<form class="modal_order_form" method="post" action="release_pay_order">
+ 				<p>수량 : <input type="text" class="order_result" placeholder="중량을 기입하세요" name="order_num_count"><span>kg</span><button type="button" class="release_pay_order_btn">발주하기</button></p>
+ 				<input class="modal_product_code" type="hidden" name="product_code">
+ 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
  			</form>
+ 			<div class="modal_price">
+ 				<p class="modal_total_price_num">총구매가 : <span class="res">0</span></p>
+ 			</div>
  		</div>
 	</div>
    <div id="wrap">
@@ -217,6 +350,7 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>출고요청결제</h1>
+                    ${rplist}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_search" style="display:none">
@@ -229,7 +363,7 @@
                 </div> <!--b_search-->
                 <div class="b_content b_content_width_m">
                 	<form action="" method="post" id="release_pay_form">
-                    <table class="b_table margin_t50">
+                    <table class="b_table margin_t50 release_pay_table">
                         <tr class="b_table_title">
                             <th>
                                 <p>출고요청자</p>
@@ -259,7 +393,7 @@
 	                        <td><p class="">${rp.release_time}</p></td>
                             <td><p class="rp_product_code">${rp.product_code}</p></td>
                             <td><p class="rp_product_name">${rp.product_name}</p></td>
-                            <td><p>${rp.release_num}kg</p></td>
+                            <td><p class="rp_release_num">${rp.release_num}kg</p></td>
                             <td><p>${rp.situation}</p></td>
                             <c:if test="${rp.res == -1}">
                             <td class="pay_btn">

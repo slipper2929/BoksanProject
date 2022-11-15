@@ -1,10 +1,13 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
+import org.boksan.dao.OrderDao;
 import org.boksan.dao.ReleaseDao;
 import org.boksan.model.Criteria;
+import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_empDTO;
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
@@ -17,6 +20,9 @@ public class ReleaseServiceImpl implements ReleaseService {
 
 	@Autowired
 	ReleaseDao rdao;
+	
+	@Autowired
+	OrderDao odao;
 	
 	public ArrayList<materiaDTO> release_recipe_select(Map<String, Object> objdata){
 		
@@ -199,6 +205,58 @@ public class ReleaseServiceImpl implements ReleaseService {
 	//출고지시화면에서 발주하기 모달창 상품의 재고 select
 	public String release_order(int data) {
 		return rdao.release_order(data);
+	}
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고의 구매가 select
+	public String release_order_price_select(int data) {
+		return rdao.release_order_price_select(data);
+	}
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
+	public void release_pay_order(int order_num_count, int product_code) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("order_num_count", order_num_count);
+		map.put("product_code", product_code);
+		
+		b_arriveDTO pc_num = new b_arriveDTO();
+				
+		pc_num.setProduct_code(product_code);
+		
+		int select_num = odao.pallet_in_ratio_select(pc_num);
+		System.out.println("상품허용중량 : ");
+		System.out.println(select_num);
+		
+		b_arriveDTO adto = new b_arriveDTO();
+
+		adto.setArrive_num(order_num_count);
+		adto.setProduct_code(product_code);
+		
+		if(adto.getArrive_num() > select_num) {
+			
+			int minus_num;
+			
+			while(true) {
+				
+				if(select_num >= adto.getArrive_num()) {
+					rdao.release_pay_order(adto);
+					break;
+				}
+				
+				minus_num = adto.getArrive_num() - select_num;
+				adto.setArrive_num(select_num);
+				rdao.release_pay_order(adto);
+				adto.setArrive_num(minus_num);
+				
+			}
+			 
+		} else {
+			rdao.release_pay_order(adto);
+		}
+		
+		
+		
 	}
 	
 }

@@ -51,4 +51,10 @@ public interface ReleaseService {
 	
 	//출고지시화면에서 발주하기 모달창 상품의 재고 select
 	public String release_order(int data);
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고의 구매가 select
+	public String release_order_price_select(int data);
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
+	public void release_pay_order(int order_num_count, int product_code);
 }

@@ -253,4 +253,15 @@
 		WHERE product_code = #{data}
 		GROUP BY product_code
  	</select>
+ 	
+ 	<select id="release_order_price_select" resultType="String">
+ 		SELECT price
+ 		FROM b_product
+ 		WHERE product_code = #{data}
+ 	</select>
+ 	
+ 	<insert id="release_pay_order">
+ 		INSERT INTO b_arrive (arrive_num, product_code)
+ 		VALUES (#{arrive_num},#{product_code})
+ 	</insert>
 </mapper>

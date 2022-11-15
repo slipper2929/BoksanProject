@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ReleaseController {
@@ -45,5 +46,17 @@ public class ReleaseController {
 		rservice.release_stock_update(rldto);
 		
 		return "redirect:/release_order_list";
+	}
+	
+	//출고지시페이지에서 발주하기
+	@RequestMapping(value = "/release_pay_order", method = RequestMethod.POST)
+	public String release_pay_order(
+				@RequestParam(value="order_num_count") int order_num_count,
+				@RequestParam(value="product_code") int product_code
+			) {
+			
+			rservice.release_pay_order(order_num_count, product_code);
+		
+		return "redirect:/release_pay";
 	}
 }

@@ -1,7 +1,7 @@
 package org.boksan.controller;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.boksan.model.Product_selectDTO;
@@ -17,10 +17,7 @@ import org.boksan.service.StockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -151,11 +148,19 @@ public class AjaxController {
 	//출고지시화면에서 발주하기 모달창 상품의 재고 select
 	@GetMapping(value = "/release_order",
 			produces = "application/json; charset=utf-8")
-	public String release_order(int data) {
+	public Map<String, Object> release_order(int data) {
 		
 		String res = relservice.release_order(data);
+		String data_price = relservice.release_order_price_select(data);
 		
-		return res;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		
+		map.put("data", res);
+		map.put("data_price", data_price);
+		
+		return map;
 	}
 	
 

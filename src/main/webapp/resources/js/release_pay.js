@@ -4,9 +4,12 @@ $(function(){
 	var header = $("meta[name='_csrf_header']").attr("content");
 
 	$(".order_btn").on("click", function(){
+		
+		$(".modal_content form").find(".order_result").val("")
 
 		let order_pc = $(this).parents("tr").find(".rp_product_code").text()
 		let order_pn = $(this).parents("tr").find(".rp_product_name").text()
+		let order_num = $(this).parents("tr").find(".rp_release_num").text()
 		$("#order_link").attr("href","/order?product_code=" + order_pc + "&product_name=" + order_pn)
 		//$("#order_link").get(0).click();
 		
@@ -14,12 +17,13 @@ $(function(){
 			url:"/release_order",
 			type:"get",
 			data: {"data" : order_pc},
-			dataType:'text',
+			dataType:'json',
 			beforeSend : function(xhr){
 				xhr.setRequestHeader(header, token);
 			},
 			success: function(data){
-				alert(data)
+				
+				console.log(data)
 				
 				$(".modal").fadeIn();
 				
@@ -28,7 +32,77 @@ $(function(){
 					"margin-left" : "-17px"
 				})
 				
+				
 				$(".modal_name span").text(order_pn)
+				$(".modal_total_num span").text(data.data + "kg")
+				$(".modal_order_num span").text(order_num)
+				$(".modal_product_code").val(order_pc)
+				
+				let modal_total_product_num = 0;
+				
+				for(let i = 1; i < $(".release_pay_table tr").length; i++) {
+					
+					if($(".release_pay_table tr").eq(i).find(".rp_product_code").text() == order_pc) {
+						
+						let slicestr = $(".release_pay_table tr").eq(i).find(".rp_release_num").text().slice(0, -2)
+						
+						modal_total_product_num += slicestr*1
+					}
+					
+				}
+				
+				$(".modal_total_product_num span").text(modal_total_product_num + "kg")
+				
+				$(".modal_order_num button").on("click", function(){
+					
+					let result = $(".modal_order_num span").text().slice(0, -2) - data.data;
+					
+					$(".modal_content form").find(".order_result").val(result)
+					
+					let price_res = $(".order_result").val() * data.data_price
+					
+					$(".modal_total_price_num .res").text(price_res + "원")
+					
+					
+				})
+				
+				$(".modal_total_product_num button").on("click", function(){
+									
+					let result = $(".modal_total_product_num span").text().slice(0, -2) - data.data;
+					
+					$(".modal_content form").find(".order_result").val(result)
+					
+					let price_res = $(".order_result").val() * data.data_price
+					
+					$(".modal_total_price_num .res").text(price_res + "원")
+					
+					
+				})
+				
+				$(".order_result").on("change", function(){
+
+					let price_res = $(".order_result").val() * data.data_price
+							
+					alert(price_res)
+					$(".modal_total_price_num .res").text(price_res + "원")
+					
+				})
+				
+				$(".release_pay_order_btn").on("click", function(){
+					
+					if($(".order_result").val() != "") {
+						alert("ddd")
+						$(".modal_order_form").submit();
+						
+					} else {
+						alert("중량을 입력하세요");
+						$(".order_result").focus();
+					}
+					
+				})
+				
+				
+				
 			},
 			error: function(e){
 				alert(e)

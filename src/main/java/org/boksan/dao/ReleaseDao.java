@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.boksan.model.Criteria;
+import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_empDTO;
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
@@ -76,4 +77,10 @@ public interface ReleaseDao {
 	
 	//출고지시화면에서 발주하기 모달창 상품의 재고 select
 	public String release_order(int data);
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고의 구매가 select
+	public String release_order_price_select(int data);
+	
+	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
+	public void release_pay_order(b_arriveDTO adto);
 }
