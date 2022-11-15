@@ -36,7 +36,6 @@
                 <div class="b_title">
                     <h1>재고조회</h1>
                     <h2>파레트별 조회</h2>
-                    ${pageMaker }
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                     <div class="b_search">

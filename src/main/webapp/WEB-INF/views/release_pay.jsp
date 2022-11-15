@@ -217,7 +217,6 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>출고요청결제</h1>
-                    ${rplist}
                     <h2 class="hidden"></h2>
                 </div> <!--.b_main-->
                 <div class="b_search" style="display:none">

@@ -34,8 +34,6 @@
         <jsp:include page="header.jsp"></jsp:include>
         
         <div id="container">
-        	${pglist}
-        	${member}
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>레시피추가</h1>

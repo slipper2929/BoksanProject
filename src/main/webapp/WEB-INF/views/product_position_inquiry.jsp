@@ -72,7 +72,6 @@
                                 <p>상세위치</p>
                             </th>
                         </tr>
-                        ${pageMaker }
                         <c:forEach var="pplist" items="${pplist }">
                         <tr class="b_table_data">
                             <td><p>${pplist.pallet_num }</p></td>
