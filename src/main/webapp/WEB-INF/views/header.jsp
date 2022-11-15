@@ -155,9 +155,6 @@
                                 <li>
                                     <p><a href="/recipe_inquiry">레시피목록</a></p>
                                 </li>
-                                <li>
-                                    <p><a href="/recipe_detail">레시피상세보기</a></p>
-                                </li>
                             </ul>
                         </li> <!--레시피 끝-->
                         <li class="b_header_nav_manager"> <!--관리자-->

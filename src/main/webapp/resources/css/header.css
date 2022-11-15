@@ -58,6 +58,24 @@
 	right: 0;
 }
 
+.b_header_util .b_header_logout #logout_a_btn{
+	display: block;
+    color: #444;
+    font-size: 25px;
+    font-weight: 400;
+    text-align: center;
+    line-height: 100px;
+    width: 110px;
+    height: 100px;
+    background-color: rgb(226, 220, 213);
+    border: 0;
+}
+
+.b_header_util .b_header_logout #logout_a_btn:hover{
+    color: rgb(176, 160, 56);
+    cursor: pointer;
+}
+
 
 .b_header_util>div{
     width: 110px;

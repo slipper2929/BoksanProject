@@ -1,14 +1,180 @@
 @charset "utf-8";
 
-.pay_btn>p>input{
-    width: 100px;
-    height: 40px;
-    margin: 3px 0;
-}
-.payment{
-    width: 250px;
+.pay_btn>p>input {
+	width: 100px;
+	height: 40px;
+	margin: 3px 0;
 }
 
-.b_content{
-    padding-top: 0;
+.payment {
+	width: 250px;
+}
+
+.b_content {
+	padding-top: 0;
+}
+
+.modal {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 5000;
+}
+
+.modal_content {
+	width: 600px;
+	height: 350px;
+	background: #fff;
+	border-radius: 10px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-top: -175px;
+	margin-left: -300px;
+	box-sizing: border-box;
+	padding: 34px 0;
+	line-height: 23px;
+}
+
+.modal_out {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background-image: url(../resources/b_img/page_out1.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+
+.modal_out:hover {
+	background-image: url(../resources/b_img/page_out2.png);
+}
+
+.modal_line {
+	width: 600px;
+	height: 2px;
+	background-color: #ccc;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.modal_line2 {
+	width: 600px;
+	height: 2px;
+	background-color: #dde;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.modal h1 {
+	text-align: center;
+}
+
+.modal_title {
+	width: 400px;
+	margin-left: 100px;
+	font-size: 18px;
+	line-height: 30px;
+}
+
+.modal form {
+	margin-left: 100px;
+}
+
+.modal_title p {
+	position: relative;
+}
+
+.modal_title span {
+	position: absolute;
+	top: 0;
+	left: 100px;
+}
+
+.modal_title button {
+	position: absolute;
+	top: 0;
+	left: 300px;
+	border: none;
+	background-color: rgb(99, 99, 223);
+	color: #fff;
+	padding: 5px;
+}
+
+.modal_title button:hover {
+	background-color: rgb(72, 72, 220);
+}
+
+.modal_order_form p {
+	position: relative;
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+.modal_order_form .order_result {
+	position: absolute;
+	top: 0;
+	left: 100px;
+	height: 25px;
+	width: 150px;
+	font-size: 18px;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+.modal_order_form .order_result::placeholder {
+	font-size: 15px;
+	padding-left: 10px;
+}
+
+.modal_order_form button {
+	position: absolute;
+	top: -3px;
+	left: 300px;
+	border: none;
+	background-color: rgb(99, 223, 120);
+	color: #fff;
+	padding: 7px 10px 7px 10px;
+}
+
+.modal_order_form button:hover {
+	background-color: rgb(52, 223, 81);
+}
+
+.modal_order_form span {
+	position: absolute;
+	top: 0;
+	left: 255px;
+	font-size: 20px;
+}
+
+.modal_price {
+	margin-left: 100px;
+}
+
+.modal_price p {
+	position: relative;
+	font-size: 25px;
+}
+
+.modal_price .res {
+	position: absolute;
+	top: 0;
+	left: 110px;
+	font-size: 20px;
+}
+
+.modal_price .won {
+	position: absolute;
+	top: 0;
+	left: 200px;
+	font-size: 20px;
 }

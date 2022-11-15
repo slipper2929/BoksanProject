@@ -271,8 +271,9 @@
 
 
 
-
-        <footer class="b_footer">
+		<jsp:include page="footer.jsp"></jsp:include>
+		
+<!--         <footer class="b_footer">
             <div class="b_footer_in">
                 <div class="b_footer_top">
                     <div class="b_footer_logo">로고입니다</div>
@@ -297,7 +298,7 @@
                     <p>Copyright ⓒ 2022 BOKSANKIMCHI CO. Rights Reserved.</p>
                 </div>
             </div>
-        </footer> <!--#footer-->
+        </footer> #footer -->
     </div> <!--#wrap-->
 
     <!-- 3. jQuery 연결 -->
