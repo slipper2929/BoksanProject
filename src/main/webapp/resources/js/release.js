@@ -112,7 +112,7 @@
 	            		release_tr += '<tr class="b_table_data">'
 		                release_tr += '<td class="pc_check_release"><p>'+data[i].product_code
 		                release_tr += '<input type="hidden" name="product_code" value="' + data[i].product_code + '"></p></td>'
-		                release_tr += '<td><p>'+data[i].product_name
+		                release_tr += '<td class="pn_release"><p>'+data[i].product_name
 		                release_tr += '<input type="hidden" name="product_name" value="' + data[i].product_name + '"></p></td>'
 		                release_tr += '<td class="release_weight_textbox">'
 		                release_tr += '<p><input type="text" placeholder="중량을 입력하세요" name="release_num" value="'+ data[i].material_num +'"></p></td>'
@@ -161,7 +161,7 @@
     		release_tr += '<tr class="b_table_data">'
             release_tr += '<td class="pc_check_release"><p>'+pc_padd
             release_tr += '<input type="hidden" name="product_code" value="' + pc_padd + '"></p></td>'
-            release_tr += '<td><p>'+pn_padd[0]
+            release_tr += '<td class="pn_release"><p>'+pn_padd[0]
             release_tr += '<input type="hidden" name="product_name" value="' + pn_padd[0] + '"></p></td>'
             release_tr += '<td class="release_weight_textbox">'
             release_tr += '<p><input type="text" placeholder="중량을 입력하세요" name="release_num" value="'+ pw_padd +'"></p></td>'
@@ -180,13 +180,72 @@
     
     $(document).on("click", ".release_list_btn input", function(){
     	
-    	for(let i = 1; i < $("table tr").length; i++){
-    		$("table tr").eq(i).find("input[name = product_code]").attr('name', 'release_insert_list[' + (i-1) + '].product_code')
-    		$("table tr").eq(i).find("input[name = product_name]").attr('name', 'release_insert_list[' + (i-1) + '].product_name')
-    		$("table tr").eq(i).find("input[name = release_num]").attr('name', 'release_insert_list[' + (i-1) + '].release_num')
+    	//상품코드 배열
+    	let pc_arr = [];
+    	
+    	//상품중량 배열
+    	let rn_arr = [];
+    	
+    	//상품이름 배열
+    	let pn_arr = [];
+    	
+    	//submit여부
+    	let submit_check = false;
+    	
+    	let alert_text = "";
+    	
+    	for(let i = 0; i < $("table tr").length-1; i++) {
+
+    		pc_arr.push($("table tr").eq(i+1).find(".pc_check_release p").text())
+    		rn_arr.push($("table tr").eq(i+1).find(".release_weight_textbox p input").val())
+    		pn_arr.push($("table tr").eq(i+1).find(".pn_release p").text())
     	}
     	
-    	$("#release_insert_form").submit();
+    	$.ajax({
+	        url: "release_stock_check",
+	        type: "get",
+			traditional : true,
+	        data: {
+    			"pc_arr" : pc_arr,
+    			"rn_arr" : rn_arr
+    		},
+	        dataType: "json",
+	        success: function(data){
+	            console.log("dddddddddddddddddd")
+	            console.log(data)
+	            
+	            
+	            
+	            for(let i = 0; i < data.length; i++) {
+	            	if(data[i] != 'f' && data[i] != 't') {
+	            		alert_text += pn_arr[i] + "상품이 재고가 " + data[i] + "만큼 부족, "
+	            		submit_check = false;
+	            	}
+	            	
+	            }
+	            
+	            if(submit_check == true) {
+	        		for(let i = 1; i < $("table tr").length; i++){
+	            		$("table tr").eq(i).find("input[name = product_code]").attr('name', 'release_insert_list[' + (i-1) + '].product_code')
+	            		$("table tr").eq(i).find("input[name = product_name]").attr('name', 'release_insert_list[' + (i-1) + '].product_name')
+	            		$("table tr").eq(i).find("input[name = release_num]").attr('name', 'release_insert_list[' + (i-1) + '].release_num')
+	            	}
+	            	
+	            	$("#release_insert_form").submit();
+	        	} else {
+	        		alert(alert_text + "하여 출고요청을 할 수 없습니다.\n 해당 상품을 먼저 작업하여 주세요")
+	        	}
+
+	        },
+	        error: function(e){
+	            alert("error : " + e)
+	        }
+	    })
+    	
+    	
+    	
+    	
+    	
     	
     })
     

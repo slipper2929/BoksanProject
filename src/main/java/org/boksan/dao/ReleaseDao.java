@@ -83,4 +83,10 @@ public interface ReleaseDao {
 	
 	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
 	public void release_pay_order(b_arriveDTO adto);
+	
+	//출고요청시 재고조회를 위한 그룹타입조회
+	public String pc_group_type_select(String pc_arr);
+	
+	//출고요청시 해당 상품코드로 재고조회 true,false select
+	public String pc_stock_check_select(Map<String, Object> map);
 }

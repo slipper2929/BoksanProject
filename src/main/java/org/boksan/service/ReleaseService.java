@@ -57,4 +57,7 @@ public interface ReleaseService {
 	
 	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
 	public void release_pay_order(int order_num_count, int product_code);
+	
+	//출고요청시 재고조회
+	public String[] release_stock_check(String[] pc_arr, String [] rn_arr);
 }

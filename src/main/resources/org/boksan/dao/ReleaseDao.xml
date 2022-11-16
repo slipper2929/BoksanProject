@@ -264,4 +264,34 @@
  		INSERT INTO b_arrive (arrive_num, product_code)
  		VALUES (#{arrive_num},#{product_code})
  	</insert>
+ 	
+ 	<select id="pc_group_type_select" resultType="String">
+ 		SELECT (
+			case
+				when pg.product_group_type = 'A' then 'false'
+				ELSE 'true'
+			END
+			) AS tf
+		FROM b_product p
+		LEFT JOIN b_product_group pg
+		ON p.product_group_code = pg.product_group_code
+		WHERE product_code = #{pc_arr}
+ 	</select>
+ 	
+ 	<select id="pc_stock_check_select" resultType="String">
+ 		SELECT (
+			case
+				when s.total_num >= #{rn_arr} then 't'
+				ELSE #{rn_arr} - s.total_num
+			END
+			) AS pcs_check
+		FROM b_product p
+		LEFT JOIN (
+			SELECT product_code, SUM(stock_num) AS total_num
+			FROM b_stock
+			WHERE product_code = #{pc_arr}
+		) AS s
+		ON p.product_code = s.product_code
+		WHERE p.product_code = #{pc_arr}
+ 	</select>
 </mapper>

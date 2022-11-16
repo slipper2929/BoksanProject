@@ -259,4 +259,43 @@ public class ReleaseServiceImpl implements ReleaseService {
 		
 	}
 	
+	//출고요청시 재고조회
+	public String[] release_stock_check(String[] pc_arr, String [] rn_arr) {
+		
+		String[] pc_group_type_arr;
+		String[] result_arr;
+		pc_group_type_arr = new String [pc_arr.length];
+		result_arr = new String [pc_arr.length];
+
+		for(int i = 0; i < pc_arr.length; i++) {
+			String tf = rdao.pc_group_type_select(pc_arr[i]);
+			pc_group_type_arr[i] = tf;
+		}
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		for(int i = 0; i < pc_arr.length; i++) {
+			System.out.println(pc_group_type_arr[i]);
+			if(pc_group_type_arr[i].equals("true")) {
+				System.out.println("dsfasdfsadfasdfda");
+				map.put("pc_arr", pc_arr[i]);
+				map.put("rn_arr", rn_arr[i]);
+				
+				String pcs_check = rdao.pc_stock_check_select(map);
+				
+				if(pcs_check == null) {
+					result_arr[i] = rn_arr[i];
+				}else {
+					result_arr[i] = pcs_check;
+				}
+				
+			}else {
+				result_arr[i] = "f";
+			}
+		}
+		
+		return result_arr;
+		
+	}
+	
 }

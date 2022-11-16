@@ -181,4 +181,15 @@ public class AjaxController {
 		mgservice.emp_delete(emp_val);
 		return "삭제되었습니다.";
 	}
+	
+	//출고요청시 재고조회
+	@GetMapping(value="/release_stock_check",
+			produces = "application/json; charset=utf-8")
+	public String[] release_stock_check(@RequestParam(value="pc_arr") String[] pc_arr,@RequestParam(value="rn_arr") String[] rn_arr) {
+		
+		String[] res = relservice.release_stock_check(pc_arr, rn_arr);
+		
+		return res;
+		
+	}
 }
