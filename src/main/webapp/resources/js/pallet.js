@@ -111,7 +111,15 @@ $(function(){
 		//$(this).submit();
 	})*/
 	
-	
+	$(document).on("click","#pallet_add_btn",function(){
+		let pallet_count = $("#pallet_count")
+		if(pallet_count.val() == ""){
+			alert("수량을 입력해주세요")
+			pallet_count.focus();
+		}else{
+			$("#form_add").submit();
+		}
+	})
 	
 	
 	

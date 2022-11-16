@@ -47,10 +47,10 @@
 	                   
 	                    <p class="b_text b_select b_inputBox">
 	                        <label><span>수량추가</span>
-	                            <input type="text" name="pallet_count" value="" class="num_check" id="pallet_count" placeholder="수량을 입력하세요">
+	                            <input type="text" name="pallet_count" value="" class="num_check count_add" id="pallet_count" placeholder="수량을 입력하세요">
 	                        </label>
 	                    </p>
-	                    <p class="btn_s_b pallet_add_btn"><input type="submit" value="추가하기" id="pallet_add_btn"></p>
+	                    <p class="btn_s_b pallet_add_btn"><input type="button" value="추가하기" id="pallet_add_btn"></p>
 	                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                 </div>    
@@ -59,7 +59,7 @@
                 <table class="b_table margin_t50" id = "PS_table">
                     <tr class="b_table_title">
                         <th>
-                            <p>파레트번호</p>
+                            <p>비어있는 파레트번호</p>
                         </th>
                         <th>
                             <p>삭제</p>
