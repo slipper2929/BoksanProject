@@ -42,14 +42,14 @@
                     <h1>상품분류추가</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="" method="post">
+                    <form action="" method="post" class="boksan_submit">
                         <p class="b_text b_inputform_name">
-                            <label><span>상품분류명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check" name="product_group_name"></label>
+                            <label><span>상품분류명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check gap" name="product_group_name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_select b_inputform_name b_text">
                         <span>상품분류타입</span>
-                        <select name="product_group_type">
+                        <select name="product_group_type" class="gap">
 	                       	<option value="A">식자재타입</option>
                         	<option value="B">가공품타입</option>
                         	<option value="C">완제품타입</option>
@@ -57,7 +57,7 @@
                         </select>
                         </p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="상품분류등록">
+                            <input type="button" class="button_submit" value="상품분류등록">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">  
                     </form>

@@ -24,7 +24,7 @@
 	 			
 	 			
 	 			$(".myProduct *").remove()
-	 			$(".myProduct").append("<option>선택안함</option>")
+	 			$(".myProduct").append("<option value=''>선택안함</option>")
 	 			
 	 			for(let i = 0; i < data.length; i++){
 	 				var optionTag = $("<option value='"+ data[i].product_code +"'>" + data[i].product_name + "(" + data[i].product_code + ")</option>");

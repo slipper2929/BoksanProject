@@ -42,11 +42,11 @@
                     <h1>발주신청</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l">
-                    <form action="" id="b_order" method="post">
+                    <form action="" id="b_order" method="post" class="boksan_submit">
                     	<c:if test="${release_order == 0}">
                         <p class="b_text b_select">
                             <label><span>발주할 상품</span>
-                                <select name="" id="" class="recipe_product_selectbox pg_box">
+                                <select name="" id="" class="recipe_product_selectbox pg_box gap">
 		                        	<option value="">선택안함</option>
 		                        	<c:forEach items="${pglist}" var="pg">
 		                        		<c:if test="${pg.product_group_type == 'A' || pg.product_group_type == 'D'}">
@@ -54,7 +54,7 @@
 		                            	</c:if>
 		                        	</c:forEach>
 		                        </select>
-		                        <select name="product_code" id="recipe_product_code_select" class="recipe_product_selectbox">
+		                        <select name="product_code" id="recipe_product_code_select" class="recipe_product_selectbox gap">
 		                            <option value="">선택안함</option>
 		                        </select>
                             </label>
@@ -70,13 +70,13 @@
 	                        </p>
                         </c:if>
                         <p class="b_text b_inputform_name">
-                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" id="arrive_num" name="arrive_num"></label>
+                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check gap" id="arrive_num" name="arrive_num"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_order_ps">*해당상품은 키로(KG)단위로 발주합니다.</p>
                         <p class="b_text b_inputform_name" id="b_order_price">예상구매액<span></span></p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="발주신청">
+                            <input type="button" class="button_submit" value="발주신청">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">  
                     </form>
@@ -96,7 +96,7 @@
     <script src="../resources/js/header.js"></script>
 
     <!--입력폼 js-->
-    <script src="../resources/js/inputform.js"></script>
+    <!-- <script src="../resources/js/inputform.js"></script> -->
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
@@ -104,6 +104,7 @@
     <!-- ajax 상품분류에 따른 상품목록 가져오기 -->
     <script src="../resources/js/product_select.js"></script>
     
+    <!-- order.js -->
     <script src="../resources/js/order.js"></script>
 </body>
 </html>

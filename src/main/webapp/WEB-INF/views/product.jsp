@@ -41,14 +41,14 @@
                     <h1>상품등록</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="" method="post">
+                    <form action="" method="post" class="boksan_submit">
                         <p class="b_text b_inputform_name">
-                            <label><span>상품명</span><input type="text" placeholder="이름을 입력해주세요" name="product_name"></label>
+                            <label><span>상품명</span><input type="text" class="sc_check gap" placeholder="이름을 입력해주세요" name="product_name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_text b_select">
                             <label><span>분류</span>
-                                <select name="product_group_code">
+                                <select name="product_group_code" class="gap">
                                     <option value="">선택안함</option>
                                     <c:forEach items="${plist }" var="plist">     
                                     <option value="${plist.product_group_code }">${plist.product_group_name }</option>
@@ -57,20 +57,20 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>원산지</span><input type="text" class="sc_check" name="place"></label>
+                            <label><span>원산지</span><input type="text" class="sc_check gap" name="place"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>업체명</span><input type="text" class="sc_check" name="business_name"></label>
+                            <label><span>업체명</span><input type="text" class="sc_check gap" name="business_name"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>구매가</span><input type="text" class="sc_check" name="price"></label>
+                            <label><span>구매가</span><input type="text" class="sc_check gap num_check" name="price"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>파레트중량</span><input type="text" class="sc_check" name="pallet_in_ratio"></label>
+                            <label><span>파레트중량</span><input type="text" class="sc_check gap num_check" name="pallet_in_ratio"></label>
                         </p>
                         <p class="b_product_ps">*1파레트에 들어갈수 있는 최대중량(KG단위)</p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="상품등록">
+                            <input type="button" class="button_submit" value="상품등록">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     </form>
@@ -88,7 +88,7 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
-
+	<!-- 유효성 검사 -->
     <script src="../resources/js/b_regExp_check.js"></script>
 </body>
 </html>

@@ -141,9 +141,6 @@
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
 
-    <!--입력폼 js-->
-    <script src="../resources/js/inputform.js"></script>
-
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>
     

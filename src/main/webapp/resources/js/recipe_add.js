@@ -23,7 +23,7 @@
 			 			
 			 			
 			 			$(".myProduct *").remove()
-			 			$(".myProduct").append("<option>선택안함</option>")
+			 			$(".myProduct").append("<option value=''>선택안함</option>")
 			 			
 			 			for(let i = 0; i < data.length; i++){
 			 				var optionTag = $("<option value='"+ data[i].product_code +"'>" + data[i].product_name + "(" + data[i].product_code + ")</option>");
@@ -84,7 +84,7 @@
 	 	tr_make += '<tr class="b_table_data">';
 	 	tr_make += '<td>'
 	 	tr_make += '<p>'
-	 	tr_make += '<select name="" id="" class="recipe_product_selectbox pg_box">'
+	 	tr_make += '<select name="" id="" class="recipe_product_selectbox pg_box gapS">'
 	 	tr_make += '<option value="">선택안함</option>'
 		
 		for(let i = 0; i < code_list.length; i++){
@@ -92,14 +92,14 @@
 		}
 	 	
 	 	tr_make += '</select>'
-	 	tr_make += '<select id="" class="recipe_product_selectbox product_code_list">'
+	 	tr_make += '<select id="" class="recipe_product_selectbox product_code_list gapS">'
 	 	tr_make += '<option value="">선택안함</option>'
 	 	tr_make += '</select>'
 	 	tr_make += '</div>'
 	 	tr_make += '</p>'
 	 	tr_make += '</td>'
 	 	tr_make += '<td class="recipe_weight">'
-	 	tr_make += '<p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num"></p>'
+	 	tr_make += '<p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num gapS"></p>'
 	 	tr_make += '</td>'
 	 	tr_make += '<td class="recipe_delete">'
 	 	tr_make += '<p class="btn_s_r recipe_delete_btn"><input type="button" value="재료삭제" class="delete_btn"></p>'
@@ -124,8 +124,10 @@
  		
  		$("#recipe_weight").val(weight_sum)
  	}
- 	
- 	$(document).on("click", "#add_btn", function(){
+ 		
+ 		$(document).on("click", "#add_btn", function(){
+ 		
+		
  		
  		$(".b_table").append(tr_making())
  		jQuery.pg_box_change();
@@ -173,12 +175,32 @@
  			$("table tr").eq(i+1).find(".product_code_list").attr('name', 'product_code_list['+i+'].product_code');
  			$("table tr").eq(i+1).find(".weight_num").attr('name', 'material_num_list['+i+'].material_num');
  			
+ 		
+ 			
  			//console.log(i+"번째 목록 상품코드 : "+$("table tr").eq(i+1).find(".product_code_list").attr('name'))
  			//console.log(i+"번째 목록 중량"+$("table tr").eq(i+1).find(".weight_num").attr('name'))
  		}
  		
+ 		let gapS = $(".gapS")
+			let check_point = true
+			for(let i = 0; i < gapS.length; i++){
+				if(gapS.eq(i).val().replace(/\s/, "").length == 0){
+					check_point = false;
+					gapS.eq(i).val("").focus();
+					break;
+				}
+			}
+			
+			if(check_point == false){
+				alert("빈칸을 입력해주세요")
+				
+			} else{
+				alert("완료되었습니다.")
+				$("form").submit();
+			}
  		
- 		$("form").submit();
+ 		
+ 		
  	})
 
  })

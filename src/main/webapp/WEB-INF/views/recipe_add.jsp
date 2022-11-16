@@ -42,7 +42,7 @@
                 <div class="b_content b_content_width_m">
                     <div class="recipe_product_chois">
                         <h3 class="small_title">상품선택하기</h3>
-                        <select name="" id="" class="recipe_product_selectbox pg_box">
+                        <select name="" id="" class="recipe_product_selectbox pg_box gapS">
                         	<option value="">선택안함</option>
                         	<c:forEach items="${pglist}" var="pg">
                         		<c:if test="${pg.product_group_type == 'B' || pg.product_group_type == 'C' }">
@@ -50,7 +50,7 @@
                             	</c:if>
                         	</c:forEach>
                         </select>
-                        <select name="" id="recipe_product_code_select" class="recipe_product_selectbox">
+                        <select name="" id="recipe_product_code_select" class="recipe_product_selectbox gapS">
                             <option value="">선택안함</option>
                         </select>
                     </div>
@@ -82,7 +82,7 @@
                         <tr class="b_table_data">
                             <td>
                                 <p>
-                                    <select name="" id="" class="recipe_product_selectbox pg_box">
+                                    <select name="" id="" class="recipe_product_selectbox pg_box gapS">
                                         <option value="">선택안함</option>
                                         <c:forEach items="${pglist}" var="pg">
                                         	<c:if test="${pg.product_group_type == 'A' || pg.product_group_type == 'B' }">
@@ -90,13 +90,13 @@
 			                            	</c:if>
 			                        	</c:forEach>
                                     </select>
-                                    <select id="" class="recipe_product_selectbox product_code_list">
+                                    <select id="" class="recipe_product_selectbox product_code_list gapS">
                                         <option value="">선택안함</option>
                                     </select>
                                 </p>
                             </td>
                             <td class="recipe_weight">
-                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num"></p>
+                                <p><input type="text" placeholder="중량을 입력하세요" class="num_check weight_num gapS"></p>
                             </td>
                             <td class="recipe_delete">
                                 <p class="btn_s_r recipe_delete_btn"><input type="button" value="재료삭제" class="delete_btn"></p>

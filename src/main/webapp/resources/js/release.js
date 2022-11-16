@@ -21,7 +21,7 @@
 			 			
 			 			
 			 			$(".myProduct *").remove()
-			 			$(".myProduct").append("<option>선택안함</option>")
+			 			$(".myProduct").append("<option value=''>선택안함</option>")
 			 			
 			 			for(let i = 0; i < data.length; i++){
 			 				var optionTag = $("<option value='"+ data[i].product_code +"'>" + data[i].product_name + "(" + data[i].product_code + ")</option>");
@@ -135,7 +135,7 @@
  	})
  	
  	$(document).on("click","#release_padd_btn", function(){
- 	
+ 		
  		let pc_padd = $("select[name = recipe_product_code_select]").val();
  		let pn_padd_str = $("select[name = recipe_product_code_select] option:selected").text()
  		let pw_padd = $("#pw_padd").val()
@@ -168,7 +168,24 @@
             release_tr += '<td><p class="btn_s_r"><input type="button" value="삭제" class="release_product_delete_btn"></p></td></tr>'
     	}
     	
-    	$("table").append(release_tr)
+    	let check_btn_test = true;
+    	
+    	for(let i=0; i<$(".b_select1").find("select").length; i++){
+    		if($(".b_select1").find("select option:selected").eq(i).val() == ""){
+    			check_btn_test = false;
+    		}
+    	}
+    	
+    	if($("#pw_padd").val() == ""){
+    		check_btn_test = false;
+    	}
+    	
+    	if(check_btn_test == true){
+    		$("table").append(release_tr)
+    	}else{
+    		alert("값을 입력해주세요.")
+    	}
+    	
  		
  	})
  	
@@ -249,9 +266,8 @@
     	
     })
     
-    
-    
-    
+ 	
+ 
     
    
     

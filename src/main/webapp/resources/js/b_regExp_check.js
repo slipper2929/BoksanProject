@@ -5,6 +5,30 @@ check();
 
 //유효성검사
 function check(){
+	
+	//submit 공백
+	let button_submit = $(".button_submit")
+	let gap = $(".gap")
+	$(document).on("click",".button_submit",function(){
+		let check_point = true
+		for(let i = 0; i < gap.length; i++){
+			if(gap.eq(i).val().replace(/\s/, "").length == 0){
+				check_point = false;
+				gap.eq(i).val("").focus();
+				break;
+			}
+		}
+		
+		if(check_point == false){
+			alert("빈칸을 입력해주세요")
+			
+		} else{
+			alert("완료되었습니다.")
+			$(".boksan_submit").submit();
+		}
+		
+	})
+	
 
     //만들어야하는 정규식 남은거 : 입고대기목록의 입고일, 입고시킬 창고번지
     //                              회원가입폼, 로그인폼

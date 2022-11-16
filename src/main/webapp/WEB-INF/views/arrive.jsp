@@ -42,10 +42,10 @@
                     <h1>입고신청</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_l">
-                    <form id="b_arrive" method="post">
+                    <form id="b_arrive" method="post" class="boksan_submit">
                         <p class="b_text b_select">
                             <label><span>입고할 상품</span>
-                                <select class="recipe_product_selectbox pg_box">
+                                <select class="recipe_product_selectbox pg_box gap">
                                 	<option value="">선택안함</option>
                                 	<c:forEach items="${pglist}" var="pg">
                                 		<c:if test="${pg.product_group_type == 'B' || pg.product_group_type == 'C'}">
@@ -53,18 +53,18 @@
                                     	</c:if>
                              		</c:forEach>
                                 </select>
-                                <select name="product_code" id="recipe_product_code_select" class="recipe_product_selectbox b_arrive_select">
+                                <select name="product_code" id="recipe_product_code_select" class="recipe_product_selectbox b_arrive_select gap">
                                     <option value="">선택안함</option>
                                 </select>
                             </label>
                         </p>
                         <p class="b_text b_inputform_name">
-                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check" id="arrive_num" name="arrive_num"></label>
+                            <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check num_check gap" id="arrive_num" name="arrive_num"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_arrive_ps">*해당상품은 키로(KG)단위로 입고합니다.</p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="입고신청">
+                            <input type="button" class="button_submit" value="입고신청">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">  
                     </form>
@@ -82,9 +82,6 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
-
-    <!--입력폼 js-->
-    <script src="../resources/js/inputform.js"></script>
 
     <!--유효성검사 js-->
     <script src="../resources/js/b_regExp_check.js"></script>

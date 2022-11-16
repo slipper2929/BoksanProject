@@ -42,13 +42,13 @@
                     <h1>부서추가등록</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="" method="post">
+                    <form action="" method="post" class="boksan_submit">
                         <p class="b_text b_inputform_name">
-                            <label><span>부서명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check" name="dept_name"></label>
+                            <label><span>부서명</span><input type="text" placeholder="내용을 입력해주세요." class="sc_check gap" name="dept_name"></label>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="부서등록">
+                            <input type="button" class="button_submit" value="부서등록">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
@@ -66,9 +66,6 @@
 
     <!--헤더 js-->
     <script src="../resources/js/header.js"></script>
-
-    <!--입력폼 js-->
-    <script src="../resources/js/inputform.js"></script>
 
     <!--유효성검사-->
     <script src="../resources/js/b_regExp_check.js"></script>

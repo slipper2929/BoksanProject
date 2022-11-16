@@ -41,11 +41,11 @@
                     <h1>창고등록</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
-                    <form action="" method="post">
+                    <form action="" method="post" class="boksan_submit">
                         <p class="b_text b_inputform_name">
                         <p class="b_text b_select">
                             <label><span>기능</span>
-                                <select name="house_function">
+                                <select name="house_function" class="gap">
                                     <option value="">선택안함</option>
                                     <c:forEach items="${hlist }" var="hlist">     
                                     <option value="${hlist.function_code }">${hlist.function_name }</option>
@@ -54,16 +54,16 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>out_num</span><input type="text" class="sc_check only_one_check num_check" name="out_num" placeholder="숫자로 한글자만 입력"></label>
+                            <label><span>out_num</span><input type="text" class="sc_check only_one_check num_check gap" name="out_num" placeholder="숫자로 한글자만 입력"></label>
                         </p>
                         <p class="b_text">
-                            <label><span>in_num</span><input type="text" class="sc_check only_one_check english_upper_check" name="in_num" placeholder="영어대문자로 한글자만 입력"></label>
+                            <label><span>in_num</span><input type="text" class="sc_check only_one_check english_upper_check gap" name="in_num" placeholder="영어대문자로 한글자만 입력"></label>
                         </p>
                         <p class="b_text">
                             <label><span>detail_position</span><input type="text" class="sc_check" name="detail_position"></label>
                         </p>                       
                         <div class="b_submit btn_l_b">
-                            <input type="submit" value="창고등록">
+                            <input type="button" class="button_submit" value="창고등록">
                         </div>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">   
                     </form>
