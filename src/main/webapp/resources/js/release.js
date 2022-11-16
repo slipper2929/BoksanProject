@@ -136,6 +136,12 @@
  	
  	$(document).on("click","#release_padd_btn", function(){
  		
+
+ 		
+ 		
+ 		
+ 	
+
  		let pc_padd = $("select[name = recipe_product_code_select]").val();
  		let pn_padd_str = $("select[name = recipe_product_code_select] option:selected").text()
  		let pw_padd = $("#pw_padd").val()
@@ -207,7 +213,7 @@
     	let pn_arr = [];
     	
     	//submit여부
-    	let submit_check = false;
+    	let submit_check = true;
     	
     	let alert_text = "";
     	
@@ -234,7 +240,11 @@
 	            
 	            
 	            for(let i = 0; i < data.length; i++) {
-	            	if(data[i] != 'f' && data[i] != 't') {
+	            	if(data[i] == 'f' || data[i] == 't') {
+	            		alert("ddd")
+	            		console.log("dd"+submit_check);
+	            	
+	            	} else {
 	            		alert_text += pn_arr[i] + "상품이 재고가 " + data[i] + "만큼 부족, "
 	            		submit_check = false;
 	            	}
@@ -247,7 +257,7 @@
 	            		$("table tr").eq(i).find("input[name = product_name]").attr('name', 'release_insert_list[' + (i-1) + '].product_name')
 	            		$("table tr").eq(i).find("input[name = release_num]").attr('name', 'release_insert_list[' + (i-1) + '].release_num')
 	            	}
-	            	
+	            	alert("fffffff")
 	            	$("#release_insert_form").submit();
 	        	} else {
 	        		alert(alert_text + "하여 출고요청을 할 수 없습니다.\n 해당 상품을 먼저 작업하여 주세요")
