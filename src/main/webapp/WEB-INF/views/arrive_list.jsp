@@ -164,8 +164,8 @@
                             </td>
                             <td>
                             	<c:choose>
-                            		<c:when test="${to.place != null}">
-                            			<p>${to.place}</p>
+                            		<c:when test="${to.country_name != null}">
+                            			<p>${to.country_name}</p>
                             		</c:when>
                             		<c:otherwise>
                             			<p>없음</p>

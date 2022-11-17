@@ -31,7 +31,7 @@
  	</select>
  	
  	<select id="arrive_total_list" resultType="org.boksan.model.Arrive_totalDTO">
- 		SELECT a.product_code, p.product_name, pg.product_group_name, p.business_name, p.place, p.price, arrive_num_total
+ 		SELECT a.product_code, p.product_name, pg.product_group_name, b.business_name, c.country_name, p.price, arrive_num_total
 		FROM (
 				SELECT product_code, SUM(arrive_num) as arrive_num_total
 				FROM b_arrive
@@ -39,6 +39,10 @@
 		) AS a
 		LEFT JOIN b_product p
 		ON a.product_code = p.product_code
+		LEFT JOIN business b
+		ON p.business_code = b.business_code
+		LEFT JOIN country c
+		ON p.country_code = c.country_code
 		LEFT JOIN b_product_group pg
 		ON p.product_group_code = pg.product_group_code
  	</select>

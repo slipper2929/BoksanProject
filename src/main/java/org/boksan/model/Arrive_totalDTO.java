@@ -6,10 +6,11 @@ public class Arrive_totalDTO {
 	private String product_name;
 	private String product_group_name;
 	private String business_name;
-	private String place;
+	private String business_code;
+	private String country_code;
+	private String country_name;
 	private int price;
 	private int arrive_num_total;
-	
 	public int getProduct_code() {
 		return product_code;
 	}
@@ -34,11 +35,23 @@ public class Arrive_totalDTO {
 	public void setBusiness_name(String business_name) {
 		this.business_name = business_name;
 	}
-	public String getPlace() {
-		return place;
+	public String getBusiness_code() {
+		return business_code;
 	}
-	public void setPlace(String place) {
-		this.place = place;
+	public void setBusiness_code(String business_code) {
+		this.business_code = business_code;
+	}
+	public String getCountry_code() {
+		return country_code;
+	}
+	public void setCountry_code(String country_code) {
+		this.country_code = country_code;
+	}
+	public String getCountry_name() {
+		return country_name;
+	}
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
 	}
 	public int getPrice() {
 		return price;
@@ -52,13 +65,15 @@ public class Arrive_totalDTO {
 	public void setArrive_num_total(int arrive_num_total) {
 		this.arrive_num_total = arrive_num_total;
 	}
-	
 	@Override
 	public String toString() {
 		return "Arrive_totalDTO [product_code=" + product_code + ", product_name=" + product_name
-				+ ", product_group_name=" + product_group_name + ", business_name=" + business_name + ", place=" + place
-				+ ", price=" + price + ", arrive_num_total=" + arrive_num_total + "]";
+				+ ", product_group_name=" + product_group_name + ", business_name=" + business_name + ", business_code="
+				+ business_code + ", country_code=" + country_code + ", country_name=" + country_name + ", price="
+				+ price + ", arrive_num_total=" + arrive_num_total + "]";
 	}
+	
+	
 	
 	
 
