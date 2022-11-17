@@ -192,4 +192,29 @@ public class AjaxController {
 		return res;
 		
 	}
+	
+	//원산지 등록 
+	@PostMapping(value="/country_insert",
+			produces = "application/json; charset=utf-8")
+	public String country_insert(String data) {
+
+		String result = pservice.country_insert(data);
+		
+		return result;
+		
+	}
+	
+	//업체 등록 
+	@PostMapping(value="/business_insert",
+			produces = "application/json; charset=utf-8")
+	public String country_insert(
+				@RequestParam(value="business_name_data") String business_name_data,
+				@RequestParam(value="business_tel_data") String business_tel_data
+			) {
+
+		String result = pservice.business_insert(business_name_data, business_tel_data);
+		
+		return result;
+		
+	}
 }

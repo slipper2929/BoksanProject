@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!--노토산스 글꼴-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +33,30 @@
     <title>복산김치WMS_상품등록</title>
 </head>
 <body>
+	<div class="modalc modal">
+ 		<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+ 			<div class="modal_out"></div>
+ 			<h1>원산지 추가</h1>
+ 			<div class="modal_line"></div>
+ 			<div class="modal_input">
+ 				<label><span></span><input type="text" id="modal_country_data" class="sc_check" name="country_name" placeholder="원산지 이름을 입력하세요."></label>
+ 			</div>
+ 			<div class="modalc_btn">등록하기</div>
+ 		</div>
+	</div>
+	
+	<div class="modalb modal">
+ 		<div class="modal_content" title="클릭하면 창이 닫힙니다.">
+ 			<div class="modal_out"></div>
+ 			<h1>업체 추가</h1>
+ 			<div class="modal_line"></div>
+ 			<div class="modal_input">
+ 				<label><span></span><input type="text" id="modal_business_name_data" class="sc_check" name="business_name" placeholder="업체명을 입력하세요."></label>
+ 				<label><span></span><input type="text" id="modal_business_tel_data" class="phone_check sc_check" name="business_tel" placeholder="업체 전화번호를 입력하세요."></label>
+ 			</div>
+ 			<div class="modalb_btn">등록하기</div>
+ 		</div>
+	</div>
    <div id="wrap">
       
       	<jsp:include page="header.jsp"></jsp:include>
@@ -41,6 +67,8 @@
                     <h1>상품등록</h1>
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
+                		<div class="modal_country_btn"></div>
+                		<div class="modal_business_btn"></div>
                     <form action="" method="post" class="boksan_submit">
                         <p class="b_text b_inputform_name">
                             <label><span>상품명</span><input type="text" class="sc_check gap" placeholder="이름을 입력해주세요" name="product_name"></label>
@@ -56,11 +84,26 @@
                                 </select>
                             </label>
                         </p>
-                        <p class="b_text">
-                            <label><span>원산지</span><input type="text" class="sc_check gap" name="place"></label>
+                        <p class="b_text b_select">
+                            <label><span>원산지</span>
+	                           <select name="country_code" id="" class="country_select_box gap">
+	                               <option value="">선택안함</option>
+	                               <c:forEach items="${pclist}" var="pclist">
+	                           	<option value="${pclist.country_code}">${pclist.country_name}</option>
+	                       		</c:forEach>
+	                       		
+	                           </select>
+                            </label>
                         </p>
-                        <p class="b_text">
-                            <label><span>업체명</span><input type="text" class="sc_check gap" name="business_name"></label>
+                        <p class="b_text b_select">
+                            <label><span>업체명</span>
+                            	<select name="business_code" id="" class="business_select_box gap">
+	                               	<option value="">선택안함</option>
+	                               	<c:forEach items="${pblist}" var="pblist">
+	                           		<option value="${pblist.business_code}">${pblist.business_name}</option>
+	                       			</c:forEach>
+	                           </select>
+                            </label>
                         </p>
                         <p class="b_text">
                             <label><span>구매가</span><input type="text" class="sc_check gap num_check" name="price"></label>
@@ -90,5 +133,7 @@
     <script src="../resources/js/header.js"></script>
 	<!-- 유효성 검사 -->
     <script src="../resources/js/b_regExp_check.js"></script>
+    <!-- product js -->
+    <script src="../resources/js/product.js"></script>
 </body>
 </html>

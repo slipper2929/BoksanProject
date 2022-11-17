@@ -254,6 +254,8 @@ public class HomeController {
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product(Model model) {
 		model.addAttribute("plist",pservice.product_group_select()); //상품분류 select box
+		model.addAttribute("pclist",pservice.product_country_select());//원산지 셀렉트
+		model.addAttribute("pblist",pservice.product_business_select());//업체 셀렉트
 		return "product";
 	}
 	

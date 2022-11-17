@@ -1,6 +1,8 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.boksan.dao.ProductDao;
 import org.boksan.model.Criteria;
@@ -67,5 +69,42 @@ public class ProductServiceImpl implements ProductService{
 	
 	public int getTotalCountPP(Criteria cri) {
 		return pdao.getTotalCountPP(cri);
+	}
+	
+	//상품 원산지 조회
+	public ArrayList<b_productDTO> product_country_select(){
+		
+		return pdao.product_country_select();
+		
+	}
+	
+	//상품 업체 조회
+	public ArrayList<b_productDTO> product_business_select(){
+		
+		return pdao.product_business_select();
+		
+	}
+	
+	//원산지 등록
+	public String country_insert(String data) {
+		
+		pdao.country_insert(data);
+		
+		return pdao.country_last_select();
+		
+	}
+	
+	//업체 등록
+	public String business_insert(String business_name_data, String business_tel_data) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("business_name_data", business_name_data);
+		map.put("business_tel_data", business_tel_data);
+		
+		pdao.business_insert(map);
+		
+		return pdao.business_last_select();
+		
 	}
 }

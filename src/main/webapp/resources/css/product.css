@@ -1,5 +1,114 @@
 @charset "utf-8";
 
+.modal{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	top: 0;
+	left: 0;
+	display: none;
+	z-index: 5000;
+}
+
+
+
+.modal_content {
+	width: 600px;
+	height: 350px;
+	background: #fff;
+	border-radius: 10px;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	margin-top: -175px;
+	margin-left: -300px;
+	box-sizing: border-box;
+	padding: 34px 0;
+	line-height: 23px;
+}
+
+.modal_out {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	background-image: url(../b_img/page_out1.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 30px 30px;
+}
+
+.modal_out:hover {
+	background-image: url(../b_img/page_out2.png);
+}
+
+.modal_line {
+	width: 600px;
+	height: 2px;
+	background-color: #ccc;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+
+.modal h1{
+	text-align: center;
+}
+
+.modalc .modal_input{
+	text-align: center;
+	margin-top: 80px;
+	box-sizing: border-box;
+}
+
+.modalb .modal_input{
+	text-align: center;
+	margin-top: 40px;
+	box-sizing: border-box;
+}
+
+.modal .modal_input label{
+	width: 400px;
+	height: 40px;
+	font-size: 20px;
+
+}
+
+.modalb .modal_input input{
+	margin-bottom: 10px;
+}
+
+
+.modal .modal_input input{
+	width: 350px;
+	height: 40px;
+	padding-top: 4px;
+	text-align: center;
+	font-size: 18px;
+}
+
+.modal .modal_input input::placeholder{
+	font-size: 18px;
+}
+
+.modal .modalc_btn,.modalb_btn{
+	width: 354px;
+	height: 50px;
+	margin: 20px auto 0;
+	cursor: pointer;
+	background-color: rgb(237, 237, 122);
+	border: 1px solid #eee;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 50px;
+}
+
+
+
 .b_submit{
 
     margin-top: 80px;
@@ -11,3 +120,42 @@
 .b_product_ps{
     margin-left: 340px;
 }
+
+.b_content{
+	position: relative;
+}
+
+.modal_country_btn{
+	position: absolute;
+    top: 101px;
+    left: 705px;
+    width: 38px;
+    height: 38px;
+    background-image: url(../b_img/plus.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 38px;
+	cursor: pointer;
+}
+
+.modal_business_btn{
+	position: absolute;
+    top: 151px;
+    left: 705px;
+    width: 38px;
+    height: 38px;
+    background-image: url(../b_img/plus.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 38px;
+	cursor: pointer;
+}
+
+.modal_country_btn:hover{
+	background-image: url(../b_img/plus2.png);
+}
+
+.modal_business_btn:hover{
+	background-image: url(../b_img/plus2.png);
+}
+

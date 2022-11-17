@@ -33,4 +33,16 @@ public interface ProductService {
 	//페이징 처리를 위한 전체건수 상품별조회	
 	public int getTotalCountPP(Criteria cri);
 	
+	//상품 원산지 조회
+	public ArrayList<b_productDTO> product_country_select();
+	
+	//상품 업체 조회
+	public ArrayList<b_productDTO> product_business_select();
+	
+	//원산지 등록
+	public String country_insert(String data);
+	
+	//업체 등록
+	public String business_insert(String business_name_data, String business_tel_data);
+	
 }

@@ -8,7 +8,11 @@ public class b_productDTO {
 	
 	private int price;
 	
-	private String place;
+	private String country_code;
+	
+	private String business_code;
+	
+	private String country_name;
 	
 	private String business_name;
 	
@@ -17,18 +21,6 @@ public class b_productDTO {
 	private int product_group_code;
 	
 	private Product_groupDTO product_groupdto;
-	
-
-
-	
-
-	public Product_groupDTO getProduct_groupdto() {
-		return product_groupdto;
-	}
-
-	public void setProduct_groupdto(Product_groupDTO product_groupdto) {
-		this.product_groupdto = product_groupdto;
-	}
 
 	public int getProduct_code() {
 		return product_code;
@@ -54,12 +46,28 @@ public class b_productDTO {
 		this.price = price;
 	}
 
-	public String getPlace() {
-		return place;
+	public String getCountry_code() {
+		return country_code;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
+	public void setCountry_code(String country_code) {
+		this.country_code = country_code;
+	}
+
+	public String getBusiness_code() {
+		return business_code;
+	}
+
+	public void setBusiness_code(String business_code) {
+		this.business_code = business_code;
+	}
+
+	public String getCountry_name() {
+		return country_name;
+	}
+
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
 	}
 
 	public String getBusiness_name() {
@@ -86,11 +94,26 @@ public class b_productDTO {
 		this.product_group_code = product_group_code;
 	}
 
+	public Product_groupDTO getProduct_groupdto() {
+		return product_groupdto;
+	}
+
+	public void setProduct_groupdto(Product_groupDTO product_groupdto) {
+		this.product_groupdto = product_groupdto;
+	}
+
 	@Override
 	public String toString() {
 		return "b_productDTO [product_code=" + product_code + ", product_name=" + product_name + ", price=" + price
-				+ ", place=" + place + ", business_name=" + business_name + ", pallet_in_ratio=" + pallet_in_ratio
-				+ ", product_group_code=" + product_group_code + "]";
+				+ ", country_code=" + country_code + ", business_code=" + business_code + ", country_name="
+				+ country_name + ", business_name=" + business_name + ", pallet_in_ratio=" + pallet_in_ratio
+				+ ", product_group_code=" + product_group_code + ", product_groupdto=" + product_groupdto + "]";
 	}
+	
+
+
+	
+
+	
 	
 }

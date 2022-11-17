@@ -35,7 +35,8 @@ function check(){
 
     let sc_check = $(".sc_check")
     let num_check = $(".num_check")
-
+    let phone_check = $(".phone_check")
+    
     //회원가입폼 관련
     let name_check = $(".name_check")
     let residentNum_check = $(".residentNum_check")
@@ -44,6 +45,18 @@ function check(){
     let pw_check = $(".pw_check")
     let pw_check2 = $(".pw_check2")
 
+    //전화번호만 받기
+    phone_check.change(function(){
+    	
+		var regExp = /^01([0|1|6|7|8|9])-([0-9]{3,4})-([0-9]{4})$/g;
+		
+		if(!regExp.test($(this).val())){
+			alert("전화번호를 다시 입력해주세요(-은 넣어도되고 안넣어도 됩니다)");
+			$(this).val("").focus();
+		}
+		
+    })
+    
     //특수문자 안받기
     sc_check.change(function(){
         

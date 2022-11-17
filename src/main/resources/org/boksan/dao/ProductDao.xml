@@ -12,8 +12,8 @@
   	
   	<!-- 상품등록 버튼 -->
 	  <insert id="ProductInsert">
-	  	insert into b_product(product_name, price, place, business_name, pallet_in_ratio, product_group_code)
-	  	values(#{product_name},#{price},#{place},#{business_name}, #{pallet_in_ratio},#{product_group_code})
+	  	insert into b_product(product_name, price, country_code, business_code, pallet_in_ratio, product_group_code)
+	  	values(#{product_name},#{price},#{country_code},#{business_code}, #{pallet_in_ratio},#{product_group_code})
 	  </insert>
 	  
 	  <!-- 상품분류추가 버튼 -->
@@ -223,5 +223,38 @@
 	 	</if>
  	</select>
  	
+ 	<select id="product_country_select" resultType="org.boksan.model.b_productDTO">
+ 		SELECT *
+		FROM country
+ 	</select>
+ 	
+ 	 <select id="product_business_select" resultType="org.boksan.model.b_productDTO">
+ 		SELECT *
+		FROM business
+ 	</select>
+ 	
+ 	<insert id="country_insert">
+ 		INSERT INTO country (country_code, country_name)
+		SELECT CONCAT("C",LPAD(MAX((RIGHT(country_code,4)))+1,4,0)) AS country_code, #{data} as country_name
+		FROM country
+ 	</insert>
+ 	
+ 	<select id="country_last_select" resultType="String">
+ 		SELECT MAX(country_code) AS country_code
+		FROM country
+ 	</select>
+ 	
+ 	<insert id="business_insert" parameterType="Map">
+		INSERT INTO business (business_code, business_name, business_tel)
+		SELECT CONCAT("B",LPAD(MAX((RIGHT(business_code,4)))+1,4,0)) AS business_code,
+		#{business_name_data} as business_name,
+		#{business_tel_data} as business_tel
+		FROM business
+ 	</insert>
+ 	
+ 	 <select id="business_last_select" resultType="String">
+ 		SELECT MAX(business_code) AS business_code
+		FROM business
+ 	</select>
 	   
   </mapper>

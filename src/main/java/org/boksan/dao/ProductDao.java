@@ -1,6 +1,7 @@
 package org.boksan.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
@@ -32,4 +33,16 @@ public interface ProductDao {
 	public ArrayList<b_stockDTO> pplist_select(Criteria cri);
 	//페이징 처리를 위한 전체건수 상품별조회
 	public int getTotalCountPP(Criteria cri);
+	//상품 원산지 조회
+	public ArrayList<b_productDTO> product_country_select();
+	//상품 업체 조회
+	public ArrayList<b_productDTO> product_business_select();
+	//원산지 등록
+	public void country_insert(String data);
+	//원산지 등록 후 마지막 코드 조회
+	public String country_last_select();
+	//업체 등록
+	public void business_insert(Map<String, Object> map);
+	//업체 등록 후 마지막 코드 조회
+	public String business_last_select();
 }
