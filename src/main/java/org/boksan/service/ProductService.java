@@ -45,4 +45,10 @@ public interface ProductService {
 	//업체 등록
 	public String business_insert(String business_name_data, String business_tel_data);
 	
+	//상품조회 원산지 셀렉박스 조회
+	public ArrayList<b_productDTO> cproduct_select();
+	
+	//상품조회 업체 셀렉박스 조회
+	public ArrayList<b_productDTO> bproduct_select();
+	
 }

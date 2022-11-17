@@ -107,4 +107,18 @@ public class ProductServiceImpl implements ProductService{
 		return pdao.business_last_select();
 		
 	}
+	
+	//상품조회 원산지 셀렉박스 조회
+	public ArrayList<b_productDTO> cproduct_select(){
+		
+		return pdao.cproduct_select();
+		
+	}
+	
+	//상품조회 업체 셀렉박스 조회
+	public ArrayList<b_productDTO> bproduct_select(){
+		
+		return pdao.bproduct_select();
+		
+	}
 }

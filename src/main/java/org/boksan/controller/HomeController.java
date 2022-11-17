@@ -237,6 +237,8 @@ public class HomeController {
 	public String product_inquiry(Model model,Criteria cri) {
 		model.addAttribute("pilist",pservice.piproduct_select(cri)); //상품조회 리스트
 		model.addAttribute("pglist", pservice.gproduct_select(cri));
+		model.addAttribute("pclist",pservice.cproduct_select());
+		model.addAttribute("pblist", pservice.bproduct_select());
 		//페이징 처리
 		model.addAttribute("pageMaker",new PageDTO(cri,pservice.getTotalCountPI(cri)));
 		return "product_inquiry";

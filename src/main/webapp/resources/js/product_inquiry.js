@@ -17,7 +17,7 @@ $(document).on("click" , ".success_btn", function(){
 		"product_code" : $(this).parents("tr").find(".product_value_code").val(),
 		"product_name": $(this).parents("tr").find(".product_value_name").val(),
 		"price": $(this).parents("tr").find(".product_value_price").val(),
-		"place": $(this).parents("tr").find(".product_value_place").val(),
+		"country_code": $(this).parents("tr").find(".product_value_place").val(),
 		"business_name": $(this).parents("tr").find(".product_value_Bname").val(),
 		"pallet_in_ratio": $(this).parents("tr").find(".product_value_pir").val(),
 		"product_group_code": $(this).parents("tr").find(".product_value_Gcode").val()

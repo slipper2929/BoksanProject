@@ -40,8 +40,10 @@
 	  <resultMap type="org.boksan.model.b_productDTO" id="b_productDTO">
 	  	<result property="product_code" column="Product_code"></result>
 	  	<result property="product_name" column="Product_name"></result>
-	  	<result property="place" column="Place"></result>
+	  	<result property="country_code" column="Country_code"></result>
+	  	<result property="country_name" column="Country_name"></result>
 	  	<result property="business_name" column="Business_name"></result>
+	  	<result property="business_code" column="Business_code"></result>
 	  	<result property="price" column="price"></result>
 	  	<result property="pallet_in_ratio" column="Pallet_in_ratio"></result>
 	  	<result property="product_group_code" column="Product_group_code"></result>
@@ -52,12 +54,16 @@
 	  <select id="piproduct_select" resultMap="b_productDTO">
 		
 		<if test = "keyword == null">
-		select p.*, pg.product_group_name
+		select p.*
 		from(
-			select @rownum:=@rownum+1 as rownum, p.*
+			select @rownum:=@rownum+1 as rownum, p.*, c.country_name, b.business_name,  pg.product_group_name
 			from (select @rownum:=0) as tmp, b_product p	
 			LEFT JOIN b_product_group pg
 			ON p.product_group_code = pg.product_group_code
+			LEFT JOIN country c
+			ON p.country_code = c.country_code
+			LEFT JOIN business b
+			ON p.business_code = b.business_code
 			order BY p.product_code
 			) as p LEFT JOIN b_product_group pg
 			ON p.product_group_code = pg.product_group_code
@@ -66,23 +72,26 @@
 		]]>
 		</if>
 		<if test = "keyword != null">
-			select p.*, pg.product_group_name
+			select p.*
 			from(
-			select @rownum:=@rownum+1 as rownum, p.*
+			select @rownum:=@rownum+1 as rownum, p.*, c.country_name, b.business_name,  pg.product_group_name
 			from (select @rownum:=0) as tmp, b_product p LEFT JOIN b_product_group pg
 			ON p.product_group_code = pg.product_group_code
+			LEFT JOIN country c
+			ON p.country_code = c.country_code
+			LEFT JOIN business b
+			ON p.business_code = b.business_code
 			where p.product_code like CONCAT('%',#{keyword},'%')
 			or p.product_name like CONCAT('%',#{keyword},'%')
 			or pg.product_group_name like CONCAT('%',#{keyword},'%')
-			or p.place like CONCAT('%',#{keyword},'%')
-			or p.business_name like CONCAT('%',#{keyword},'%')
+			or c.country_name like CONCAT('%',#{keyword},'%')
+			or b.business_name like CONCAT('%',#{keyword},'%')
 			or p.pallet_in_ratio like CONCAT('%',#{keyword},'%')
 			order BY p.product_code 
-			) as p left join b_product_group pg
-			ON p.product_group_code = pg.product_group_code	
+			) as p
 			<![CDATA[
 			where rownum > (#{pagenum}-1) * #{amount} and rownum <= #{pagenum} * 20
-		]]>
+			]]>
 		</if>
 	  </select>
 	  
@@ -97,9 +106,13 @@
 		 	select count(*)
 	 		FROM b_product p JOIN b_product_group pg
 			ON p.product_group_code = pg.product_group_code
+			LEFT JOIN country c
+			ON p.country_code = c.country_code
+			LEFT JOIN business b
+			ON p.business_code = b.business_code
 		 	where p.product_name like concat('%',#{keyword},'%')
-			or p.business_name like concat('%',#{keyword},'%')
-			or p.place like concat('%',#{keyword},'%')
+			or b.business_name like concat('%',#{keyword},'%')
+			or c.country_name like concat('%',#{keyword},'%')
 			or pg.product_group_name like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
@@ -109,8 +122,8 @@
 	  	UPDATE b_product
 		SET product_name = #{product_name},
 			product_group_code = #{product_group_code},
-			place = #{place},
-			business_name = #{business_name},
+			country_code = #{country_code},
+			business_code = #{business_name},
 			price = #{price},
 			pallet_in_ratio = #{pallet_in_ratio}
 		WHERE product_code = #{product_code}
@@ -254,6 +267,16 @@
  	
  	 <select id="business_last_select" resultType="String">
  		SELECT MAX(business_code) AS business_code
+		FROM business
+ 	</select>
+ 	
+ 	<select id="cproduct_select" resultType="org.boksan.model.b_productDTO">
+ 		SELECT *
+		FROM country
+ 	</select>
+ 	
+ 	 <select id="bproduct_select" resultType="org.boksan.model.b_productDTO">
+ 		SELECT *
 		FROM business
  	</select>
 	   

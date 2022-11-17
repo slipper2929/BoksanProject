@@ -42,7 +42,7 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>상품조회</h1>
-
+					${pilist }
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                   <div class="b_search">
@@ -107,12 +107,30 @@
                             	</p>
                             </td>
                             <td>
-                            	<p class="pilist_on">${pilist.place }</p>
-                            	<p class="pilist_out"><input type="text" class="product_value_place" value="${pilist.place }"></p>
+                            	<p class="pilist_on">${pilist.country_name }</p>
+                            	<p class="pilist_out">
+	                            	<select class="product_value_place">
+	                           			<option value="${pilist.country_code }">${pilist.country_name}</option>
+	                           			<c:forEach var="pclist" items="${pclist}">
+	                           				<c:if test="${pilist.country_code != pclist.country_code}">
+	                           				<option value="${pclist.country_code }">${pclist.country_name }</option>
+	                           				</c:if>
+	                           			</c:forEach>
+	                            	</select>
+                            	</p>
                             </td>
                             <td>
                             	<p class="pilist_on">${pilist.business_name }</p>
-                            	<p class="pilist_out"><input type="text" class="product_value_Bname" value="${pilist.business_name }"></p>
+                            	<p class="pilist_out">
+	                            	<select class="product_value_Bname">
+	                           			<option value="${pilist.business_code }">${pilist.business_name}</option>
+	                           			<c:forEach var="pblist" items="${pblist}">
+	                           				<c:if test="${pilist.business_code != pblist.business_code}">
+	                           				<option value="${pblist.business_code }">${pblist.business_name }</option>
+	                           				</c:if>
+	                           			</c:forEach>
+	                            	</select>
+                            	</p>
                             </td>
                             <td>
                             	<p class="pilist_on">${pilist.price }</p>

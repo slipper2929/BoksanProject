@@ -45,4 +45,8 @@ public interface ProductDao {
 	public void business_insert(Map<String, Object> map);
 	//업체 등록 후 마지막 코드 조회
 	public String business_last_select();
+	//상품조회 원산지 셀렉박스 조회
+	public ArrayList<b_productDTO> cproduct_select();
+	//상품조회 업체 셀렉박스 조회
+	public ArrayList<b_productDTO> bproduct_select();
 }
