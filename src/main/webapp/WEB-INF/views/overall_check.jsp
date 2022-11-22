@@ -158,9 +158,9 @@
                 </div><!-- #overall_search_box -->
                 <div id="overall_list">
                 	<table class="b_table2">
-                		
                 	</table>
                 </div>
+                <div><button class="excel_btn">Excel</button></div>
 			</section>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>

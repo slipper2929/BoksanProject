@@ -56,6 +56,8 @@ public interface ProductService {
 	public ArrayList<statementDTO> in_out_record(Map<String, Object> record_data, String[] record_arr);
 	
 	//전체조회_재고조회
-	public ArrayList<b_stockDTO> stock_record(Map<String, Object> record_data, String[] record_arr);
+	public ArrayList<b_stockDTO> stock_record(Map<String, Object> record_data, String[] record_arr);	
 	
+	//전체조회_입출고내역조회 excel
+	public ArrayList<statementDTO> in_out_record_excel(Map<String, Object> record_data, String[] record_arr);
 }

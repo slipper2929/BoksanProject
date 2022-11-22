@@ -266,5 +266,64 @@ $(function(){
         }
 
     })
+	$(".excel_btn").on("click",function(){
+		
+		 let record_arr = [];
+	        let overall_sbl_check_ior_1 = $("#overall_sbl_check_ior_1");
+            let overall_sbl_check_ior_2 = $("#overall_sbl_check_ior_2");
+            let overall_sbl_check_ior_3 = $("#overall_sbl_check_ior_3");
+            let charge_name_ior = $(".charge_name_ior").val();
+            let country_name_ior = $(".country_name_ior").val();
+            let product_name_ior = $(".product_name_ior").val();
+            let business_name_ior = $(".business_name_ior").val();
+            let inquiry_date_start_ior = $(".inquiry_date_start_ior").val();
+            let inquiry_date_end_ior = $(".inquiry_date_end_ior").val();
+		if(overall_sbl_check_ior_1.is(':checked') == true){
+            record_arr.push("입고")
+        } else{
+            record_arr.push("false")
+        }
+
+        if(overall_sbl_check_ior_2.is(':checked') == true){
+            record_arr.push("출고")
+        } else{
+            record_arr.push("false")
+        }
+
+        if(overall_sbl_check_ior_3.is(':checked') == true){
+            record_arr.push("발주")
+        } else{
+            record_arr.push("false")
+        }
+		
+			  let record_data = {
+                "record_arr" : record_arr,
+                "charge_name" : charge_name_ior,
+                "country_name" : country_name_ior,
+                "product_name" : product_name_ior,
+                "business_name" : business_name_ior,
+                "inquiry_date_start" : inquiry_date_start_ior,
+                "inquiry_date_end" : inquiry_date_end_ior
+            }
+		console.log(record_data);
+		$.ajax({
+			url:"/excelDownXlsx",
+            type:"get",
+            data: record_data,
+            traditional : true,
+            dataType:'json',
+            beforeSend : function(xhr){
+            xhr.setRequestHeader(header, token);
+            },
+			success: function(data){
+				alert("성공")
+				console.log(data);
+			},
+			 error: function(e){
+                    alert(e)
+                }
+		})
+	})
+	
 
 })
