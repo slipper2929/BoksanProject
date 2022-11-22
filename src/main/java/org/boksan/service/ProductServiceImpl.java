@@ -9,6 +9,7 @@ import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.model.statementDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -120,5 +121,36 @@ public class ProductServiceImpl implements ProductService{
 		
 		return pdao.bproduct_select();
 		
+	}
+	
+	//전체조회_입출고내역조회
+	public ArrayList<statementDTO> in_out_record(
+			Map<String, Object> record_data,
+			String[] record_arr){
+		
+				record_data.put("record_arr0", record_arr[0]);
+				record_data.put("record_arr1", record_arr[1]);
+				record_data.put("record_arr2", record_arr[2]);
+
+				System.out.println(record_data);
+		
+		
+		return pdao.in_out_record(record_data);
+	}
+	
+	//전체조회_재고조회
+	public ArrayList<b_stockDTO> stock_record(
+			Map<String, Object> record_data,
+			String[] record_arr){
+		
+				record_data.put("record_arr0", record_arr[0]);
+				record_data.put("record_arr1", record_arr[1]);
+				record_data.put("record_arr2", record_arr[2]);
+				record_data.put("record_arr3", record_arr[3]);
+
+				System.out.println(record_data);
+		
+		
+		return pdao.stock_record(record_data);
 	}
 }

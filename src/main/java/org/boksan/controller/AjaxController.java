@@ -8,6 +8,7 @@ import org.boksan.model.Product_selectDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.materiaDTO;
+import org.boksan.model.statementDTO;
 import org.boksan.service.ArriveService;
 import org.boksan.service.ManagerService;
 import org.boksan.service.ProductService;
@@ -213,8 +214,34 @@ public class AjaxController {
 			) {
 
 		String result = pservice.business_insert(business_name_data, business_tel_data);
-		
+		System.out.println(result);
 		return result;
 		
+	}
+	
+	//전체조회_입출고내역조회
+	@GetMapping(value="/in_out_record",
+			produces = "application/json; charset=utf-8")
+	public ArrayList<statementDTO> in_out_record(
+			@RequestParam Map<String,Object> record_data,
+			@RequestParam(value="record_arr") String[] record_arr
+			) {
+			
+		ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
+		System.out.println(result);
+		return result;
+	}
+	
+	//전체조회_재고조회
+	@GetMapping(value="/stock_record",
+			produces = "application/json; charset=utf-8")
+	public ArrayList<b_stockDTO> stock_record(
+			@RequestParam Map<String,Object> record_data,
+			@RequestParam(value="record_arr") String[] record_arr
+			) {
+			
+		ArrayList<b_stockDTO> result = pservice.stock_record(record_data, record_arr);
+		System.out.println(result);
+		return result;
 	}
 }

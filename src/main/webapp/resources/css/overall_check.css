@@ -34,7 +34,7 @@
 	margin-top: 25px;
 }
 
-#overall_sbl_choice{
+.overall_sbl_choice{
 	display: flex;
     justify-content: space-between;
     font-size: 18px;
@@ -57,7 +57,7 @@
 	margin-top: 2px;
 }
 
-#overall_sb_right{
+.overall_sb_right{
 	width: 1000px;
 	display: flex;
     justify-content: start;
@@ -66,7 +66,7 @@
     border-left: 1px solid #ccc;
 }
 
-#overall_sb_right>div{
+.overall_sb_right>div{
 	width: 300px;
 	height: 75px;
 	display: flex;
@@ -75,7 +75,7 @@
     box-sizing: border-box;
 }
 
-#overall_sb_right>div p{
+.overall_sb_right>div p{
 	width: 35%;
 	height: 30px;
 	font-size: 18px;
@@ -83,41 +83,41 @@
    	padding-top: 5px;
 }
 
-#overall_sb_right>div div{
+.overall_sb_right>div div{
 	width: 45%;
 	height: 30px;
 }
 
-#overall_sb_right>div div input{
+.overall_sb_right>div div input{
 	width: 100%;
 	height: 100%
 }
 
-#overall_sb_right .overall_sbr_date{
+.overall_sb_right .overall_sbr_date{
 	width: 350px;
     text-align: center;
 
 }
 
-#overall_sb_right .overall_sbr_date>p{
+.overall_sb_right .overall_sbr_date>p{
 
 	width:30%;
 }
 
-#overall_sb_right .overall_sbr_date>div{
+.overall_sb_right .overall_sbr_date>div{
 	position: relative;
 	display: flex;
     justify-content: space-between;
     width: 70%;
 }
 
-#overall_sb_right .overall_sbr_date>div>p{
+.overall_sb_right .overall_sbr_date>div>p{
 	position: absolute;
    	top: 5px;
    	left: 79px;
 }
 
-#overall_sb_right .overall_sbr_date input{
+.overall_sb_right .overall_sbr_date input{
 	width: 45%;
 	height: 30px;
 }
@@ -161,4 +161,85 @@
 
 .date_icon2{
 	left: 215px;
+}
+
+.b_inquiry_main .b_table2{
+    width: 1224px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    border-collapse: separate;
+  	border-spacing: 0;
+
+}
+
+.b_inquiry_main .b_table2 th{
+	position: sticky;
+	top: 0px;
+
+	text-align: center;
+	width: 130px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #dedede;
+}
+
+.b_inquiry_main .b_table2 tr, .b_table2 td{
+
+    text-align: center;
+    
+}
+
+.b_inquiry_main .b_table2 th, .b_inquiry_main .b_table2 td{
+
+	padding: 3px 0;
+}
+
+.b_inquiry_main .b_table2 th{
+
+
+}
+
+.b_inquiry_main .b_table2 p{
+    display: inline-block
+}
+
+.b_inquiry_main .b_table2{
+
+}
+
+.b_inquiry_main .b_table2 tr td{
+
+}
+.b_inquiry_main .b_table2 th{
+	border-bottom: 2px solid rgb(165, 165, 165);
+	border-right: 1px solid rgb(200, 200, 200);
+
+}
+.b_inquiry_main .b_table2 td{
+	border-bottom: 1px solid rgb(200, 200, 200);
+	border-right: 1px solid rgb(200, 200, 200);
+}
+
+#overall_list{
+	display: none;
+	overflow-x: hidden;
+	overflow-y:scroll;
+	height: 700px;
+	margin-top: 50px;
+	border: 2px solid rgb(165, 165, 165);
+}
+
+.little_title{
+	text-ailgn: center;
+}
+
+#overall_sb_left .sr_choice{
+	flex-wrap: wrap;
+	margin-left: 20px;
+	margin-top: -10px;
+}
+
+#overall_sb_left .sr_choice .overall_choice_check{
+	width: 50%;
+	justify-content: start;
 }

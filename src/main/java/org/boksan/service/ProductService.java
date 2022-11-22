@@ -1,12 +1,13 @@
 package org.boksan.service;
 
 import java.util.ArrayList;
-
+import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.model.statementDTO;
 
 public interface ProductService {
 	
@@ -50,5 +51,11 @@ public interface ProductService {
 	
 	//상품조회 업체 셀렉박스 조회
 	public ArrayList<b_productDTO> bproduct_select();
+	
+	//전체조회_입출고내역조회
+	public ArrayList<statementDTO> in_out_record(Map<String, Object> record_data, String[] record_arr);
+	
+	//전체조회_재고조회
+	public ArrayList<b_stockDTO> stock_record(Map<String, Object> record_data, String[] record_arr);
 	
 }

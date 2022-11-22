@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!--노토산스 글꼴-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,43 +32,64 @@
 			<section class="b_inquiry_main">
 				<div class="b_title">
                     <h1>전체조회</h1>
-                    <h2 class="hidden"></h2>
+                    <h2 class="little_title"></h2>
                 </div> <!--.b_main-->
                 <div id="overall_search_box">
                 	<div id="overall_sb_left">
                 		<div id="overall_sbl_select">
                 			<p>조회구분</p>
                 			<select>
-                				<option>선택안함</option>
-                				<option>입출고내역</option>
+                				<option value="in_out_record">입출고내역</option>
+                				<option value="stock_record">재고</option>
                 			</select>
                 		</div> <!-- #overall_sbl_select -->
-                		<div id="overall_sbl_choice">
+                		<div class="overall_sbl_choice ior_choice">
                 			<div class="overall_choice_check">
                 				<p>입고</p>
-                				<div><input type="checkbox" name="overall_sbl_check" checked></div>
+                				<div><input type="checkbox" id="overall_sbl_check_ior_1" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
                 				<p>출고</p>
-                				<div><input type="checkbox" name="overall_sbl_check" checked></div>
+                				<div><input type="checkbox" id="overall_sbl_check_ior_2" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
                 				<p>발주</p>
-                				<div><input type="checkbox" name="overall_sbl_check" checked></div>
+                				<div><input type="checkbox" id="overall_sbl_check_ior_3" name="overall_sbl_check" checked></div>
                 			</div>
-                		</div> <!-- #overall_sbl_choice -->
+                		</div> <!-- .ior_choice -->
+                		
+                		<div class="overall_sbl_choice sr_choice">
+                			<div class="overall_choice_check">
+                				<p>식 자 재</p>
+                				<div><input type="checkbox" id="overall_sbl_check_sr_1" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>가 공 품</p>
+                				<div><input type="checkbox" id="overall_sbl_check_sr_2" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>완 제 품</p>
+                				<div><input type="checkbox" id="overall_sbl_check_sr_3" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>공 산 품</p>
+                				<div><input type="checkbox" id="overall_sbl_check_sr_4" name="overall_sbl_check" checked></div>
+                			</div>
+                		</div> <!-- .sr_choice -->
+                		
                 	</div>
-                	<div id="overall_sb_right">
+                	<!-- 밑에꺼 입출고내역조회 -->
+                	<div class="overall_sb_right ior_right">
                 		<div>
                 			<p>담당자명</p>
                 			<div>
-                				<input type="text" class="sc_check">
+                				<input type="text" class="sc_check charge_name_ior">
                 			</div>
                 		</div>
                 		<div>
                 			<p>상품명</p>
                 			<div>
-                				<input type="text" class="sc_check">
+                				<input type="text" class="sc_check product_name_ior">
                 			</div>
                 		</div>
                 		<div class="overall_sbr_date">
@@ -74,42 +97,68 @@
                 			<div>
                 				<span class="date_icon1"></span>
                 				<span class="date_icon2"></span>
-                				<input type="text">
+                				<input type="text" class="inquiry_date_start_ior">
                 				<p>~</p>
-                				<input type="text">
+                				<input type="text" class="inquiry_date_end_ior">
                 			</div>
                 		</div>
                 		<div>
                 			<p>상품원산지</p>
                 			<div>
-                				<input type="text" class="sc_check">
+                				<input type="text" class="sc_check country_name_ior">
                 			</div>
                 		</div>
                 		<div>
                 			<p>공급사명</p>
                 			<div>
-                				<input type="text" class="sc_check">
+                				<input type="text" class="sc_check business_name_ior">
                 			</div>
                 		</div>
-                	</div>
+                	</div> <!-- .ior_right -->
+                	
+                	<!-- 밑에꺼 재고조회 -->
+                	<div class="overall_sb_right sr_right">
+                		<div>
+                			<p>상품명</p>
+                			<div>
+                				<input type="text" class="sc_check product_name_sr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>원산지명</p>
+                			<div>
+                				<input type="text" class="sc_check country_name_sr">
+                			</div>
+                		</div>
+                		<div class="overall_sbr_date">
+                			<p>입고일</p>
+                			<div>
+                				<span class="date_icon1"></span>
+                				<span class="date_icon2"></span>
+                				<input type="text" class="inquiry_date_start_sr">
+                				<p>~</p>
+                				<input type="text" class="inquiry_date_end_sr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>공급사명</p>
+                			<div>
+                				<input type="text" class="sc_check business_name_sr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>창고번지</p>
+                			<div>
+                				<input type="text" class="sc_check house_code_sr">
+                			</div>
+                		</div>
+                	</div> <!-- .sr_right -->
+                	
                 	<div id="overall_sb_btn"></div>
                 </div><!-- #overall_search_box -->
                 <div id="overall_list">
-                	<table>
-                		<tr>
-                			<th>입출고내역코드</th>
-                			<th>분류</th>
-                			<th>상품명</th>
-                			<th>상품원산지</th>
-                			<th>공급사명</th>
-                			<th>중량</th>
-                			<th>가격</th>
-                			<th>담당자명</th>
-                			<th>담당자전화번호</th>
-                		</tr>
-                		<tr>
-                			<td></td>
-                		</tr>
+                	<table class="b_table2">
+                		
                 	</table>
                 </div>
 			</section>

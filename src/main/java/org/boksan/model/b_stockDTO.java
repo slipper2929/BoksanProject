@@ -34,52 +34,26 @@ public class b_stockDTO {
 	
 	private Criteria criteria;
 	
+	private String product_name;
 	
+	private String country_name;
 	
+	private String business_name;
 
-
-
-
-
-
-	public b_movement_orderDTO getB_movement_orderdto() {
-		return b_movement_orderdto;
+	public String getPallet_num() {
+		return pallet_num;
 	}
 
-	public void setB_movement_orderdto(b_movement_orderDTO b_movement_orderdto) {
-		this.b_movement_orderdto = b_movement_orderdto;
+	public void setPallet_num(String pallet_num) {
+		this.pallet_num = pallet_num;
 	}
 
-	public b_productDTO getB_productdto() {
-		return b_productdto;
+	public int getProduct_code() {
+		return product_code;
 	}
 
-	public void setB_productdto(b_productDTO b_productdto) {
-		this.b_productdto = b_productdto;
-	}
-
-	public Criteria getCriteria() {
-		return criteria;
-	}
-
-	public void setCriteria(Criteria criteria) {
-		this.criteria = criteria;
-	}
-
-	public b_houseDTO getB_housedto() {
-		return b_housedto;
-	}
-
-	public void setB_housedto(b_houseDTO b_housedto) {
-		this.b_housedto = b_housedto;
-	}
-
-	public String getProduct_group_name() {
-		return product_group_name;
-	}
-
-	public void setProduct_group_name(String product_group_name) {
-		this.product_group_name = product_group_name;
+	public void setProduct_code(int product_code) {
+		this.product_code = product_code;
 	}
 
 	public String getArrive_date() {
@@ -114,16 +88,12 @@ public class b_stockDTO {
 		this.product_barcode = product_barcode;
 	}
 
-	public b_productDTO getMoveList() {
-		return moveList;
+	public int getPallet_count() {
+		return pallet_count;
 	}
 
-	public void setMoveList(b_productDTO moveList) {
-		this.moveList = moveList;
-	}
-
-	public void setPallet_num_list(ArrayList<b_stockDTO> pallet_num_list) {
-		this.pallet_num_list = pallet_num_list;
+	public void setPallet_count(int pallet_count) {
+		this.pallet_count = pallet_count;
 	}
 
 	public int getProduct_group_code() {
@@ -134,28 +104,12 @@ public class b_stockDTO {
 		this.product_group_code = product_group_code;
 	}
 
-	public int getPallet_count() {
-		return pallet_count;
+	public String getProduct_group_name() {
+		return product_group_name;
 	}
 
-	public void setPallet_count(int pallet_count) {
-		this.pallet_count = pallet_count;
-	}
-
-	public String getPallet_num() {
-		return pallet_num;
-	}
-
-	public void setPallet_num(String pallet_num) {
-		this.pallet_num = pallet_num;
-	}
-
-	public int getProduct_code() {
-		return product_code;
-	}
-
-	public void setProduct_code(int product_code) {
-		this.product_code = product_code;
+	public void setProduct_group_name(String product_group_name) {
+		this.product_group_name = product_group_name;
 	}
 
 	public List<b_stockDTO> getPallet_num_list() {
@@ -166,6 +120,70 @@ public class b_stockDTO {
 		this.pallet_num_list = pallet_num_list;
 	}
 
+	public b_productDTO getMoveList() {
+		return moveList;
+	}
+
+	public void setMoveList(b_productDTO moveList) {
+		this.moveList = moveList;
+	}
+
+	public b_productDTO getB_productdto() {
+		return b_productdto;
+	}
+
+	public void setB_productdto(b_productDTO b_productdto) {
+		this.b_productdto = b_productdto;
+	}
+
+	public b_movement_orderDTO getB_movement_orderdto() {
+		return b_movement_orderdto;
+	}
+
+	public void setB_movement_orderdto(b_movement_orderDTO b_movement_orderdto) {
+		this.b_movement_orderdto = b_movement_orderdto;
+	}
+
+	public b_houseDTO getB_housedto() {
+		return b_housedto;
+	}
+
+	public void setB_housedto(b_houseDTO b_housedto) {
+		this.b_housedto = b_housedto;
+	}
+
+	public Criteria getCriteria() {
+		return criteria;
+	}
+
+	public void setCriteria(Criteria criteria) {
+		this.criteria = criteria;
+	}
+
+	public String getProduct_name() {
+		return product_name;
+	}
+
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
+	}
+
+	public String getCountry_name() {
+		return country_name;
+	}
+
+	public void setCountry_name(String country_name) {
+		this.country_name = country_name;
+	}
+
+	public String getBusiness_name() {
+		return business_name;
+	}
+
+	public void setBusiness_name(String business_name) {
+		this.business_name = business_name;
+	}
+
 	@Override
 	public String toString() {
 		return "b_stockDTO [pallet_num=" + pallet_num + ", product_code=" + product_code + ", arrive_date="
@@ -173,8 +191,13 @@ public class b_stockDTO {
 				+ product_barcode + ", pallet_count=" + pallet_count + ", product_group_code=" + product_group_code
 				+ ", product_group_name=" + product_group_name + ", pallet_num_list=" + pallet_num_list + ", moveList="
 				+ moveList + ", b_productdto=" + b_productdto + ", b_movement_orderdto=" + b_movement_orderdto
-				+ ", b_housedto=" + b_housedto + ", criteria=" + criteria + "]";
+				+ ", b_housedto=" + b_housedto + ", criteria=" + criteria + ", product_name=" + product_name
+				+ ", country_name=" + country_name + ", business_name=" + business_name + "]";
 	}
+	
+	
+	
+
 
 	
 

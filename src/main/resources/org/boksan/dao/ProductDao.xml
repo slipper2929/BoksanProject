@@ -279,5 +279,58 @@
  		SELECT *
 		FROM business
  	</select>
-	   
+ 	
+ 	<select id="in_out_record" resultType="org.boksan.model.statementDTO">
+ 		SELECT *
+		FROM statement
+		where (classification = #{record_arr0} OR classification = #{record_arr1} OR classification = #{record_arr2})
+ 		 <if test="!charge_name.equals('')">
+ 			AND (emp_name like concat('%',#{charge_name},'%'))
+ 		</if>
+ 		<if test="!country_name.equals('')">
+ 			AND (product_country like concat('%',#{country_name},'%'))
+ 		</if>
+ 		<if test="!product_name.equals('')">
+ 			AND (product_name like concat('%',#{product_name},'%'))
+ 		</if>
+ 		 <if test="!business_name.equals('')">
+ 			AND (product_business like concat('%',#{business_name},'%'))
+ 		</if>
+ 		<if test="!inquiry_date_start.equals('') and !inquiry_date_end.equals('')">
+ 			AND (date BETWEEN #{inquiry_date_start} AND DATE_ADD(#{inquiry_date_end}, INTERVAL 1 DAY))
+ 		</if>
+ 	</select>
+
+	<select id="stock_record" resultType="org.boksan.model.b_stockDTO">
+		SELECT s.pallet_num, p.product_name, c.country_name, b.business_name, s.stock_num, s.house_code, s.arrive_date
+		FROM b_stock s
+		LEFT JOIN b_product p
+		ON s.product_code = p.product_code
+		LEFT JOIN b_product_group pg
+		ON p.product_group_code = pg.product_group_code
+		LEFT JOIN country c
+		ON p.country_code = c.country_code
+		LEFT JOIN business b
+		ON p.business_code = b.business_code
+		WHERE (s.product_barcode IS NOT NULL)
+		AND (pg.product_group_type = #{record_arr0}
+		OR pg.product_group_type = #{record_arr1}
+		OR pg.product_group_type = #{record_arr2}
+		OR pg.product_group_type = #{record_arr3})
+		<if test="!product_name.equals('')">
+			AND (product_name like concat('%',#{product_name},'%'))
+		</if>
+		<if test="!country_name.equals('')">
+			AND (country_name like concat('%',#{country_name},'%'))
+		</if>
+ 		<if test="!inquiry_date_start.equals('') and !inquiry_date_end.equals('')">
+ 			AND (arrive_date BETWEEN #{inquiry_date_start} AND DATE_ADD(#{inquiry_date_end}, INTERVAL 1 DAY))
+ 		</if>
+		<if test="!business_name.equals('')">
+			AND (business_name like concat('%',#{business_name},'%'))
+		</if>
+		<if test="!house_code.equals('')">
+			AND (house_code like concat('%',#{house_code},'%'))
+		</if>
+	</select>
   </mapper>
