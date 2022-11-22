@@ -23,9 +23,14 @@ public class b_empDTO {
 	//password
 	private String password;
 	
+	//전화번호
+	private String tel;
+	
 	private b_deptDTO b_dept;
 	
 	private b_approveDTO b_approve;
+	
+	
 	
 
 	public b_approveDTO getB_approve() {
@@ -100,12 +105,25 @@ public class b_empDTO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
 
 	@Override
 	public String toString() {
 		return "b_empDTO [emp_code=" + emp_code + ", name=" + name + ", socialnum=" + socialnum + ", address=" + address
-				+ ", dept_code=" + dept_code + ", id=" + id + ", password=" + password + "]";
+				+ ", dept_code=" + dept_code + ", id=" + id + ", password=" + password + ", tel=" + tel + ", b_dept="
+				+ b_dept + ", b_approve=" + b_approve + "]";
 	}
+
+
 	
 	
 }

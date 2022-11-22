@@ -1,5 +1,7 @@
 package org.boksan.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.boksan.model.b_arriveDTO;
 import org.boksan.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +17,10 @@ public class OrderController {
 	
 	//발주신청버튼
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
-	public String order_insert(b_arriveDTO adto) {
+	public String order_insert(HttpSession session, b_arriveDTO adto) {
 		
 		
-		oservice.order_insert(adto);
+		oservice.order_insert(session, adto);
 		
 		return "redirect:/order";
 	}

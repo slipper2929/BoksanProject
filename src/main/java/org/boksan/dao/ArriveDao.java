@@ -7,6 +7,7 @@ import org.boksan.model.Arrive_totalDTO;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.model.statementDTO;
 
 public interface ArriveDao {
 
@@ -30,4 +31,10 @@ public interface ArriveDao {
 	
 	//입고대기목록 insert
 	public void Arrive_list_insert(b_arriveDTO adto);
+	
+	//입출고목록 insert를 위한 product select
+	public statementDTO statement_product_select(b_stockDTO sdto);
+	
+	//입출고목록 insert
+	public void statement_arrive_insert(statementDTO stdto);
 }

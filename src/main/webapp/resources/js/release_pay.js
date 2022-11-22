@@ -34,7 +34,11 @@ $(function(){
 				
 				
 				$(".modal_name span").text(order_pn)
-				$(".modal_total_num span").text(data.data + "kg")
+				if(data.data == null) {
+					$(".modal_total_num span").text("0kg")
+				} else {
+					$(".modal_total_num span").text(data.data + "kg")
+				}
 				$(".modal_order_num span").text(order_num)
 				$(".modal_product_code").val(order_pc)
 				

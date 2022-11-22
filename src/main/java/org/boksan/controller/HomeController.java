@@ -366,5 +366,11 @@ public class HomeController {
 		return "stock";
 	}
 	
+	//전체조회
+	@RequestMapping(value="/overall_check", method= RequestMethod.GET)
+	public String overall_check() {
+		
+		return "overall_check";
+	}
 	
 }

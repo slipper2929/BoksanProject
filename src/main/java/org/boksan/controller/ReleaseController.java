@@ -1,5 +1,7 @@
 package org.boksan.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
 import org.boksan.service.ReleaseService;
@@ -39,11 +41,11 @@ public class ReleaseController {
 	
 	//재고 update
 	@RequestMapping(value = "/release_stock_update", method = RequestMethod.POST)
-	public String release_stock_update(b_release_listDTO rldto) {
+	public String release_stock_update(HttpSession session, b_release_listDTO rldto) {
 		
 		System.out.println(rldto);
 		
-		rservice.release_stock_update(rldto);
+		rservice.release_stock_update(session, rldto);
 		
 		return "redirect:/release_order_list";
 	}
@@ -51,11 +53,12 @@ public class ReleaseController {
 	//출고지시페이지에서 발주하기
 	@RequestMapping(value = "/release_pay_order", method = RequestMethod.POST)
 	public String release_pay_order(
+				HttpSession session,
 				@RequestParam(value="order_num_count") int order_num_count,
 				@RequestParam(value="product_code") int product_code
 			) {
 			
-			rservice.release_pay_order(order_num_count, product_code);
+			rservice.release_pay_order(session, order_num_count, product_code);
 		
 		return "redirect:/release_pay";
 	}

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.boksan.dao.ArriveDao;
 import org.boksan.dao.OrderDao;
 import org.boksan.dao.ReleaseDao;
 import org.boksan.model.Criteria;
@@ -11,7 +14,9 @@ import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_empDTO;
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
+import org.boksan.model.b_stockDTO;
 import org.boksan.model.materiaDTO;
+import org.boksan.model.statementDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +28,9 @@ public class ReleaseServiceImpl implements ReleaseService {
 	
 	@Autowired
 	OrderDao odao;
+	
+	@Autowired
+	ArriveDao adao;
 	
 	public ArrayList<materiaDTO> release_recipe_select(Map<String, Object> objdata){
 		
@@ -168,21 +176,12 @@ public class ReleaseServiceImpl implements ReleaseService {
 	}
 	
 	//재고 update
-	public void release_stock_update(b_release_listDTO rldto) {
+	public void release_stock_update(HttpSession session, b_release_listDTO rldto) {
 		
-		//int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
+		b_empDTO user = (b_empDTO) session.getAttribute("member");
 		
 		System.out.println("파레트 넘 셀렉");
-		//System.out.println(pallet_num);
 		
-		//if(pallet_num == rldto.getRelease_num()) {
-		//	rdao.release_stock_update(rldto);
-
-		//} else {
-		//	rdao.release_stock_update_zero(rldto);
-		//}
-		
-		//b_release_list삭제
 		rdao.release_list_delete(rldto);
 		
 		//b_release삭제
@@ -191,6 +190,31 @@ public class ReleaseServiceImpl implements ReleaseService {
 		if(release_list_check == 0) {
 			rdao.release_delete(rldto);
 		}
+		
+		statementDTO stdto = new statementDTO();
+		b_stockDTO sdto = new b_stockDTO();
+		
+		String product_code = rdao.statement_product_code_select(rldto.getRelease_list_code());
+		sdto.setProduct_code(Integer.parseInt(product_code));
+		
+		stdto.setEmp_code(user.getEmp_code());
+		stdto.setEmp_name(user.getName());
+		stdto.setEmp_tel(user.getTel());
+		stdto.setProduct_code(Integer.parseInt(product_code));
+		
+		statementDTO product_select = adao.statement_product_select(sdto);
+
+		stdto.setProduct_name(product_select.getProduct_name());
+
+		stdto.setProduct_country(product_select.getProduct_country());
+
+		stdto.setProduct_business(product_select.getProduct_business());
+
+		stdto.setProduct_price(product_select.getProduct_price()*rldto.getRelease_num());
+
+		stdto.setQuantity(rldto.getRelease_num());
+
+		rdao.statement_release_insert(stdto);
 	}
 	//recipe select
 	public ArrayList<String> recipe_select(){
@@ -213,7 +237,7 @@ public class ReleaseServiceImpl implements ReleaseService {
 	}
 	
 	//출고지시화면에서 발주하기 모달창 상품의 재고 발주하기 insert
-	public void release_pay_order(int order_num_count, int product_code) {
+	public void release_pay_order(HttpSession session, int order_num_count, int product_code) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -255,8 +279,27 @@ public class ReleaseServiceImpl implements ReleaseService {
 			rdao.release_pay_order(adto);
 		}
 		
+		b_empDTO user = (b_empDTO) session.getAttribute("member");
 		
+		statementDTO stdto = new statementDTO();
+		b_stockDTO sdto = new b_stockDTO();
+		sdto.setProduct_code(product_code);
 		
+		stdto.setEmp_code(user.getEmp_code());
+		stdto.setEmp_name(user.getName());
+		stdto.setEmp_tel(user.getTel());
+		
+		stdto.setProduct_code(product_code);
+		
+		statementDTO product_select = adao.statement_product_select(sdto);
+		
+		stdto.setProduct_name(product_select.getProduct_name());
+		stdto.setProduct_country(product_select.getProduct_country());
+		stdto.setProduct_business(product_select.getProduct_business());
+		stdto.setProduct_price(product_select.getProduct_price()*order_num_count);
+		stdto.setQuantity(order_num_count);
+		
+		rdao.statement_release_oder_insert(stdto);
 	}
 	
 	//출고요청시 재고조회

@@ -2,13 +2,18 @@ package org.boksan.service;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.boksan.dao.ArriveDao;
 import org.boksan.dao.OrderDao;
 import org.boksan.model.Arrive_palletDTO;
 import org.boksan.model.Arrive_totalDTO;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
+import org.boksan.model.b_empDTO;
+import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
+import org.boksan.model.statementDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,13 +55,34 @@ public class ArriveServiceImpl implements ArriveService{
 	}
 	
 	//입고대기목록_검증 insert
-	public void Arrive_insert(b_stockDTO sdto, int arrive_code) {
+	public void Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code) {
+		
+		b_empDTO user = (b_empDTO) session.getAttribute("member");
+		
+		System.out.println("과연 이름을...");
+		System.out.println(user.getName()); 
 		
 		adao.Arrive_insert(sdto);
 		
 		adao.Arrive_delete(arrive_code);
-
 		
+		statementDTO stdto = new statementDTO();
+		
+		stdto.setEmp_code(user.getEmp_code());
+		stdto.setEmp_name(user.getName());
+		stdto.setEmp_tel(user.getTel());
+		stdto.setProduct_code(sdto.getProduct_code());
+		
+		statementDTO product_select = adao.statement_product_select(sdto);
+		
+		stdto.setProduct_name(product_select.getProduct_name());
+		stdto.setProduct_country(product_select.getProduct_country());
+		stdto.setProduct_business(product_select.getProduct_business());
+		stdto.setProduct_price(product_select.getProduct_price()*sdto.getStock_num());
+		stdto.setQuantity(sdto.getStock_num());
+		System.out.println("stdto임");
+		System.out.println(stdto);
+		adao.statement_arrive_insert(stdto);
 	}
 	
 	//입고대기목록 insert

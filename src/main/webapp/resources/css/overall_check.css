@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+#overall_search_box{
+	position: relative;
+	width: 1240px;
+    height: 150px;
+    background-color: rgba(220, 220, 220, 0.2);
+	display: flex;
+	border: 1px solid #ccc;
+}
+
+#overall_sb_left{
+	width: 270px;
+}
+
+#overall_sbl_select{
+	display: flex;
+    justify-content: space-between;
+    height: 75px;
+   	border-bottom: 1px solid #ccc;
+   	padding: 0 15px;
+}
+
+#overall_sbl_select>p{
+	font-size: 20px;
+	padding-top: 28px;
+	vertical-align: top;
+	font-weight: 500;
+}
+
+#overall_sbl_select select{
+	width: 150px;
+	height: 30px;
+	margin-top: 25px;
+}
+
+#overall_sbl_choice{
+	display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+   	padding: 28px 15px 0;
+}
+
+.overall_choice_check>p{
+	padding-right: 5px;
+}
+
+.overall_choice_check{
+	display: flex;
+    justify-content: space-between;
+}
+
+.overall_choice_check input{
+	width: 18px;
+	height: 18px;
+	vertical-align: top;
+	margin-top: 2px;
+}
+
+#overall_sb_right{
+	width: 1000px;
+	display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    border-left: 1px solid #ccc;
+}
+
+#overall_sb_right>div{
+	width: 300px;
+	height: 75px;
+	display: flex;
+
+    padding-top: 23px;
+    box-sizing: border-box;
+}
+
+#overall_sb_right>div p{
+	width: 35%;
+	height: 30px;
+	font-size: 18px;
+	vertical-align: top;
+   	padding-top: 5px;
+}
+
+#overall_sb_right>div div{
+	width: 45%;
+	height: 30px;
+}
+
+#overall_sb_right>div div input{
+	width: 100%;
+	height: 100%
+}
+
+#overall_sb_right .overall_sbr_date{
+	width: 350px;
+    text-align: center;
+
+}
+
+#overall_sb_right .overall_sbr_date>p{
+
+	width:30%;
+}
+
+#overall_sb_right .overall_sbr_date>div{
+	position: relative;
+	display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+#overall_sb_right .overall_sbr_date>div>p{
+	position: absolute;
+   	top: 5px;
+   	left: 79px;
+}
+
+#overall_sb_right .overall_sbr_date input{
+	width: 45%;
+	height: 30px;
+}
+
+#overall_sb_btn{
+	position: absolute;
+    top: 85px;
+    right: 15px;
+    width: 50px;
+    height: 50px;
+	background-image: url(../b_img/search_btn.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50px;
+    cursor: pointer;
+}
+
+#overall_sb_btn:hover{
+	background-image: url(../b_img/search_btn2.png);
+}
+
+.overall_sbr_date{
+	position: relative;
+}
+
+.date_icon1,.date_icon2{
+	display: block;
+	position: absolute;
+    top: 5px;
+    width: 25px;
+    height: 25px;
+	background-image: url(../b_img/date_icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+}
+
+.date_icon1{
+	left: 84px;
+}
+
+.date_icon2{
+	left: 215px;
+}

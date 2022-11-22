@@ -68,4 +68,40 @@
 		values (#{arrive_num}, #{product_code})
 	</insert>
 	
+	<select id="statement_product_select" resultType="org.boksan.model.statementDTO">
+		SELECT
+			p.product_name,
+			c.country_name AS product_country,
+			b.business_name AS product_business,
+			p.price AS product_price
+		FROM b_product p
+		LEFT JOIN country c
+		ON p.country_code = c.country_code
+		LEFT JOIN business b
+		ON p.business_code = b.business_code
+		WHERE p.product_code = #{product_code}
+	</select>
+	
+	<insert id="statement_arrive_insert">
+		INSERT INTO statement
+		SELECT(
+		case
+			when DATE_FORMAT(NOW(),'%y%m%d') = LEFT(MAX(statement_code),6)
+			then MAX(statement_code)+1
+			ELSE CONCAT(DATE_FORMAT(NOW(),'%y%m%d'),"0001")
+		END) AS statement_code,
+		"입고" AS classification,
+		#{emp_code} AS emp_code,
+		#{emp_name} AS emp_name,
+		#{emp_tel} AS emp_tel,
+		NOW() AS DATE,
+		#{product_code} AS product_code,
+		#{product_name} AS product_name,
+		#{product_country} AS product_country,
+		#{product_business} AS product_business,
+		#{product_price} AS product_price,
+		#{quantity} AS quantity
+		FROM statement
+	</insert>
+	
 </mapper>

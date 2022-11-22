@@ -9,6 +9,7 @@ import org.boksan.model.b_empDTO;
 import org.boksan.model.b_releaseDTO;
 import org.boksan.model.b_release_listDTO;
 import org.boksan.model.materiaDTO;
+import org.boksan.model.statementDTO;
 
 public interface ReleaseDao {
 
@@ -89,4 +90,13 @@ public interface ReleaseDao {
 	
 	//출고요청시 해당 상품코드로 재고조회 true,false select
 	public String pc_stock_check_select(Map<String, Object> map);
+	
+	//입출고목록select를 위한 product_code select
+	public String statement_product_code_select(String release_list_code);
+	
+	//입출고목록 insert
+	public void statement_release_insert(statementDTO stdto);
+	
+	//입출고목록(발주) insert
+	public void statement_release_oder_insert(statementDTO stdto);
 }
