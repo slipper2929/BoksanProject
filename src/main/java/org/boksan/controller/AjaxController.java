@@ -10,9 +10,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.model.Product_selectDTO;
@@ -26,11 +26,16 @@ import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.ReleaseService;
 import org.boksan.service.StockService;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import net.sf.json.JSONArray;
 
 
 
@@ -257,65 +262,102 @@ public class AjaxController {
 	}
 	
 	//전체조회_재고조회excel
+		@SuppressWarnings("resource")
 		@GetMapping(value="/excelDownXlsx",
 				produces = "application/json; charset=utf-8")
-		public void in_out_record_excel(
+		public void in_out_record_excel(	
 				@RequestParam Map<String,Object> record_data,
 				@RequestParam(value="record_arr") String[] record_arr,
 				HttpServletResponse response) {
+			
+			
+			
+		
+			XSSFWorkbook wb = null;
+			Sheet sheet = null;
+			Row row = null;
+			Cell cell =null;
+			wb = new XSSFWorkbook();
+			sheet = wb.createSheet("statement");
 			ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
-			//List<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			System.out.println("시작2");
+			//List<statementDTO> result = pservice.in_out_record(record_data);
+			//ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
+	
+			
+			
+			System.out.println("aaaaaaaaaaaa");
 			System.out.println(result);
-			System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbb");
-			System.out.println(record_data);
+			System.out.println("bbbbbbbbbbbb");
+			
+			//row(행)
+			int cellCount=0;
+			row = sheet.createRow(0);
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("입출고내역코드");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("분류");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("날짜");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("상품명");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("상품원산지");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("공급사명");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("중량");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("가격");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("담당자명");
+			cell = row.createCell(cellCount++);
+			cell.setCellValue("담당자전화번호");
+			
+			for(int i=0; i<result.size(); i++) {
+				row = sheet.createRow(i+1);
+				cellCount = 0;
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getStatement_code());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getClassification());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getDate());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getProduct_name());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getProduct_country());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getProduct_business());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getQuantity());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getProduct_price());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getEmp_name());
+				cell = row.createCell(cellCount++);
+				cell.setCellValue(result.get(i).getEmp_tel());
+			}
+			
+			System.out.println("hhhhhhhhhhhhhh");
+			response.setContentType("ms-vnd/excel");
+			System.out.println("sksksksksksksksk");
+			response.setHeader("Content-Disposition", "attachment;filename=statement.xlsx");
+			System.out.println("하이");
 			
 			
-			XSSFRow row = null;
-			XSSFCell cell = null;
-			
-			Workbook workbook = new XSSFWorkbook();
-			XSSFSheet sheet = (XSSFSheet) workbook.createSheet();
-			String[] skey = {
-								"charge_name",
-								"country_name",
-								"product_name",
-								"business_name",
-								"inquiry_date_start",
-								"inquiry_date_end"
-								
-							};
-
-			
-			
-			if(result.isEmpty() == false && result.size()>0) {
-				
-				for(int i=0; i<result.size(); i++) {
-					row = sheet.createRow(i);
-				
-					for(int j=0; j<skey.length; j++) {
-						cell = row.createCell(j);
-						
-						cell.setCellValue(((statementDTO) result.get(i)).get(skey[j]).toString());
-					
-					}
+				try {
+					System.out.println("dddddddd");
+					wb.write(response.getOutputStream());
+					System.out.println("나와라야");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			}
-			String fileName = "테스트 한글.xlsx";
-	        String outputFileName = fileName;
-	        response.setHeader("Content-Disposition", "attachment; fileName=\"" + outputFileName + "\"");
-			try {
-				workbook.write(response.getOutputStream());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
-				workbook.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+				
+			
+			
+		
 			
 		}
 	

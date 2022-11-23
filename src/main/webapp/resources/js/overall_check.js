@@ -2,6 +2,8 @@ $(function(){
 
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
+   
+    let in_out_record_data;
     
     //$(".ior_choice").hide()
     //$(".ior_right").hide()
@@ -110,6 +112,8 @@ $(function(){
                 "inquiry_date_start" : inquiry_date_start_ior,
                 "inquiry_date_end" : inquiry_date_end_ior
             }
+            
+            in_out_record_data = record_data;
 
             console.log(record_data)
 
@@ -125,6 +129,7 @@ $(function(){
                 success: function(data){
                 	alert("성공")
                 	console.log(data)
+                
                 	$(".little_title").text("입출고내역조회")
                     $("#overall_list table").html("")
 
@@ -306,22 +311,24 @@ $(function(){
                 "inquiry_date_end" : inquiry_date_end_ior
             }
 		console.log(record_data);
+		
 		$.ajax({
 			url:"/excelDownXlsx",
             type:"get",
-            data: record_data,
+            data: in_out_record_data,
             traditional : true,
-            dataType:'json',
+            dataType:"json",
             beforeSend : function(xhr){
             xhr.setRequestHeader(header, token);
+            alert("dd");
             },
 			success: function(data){
 				alert("성공")
 				console.log(data);
 			},
-			 error: function(e){
-                    alert(e)
-                }
+			error:function(request,status,error){
+		        alert("에러지롱@@@@@@@@@@"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		       }
 		})
 	})
 	
