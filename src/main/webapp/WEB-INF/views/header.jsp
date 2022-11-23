@@ -74,10 +74,7 @@
                                             <p><a href="/product_inquiry">상품조회</a></p>
                                         </li>
                                         <li>
-                                            <p><a href="/product_position_inquiry">상품별조회</a></p>
-                                        </li>
-                                        <li>
-                                            <p><a href="/location_inquiry">로케이션별조회</a></p>
+                                            <p><a href="/overall_check">전체조회</a></p>
                                         </li>
                                     </ul>
                                 </li> <!--상품조회 끝-->
@@ -86,9 +83,6 @@
                         <li> <!--재고-->
                             <p><a href="#">재고</a></p>
                             <ul class="b_header_nav_menu_medium">
-                            	<li>
-                            		<p><a href="/stock">재고조회</a></p>
-                            	</li>
                                 <li>
                                     <p><a href="#">재고이동</a></p>
                                     <ul class="b_header_nav_menu_small">

@@ -243,3 +243,14 @@
 	width: 50%;
 	justify-content: start;
 }
+
+#overall_sb_left .hr_choice{
+	flex-wrap: wrap;
+	margin-left: 20px;
+	margin-top: -10px;
+}
+
+#overall_sb_left .hr_choice .overall_choice_check{
+	width: 50%;
+	justify-content: start;
+}

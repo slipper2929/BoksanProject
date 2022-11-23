@@ -8,6 +8,8 @@ $(function(){
     $(".little_title").text("입출고내역조회")
     $(".sr_choice").hide()
     $(".sr_right").hide()
+    $(".hr_choice").hide()
+    $(".hr_right").hide()
     //다른거 생기면 전부 하이드해줘야함
     
     $(".inquiry_date_start_ior").datepicker({
@@ -33,6 +35,8 @@ $(function(){
     	    $(".ior_right").hide()
     	    $(".sr_choice").hide()
     	    $(".sr_right").hide()
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
     	} else if($("#overall_sbl_select").find("select").val() == "in_out_record") {
         	
     		//다른것이 생긴다면 걔네들을 전부 하이드해야함
@@ -40,6 +44,8 @@ $(function(){
     	    $(".ior_right").show()
     	    $(".sr_choice").hide()
     	    $(".sr_right").hide()
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
             
     	} else if($("#overall_sbl_select").find("select").val() == "stock_record") {
     		
@@ -48,7 +54,20 @@ $(function(){
     		$(".sr_right").show()
     	    $(".ior_choice").hide()
     	    $(".ior_right").hide()
-    	}
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
+
+    	} else if($("#overall_sbl_select").find("select").val() == "house_record"){
+
+            //다른것이 생긴다면 걔네들을 전부 하이드해야함
+    		$(".hr_choice").show()
+    	    $(".hr_right").show()
+            $(".sr_choice").hide()
+    		$(".sr_right").hide()
+    	    $(".ior_choice").hide()
+    	    $(".ior_right").hide()
+
+        }
 
     })
     
@@ -123,13 +142,12 @@ $(function(){
                     xhr.setRequestHeader(header, token);
                 },
                 success: function(data){
-                	alert("성공")
                 	console.log(data)
                 	$(".little_title").text("입출고내역조회")
                     $("#overall_list table").html("")
 
                     $("#overall_list").css({"display" : "block"})
-                    alert(data.length)
+
                     let th;
                     let td;
 
@@ -228,13 +246,13 @@ $(function(){
                     xhr.setRequestHeader(header, token);
                 },
                 success: function(data){
-                	alert("성공")
+ 
                 	console.log(data)
                 	$(".little_title").text("재고조회")
                     $("#overall_list table").html("")
 
                     $("#overall_list").css({"display" : "block"})
-                    alert(data.length)
+ 
                     let th;
                     let td;
 
@@ -263,8 +281,15 @@ $(function(){
                 }
             })
 
+        } else if(overall_sbl_select.val() == "house_record"){
+
         }
 
     })
 
+    let object = {};
+for (let i = 0; i < 10; i++){ 
+  object[`variable${i}`] = 'test';
+}
+console.log(object)
 })

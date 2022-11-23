@@ -41,6 +41,7 @@
                 			<select>
                 				<option value="in_out_record">입출고내역</option>
                 				<option value="stock_record">재고</option>
+                				<option value="house_record">창고</option>
                 			</select>
                 		</div> <!-- #overall_sbl_select -->
                 		<div class="overall_sbl_choice ior_choice">
@@ -76,6 +77,25 @@
                 				<div><input type="checkbox" id="overall_sbl_check_sr_4" name="overall_sbl_check" checked></div>
                 			</div>
                 		</div> <!-- .sr_choice -->
+                		
+                		<div class="overall_sbl_choice hr_choice">
+                			<div class="overall_choice_check">
+                				<p>냉 장</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_1" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>냉 동</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_2" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>상 온</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_3" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>저 온</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_4" name="overall_sbl_check" checked></div>
+                			</div>
+                		</div> <!-- .hr_choice -->
                 		
                 	</div>
                 	<!-- 밑에꺼 입출고내역조회 -->
@@ -153,6 +173,40 @@
                 			</div>
                 		</div>
                 	</div> <!-- .sr_right -->
+                	
+                	<!-- 밑에꺼 창고조회 -->
+                	<div class="overall_sb_right hr_right">
+                		<div>
+                			<p>최대허용수량</p>
+                			<div>
+                				<input type="text" class="sc_check max_load_hr">
+                			</div>
+                		</div>
+						<div>
+                			<p>현재공실수량</p>
+                			<div>
+                				<input type="text" class="sc_check now_vacancy_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>현재적재수량</p>
+                			<div>
+                				<input type="text" class="sc_check now_load_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>적재율</p>
+                			<div>
+                				<input type="text" class="sc_check loading_rate_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>적재상품명</p>
+                			<div>
+                				<input type="text" class="sc_check product_name_hr">
+                			</div>
+                		</div>
+                	</div> <!-- .hr_right -->
                 	
                 	<div id="overall_sb_btn"></div>
                 </div><!-- #overall_search_box -->
