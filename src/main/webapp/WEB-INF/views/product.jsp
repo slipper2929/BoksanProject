@@ -119,6 +119,13 @@
                     </form>
                 </div> <!--.b_content-->
             </section>
+            <div>
+        <h1>Excel Download</h1>
+        <form action="/excel/download" method="get">
+        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            <button type="submit">Excel</button>
+        </form>
+    </div>
         </div>
         
         <jsp:include page="footer.jsp"></jsp:include>
