@@ -10,6 +10,10 @@ $(function(){
     $(".little_title").text("입출고내역조회")
     $(".sr_choice").hide()
     $(".sr_right").hide()
+    $(".hr_choice").hide()
+    $(".hr_right").hide()
+    $(".record_excel").hide()
+    $(".stock_excel").hide()
     //다른거 생기면 전부 하이드해줘야함
     
     $(".inquiry_date_start_ior").datepicker({
@@ -35,6 +39,8 @@ $(function(){
     	    $(".ior_right").hide()
     	    $(".sr_choice").hide()
     	    $(".sr_right").hide()
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
     	} else if($("#overall_sbl_select").find("select").val() == "in_out_record") {
         	
     		//다른것이 생긴다면 걔네들을 전부 하이드해야함
@@ -42,6 +48,8 @@ $(function(){
     	    $(".ior_right").show()
     	    $(".sr_choice").hide()
     	    $(".sr_right").hide()
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
             
     	} else if($("#overall_sbl_select").find("select").val() == "stock_record") {
     		
@@ -50,7 +58,20 @@ $(function(){
     		$(".sr_right").show()
     	    $(".ior_choice").hide()
     	    $(".ior_right").hide()
-    	}
+            $(".hr_choice").hide()
+    	    $(".hr_right").hide()
+
+    	} else if($("#overall_sbl_select").find("select").val() == "house_record"){
+
+            //다른것이 생긴다면 걔네들을 전부 하이드해야함
+    		$(".hr_choice").show()
+    	    $(".hr_right").show()
+            $(".sr_choice").hide()
+    		$(".sr_right").hide()
+    	    $(".ior_choice").hide()
+    	    $(".ior_right").hide()
+
+        }
 
     })
     
@@ -102,6 +123,15 @@ $(function(){
             } else{
                 record_arr.push("false")
             }
+            
+            $(".record_arr_excel").val(record_arr);
+            $(".charge_name_excel").val(charge_name_ior);
+            $(".country_name_excel").val(country_name_ior);
+            $(".product_name_excel").val(product_name_ior);
+            $(".business_name_excel").val(business_name_ior);
+            $(".inquiry_date_start_excel").val(inquiry_date_start_ior);
+            $(".inquiry_date_end_excel").val(inquiry_date_end_ior);
+         
 
             let record_data = {
                 "record_arr" : record_arr,
@@ -127,14 +157,18 @@ $(function(){
                     xhr.setRequestHeader(header, token);
                 },
                 success: function(data){
-                	alert("성공")
                 	console.log(data)
+<<<<<<< HEAD
                 
+=======
+                	$(".record_excel").show()
+                	$(".stock_excel").hide()
+>>>>>>> main
                 	$(".little_title").text("입출고내역조회")
                     $("#overall_list table").html("")
 
                     $("#overall_list").css({"display" : "block"})
-                    alert(data.length)
+
                     let th;
                     let td;
 
@@ -210,7 +244,15 @@ $(function(){
             } else{
                 record_arr.push("false")
             }
-
+            
+            $(".record_arr_stock_excel").val(record_arr);
+            $(".product_name_stock_excel").val(product_name_sr);
+            $(".country_name_stock_excel").val(country_name_sr);
+            $(".inquiry_date_start_stock_excel").val(inquiry_date_start_sr);
+            $(".inquiry_date_end_stock_excel").val(inquiry_date_end_sr);
+            $(".business_name_stock_excel").val(business_name_sr);
+            $(".house_code_stock_excel").val(house_code_sr);
+            
             let record_data = {
                 "record_arr" : record_arr,
                 "product_name" : product_name_sr,
@@ -233,13 +275,14 @@ $(function(){
                     xhr.setRequestHeader(header, token);
                 },
                 success: function(data){
-                	alert("성공")
+                	$(".stock_excel").show()
+                	$(".record_excel").hide()
                 	console.log(data)
                 	$(".little_title").text("재고조회")
                     $("#overall_list table").html("")
 
                     $("#overall_list").css({"display" : "block"})
-                    alert(data.length)
+ 
                     let th;
                     let td;
 
@@ -268,10 +311,16 @@ $(function(){
                 }
             })
 
+        } else if(overall_sbl_select.val() == "house_record"){
+
         }
 
     })
+<<<<<<< HEAD
 	$(".excel_btn").on("click",function(){
+=======
+	/*$(".excel_btn").on("click",function(){
+>>>>>>> main
 		
 		 let record_arr = [];
 	        let overall_sbl_check_ior_1 = $("#overall_sbl_check_ior_1");
@@ -317,7 +366,11 @@ $(function(){
             type:"get",
             data: in_out_record_data,
             traditional : true,
+<<<<<<< HEAD
             dataType:"json",
+=======
+            dataType:"text",
+>>>>>>> main
             beforeSend : function(xhr){
             xhr.setRequestHeader(header, token);
             alert("dd");
@@ -325,12 +378,22 @@ $(function(){
 			success: function(data){
 				alert("성공")
 				console.log(data);
+<<<<<<< HEAD
+=======
+			
+>>>>>>> main
 			},
 			error:function(request,status,error){
 		        alert("에러지롱@@@@@@@@@@"+"code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		       }
 		})
+<<<<<<< HEAD
 	})
 	
+=======
+	})*/
+	
+
+>>>>>>> main
 
 })

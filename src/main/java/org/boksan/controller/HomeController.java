@@ -2,17 +2,27 @@ package org.boksan.controller;
 
 
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import java.util.Map;
+
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.usermodel.Cell;
+
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
+import org.boksan.model.b_stockDTO;
+import org.boksan.model.statementDTO;
 import org.boksan.service.ArriveService;
 import org.boksan.service.ManagerService;
 import org.boksan.service.MemberService;
@@ -26,6 +36,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -378,7 +389,211 @@ public class HomeController {
 		
 		return "overall_check";
 	}
-	
-	
-	
+
+	//전체조회_입출고내역조회excel
+			@SuppressWarnings("resource")
+			@RequestMapping(value="/excelDownXlsx", method= RequestMethod.GET, produces="application/text;charset=utf-8")
+			public void in_out_record_excel(
+					HttpServletResponse response,
+					@RequestParam(value="record_arr") String record_arr,
+					@RequestParam(value="charge_name") String charge_name,
+					@RequestParam(value="country_name") String country_name,
+					@RequestParam(value="product_name") String product_name,
+					@RequestParam(value="business_name") String business_name,
+					@RequestParam(value="inquiry_date_start") String inquiry_date_start,
+					@RequestParam(value="inquiry_date_end") String inquiry_date_end
+					) throws IOException {
+				
+				Map<String, Object> record_data = new HashMap<String, Object>();
+				
+				record_data.put("charge_name", charge_name);
+				record_data.put("country_name", country_name);
+				record_data.put("country_name", country_name);
+				record_data.put("product_name", product_name);
+				record_data.put("business_name", business_name);
+				record_data.put("inquiry_date_start", inquiry_date_start);
+				record_data.put("inquiry_date_end", inquiry_date_end);
+				
+				String[] arr = record_arr.split(",");
+
+				ArrayList<statementDTO> result = pservice.in_out_record(record_data, arr);
+				
+
+				XSSFWorkbook wb = null;
+				Sheet sheet = null;
+				Row row = null;
+				Cell cell =null;
+				wb = new XSSFWorkbook();
+				sheet = wb.createSheet("입출고내역");
+			
+				
+		
+				
+				
+			
+				
+				//row(행)
+				int cellCount=0;
+				row = sheet.createRow(0);
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("입출고내역코드");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("분류");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("날짜");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("상품명");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("상품원산지");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("공급사명");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("중량");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("가격");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("담당자명");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("담당자전화번호");
+				
+					for(int i=0; i<result.size(); i++) {
+					row = sheet.createRow(i+1);
+					cellCount = 0;
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getStatement_code());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getClassification());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getDate());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getProduct_name());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getProduct_country());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getProduct_business());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getQuantity());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getProduct_price());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getEmp_name());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getEmp_tel());
+				}
+				
+				LocalDate now = LocalDate.now();	
+				
+			
+				response.setContentType("Application/Msexcel");
+			
+				response.setHeader("Content-Disposition", "attachment;filename="+ now +"statement.xlsx");
+			
+				
+				wb.write(response.getOutputStream());
+			
+
+				
+			}
+			
+			//전체조회_재고조회excel
+			@SuppressWarnings("resource")
+			@RequestMapping(value="/stock_excel", method= RequestMethod.GET, produces="application/text;charset=utf-8")
+			public void stock_excel(
+					HttpServletResponse response,
+					@RequestParam(value="record_arr") String record_arr,
+					@RequestParam(value="product_name") String product_name,
+					@RequestParam(value="country_name") String country_name,
+					@RequestParam(value="inquiry_date_start") String inquiry_date_start,
+					@RequestParam(value="inquiry_date_end") String inquiry_date_end,
+					@RequestParam(value="business_name") String business_name,
+					@RequestParam(value="house_code") String house_code
+					) throws IOException {
+				
+				Map<String, Object> record_data = new HashMap<String, Object>();
+				
+				record_data.put("product_name", product_name);
+				record_data.put("country_name", country_name);
+				record_data.put("inquiry_date_start", inquiry_date_start);
+				record_data.put("inquiry_date_end", inquiry_date_end);
+				record_data.put("business_name", business_name);
+				record_data.put("house_code", house_code);
+				
+				String[] arr = record_arr.split(",");
+								
+				ArrayList<b_stockDTO> result = pservice.stock_record(record_data, arr);
+				System.out.println("스톡" + result);
+				
+				System.out.println("record_arr" + record_arr);
+				System.out.println("product_name" + product_name);
+				System.out.println("country_name" + country_name);
+				System.out.println("inquiry_date_start" + inquiry_date_start);
+				System.out.println("inquiry_date_end" + inquiry_date_end);
+				System.out.println("business_name" + business_name);
+				System.out.println("house_code" + house_code);
+			
+				XSSFWorkbook wb = null;
+				Sheet sheet = null;
+				Row row = null;
+				Cell cell =null;
+				wb = new XSSFWorkbook();
+				sheet = wb.createSheet("재고조회");
+				
+
+				
+				//row(행)
+				int cellCount=0;
+				row = sheet.createRow(0);
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("파레트번호");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("상품명");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("원산지");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("공급사명");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("중량");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("창고번지");
+				cell = row.createCell(cellCount++);
+				cell.setCellValue("입고일");
+			
+			
+				for(int i=0; i<result.size(); i++) {
+					row = sheet.createRow(i+1);
+					cellCount = 0;
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getPallet_num());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getProduct_name());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getCountry_name());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getBusiness_name());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getStock_num());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getHouse_code());
+					cell = row.createCell(cellCount++);
+					cell.setCellValue(result.get(i).getArrive_date());
+				}
+				
+				
+				
+			
+				LocalDate now = LocalDate.now();	
+				
+			
+				response.setContentType("Application/Msexcel");
+			
+				response.setHeader("Content-Disposition", "attachment;filename="+ now +"stock.xlsx");
+			
+				
+				wb.write(response.getOutputStream());
+			
+
+				
+			}	
+		
+
 }

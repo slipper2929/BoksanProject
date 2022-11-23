@@ -1,5 +1,10 @@
 package org.boksan.controller;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.model.Product_groupDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.service.ProductService;
@@ -18,6 +23,8 @@ public class ProductController {
 	@RequestMapping(value="/product", method = RequestMethod.POST)
 	public String PostProduct(b_productDTO pdto) {
 		pservice.ProductInsert(pdto);
+		
+        
 		return "redirect:/product";
 	}
 	//상품분류추가 버튼

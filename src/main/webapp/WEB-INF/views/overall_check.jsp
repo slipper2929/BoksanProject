@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -9,21 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
-    <!--≥Î≈‰ªÍΩ∫ ±€≤√-->
+    <!--ÎÖ∏ÌÜ†ÏÇ∞Ïä§ Í∏ÄÍº¥-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- 3-1. jQueryUI ø¨∞·(animate) -->
+    <!-- 3-1. jQueryUI Ïó∞Í≤∞(animate) -->
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 
-    <!--√ ±‚»≠css-->
+    <!--Ï¥àÍ∏∞Ìôîcss-->
     <link rel="stylesheet" href="../resources/css/reset.css">
-    <!--∏ﬁ¿Œcss-->
+    <!--Î©îÏù∏css-->
     <link rel="stylesheet" href="../resources/css/overall_check.css">
-    <!--¡∂»∏css-->
+    <!--Ï°∞Ìöåcss-->
     <link rel="stylesheet" href="../resources/css/inquiry.css">
-<title>¿¸√º ¡∂»∏</title>
+<title>Ï†ÑÏ≤¥ Ï°∞Ìöå</title>
 </head>
 <body>
 	<div id="wrap">
@@ -31,69 +31,89 @@
 		<div id="container">
 			<section class="b_inquiry_main">
 				<div class="b_title">
-                    <h1>¿¸√º¡∂»∏</h1>
+                    <h1>Ï†ÑÏ≤¥Ï°∞Ìöå</h1>
                     <h2 class="little_title"></h2>
                 </div> <!--.b_main-->
                 <div id="overall_search_box">
                 	<div id="overall_sb_left">
                 		<div id="overall_sbl_select">
-                			<p>¡∂»∏±∏∫–</p>
+                			<p>Ï°∞ÌöåÍµ¨Î∂Ñ</p>
                 			<select>
-                				<option value="in_out_record">¿‘√‚∞Ì≥ªø™</option>
-                				<option value="stock_record">¿Á∞Ì</option>
+                				<option value="in_out_record">ÏûÖÏ∂úÍ≥†ÎÇ¥Ïó≠</option>
+                				<option value="stock_record">Ïû¨Í≥†</option>
+                				<option value="house_record">Ï∞ΩÍ≥†</option>
                 			</select>
                 		</div> <!-- #overall_sbl_select -->
                 		<div class="overall_sbl_choice ior_choice">
                 			<div class="overall_choice_check">
-                				<p>¿‘∞Ì</p>
+                				<p>ÏûÖÍ≥†</p>
                 				<div><input type="checkbox" id="overall_sbl_check_ior_1" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>√‚∞Ì</p>
+                				<p>Ï∂úÍ≥†</p>
                 				<div><input type="checkbox" id="overall_sbl_check_ior_2" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>πﬂ¡÷</p>
+                				<p>Î∞úÏ£º</p>
                 				<div><input type="checkbox" id="overall_sbl_check_ior_3" name="overall_sbl_check" checked></div>
                 			</div>
                 		</div> <!-- .ior_choice -->
                 		
                 		<div class="overall_sbl_choice sr_choice">
                 			<div class="overall_choice_check">
-                				<p>Ωƒ ¿⁄ ¿Á</p>
+                				<p>Ïãù Ïûê Ïû¨</p>
                 				<div><input type="checkbox" id="overall_sbl_check_sr_1" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>∞° ∞¯ «∞</p>
+                				<p>Í∞Ä Í≥µ Ìíà</p>
                 				<div><input type="checkbox" id="overall_sbl_check_sr_2" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>øœ ¡¶ «∞</p>
+                				<p>ÏôÑ Ï†ú Ìíà</p>
                 				<div><input type="checkbox" id="overall_sbl_check_sr_3" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>∞¯ ªÍ «∞</p>
+                				<p>Í≥µ ÏÇ∞ Ìíà</p>
                 				<div><input type="checkbox" id="overall_sbl_check_sr_4" name="overall_sbl_check" checked></div>
                 			</div>
                 		</div> <!-- .sr_choice -->
                 		
+                		<div class="overall_sbl_choice hr_choice">
+                			<div class="overall_choice_check">
+                				<p>ÎÉâ Ïû•</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_1" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>ÎÉâ Îèô</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_2" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>ÏÉÅ Ïò®</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_3" name="overall_sbl_check" checked></div>
+                			</div>
+                			<div class="overall_choice_check">
+                				<p>Ï†Ä Ïò®</p>
+                				<div><input type="checkbox" id="overall_sbl_check_hr_4" name="overall_sbl_check" checked></div>
+                			</div>
+                		</div> <!-- .hr_choice -->
+                		
                 	</div>
-                	<!-- πÿø°≤® ¿‘√‚∞Ì≥ªø™¡∂»∏ -->
+                	<!-- Î∞ëÏóêÍ∫º ÏûÖÏ∂úÍ≥†ÎÇ¥Ïó≠Ï°∞Ìöå -->
                 	<div class="overall_sb_right ior_right">
                 		<div>
-                			<p>¥„¥Á¿⁄∏Ì</p>
+                			<p>Îã¥ÎãπÏûêÎ™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check charge_name_ior">
                 			</div>
                 		</div>
                 		<div>
-                			<p>ªÛ«∞∏Ì</p>
+                			<p>ÏÉÅÌíàÎ™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check product_name_ior">
                 			</div>
                 		</div>
                 		<div class="overall_sbr_date">
-                			<p>¡∂»∏±‚∞£</p>
+                			<p>Ï°∞ÌöåÍ∏∞Í∞Ñ</p>
                 			<div>
                 				<span class="date_icon1"></span>
                 				<span class="date_icon2"></span>
@@ -103,35 +123,35 @@
                 			</div>
                 		</div>
                 		<div>
-                			<p>ªÛ«∞ø¯ªÍ¡ˆ</p>
+                			<p>ÏÉÅÌíàÏõêÏÇ∞ÏßÄ</p>
                 			<div>
                 				<input type="text" class="sc_check country_name_ior">
                 			</div>
                 		</div>
                 		<div>
-                			<p>∞¯±ﬁªÁ∏Ì</p>
+                			<p>Í≥µÍ∏âÏÇ¨Î™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check business_name_ior">
                 			</div>
                 		</div>
                 	</div> <!-- .ior_right -->
                 	
-                	<!-- πÿø°≤® ¿Á∞Ì¡∂»∏ -->
+                	<!-- Î∞ëÏóêÍ∫º Ïû¨Í≥†Ï°∞Ìöå -->
                 	<div class="overall_sb_right sr_right">
                 		<div>
-                			<p>ªÛ«∞∏Ì</p>
+                			<p>ÏÉÅÌíàÎ™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check product_name_sr">
                 			</div>
                 		</div>
                 		<div>
-                			<p>ø¯ªÍ¡ˆ∏Ì</p>
+                			<p>ÏõêÏÇ∞ÏßÄÎ™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check country_name_sr">
                 			</div>
                 		</div>
                 		<div class="overall_sbr_date">
-                			<p>¿‘∞Ì¿œ</p>
+                			<p>ÏûÖÍ≥†Ïùº</p>
                 			<div>
                 				<span class="date_icon1"></span>
                 				<span class="date_icon2"></span>
@@ -141,18 +161,52 @@
                 			</div>
                 		</div>
                 		<div>
-                			<p>∞¯±ﬁªÁ∏Ì</p>
+                			<p>Í≥µÍ∏âÏÇ¨Î™Ö</p>
                 			<div>
                 				<input type="text" class="sc_check business_name_sr">
                 			</div>
                 		</div>
                 		<div>
-                			<p>√¢∞Ìπ¯¡ˆ</p>
+                			<p>Ï∞ΩÍ≥†Î≤àÏßÄ</p>
                 			<div>
                 				<input type="text" class="sc_check house_code_sr">
                 			</div>
                 		</div>
                 	</div> <!-- .sr_right -->
+                	
+                	<!-- Î∞ëÏóêÍ∫º Ï∞ΩÍ≥†Ï°∞Ìöå -->
+                	<div class="overall_sb_right hr_right">
+                		<div>
+                			<p>ÏµúÎåÄÌóàÏö©ÏàòÎüâ</p>
+                			<div>
+                				<input type="text" class="sc_check max_load_hr">
+                			</div>
+                		</div>
+						<div>
+                			<p>ÌòÑÏû¨Í≥µÏã§ÏàòÎüâ</p>
+                			<div>
+                				<input type="text" class="sc_check now_vacancy_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>ÌòÑÏû¨Ï†ÅÏû¨ÏàòÎüâ</p>
+                			<div>
+                				<input type="text" class="sc_check now_load_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>Ï†ÅÏû¨Ïú®</p>
+                			<div>
+                				<input type="text" class="sc_check loading_rate_hr">
+                			</div>
+                		</div>
+                		<div>
+                			<p>Ï†ÅÏû¨ÏÉÅÌíàÎ™Ö</p>
+                			<div>
+                				<input type="text" class="sc_check product_name_hr">
+                			</div>
+                		</div>
+                	</div> <!-- .hr_right -->
                 	
                 	<div id="overall_sb_btn"></div>
                 </div><!-- #overall_search_box -->
@@ -160,16 +214,42 @@
                 	<table class="b_table2">
                 	</table>
                 </div>
+<<<<<<< HEAD
                 <div><button class="excel_btn">Excel</button></div>
+=======
+                
+                <!-- record_excel -->
+              <form action="excelDownXlsx" method="get" class="record_excel">
+                <input type="submit" value="ÏûÖÏ∂úÍ≥†ÎÇ¥Ïó≠ Excel">
+                <input type="hidden" name="record_arr" class="record_arr_excel">
+                <input type="hidden" name="charge_name"	class="charge_name_excel">
+                <input type="hidden" name="country_name" class="country_name_excel">
+                <input type="hidden" name="product_name" class="product_name_excel">
+                <input type="hidden" name="business_name" class="business_name_excel">
+                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_excel">
+                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_excel">
+              </form>  
+              <!-- stock_excel -->
+              <form action="stock_excel" method="get" class="stock_excel">
+                <input type="submit" value="Ïû¨Í≥†ÎÇ¥Ïó≠ Excel">
+                <input type="hidden" name="record_arr" class="record_arr_stock_excel">
+                <input type="hidden" name="product_name"	class="product_name_stock_excel">
+                <input type="hidden" name="country_name" class="country_name_stock_excel">
+                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_stock_excel">
+                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_stock_excel">
+                <input type="hidden" name="business_name" class="business_name_stock_excel">
+                <input type="hidden" name="house_code" class="house_code_stock_excel">
+              </form>  
+>>>>>>> main
 			</section>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	<!-- 3. jQuery ø¨∞· -->
+	<!-- 3. jQuery Ïó∞Í≤∞ -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     
-    <!--¿Ø»øº∫∞ÀªÁ js-->
+    <!--Ïú†Ìö®ÏÑ±Í≤ÄÏÇ¨ js-->
     <script src="../resources/js/b_regExp_check.js"></script>
     
     <!-- overall_check.js -->

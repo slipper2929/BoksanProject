@@ -131,7 +131,8 @@ public class ProductServiceImpl implements ProductService{
 	//전체조회_입출고내역조회
 	public ArrayList<statementDTO> in_out_record(
 			Map<String, Object> record_data,
-			String[] record_arr){
+			String[] record_arr
+			){
 		
 				record_data.put("record_arr0", record_arr[0]);
 				record_data.put("record_arr1", record_arr[1]);
