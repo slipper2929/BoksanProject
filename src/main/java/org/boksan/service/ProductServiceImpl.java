@@ -2,8 +2,13 @@ package org.boksan.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.dao.ProductDao;
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
@@ -152,5 +157,13 @@ public class ProductServiceImpl implements ProductService{
 		
 		
 		return pdao.stock_record(record_data);
+	}
+	
+	//전체조회_입출고내역조회 excel
+	public ArrayList<statementDTO> in_out_record_excel(
+			Map<String, Object> record_data,
+			String[] record_arr){
+		
+		return pdao.in_out_record_excel(record_data);
 	}
 }

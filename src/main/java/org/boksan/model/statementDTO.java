@@ -130,6 +130,14 @@ public class statementDTO {
 				+ ", product_business=" + product_business + ", product_price=" + product_price + ", quantity="
 				+ quantity + "]";
 	}
+
+	public Object get(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 	
 	
 }

@@ -1,9 +1,20 @@
 package org.boksan.controller;
 
+
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.model.Product_selectDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
@@ -244,4 +255,69 @@ public class AjaxController {
 		System.out.println(result);
 		return result;
 	}
+	
+	//전체조회_재고조회excel
+		@GetMapping(value="/excelDownXlsx",
+				produces = "application/json; charset=utf-8")
+		public void in_out_record_excel(
+				@RequestParam Map<String,Object> record_data,
+				@RequestParam(value="record_arr") String[] record_arr,
+				HttpServletResponse response) {
+			ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
+			//List<HashMap<String, Object>> result = new ArrayList<HashMap<String, Object>>();
+			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
+			System.out.println(result);
+			System.out.println("bbbbbbbbbbbbbbbbbbbbbbbbb");
+			System.out.println(record_data);
+			
+			
+			XSSFRow row = null;
+			XSSFCell cell = null;
+			
+			Workbook workbook = new XSSFWorkbook();
+			XSSFSheet sheet = (XSSFSheet) workbook.createSheet();
+			String[] skey = {
+								"charge_name",
+								"country_name",
+								"product_name",
+								"business_name",
+								"inquiry_date_start",
+								"inquiry_date_end"
+								
+							};
+
+			
+			
+			if(result.isEmpty() == false && result.size()>0) {
+				
+				for(int i=0; i<result.size(); i++) {
+					row = sheet.createRow(i);
+				
+					for(int j=0; j<skey.length; j++) {
+						cell = row.createCell(j);
+						
+						cell.setCellValue(((statementDTO) result.get(i)).get(skey[j]).toString());
+					
+					}
+				}
+			}
+			String fileName = "테스트 한글.xlsx";
+	        String outputFileName = fileName;
+	        response.setHeader("Content-Disposition", "attachment; fileName=\"" + outputFileName + "\"");
+			try {
+				workbook.write(response.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				workbook.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	
+
 }
