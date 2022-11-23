@@ -2,6 +2,9 @@ package org.boksan.controller;
 
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -261,105 +264,7 @@ public class AjaxController {
 		return result;
 	}
 	
-	//전체조회_재고조회excel
-		@SuppressWarnings("resource")
-		@GetMapping(value="/excelDownXlsx",
-				produces = "application/json; charset=utf-8")
-		public void in_out_record_excel(	
-				@RequestParam Map<String,Object> record_data,
-				@RequestParam(value="record_arr") String[] record_arr,
-				HttpServletResponse response) {
-			
-			
-			
-		
-			XSSFWorkbook wb = null;
-			Sheet sheet = null;
-			Row row = null;
-			Cell cell =null;
-			wb = new XSSFWorkbook();
-			sheet = wb.createSheet("statement");
-			ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
-			System.out.println("시작2");
-			//List<statementDTO> result = pservice.in_out_record(record_data);
-			//ArrayList<statementDTO> result = pservice.in_out_record(record_data, record_arr);
 	
-			
-			
-			System.out.println("aaaaaaaaaaaa");
-			System.out.println(result);
-			System.out.println("bbbbbbbbbbbb");
-			
-			//row(행)
-			int cellCount=0;
-			row = sheet.createRow(0);
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("입출고내역코드");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("분류");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("날짜");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("상품명");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("상품원산지");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("공급사명");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("중량");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("가격");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("담당자명");
-			cell = row.createCell(cellCount++);
-			cell.setCellValue("담당자전화번호");
-			
-			for(int i=0; i<result.size(); i++) {
-				row = sheet.createRow(i+1);
-				cellCount = 0;
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getStatement_code());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getClassification());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getDate());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getProduct_name());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getProduct_country());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getProduct_business());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getQuantity());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getProduct_price());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getEmp_name());
-				cell = row.createCell(cellCount++);
-				cell.setCellValue(result.get(i).getEmp_tel());
-			}
-			
-			System.out.println("hhhhhhhhhhhhhh");
-			response.setContentType("ms-vnd/excel");
-			System.out.println("sksksksksksksksk");
-			response.setHeader("Content-Disposition", "attachment;filename=statement.xlsx");
-			System.out.println("하이");
-			
-			
-				try {
-					System.out.println("dddddddd");
-					wb.write(response.getOutputStream());
-					System.out.println("나와라야");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			
-			
-		
-			
-		}
 	
 
 }
