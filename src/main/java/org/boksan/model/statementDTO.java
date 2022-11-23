@@ -131,11 +131,6 @@ public class statementDTO {
 				+ quantity + "]";
 	}
 
-	public Object get(String string) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 	

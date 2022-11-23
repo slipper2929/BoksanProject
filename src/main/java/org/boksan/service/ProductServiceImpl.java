@@ -159,11 +159,5 @@ public class ProductServiceImpl implements ProductService{
 		return pdao.stock_record(record_data);
 	}
 	
-	//전체조회_입출고내역조회 excel
-	public ArrayList<statementDTO> in_out_record_excel(
-			Map<String, Object> record_data,
-			String[] record_arr){
-		
-		return pdao.in_out_record_excel(record_data);
-	}
+	
 }
