@@ -110,11 +110,11 @@
                         <div class="recipe_content_info">
                             <textarea name="content" id=""></textarea>
                             <div>
-                            	<input type="text" id="recipe_product_code" name="recipe_code">
-                            	<input type="text" id="recipe_product_name" name="product_name">
-                            	<input type="text" id="recipe_weight" name="gross_weight">
-                            	<input type="text" id="recipe_date" name="production_date">
-                            	<input type="text" id="" name="emp_code" value="${member.emp_code}">
+                            	<input type="hidden" id="recipe_product_code" name="recipe_code">
+                            	<input type="hidden" id="recipe_product_name" name="product_name">
+                            	<input type="hidden" id="recipe_weight" name="gross_weight">
+                            	<input type="hidden" id="recipe_date" name="production_date">
+                            	<input type="hidden" id="" name="emp_code" value="${member.emp_code}">
                                 <p class="weight">총중량 : <span>0</span></p>
                                 <p class="date_now">제작일 : <span></span></p>
                                 <p>레시피제작자 : <span>${member.name}</span></p>

@@ -42,7 +42,6 @@
             <section class="b_inquiry_main">
                 <div class="b_title">
                     <h1>상품조회</h1>
-					${pilist }
                 </div> <!--.b_main-->
                 <div class="b_content b_content_width_m">
                   <div class="b_search">
@@ -138,7 +137,7 @@
                             </td>
                             <td>
                             	<p class="pilist_on">${pilist.pallet_in_ratio }</p>
-                            	<p class="pilist_out"><input type="text" class="product_value_pir" value="${pilist.pallet_in_ratio }"></p>
+                            	<p class="pilist_out"><input type="text" class="product_value_pir" value="${pilist.pallet_in_ratio }" readonly></p>
                             </td>
                             <td>
                             	

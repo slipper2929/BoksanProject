@@ -57,11 +57,11 @@
                         <div class="b_submit btn_l_b">
                             <input class="check_btn" type="button" value="검증 후 입고완료하기">
                         </div>
-                        	<input type="text" class="product_code" name="product_code">
-                        	<input type="text" class="arrive_num" name="stock_num">
-                        	<input type="date" class="arrive_date" name="arrive_date">
-                        	<input type="text" class="pallet_num" name="pallet_num">
-                        	<input type="text" class="arrive_code" name="arrive_code">
+                        	<input type="hidden" class="product_code" name="product_code">
+                        	<input type="hidden" class="arrive_num" name="stock_num">
+                        	<input type="hidden" class="arrive_date" name="arrive_date">
+                        	<input type="hidden" class="pallet_num" name="pallet_num">
+                        	<input type="hidden" class="arrive_code" name="arrive_code">
                         	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> 
                     </form>
                 </div> <!--.b_content-->
