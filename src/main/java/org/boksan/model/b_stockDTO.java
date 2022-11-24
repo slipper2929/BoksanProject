@@ -39,6 +39,17 @@ public class b_stockDTO {
 	private String country_name;
 	
 	private String business_name;
+	
+	private String movement_address;
+	
+
+	public String getMovement_address() {
+		return movement_address;
+	}
+
+	public void setMovement_address(String movement_address) {
+		this.movement_address = movement_address;
+	}
 
 	public String getPallet_num() {
 		return pallet_num;
@@ -192,8 +203,10 @@ public class b_stockDTO {
 				+ ", product_group_name=" + product_group_name + ", pallet_num_list=" + pallet_num_list + ", moveList="
 				+ moveList + ", b_productdto=" + b_productdto + ", b_movement_orderdto=" + b_movement_orderdto
 				+ ", b_housedto=" + b_housedto + ", criteria=" + criteria + ", product_name=" + product_name
-				+ ", country_name=" + country_name + ", business_name=" + business_name + "]";
+				+ ", country_name=" + country_name + ", business_name=" + business_name + ", movement_address="
+				+ movement_address + "]";
 	}
+
 	
 	
 	

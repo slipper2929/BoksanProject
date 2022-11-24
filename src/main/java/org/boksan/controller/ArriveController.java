@@ -3,6 +3,7 @@ package org.boksan.controller;
 import javax.servlet.http.HttpSession;
 
 import org.boksan.model.b_arriveDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.service.ArriveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +19,14 @@ public class ArriveController {
 	
 	//입고대기목록 리스트_검증 insert
 	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public String Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code) {
+	public String Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code, b_houseDTO hdto) {
 		
-		System.out.println("dddddddddd");
 		System.out.println(sdto.toString());
 		System.out.println(arrive_code);
 		
 		
-		aservice.Arrive_insert(session, sdto, arrive_code);
+		aservice.Arrive_insert(session, sdto, arrive_code, hdto);
+		
 		
 		return "redirect:/arrive_list";
 		

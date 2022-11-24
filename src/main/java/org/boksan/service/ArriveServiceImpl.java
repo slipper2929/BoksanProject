@@ -11,6 +11,7 @@ import org.boksan.model.Arrive_totalDTO;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_empDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.statementDTO;
@@ -55,7 +56,7 @@ public class ArriveServiceImpl implements ArriveService{
 	}
 	
 	//입고대기목록_검증 insert
-	public void Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code) {
+	public void Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code, b_houseDTO hdto) {
 		
 		b_empDTO user = (b_empDTO) session.getAttribute("member");
 		
@@ -83,6 +84,9 @@ public class ArriveServiceImpl implements ArriveService{
 		System.out.println("stdto임");
 		System.out.println(stdto);
 		adao.statement_arrive_insert(stdto);
+		
+		adao.house_quantity_plus_update(hdto);
+		
 	}
 	
 	//입고대기목록 insert

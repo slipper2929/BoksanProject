@@ -201,12 +201,14 @@
  	
  	<!-- 재고 update -->
  	<update id="release_stock_update">
- 		UPDATE b_stock
-		SET arrive_date = NULL,
-			stock_num = NULL,
-			house_code = NULL,
-			product_barcode = NULL,
-			product_code = NULL
+ 		UPDATE b_stock s join b_house h
+ 		on s.house_code = h.house_code
+		SET s.arrive_date = NULL,
+			s.stock_num = NULL,
+			s.house_code = NULL,
+			s.product_barcode = NULL,
+			s.product_code = NULL,
+			h.now_quantity = h.now_quantity - 1
 		WHERE pallet_num = #{release_list_code}
  	</update>
  	

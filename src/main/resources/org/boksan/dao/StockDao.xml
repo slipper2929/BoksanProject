@@ -284,6 +284,7 @@
 		WHERE s.pallet_num = #{pallet_num}
  	</update>
  	
+ 	
  	<!-- 이동목록 확인버튼 누르면 이동목록 리스트에서 삭제 -->
  	<delete id="move_delete">
  		delete from b_movement_order where pallet_num = #{pallet_num} 
@@ -366,5 +367,17 @@
 			or p.product_name like concat('%',#{keyword},'%')
 	 	</if>
  	</select>
+ 	
+ 	<update id="move_quantity_plus">
+ 		UPDATE b_house
+		SET now_quantity = now_quantity + 1
+		WHERE house_code = #{move}
+ 	</update>
+ 	
+ 	<update id="move_quantity_minus">
+ 		UPDATE b_house
+		SET now_quantity = now_quantity - 1
+		WHERE house_code = #{num}
+ 	</update>
  	
 </mapper>

@@ -104,4 +104,10 @@
 		FROM statement
 	</insert>
 	
+	<update id="house_quantity_plus_update">
+		UPDATE b_house
+		SET now_quantity = now_quantity + 1
+		WHERE house_code = #{house_code}
+	</update>
+	
 </mapper>

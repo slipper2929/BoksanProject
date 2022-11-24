@@ -9,7 +9,7 @@ $(document).on("click",".move_compare_btn", function(){
 		$(this).prev().attr("name","pallet_num")
 		console.log($(".move_compare"))
 		alert("창고번지가 변경되었습니다.")
-		//$("#compare_form").submit();
+		$("#compare_form").submit();
 		
 	} else{
 		alert("일치하지 않습니다.")

@@ -50,5 +50,9 @@ public interface StockDao {
 	public ArrayList<b_stockDTO> location_select(Criteria cri);		
 	//페이징 처리를 위한 전체건수 로케이션별
 	public int getTotalCountLI(Criteria cri);
-	
+	//이동완료시 현재수량 + 1
+	public void move_quantity_plus(String move);
+	//이동완료시 현재수량 - 1
+	public void move_quantity_minus(String num);
+
 }
