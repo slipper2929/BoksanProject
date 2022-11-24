@@ -214,34 +214,37 @@
                 	<table class="b_table2">
                 	</table>
                 </div>
-<<<<<<< HEAD
-                <div><button class="excel_btn">Excel</button></div>
-=======
-                
-                <!-- record_excel -->
-              <form action="excelDownXlsx" method="get" class="record_excel">
-                <input type="submit" value="입출고내역 Excel">
-                <input type="hidden" name="record_arr" class="record_arr_excel">
-                <input type="hidden" name="charge_name"	class="charge_name_excel">
-                <input type="hidden" name="country_name" class="country_name_excel">
-                <input type="hidden" name="product_name" class="product_name_excel">
-                <input type="hidden" name="business_name" class="business_name_excel">
-                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_excel">
-                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_excel">
-              </form>  
-              <!-- stock_excel -->
-              <form action="stock_excel" method="get" class="stock_excel">
-                <input type="submit" value="재고내역 Excel">
-                <input type="hidden" name="record_arr" class="record_arr_stock_excel">
-                <input type="hidden" name="product_name"	class="product_name_stock_excel">
-                <input type="hidden" name="country_name" class="country_name_stock_excel">
-                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_stock_excel">
-                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_stock_excel">
-                <input type="hidden" name="business_name" class="business_name_stock_excel">
-                <input type="hidden" name="house_code" class="house_code_stock_excel">
-              </form>  
->>>>>>> main
+				<div class="excel_download">          
+	                <!-- record_excel -->
+	                <div class="record_excel">
+		              	<form action="excelDownXlsx" method="get" >
+		                <input type="submit" value="입출고내역 Excel" class="excel_img">
+		                <input type="hidden" name="record_arr" class="record_arr_excel">
+		                <input type="hidden" name="charge_name"	class="charge_name_excel">
+		                <input type="hidden" name="country_name" class="country_name_excel">
+		                <input type="hidden" name="product_name" class="product_name_excel">
+		                <input type="hidden" name="business_name" class="business_name_excel">
+		                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_excel">
+		                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_excel">
+		              </form>
+	              	</div>  
+	              <!-- stock_excel -->
+	              <div class="stock_excel">
+		              <form action="stock_excel" method="get">
+		                <input type="submit" value="재고내역 Excel" class="excel_img">
+		                <input type="hidden" name="record_arr" class="record_arr_stock_excel">
+		                <input type="hidden" name="product_name"	class="product_name_stock_excel">
+		                <input type="hidden" name="country_name" class="country_name_stock_excel">
+		                <input type="hidden" name="inquiry_date_start" class="inquiry_date_start_stock_excel">
+		                <input type="hidden" name="inquiry_date_end" class="inquiry_date_end_stock_excel">
+		                <input type="hidden" name="business_name" class="business_name_stock_excel">
+		                <input type="hidden" name="house_code" class="house_code_stock_excel">
+		              </form>
+	              </div>  
+	              
+             	</div>
 			</section>
+				
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>

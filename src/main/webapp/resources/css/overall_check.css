@@ -254,3 +254,17 @@
 	width: 50%;
 	justify-content: start;
 }
+
+.excel_download{
+	margin-top : 20px;
+}
+.excel_img{
+    width: 200px;
+    height: 40px;
+	background-image: url(../b_img/excel.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    cursor: pointer;
+    padding-left : 20px;
+}

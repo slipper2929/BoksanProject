@@ -14,10 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.poi.ss.usermodel.Cell;
-
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
-
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.boksan.model.Criteria;
 import org.boksan.model.PageDTO;
@@ -425,8 +428,30 @@ public class HomeController {
 				Cell cell =null;
 				wb = new XSSFWorkbook();
 				sheet = wb.createSheet("입출고내역");
-			
 				
+				XSSFFont font = wb.createFont();
+				font.setBoldweight((short)700);
+				
+				CellStyle headerStyle = wb.createCellStyle();
+				headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
+				headerStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+				headerStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+				headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+				headerStyle.setFont(font);
+				headerStyle.setWrapText(true);
+				headerStyle.setBorderBottom(CellStyle.BORDER_THIN);
+				headerStyle.setBorderLeft(CellStyle.BORDER_THIN);
+				headerStyle.setBorderRight(CellStyle.BORDER_THIN);
+				headerStyle.setBorderTop(CellStyle.BORDER_THIN);
+				
+				
+				CellStyle bodyStyle = wb.createCellStyle();
+				bodyStyle.setAlignment(CellStyle.ALIGN_CENTER);
+				bodyStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+				bodyStyle.setBorderBottom(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderLeft(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderRight(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderTop(CellStyle.BORDER_THIN);
 		
 				
 				
@@ -436,50 +461,75 @@ public class HomeController {
 				int cellCount=0;
 				row = sheet.createRow(0);
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("입출고내역코드");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("분류");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("날짜");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("상품명");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("상품원산지");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("공급사명");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("중량");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("가격");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("담당자명");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("담당자전화번호");
 				
 					for(int i=0; i<result.size(); i++) {
 					row = sheet.createRow(i+1);
 					cellCount = 0;
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getStatement_code());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getClassification());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getDate());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getProduct_name());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getProduct_country());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getProduct_business());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getQuantity());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getProduct_price());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getEmp_name());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getEmp_tel());
 				}
+					
+					for(int i=0; i<10; i++) {
+						sheet.autoSizeColumn(i);
+						sheet.setColumnWidth(i,(sheet.getColumnWidth(i))+(short)2000);
+						}
 				
 				LocalDate now = LocalDate.now();	
 				
@@ -538,45 +588,93 @@ public class HomeController {
 				wb = new XSSFWorkbook();
 				sheet = wb.createSheet("재고조회");
 				
-
+				XSSFFont font = wb.createFont();
+				font.setBoldweight((short)700);
 				
+				CellStyle headerStyle = wb.createCellStyle();
+				headerStyle.setAlignment(CellStyle.ALIGN_CENTER);
+				headerStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+				headerStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+				headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+				headerStyle.setFont(font);
+				headerStyle.setWrapText(true);
+				headerStyle.setBorderBottom(CellStyle.BORDER_THIN);
+				headerStyle.setBorderLeft(CellStyle.BORDER_THIN);
+				headerStyle.setBorderRight(CellStyle.BORDER_THIN);
+				headerStyle.setBorderTop(CellStyle.BORDER_THIN);
+				
+				
+				CellStyle bodyStyle = wb.createCellStyle();
+				bodyStyle.setAlignment(CellStyle.ALIGN_CENTER);
+				bodyStyle.setVerticalAlignment(CellStyle.VERTICAL_CENTER);
+				bodyStyle.setBorderBottom(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderLeft(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderRight(CellStyle.BORDER_THIN);
+				bodyStyle.setBorderTop(CellStyle.BORDER_THIN);
+			
+				
+				
+			
 				//row(행)
 				int cellCount=0;
 				row = sheet.createRow(0);
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("파레트번호");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("상품명");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("원산지");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("공급사명");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("중량");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("창고번지");
 				cell = row.createCell(cellCount++);
+				cell.setCellStyle(headerStyle);
 				cell.setCellValue("입고일");
-			
+				
+				
 			
 				for(int i=0; i<result.size(); i++) {
 					row = sheet.createRow(i+1);
 					cellCount = 0;
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getPallet_num());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getProduct_name());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getCountry_name());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getBusiness_name());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getStock_num());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getHouse_code());
 					cell = row.createCell(cellCount++);
+					cell.setCellStyle(bodyStyle);
 					cell.setCellValue(result.get(i).getArrive_date());
+					
+						
+							
 				}
+				
+				for(int i=0; i<7; i++) {
+					sheet.autoSizeColumn(i);
+					sheet.setColumnWidth(i,(sheet.getColumnWidth(i))+(short)2000);
+					}
 				
 				
 				
@@ -593,7 +691,6 @@ public class HomeController {
 			
 
 				
-			}	
-		
+			}
 
 }
