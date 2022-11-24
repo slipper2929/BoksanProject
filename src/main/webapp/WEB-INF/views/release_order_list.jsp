@@ -84,7 +84,7 @@
                             </td>
                             <td>
                                 <p class="release_order_btn btn_s_b"><input type="button" value="출고완료" class="release_btn"></p>
-                                <p class="release_after">출고가 완료되었습니다.</p>
+                                
                                 <input type="hidden" class="release_list_code" value="${ro.release_list_code}">
                                 <input type="hidden" class="release_num" value="${ro.release_num}">
                                 <input type="hidden" class="release_code" value="${ro.release_code}">

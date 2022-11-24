@@ -3,12 +3,40 @@ $(function(){
     var token = $("meta[name='_csrf']").attr("content");
 	var header = $("meta[name='_csrf_header']").attr("content");
     
+    
+    $(".release_btn").on("click", function(){
+        
+    let ask_ha = $(this).parents("tr").find(".house_address_num").text();
+    let check_ha = $(this).parents("tr").find(".check_house_address_num").val();
+    let check_ha_box = $(this).parents("tr").find(".check_house_address_num")
+    let release_list_code = $(this).parents("tr").find(".release_list_code");
+    let release_num = $(this).parents("tr").find(".release_num");
+    let release_code = $(this).parents("tr").find(".release_code");
+    let release_list_code_P = $(this).parents("tr").find(".release_list_code_P");
+    let state_num = $(this).parents("tr").find(".state_num");
+	
     //입고일선택datepicker
     $(".datepick").datepicker({
         dateFormat : 'yy-mm-dd'
     });
     
+    if(check_ha == "") {
+        alert("로케이션바코드검증을 입력하세요")
+    } else if(ask_ha == check_ha) {
+        alert("검증완료")
+        release_list_code.attr("name", "release_list_code");
+        release_num.attr("name", "release_num");
+        release_code.attr("name", "release_code");
+        release_list_code_P.attr("name", "release_list_code_P");
+        state_num.attr("name", "state_num");
+        $("#release_form").submit()
+    } else {
+        alert("로케이션바코드가 일치하지 않습니다.")
+        check_ha_box.val("")
+    }
+    
     //존재하는 창고번지인지 확인
+    
     
     $(document).on("change", ".arrive_house",function(){
    
@@ -88,6 +116,8 @@ $(function(){
        
    
    })
+
+})
     
     $(".house_code_input_modal").off().on("click", function(){
         $(".house_inner_num_box").html("")
@@ -173,7 +203,7 @@ $(function(){
 
                     },
                     error: function(e){
-                        alert("dddd")
+                        
                         alert(e)
                     }
                 })
@@ -213,5 +243,5 @@ $(function(){
    
    
    
-   
+
 })

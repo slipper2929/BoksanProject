@@ -85,9 +85,7 @@
 	        data: objdata,
 	        dataType: "json",
 	        success: function(data){
-	            alert("성공")
-	            console.log(data)
-	            console.log(data[0].material_num)
+	            
 	            
 	            for(let i = 0; i < data.length; i++){
 	            	
@@ -197,7 +195,7 @@
  	
 
  	$(document).on("click", ".release_product_delete_btn", function(){
-		alert("dd")
+		
         $(this).parents("tr").remove()
     })
     
@@ -234,14 +232,13 @@
     		},
 	        dataType: "json",
 	        success: function(data){
-	            console.log("dddddddddddddddddd")
-	            console.log(data)
+	            
 	            
 	            
 	            
 	            for(let i = 0; i < data.length; i++) {
 	            	if(data[i] == 'f' || data[i] == 't') {
-	            		alert("ddd")
+	            		
 	            		console.log("dd"+submit_check);
 	            	
 	            	} else {
@@ -257,7 +254,7 @@
 	            		$("table tr").eq(i).find("input[name = product_name]").attr('name', 'release_insert_list[' + (i-1) + '].product_name')
 	            		$("table tr").eq(i).find("input[name = release_num]").attr('name', 'release_insert_list[' + (i-1) + '].release_num')
 	            	}
-	            	alert("fffffff")
+	            	
 	            	$("#release_insert_form").submit();
 	        	} else {
 	        		alert(alert_text + "하여 출고요청을 할 수 없습니다.\n 해당 상품을 먼저 작업하여 주세요")
