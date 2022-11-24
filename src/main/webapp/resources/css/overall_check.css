@@ -255,6 +255,7 @@
 	justify-content: start;
 }
 
+<<<<<<< HEAD
 .excel_download{
 	margin-top : 20px;
 }
@@ -267,4 +268,179 @@
     background-size: 40px;
     cursor: pointer;
     padding-left : 20px;
+=======
+#overall_list .house_map{
+	display: flex;
+}
+
+
+
+.b_inquiry_main .b_table3{
+    width: 500px;
+    margin: 0 auto;
+    /* border: 1px solid #666; */
+    border-collapse: separate;
+  	border-spacing: 0;
+
+}
+
+.b_inquiry_main .b_table3 th{
+	position: sticky;
+	top: 0px;
+
+	text-align: center;
+	width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #dedede;
+}
+
+.b_inquiry_main .b_table3 tr, .b_table3 td{
+
+    text-align: center;
+    
+}
+
+.b_inquiry_main .b_table3 th, .b_inquiry_main .b_table3 td{
+
+	padding: 3px 0;
+}
+
+.b_inquiry_main .b_table3 th{
+
+
+}
+
+.b_inquiry_main .b_table3 p{
+    display: inline-block
+}
+
+.b_inquiry_main .b_table3{
+
+}
+
+.b_inquiry_main .b_table3 tr td{
+
+}
+.b_inquiry_main .b_table3 th{
+	border-bottom: 2px solid rgb(165, 165, 165);
+	border-right: 1px solid rgb(200, 200, 200);
+	border-left: 1px solid rgb(200, 200, 200);
+
+}
+.b_inquiry_main .b_table3 td{
+	border-bottom: 1px solid rgb(200, 200, 200);
+	border-right: 1px solid rgb(200, 200, 200);
+	border-left: 1px solid rgb(200, 200, 200);
+}
+
+.house_inner_num{
+    position: relative;
+    /*이건 창고조회에만 넣어주자 밑에*/
+    width: 600px;
+    height: 700px;
+    background-color: #efefef
+    /*이거위에*/
+}
+
+.house_inner_num>p{
+
+    position: absolute;
+    top:-70px;
+    right: 40px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.house_map{
+    height: 273px;
+}
+
+.house_inner_num_box{
+    margin-top: 20px;
+    padding-left: 17px;
+    padding-right: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.house_inner_num_box>div{
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.house_inner_num_box>div:hover{
+    box-shadow: 2px 2px 4px 1px #888;
+}
+
+.house_inner_num_title{
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.2em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.house_inner_num_count{
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.2em;
+    margin-top: 5px;
+}
+
+.house_left_title{
+	padding-top: 20px;
+	text-align: center;
+	font-size: 30px;
+	padding-bottom: 15px;
+	font-weight:500 
+}
+
+.house_right{
+	width: 640px;
+	height: 700px;
+}
+
+.b_table3_box{
+	margin: 20px auto 30px;
+	width: 510px;
+	overflow-x: hidden;
+	overflow-y:hidden;
+	height: 200px;
+	border: 2px solid rgb(165, 165, 165);
+}
+
+.house_text{
+	width: 510px;
+	margin: 0 auto;
+	display: flex;
+	font-size: 18px;
+	margin-bottom: 15px;
+	color: #222
+}
+
+.house_text_title{
+	font-size: 22px;
+	margin-right: 30px;
+	font-weight: 500;
+}
+
+.house_text2{
+	width: 510px;
+	margin: 45px auto;
+	font-size: 18px;
+
+	color: #222
+}
+
+
+.house_text2 .house_text_title{
+	margin-bottom: 10px;
+
 }

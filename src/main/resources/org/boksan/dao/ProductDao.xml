@@ -333,4 +333,17 @@
 			AND (house_code like concat('%',#{house_code},'%'))
 		</if>
 	</select>
+	
+	<select id="house_record" resultType="org.boksan.model.b_houseDTO">
+		SELECT h.house_code, s.product_code, p.product_name, s.pallet_num, s.stock_num, s.house_code, h.max_quantity, h.now_quantity, h.detail_position, c.country_name, b.business_name
+		FROM b_house h
+		LEFT JOIN b_stock s
+		ON h.house_code = s.house_code
+		LEFT JOIN b_product p
+		ON s.product_code = p.product_code
+		LEFT JOIN country c
+		ON p.country_code = c.country_code
+		LEFT JOIN business b
+		ON p.business_code = b.business_code
+	</select>
   </mapper>

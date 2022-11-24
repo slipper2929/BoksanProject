@@ -164,8 +164,13 @@ $(function(){
 
                 	$(".little_title").text("입출고내역조회")
                     $("#overall_list table").html("")
+                    $(".house_inner_num_box").html("")
 
-                    $("#overall_list").css({"display" : "block"})
+                    $("#overall_list").css({
+                        "display" : "block",
+                        "overflow-x" : "hidden",
+                        "overflow-y" : "scroll",
+                    })
 
                     let th;
                     let td;
@@ -194,8 +199,8 @@ $(function(){
                         td += "</tr>"
                     }
 
-                    $("#overall_list table").append(th)
-                    $("#overall_list table").append(td)
+                    $("#overall_list .b_table2").append(th)
+                    $("#overall_list .b_table2").append(td)
 
                     
                 },
@@ -278,9 +283,14 @@ $(function(){
                 	console.log(data)
                 	$(".little_title").text("재고조회")
                     $("#overall_list table").html("")
+                    $(".house_inner_num_box").html("")
 
-                    $("#overall_list").css({"display" : "block"})
- 
+                    $("#overall_list").css({
+                        "display" : "block",
+                        "overflow-x" : "hidden",
+                        "overflow-y" : "scroll",
+                    })
+
                     let th;
                     let td;
 
@@ -298,8 +308,8 @@ $(function(){
                         td += "</tr>"
                     }
 
-                    $("#overall_list table").append(th)
-                    $("#overall_list table").append(td)
+                    $("#overall_list .b_table2").append(th)
+                    $("#overall_list .b_table2").append(td)
 
                     
                 },
@@ -310,11 +320,128 @@ $(function(){
             })
 
         } else if(overall_sbl_select.val() == "house_record"){
+        	
+            let record_arr = [];
+            let overall_sbl_check_hr_1 = $("#overall_sbl_check_hr_1");
+            let overall_sbl_check_hr_2 = $("#overall_sbl_check_hr_2");
+            let overall_sbl_check_hr_3 = $("#overall_sbl_check_hr_3");
+            let overall_sbl_check_hr_4 = $("#overall_sbl_check_hr_4");
+            let max_load_hr = $(".max_load_hr").val();
+            let now_vacancy_hr = $(".now_vacancy_hr").val();
+            let now_load_hr = $(".now_load_hr").val();
+            let loading_rate_hr = $(".loading_rate_hr").val();
+            let product_name_hr = $(".product_name_hr").val();
+
+            if(overall_sbl_check_hr_1.is(':checked') == true){
+                record_arr.push("1")
+            } else{
+                record_arr.push("false")
+            }
+
+            if(overall_sbl_check_hr_2.is(':checked') == true){
+                record_arr.push("2")
+            } else{
+                record_arr.push("false")
+            }
+
+            if(overall_sbl_check_hr_3.is(':checked') == true){
+                record_arr.push("3")
+            } else{
+                record_arr.push("false")
+            }
+
+            if(overall_sbl_check_hr_4.is(':checked') == true){
+                record_arr.push("4")
+            } else{
+                record_arr.push("false")
+            }
+
+            let record_data = {
+                "record_arr" : record_arr,
+                "max_load" : max_load_hr,
+                "now_vacancy" : now_vacancy_hr,
+                "now_load" : now_load_hr,
+                "loading_rate" : loading_rate_hr,
+                "product_name" : product_name_hr
+            }
+
+            console.log(record_data)
+
+            $.ajax({
+                url:"/house_record",
+                type:"get",
+                data: record_data,
+                traditional : true,
+                dataType:'json',
+                beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
+                },
+                success: function(data){
+ 
+                	console.log(data)
+                	$(".little_title").text("창고조회")
+                    $("#overall_list table").html("")
+                    $(".house_inner_num_box").html("")
+
+                    $("#overall_list").css({"display" : "block"})
+                    $("#overall_list").css({"overflow" : "visible"})
+
+                    let house_item;
+                	let house_item_arr = []
+                	
+                    for(let i = 0; i <  data.length; i++){
+                    	
+                    	if(house_item_arr.indexOf(data[i].house_code) == -1) {
+                    	
+		    				house_item += '<div class="house_inner_num_item">'
+		    				house_item += '<p class="house_inner_num_title">'+data[i].house_code+'</p>'
+		                    house_item += '<p class="house_inner_num_count">'
+		                    house_item += '<span>'+data[i].now_quantity+'</span>'
+		                    house_item += '/<span>'+data[i].max_quantity+'</span></p></div>'
+		                    
+		                    house_item_arr.push(data[i].house_code)
+                    	}
+                        
+                    }
+                    
+                    
+                    $(".house_inner_num_box").append(house_item)
+                    $(".house_inner_num_box").html($(".house_inner_num_box").html().replace('undefined',''))
+                    
+
+                    let th;
+                    let td;
+
+                    th += "<tr><th>파레트번호</th><th>상품명</th><th>원산지</th><th>공급사명</th><th>중량</th>"
+                   
+                    for(let i = 0; i < data.length; i++){
+                        td += "<tr>"
+                        td += "<td>" + data[i].pallet_num + "</td>"
+                        td += "<td>" + data[i].product_name + "</td>"
+                        td += "<td>" + data[i].country_name + "</td>"
+                        td += "<td>" + data[i].business_name + "</td>"
+                        td += "<td>" + data[i].stock_num + "kg</td>"
+                        td += "</tr>"
+                    }
+
+                    $("#overall_list .b_table3").append(th)
+                    $("#overall_list .b_table3").append(td)
+
+                    $(document).on("click",".house_inner_num_item",function(){
+                        
+                    })
+
+                    
+                },
+                error: function(e){
+                	alert("dddd")
+                    alert(e)
+                }
+
+            })
 
         }
 
     })
-
-
 
 })

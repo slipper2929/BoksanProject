@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.boksan.model.Criteria;
 import org.boksan.model.Product_groupDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.statementDTO;
@@ -54,5 +55,7 @@ public interface ProductDao {
 	public ArrayList<statementDTO> in_out_record(Map<String, Object> record_data);
 	//전체조회_재고조회
 	public ArrayList<b_stockDTO> stock_record(Map<String, Object> record_data);
+	//전체조회_창고조회
+	public ArrayList<b_houseDTO> house_record(Map<String, Object> record_data);
 
 }

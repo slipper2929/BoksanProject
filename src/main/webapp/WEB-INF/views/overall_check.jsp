@@ -80,19 +80,19 @@
                 		
                 		<div class="overall_sbl_choice hr_choice">
                 			<div class="overall_choice_check">
-                				<p>냉 장</p>
+                				<p>상 온</p>
                 				<div><input type="checkbox" id="overall_sbl_check_hr_1" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>냉 동</p>
+                				<p>저 온</p>
                 				<div><input type="checkbox" id="overall_sbl_check_hr_2" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>상 온</p>
+                				<p>냉 장</p>
                 				<div><input type="checkbox" id="overall_sbl_check_hr_3" name="overall_sbl_check" checked></div>
                 			</div>
                 			<div class="overall_choice_check">
-                				<p>저 온</p>
+                				<p>냉 동</p>
                 				<div><input type="checkbox" id="overall_sbl_check_hr_4" name="overall_sbl_check" checked></div>
                 			</div>
                 		</div> <!-- .hr_choice -->
@@ -213,6 +213,35 @@
                 <div id="overall_list">
                 	<table class="b_table2">
                 	</table>
+                	<div class="house_map">
+	                	<div class="house_left">
+	                		<div class="house_inner_num">
+	                			<h3 class="house_left_title">창고조회</h3>
+					            <div class="house_inner_num_box">
+
+					            </div> <!-- .house_inner_num_box --> 
+					        </div><!-- .house_inner_num -->
+	                	</div> <!-- .house_left -->
+	                	<div class="house_right">
+	                		<h3 class="house_left_title">창고세부내용</h3>
+	                		<div class="b_table3_box">
+		                		<table class="b_table3">
+		                		</table>
+	                		</div> <!-- b_table3_box -->
+	                		<div class="house_text">
+	                			<p class="house_text_title">최대적재수량 :</p>
+	                			<p><span>5</span>Pallet</p>
+	                		</div>
+	                		<div class="house_text">
+	                			<p class="house_text_title">현재적재수량 :</p>
+	                			<p><span>2</span>Pallet</p>
+	                		</div>
+	                		<div class="house_text2">
+	                			<p class="house_text_title">창고상세위치</p>
+	                			<p>여기저기요기조기아하아하아항하</p>
+	                		</div>
+	                	</div> <!-- .house_right -->
+                	</div> <!-- .house_map -->
                 </div>
 				<div class="excel_download">          
 	                <!-- record_excel -->
@@ -240,8 +269,7 @@
 		                <input type="hidden" name="business_name" class="business_name_stock_excel">
 		                <input type="hidden" name="house_code" class="house_code_stock_excel">
 		              </form>
-	              </div>  
-	              
+	              </div>     
              	</div>
 			</section>
 				

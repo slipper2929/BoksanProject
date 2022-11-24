@@ -5,10 +5,9 @@ package org.boksan.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import java.util.Map;
-
 import org.boksan.model.Product_selectDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_productDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.materiaDTO;
@@ -19,16 +18,11 @@ import org.boksan.service.ProductService;
 import org.boksan.service.RecipeService;
 import org.boksan.service.ReleaseService;
 import org.boksan.service.StockService;
-
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import net.sf.json.JSONArray;
 
 
 
@@ -253,5 +247,21 @@ public class AjaxController {
 		System.out.println(result);
 		return result;
 	}
+
+	//전체조회_창고조회
+	@GetMapping(value="/house_record",
+			produces = "application/json; charset=utf-8")
+	public ArrayList<b_houseDTO> house_record(
+			@RequestParam Map<String,Object> record_data,
+			@RequestParam(value="record_arr") String[] record_arr
+			) {
+			
+		ArrayList<b_houseDTO> result = pservice.house_record(record_data, record_arr);
+		System.out.println(result);
+		return result;
+	}
+	
+	
+	
 
 }
