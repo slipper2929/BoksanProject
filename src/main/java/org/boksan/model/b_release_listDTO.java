@@ -19,6 +19,18 @@ public class b_release_listDTO {
 	private String release_state;
 	
 	private int cumsum_num_check;
+	
+	private int state_num;
+	
+	
+
+	public int getState_num() {
+		return state_num;
+	}
+
+	public void setState_num(int state_num) {
+		this.state_num = state_num;
+	}
 
 	public int getRelease_list_code_P() {
 		return release_list_code_P;
@@ -97,8 +109,11 @@ public class b_release_listDTO {
 		return "b_release_listDTO [release_list_code_P=" + release_list_code_P + ", release_list_code="
 				+ release_list_code + ", product_code=" + product_code + ", product_name=" + product_name
 				+ ", release_num=" + release_num + ", house_address=" + house_address + ", release_code=" + release_code
-				+ ", release_state=" + release_state + ", cumsum_num_check=" + cumsum_num_check + "]";
+				+ ", release_state=" + release_state + ", cumsum_num_check=" + cumsum_num_check + ", state_num="
+				+ state_num + "]";
 	}
+
+	
 
 	
 	
