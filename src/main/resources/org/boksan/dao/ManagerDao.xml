@@ -250,10 +250,8 @@
  	
  	<!-- 부서등록 -->
  	<insert id ="dept_group_add">
- 		INSERT INTO b_dept
-		SELECT (MAX(dept_code)+1) AS dept_code,
-		#{dept_name} AS dept_name
-		FROM b_dept
+ 		INSERT INTO b_dept (dept_name)
+		VALUES (#{dept_name})
  	</insert>
  	
  	<!-- 창고등록화면 -->
@@ -264,12 +262,16 @@
  	
   	<!-- 창고등록 -->
  	<insert id="manager_house_add">
- 	INSERT INTO b_house
-	SELECT CONCAT(h.house_function,h.out_num,h.in_num) AS house_code, h.*
-	FROM (	
-	SELECT #{house_function} AS house_function, #{out_num} AS out_num, #{in_num} AS in_num, #{detail_position} AS detail_position
-	FROM DUAL
-	)AS h
+
+	INSERT INTO b_house
+		SELECT CONCAT(h.house_function,h.out_num,h.in_num) AS house_code, house_function, out_num, in_num, detail_position, 5 as max_quantity, 0 as now_quantity 
+		FROM (	
+		SELECT #{house_function} AS house_function,
+		#{out_num} AS out_num,
+		#{in_num} AS in_num,
+		#{detail_position} AS detail_position
+		FROM DUAL
+		)AS h	
  	</insert>
  	
  	

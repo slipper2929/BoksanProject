@@ -3,6 +3,10 @@
  */
 
 $(function(){
+	
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+	
 	$(".emp_delete_form").find(".dept_select").hide();
 	$(".emp_delete_form").find(".emp_success").hide();
 	$(document).on("click",".emp_update", function(){
@@ -54,6 +58,9 @@ $(function(){
 				"emp_arr" : emp_arr,
 				"dept_arr" : dept_arr
 				},
+			beforeSend : function(xhr){
+                    xhr.setRequestHeader(header, token);
+                },
 			dataType : "text",
 			success : function(data){
 				alert(data);
