@@ -8,6 +8,7 @@ import org.boksan.model.Arrive_palletDTO;
 import org.boksan.model.Arrive_totalDTO;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 
 public interface ArriveService {
@@ -25,7 +26,7 @@ public interface ArriveService {
 	public ArrayList<Arrive_totalDTO> arrive_total_list();
 	
 	//입고대기목록_검증 insert
-	public void Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code);
+	public void Arrive_insert(HttpSession session, b_stockDTO sdto, int arrive_code, b_houseDTO hdto);
 	
 	//입고대기목록 insert
 	public void Arrive_list_insert(b_arriveDTO adto);

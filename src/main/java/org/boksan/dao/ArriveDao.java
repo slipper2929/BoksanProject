@@ -6,6 +6,7 @@ import org.boksan.model.Arrive_palletDTO;
 import org.boksan.model.Arrive_totalDTO;
 import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
+import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
 import org.boksan.model.statementDTO;
 
@@ -37,4 +38,7 @@ public interface ArriveDao {
 	
 	//입출고목록 insert
 	public void statement_arrive_insert(statementDTO stdto);
+	
+	//입고시 창고 now_quantity+1
+	public void house_quantity_plus_update(b_houseDTO hdto);
 }

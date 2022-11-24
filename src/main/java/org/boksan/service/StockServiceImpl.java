@@ -84,7 +84,13 @@ public class StockServiceImpl implements StockService{
 	//이동목록 주소 확인버튼
 	public void move_compare(b_stockDTO sdto) {
 		sdao.move_compare(sdto);
+		String num = sdto.getHouse_code();
+		String move = sdto.getMovement_address();
+		System.out.println(num);
+		System.out.println(move);
 		System.out.println(sdto.getPallet_num());
+		sdao.move_quantity_plus(move);
+		sdao.move_quantity_minus(num);
 		
 	}
 	 //이동목록 확인버튼 누르면 이동목록 리스트에서 삭제
