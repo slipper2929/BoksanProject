@@ -57,5 +57,7 @@ public interface ProductDao {
 	public ArrayList<b_stockDTO> stock_record(Map<String, Object> record_data);
 	//전체조회_창고조회
 	public ArrayList<b_houseDTO> house_record(Map<String, Object> record_data);
+	//창고번지 입력을 위한 out_num_select
+	public String[] house_out_num_select(String data);
 
 }

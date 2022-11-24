@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <!--노토산스 글꼴-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +32,163 @@
     <title>복산김치WMS_입고대기목록</title>
 </head>
 <body>
+	<div class="modal">
+        <div class="modal_content">
+            <div class="modal_out"></div>
+            <h1>창고번지찾기</h1>
+            <div class="modal_line"></div>
+            <div class="house_map">
+                <div class="house_number">
+                    <div>
+                        <p>창고기능</p>
+                        <select id="modal_select1">
+                            <option value="1">냉장</option>
+                            <option value="2">냉동</option>
+                            <option value="3">저온</option>
+                            <option value="4">상온</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>창고외부번호</p>
+                        <select id="">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p>창고내부번호</p>
+                    </div>
+                </div>
+                <div class="house_inner_num">
+
+                    <div class="house_inner_num_box">
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">1-1번</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span>
+                            </p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                        <div class="house_inner_num_item">
+                            <p class="house_inner_num_title">11A</p>
+                            <p class="house_inner_num_count">
+                                <span>1</span>
+                                /
+                                <span>4</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
      <div id="wrap">
 
 		<jsp:include page="header.jsp"></jsp:include>
@@ -89,7 +248,7 @@
 	                            </td>
 	                            <td class="arrive_info">
 	                                <p>
-	                                    <input class="arrive_house" type="text" placeholder="입고시킬 창고번호를 입력하세요">
+	                                    <input class="arrive_house house_code_input_modal" type="text" placeholder="입고시킬 창고번호를 입력하세요">
 	                                </p>
 	                            </td>
 	                            <td>

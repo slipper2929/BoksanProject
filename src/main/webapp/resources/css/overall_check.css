@@ -255,7 +255,6 @@
 	justify-content: start;
 }
 
-<<<<<<< HEAD
 .excel_download{
 	margin-top : 20px;
 }
@@ -268,7 +267,8 @@
     background-size: 40px;
     cursor: pointer;
     padding-left : 20px;
-=======
+}
+
 #overall_list .house_map{
 	display: flex;
 }

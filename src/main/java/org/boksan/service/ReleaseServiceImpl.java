@@ -134,7 +134,10 @@ public class ReleaseServiceImpl implements ReleaseService {
 					rldto.setRelease_num(count);
 					System.out.println("---------------rldto-------------");
 					System.out.println(rldto);
-					rdao.release_order_list_insert(rldto);
+					if(rldto.getRelease_num() != 0) {
+						rdao.release_order_list_insert(rldto);
+					}
+					
 					
 					int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
 					

@@ -345,5 +345,31 @@
 		ON p.country_code = c.country_code
 		LEFT JOIN business b
 		ON p.business_code = b.business_code
+		WHERE (h.house_function = #{record_arr0}
+		OR h.house_function = #{record_arr1}
+		OR h.house_function = #{record_arr2}
+		OR h.house_function = #{record_arr3})
+		<if test="!max_load.equals('')">
+			AND (max_quantity like concat('%',#{max_load},'%'))
+		</if>
+		<if test="!now_vacancy.equals('')">
+			AND (max_quantity - now_quantity like concat('%',#{now_vacancy},'%'))
+		</if>
+		<if test="!now_load.equals('')">
+			AND (now_quantity like concat('%',#{now_load},'%'))
+		</if>
+		<if test="!loading_rate.equals('')">
+			AND ((h.now_quantity / h.max_quantity)*100 >= #{loading_rate})
+		</if>
+		<if test="!product_name.equals('')">
+			AND (product_name like concat('%',#{product_name},'%'))
+		</if>
+		ORDER BY h.house_code
+	</select>
+	
+	<select id="house_out_num_select" resultType="String">
+		SELECT out_num
+		FROM b_house
+		WHERE house_function = #{data}
 	</select>
   </mapper>

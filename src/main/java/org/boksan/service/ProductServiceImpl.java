@@ -174,5 +174,12 @@ public class ProductServiceImpl implements ProductService{
 		return pdao.house_record(record_data);
 	}
 	
+	//창고번지 입력을 위한 out_num_select
+	public String[] house_out_num_select(String data) {
+		
+		return pdao.house_out_num_select(data);
+		
+	}
+	
 	
 }

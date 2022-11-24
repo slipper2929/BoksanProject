@@ -261,6 +261,18 @@ public class AjaxController {
 		return result;
 	}
 	
+	//창고번지 입력을 위한 out_num_select
+	@GetMapping(value="/house_out_num_select",
+			produces = "application/json; charset=utf-8")
+	public String[] house_out_num_select(@RequestParam String data) {
+		
+		System.out.println(data);
+		
+		String[] result = pservice.house_out_num_select(data);
+		System.out.println(result);
+		return result;
+	}
+	
 	
 	
 

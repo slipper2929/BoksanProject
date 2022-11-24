@@ -216,7 +216,7 @@
                 	<div class="house_map">
 	                	<div class="house_left">
 	                		<div class="house_inner_num">
-	                			<h3 class="house_left_title">창고조회</h3>
+	                			<h3 class="house_left_title">창고목록</h3>
 					            <div class="house_inner_num_box">
 
 					            </div> <!-- .house_inner_num_box --> 
@@ -230,15 +230,15 @@
 	                		</div> <!-- b_table3_box -->
 	                		<div class="house_text">
 	                			<p class="house_text_title">최대적재수량 :</p>
-	                			<p><span>5</span>Pallet</p>
+	                			<p class="max_num_text"><span></span>Pallet</p>
 	                		</div>
 	                		<div class="house_text">
 	                			<p class="house_text_title">현재적재수량 :</p>
-	                			<p><span>2</span>Pallet</p>
+	                			<p class="now_num_text"><span></span>Pallet</p>
 	                		</div>
 	                		<div class="house_text2">
 	                			<p class="house_text_title">창고상세위치</p>
-	                			<p>여기저기요기조기아하아하아항하</p>
+	                			<p class="house_address_text"></p>
 	                		</div>
 	                	</div> <!-- .house_right -->
                 	</div> <!-- .house_map -->
