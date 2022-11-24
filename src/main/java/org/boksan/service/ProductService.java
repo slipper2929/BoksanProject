@@ -64,4 +64,7 @@ public interface ProductService {
 	
 	//창고번지 입력을 위한 out_num_select
 	public String[] house_out_num_select(String data);
+	
+	//창고번지 입력을 위한 창고번지 조회
+	public ArrayList<b_houseDTO> house_out_num_select2(Map<String, Object> map);
 }

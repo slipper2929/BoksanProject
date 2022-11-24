@@ -273,6 +273,27 @@ public class AjaxController {
 		return result;
 	}
 	
+	//창고번지 입력을 위한 창고번지 조회
+	@GetMapping(value="/house_out_num_select2",
+			produces = "application/json; charset=utf-8")
+	public ArrayList<b_houseDTO> house_out_num_select2(
+			@RequestParam(value="data1") String data1,
+			@RequestParam(value="data2") String data2
+			) {
+		
+		System.out.println(data1);
+		System.out.println(data2);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("data1", data1);
+		map.put("data2", data2);
+		
+		ArrayList<b_houseDTO> result = pservice.house_out_num_select2(map);
+		System.out.println(result);
+		return result;
+	}
+	
 	
 	
 

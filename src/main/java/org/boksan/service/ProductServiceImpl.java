@@ -181,5 +181,12 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 	
+	//창고번지 입력을 위한 창고번지 조회
+	public ArrayList<b_houseDTO> house_out_num_select2(Map<String, Object> map) {
+		
+		return pdao.house_out_num_select2(map);
+		
+	}
+	
 	
 }

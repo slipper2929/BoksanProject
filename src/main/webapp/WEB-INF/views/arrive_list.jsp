@@ -42,19 +42,17 @@
                     <div>
                         <p>창고기능</p>
                         <select id="modal_select1">
-                            <option value="1">냉장</option>
-                            <option value="2">냉동</option>
-                            <option value="3">저온</option>
-                            <option value="4">상온</option>
+                        	<option value="">선택안함</option>
+                            <option value="1">상온</option>
+                            <option value="2">저온</option>
+                            <option value="3">냉장</option>
+                            <option value="4">냉동</option>
                         </select>
                     </div>
                     <div>
                         <p>창고외부번호</p>
-                        <select id="">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
+                        <select id="modal_select2">
+
                         </select>
                     </div>
                     <div>
@@ -64,126 +62,7 @@
                 <div class="house_inner_num">
 
                     <div class="house_inner_num_box">
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">1-1번</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span>
-                            </p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
-                        <div class="house_inner_num_item">
-                            <p class="house_inner_num_title">11A</p>
-                            <p class="house_inner_num_count">
-                                <span>1</span>
-                                /
-                                <span>4</span></p>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

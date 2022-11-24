@@ -371,5 +371,14 @@
 		SELECT out_num
 		FROM b_house
 		WHERE house_function = #{data}
+		GROUP BY out_num
+	</select>
+	
+	<select id="house_out_num_select2" resultType="org.boksan.model.b_houseDTO">
+		SELECT house_code, max_quantity, now_quantity
+		FROM b_house
+		WHERE house_function = #{data1}
+		AND out_num = #{data2}
+		AND max_quantity != now_quantity
 	</select>
   </mapper>
