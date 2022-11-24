@@ -25,8 +25,18 @@ public class b_releaseDTO {
 	
 	private String name;
 	
+	private String release_list_code;
 	
 	
+	
+
+	public String getRelease_list_code() {
+		return release_list_code;
+	}
+
+	public void setRelease_list_code(String release_list_code) {
+		this.release_list_code = release_list_code;
+	}
 
 	public String getRelease_time() {
 		return release_time;
@@ -113,8 +123,10 @@ public class b_releaseDTO {
 		return "b_releaseDTO [release_code=" + release_code + ", product_code=" + product_code + ", product_name="
 				+ product_name + ", release_num=" + release_num + ", situation=" + situation + ", release_insert_list="
 				+ release_insert_list + ", res=" + res + ", release_time=" + release_time + ", emp_code=" + emp_code
-				+ ", name=" + name + "]";
+				+ ", name=" + name + ", release_list_code=" + release_list_code + "]";
 	}
+
+	
 
 	
 
