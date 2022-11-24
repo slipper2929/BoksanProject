@@ -10,6 +10,7 @@ $(function(){
 		let order_pc = $(this).parents("tr").find(".rp_product_code").text()
 		let order_pn = $(this).parents("tr").find(".rp_product_name").text()
 		let order_num = $(this).parents("tr").find(".rp_release_num").text()
+		
 		$("#order_link").attr("href","/order?product_code=" + order_pc + "&product_name=" + order_pn)
 		//$("#order_link").get(0).click();
 		
@@ -133,11 +134,13 @@ $(function(){
 		let product_name = $(this).parents("tr").find(".product_name")
 		let release_num = $(this).parents("tr").find(".release_num")
 		let release_code = $(this).parents("tr").find(".release_code")
+
 		
 		product_code.attr("name", "product_code")
 		product_name.attr("name", "product_name")
 		release_num.attr("name", "release_num")
 		release_code.attr("name", "release_code")
+
 		
 		//console.log()
 		

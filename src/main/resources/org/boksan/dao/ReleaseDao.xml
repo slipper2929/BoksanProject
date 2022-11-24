@@ -73,7 +73,7 @@
  	<select id="release_pay_select" resultType="org.boksan.model.b_releaseDTO">
 			SELECT release_pay.*
 			FROM(
-				SELECT @rownum:=@rownum+1 as rownum, r.*, s.psum, IFNULL(SIGN(s.psum-r.release_num), -1) AS res, e.name
+				SELECT @rownum:=@rownum+1 as rownum, r.*, s.psum, IFNULL(SIGN(s.psum-r.release_num), -1) AS res, e.name, rel.release_list_code
 				FROM (select @rownum:=0) as tmp, b_release r
 				LEFT JOIN (
 					SELECT product_code, SUM(stock_num) AS psum
@@ -83,6 +83,8 @@
 				ON r.product_code = s.product_code
 				LEFT JOIN b_emp e
 				ON r.emp_code = e.emp_code
+				LEFT JOIN b_release_list rel
+				ON r.release_code = rel.release_code
 				WHERE r.situation = "대기"
 				) AS release_pay
 			<![CDATA[

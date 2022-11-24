@@ -275,7 +275,7 @@
                                 <input type="hidden" value="${rp.product_code}" class="product_code">
 	                        	<input type="hidden" value="${rp.release_num}" class="release_num">
 	                        	<input type="hidden" value="${rp.release_code}" class="release_code">
-	                        	<input type="hidden" value="${rp.product_name}" class="product_name">
+	                        	<input type="hidden" value="${rp.product_name}" class="product_name">                  	
                             </td>
                             </c:if>
                         </tr>

@@ -165,6 +165,9 @@ $(function(){
                 	$(".little_title").text("입출고내역조회")
                     $("#overall_list table").html("")
                     $(".house_inner_num_box").html("")
+                    $(".house_map").css({
+                        "display" : "none"
+                    })
 
                     $("#overall_list").css({
                         "display" : "block",
@@ -291,6 +294,10 @@ $(function(){
                         "overflow-y" : "scroll",
                     })
 
+                    $(".house_map").css({
+                        "display" : "none"
+                    })
+
                     let th;
                     let td;
 
@@ -381,7 +388,15 @@ $(function(){
                 	console.log(data)
                 	$(".little_title").text("창고조회")
                     $("#overall_list table").html("")
+                    $(".house_map").css({
+                        "display" : "flex"
+                    })
                     $(".house_inner_num_box").html("")
+
+                    $(".max_num_text span").text("")
+                    $(".now_num_text span").text("")
+                    $(".house_address_text").text("")
+                    $(".house_right").find(".house_left_title").text(" 창고세부내용")
 
                     $("#overall_list").css({"display" : "block"})
                     $("#overall_list").css({"overflow" : "visible"})
@@ -396,8 +411,8 @@ $(function(){
 		    				house_item += '<div class="house_inner_num_item">'
 		    				house_item += '<p class="house_inner_num_title">'+data[i].house_code+'</p>'
 		                    house_item += '<p class="house_inner_num_count">'
-		                    house_item += '<span>'+data[i].now_quantity+'</span>'
-		                    house_item += '/<span>'+data[i].max_quantity+'</span></p></div>'
+		                    house_item += '<span class="now_q">'+data[i].now_quantity+'</span>'
+		                    house_item += '/<span class="max_q">'+data[i].max_quantity+'</span></p></div>'
 		                    
 		                    house_item_arr.push(data[i].house_code)
                     	}
@@ -408,14 +423,30 @@ $(function(){
                     $(".house_inner_num_box").append(house_item)
                     $(".house_inner_num_box").html($(".house_inner_num_box").html().replace('undefined',''))
                     
+                    
+                   
+                    for(let i = 0; i < $(".house_inner_num_item").length; i++){
+                    	
+                    	if($(".house_inner_num_item").eq(i).find(".now_q").text() == $(".house_inner_num_item").eq(i).find(".max_q").text()) {
+                        
+		    				$(".house_inner_num_item").eq(i).find(".house_inner_num_count").css({
+
+                                "color" : "rgb(250, 88, 88)"
+
+                            })
+
+                    	}
+                        
+                    }
 
                     let th;
                     let td;
 
-                    th += "<tr><th>파레트번호</th><th>상품명</th><th>원산지</th><th>공급사명</th><th>중량</th>"
+                    th += "<tr class='house_th'><th>파레트번호</th><th>상품명</th><th>원산지</th><th>공급사명</th><th>중량</th>"
                    
                     for(let i = 0; i < data.length; i++){
                         td += "<tr>"
+                        td += "<td style='display:none' class='this_hc_"+i+"'>" + data[i].house_code + "</td>"
                         td += "<td>" + data[i].pallet_num + "</td>"
                         td += "<td>" + data[i].product_name + "</td>"
                         td += "<td>" + data[i].country_name + "</td>"
@@ -426,9 +457,46 @@ $(function(){
 
                     $("#overall_list .b_table3").append(th)
                     $("#overall_list .b_table3").append(td)
-
+                    $("#overall_list .b_table3").hide()
                     $(document).on("click",".house_inner_num_item",function(){
-                        
+
+
+                        $(".house_inner_num_item").css({
+                            "border" : "1px solid #ccc",
+                            "background-color": "#fff"
+                        })
+
+                        $("#overall_list .b_table3").show();
+                        $("#overall_list .b_table3 tr").hide();
+                        $("#overall_list .b_table3 .house_th").show();
+
+                        for(let i = 0; i < data.length; i++){
+                            
+                            if($(this).find(".house_inner_num_title").text() == $("#overall_list .b_table3").find(".this_hc_"+i).text()){
+                                
+                                if($("#overall_list .b_table3").find(".this_hc_"+i).next().text() != "null"){
+                                    $("#overall_list .b_table3").find(".this_hc_"+i).parent().show()
+                                }
+                                
+                                
+                                $(".house_right").find(".house_left_title").text(data[i].house_code + " 창고세부내용")
+
+                                $(this).css({
+                                    "border" : "3px solid #888",
+                                    "background-color": "rgb(187, 187, 187)"
+                                })
+
+                                $(".max_num_text span").text(data[i].max_quantity)
+                                $(".now_num_text span").text(data[i].now_quantity)
+                                $(".house_address_text").text(data[i].detail_position)
+                                
+
+
+                            }
+
+                        }
+
+                        //if($(this).find(".house_inner_num_title").text() ==  $("#overall_list .b_table3").find(".this_house_code")){}
                     })
 
                     

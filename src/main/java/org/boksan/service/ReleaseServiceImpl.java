@@ -103,6 +103,8 @@ public class ReleaseServiceImpl implements ReleaseService {
 	//출고요청목록 insert
 	public void release_order_list_insert(b_release_listDTO rldto) {
 		
+		
+		
 		ArrayList<b_release_listDTO> pallet_list = rdao.getPalletList(rldto);
 
 		int count = rldto.getRelease_num();//요구한 중량 230 100 + 100 + 30
@@ -134,7 +136,10 @@ public class ReleaseServiceImpl implements ReleaseService {
 					rldto.setRelease_num(count);
 					System.out.println("---------------rldto-------------");
 					System.out.println(rldto);
-					rdao.release_order_list_insert(rldto);
+					if(rldto.getRelease_num() != 0) {
+						rdao.release_order_list_insert(rldto);
+					}
+					
 					
 					int pallet_num = rdao.pallet_num_select(rldto.getRelease_list_code());
 					
@@ -177,9 +182,7 @@ public class ReleaseServiceImpl implements ReleaseService {
 	
 	//재고 update
 	public void release_stock_update(HttpSession session, b_release_listDTO rldto) {
-		
-		b_empDTO user = (b_empDTO) session.getAttribute("member");
-		
+			
 		System.out.println("파레트 넘 셀렉");
 		
 		rdao.release_list_delete(rldto);
@@ -191,30 +194,40 @@ public class ReleaseServiceImpl implements ReleaseService {
 			rdao.release_delete(rldto);
 		}
 		
+		b_empDTO user = (b_empDTO) session.getAttribute("member");
+		System.out.println("1111111111111");
 		statementDTO stdto = new statementDTO();
 		b_stockDTO sdto = new b_stockDTO();
-		
+		System.out.println("222222222222222");
 		String product_code = rdao.statement_product_code_select(rldto.getRelease_list_code());
 		sdto.setProduct_code(Integer.parseInt(product_code));
-		
+		System.out.println("3333333333333");
 		stdto.setEmp_code(user.getEmp_code());
 		stdto.setEmp_name(user.getName());
 		stdto.setEmp_tel(user.getTel());
 		stdto.setProduct_code(Integer.parseInt(product_code));
-		
+		System.out.println("4444444444444444");
 		statementDTO product_select = adao.statement_product_select(sdto);
-
+		System.out.println("555555555555555");
+		System.out.println(stdto);
 		stdto.setProduct_name(product_select.getProduct_name());
-
+		System.out.println("bbbbbb");
+		System.out.println(stdto);
 		stdto.setProduct_country(product_select.getProduct_country());
-
+		System.out.println("ccccc");
+		System.out.println(stdto);
 		stdto.setProduct_business(product_select.getProduct_business());
-
+		System.out.println("ddddddddddddddddd");
+		System.out.println(stdto);
 		stdto.setProduct_price(product_select.getProduct_price()*rldto.getRelease_num());
-
+		System.out.println("eeeeeeee");
+		System.out.println(stdto);
 		stdto.setQuantity(rldto.getRelease_num());
 
+		System.out.println("fffffffffff");
+		System.out.println(stdto);
 		rdao.statement_release_insert(stdto);
+		
 	}
 	//recipe select
 	public ArrayList<String> recipe_select(){
