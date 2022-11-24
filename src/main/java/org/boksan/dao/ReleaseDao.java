@@ -55,6 +55,9 @@ public interface ReleaseDao {
 	//pallet_num select
 	public int pallet_num_select(String pallet_num);
 	
+	//pallet_num select2
+	public String pallet_num_select2(String pallet_num);
+	
 	//재고 update
 	public void release_stock_update(b_release_listDTO rldto);
 	
@@ -99,4 +102,22 @@ public interface ReleaseDao {
 	
 	//입출고목록(발주) insert
 	public void statement_release_oder_insert(statementDTO stdto);
+	
+	//릴리즈리스트 마지막행 찾아서 프라이머리키 저장
+	public String release_order_list_primary_select();
+	
+	//스테이트스톡(새거)에 insert(위에 코드에서 찾은 파레트넘으로 우리도 정보를 셀렉해서 새 테이블에 인설트해줄거임)
+	public void state_stock_insert(String pallet_num2);
+	
+	//방금넣은친구 프라이머리키 가져오고(마지막행을 찾으면 위에 친구 찾을수있음)
+	public String state_stock_primary_select();
+	
+	//그 프라이머리키를 릴리즈리스트에 업데이트
+	public void release_list_state_update(Map<String,Object> map);
+	
+	//product_code가 null일때 state_num을 이용해서 product_code를 셀렉
+	public String state_stock_product_code_select(int data);
+	
+	//state_stock delete
+	public void state_stock_delete(int data);
 }

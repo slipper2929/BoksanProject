@@ -10,6 +10,7 @@ $(function(){
     let release_num = $(this).parents("tr").find(".release_num");
     let release_code = $(this).parents("tr").find(".release_code");
     let release_list_code_P = $(this).parents("tr").find(".release_list_code_P");
+    let state_num = $(this).parents("tr").find(".state_num");
     
     if(check_ha == "") {
     	alert("로케이션바코드검증을 입력하세요")
@@ -19,6 +20,7 @@ $(function(){
     	release_num.attr("name", "release_num");
     	release_code.attr("name", "release_code");
     	release_list_code_P.attr("name", "release_list_code_P");
+    	state_num.attr("name", "state_num");
     	$("#release_form").submit()
     } else {
     	alert("로케이션바코드가 일치하지 않습니다.")

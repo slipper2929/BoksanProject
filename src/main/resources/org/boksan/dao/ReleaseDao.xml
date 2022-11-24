@@ -201,6 +201,13 @@
  		where pallet_num = #{pallet_num}
  	</select>
  	
+ 	 <!-- pallet_num select2 -->
+ 	<select id="pallet_num_select2" resultType="String">
+ 		select pallet_num
+ 		from b_stock
+ 		where pallet_num = #{pallet_num}
+ 	</select>
+ 	
  	<!-- 재고 update -->
  	<update id="release_stock_update">
  		UPDATE b_stock s join b_house h
@@ -348,4 +355,42 @@
 		#{quantity} AS quantity
 		FROM statement
 	</insert>
+	
+	<select id="release_order_list_primary_select" resultType="String">
+		SELECT release_list_code_P
+		FROM b_release_list
+		ORDER BY release_list_code_P
+		DESC LIMIT 1
+	</select>
+	
+	<insert id="state_stock_insert">
+		INSERT INTO state_stock(pallet_num, product_code, arrive_date, stock_num, house_code, product_barcode)
+		SELECT *
+		FROM b_stock
+		WHERE pallet_num = #{pallet_num2}
+	</insert>
+	
+	<select id="state_stock_primary_select" resultType="String">
+		SELECT state_num
+		FROM state_stock
+		ORDER BY state_num
+		DESC LIMIT 1
+	</select>
+	
+	<update id="release_list_state_update">
+		UPDATE b_release_list
+		SET state_num = #{state_num}
+		WHERE release_list_code_P = #{release_primary}
+	</update>
+	
+	<select id="state_stock_product_code_select" resultType="String">
+		SELECT product_code
+		FROM state_stock
+		WHERE state_num = #{data}
+	</select>
+	
+	<delete id="state_stock_delete">
+		DELETE FROM state_stock
+		WHERE state_num = #{data}
+	</delete>
 </mapper>

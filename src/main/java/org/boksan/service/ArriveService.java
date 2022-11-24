@@ -10,7 +10,6 @@ import org.boksan.model.Criteria;
 import org.boksan.model.b_arriveDTO;
 import org.boksan.model.b_houseDTO;
 import org.boksan.model.b_stockDTO;
-import org.boksan.model.state_stockDTO;
 
 public interface ArriveService {
 	

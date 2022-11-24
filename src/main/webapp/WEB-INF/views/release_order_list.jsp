@@ -90,6 +90,7 @@
                                 <input type="hidden" class="release_num" value="${ro.release_num}">
                                 <input type="hidden" class="release_code" value="${ro.release_code}">
                                 <input type="hidden" class="release_list_code_P" value="${ro.release_list_code_P}">
+                                <input type="hidden" class="state_num" value="${ro.state_num}">
                             </td>
                         </tr>
                         </c:forEach>
