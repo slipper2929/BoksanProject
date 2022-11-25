@@ -337,7 +337,7 @@
 .house_inner_num{
     position: relative;
     /*이건 창고조회에만 넣어주자 밑에*/
-    width: 600px;
+    width: 620px;
     height: 700px;
     background-color: #efefef
     /*이거위에*/
@@ -357,11 +357,13 @@
 }
 
 .house_inner_num_box{
+	height: 600px;
     margin-top: 20px;
     padding-left: 17px;
     padding-right: 5px;
     display: flex;
     flex-wrap: wrap;
+    overflow-y: auto;
 }
 
 .house_inner_num_box>div{
