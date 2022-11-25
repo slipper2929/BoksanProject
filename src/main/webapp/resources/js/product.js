@@ -74,12 +74,9 @@ $(function(){
 	
 	
 	$(".modalb_btn").on("click", function(){
-		alert("클릭함")
 		if($("#modal_business_name_data").val() != "" && $("#modal_business_tel_data").val() != "") {
-			alert("if문 들어옴")
 			let business_name_data = $("#modal_business_name_data").val()
 			let business_tel_data = $("#modal_business_tel_data").val()
-			alert("에이젝스 직전")
 			$.ajax({
 				url:"/business_insert",
 				type:"post",

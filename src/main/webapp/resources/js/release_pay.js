@@ -96,7 +96,6 @@ $(function(){
 				$(".release_pay_order_btn").on("click", function(){
 					
 					if($(".order_result").val() != "") {
-						alert("ddd")
 						$(".modal_order_form").submit();
 						
 					} else {
