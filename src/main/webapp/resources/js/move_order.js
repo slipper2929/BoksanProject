@@ -10,6 +10,21 @@ $(function(){
     
     //존재하는 창고번지인지 확인
     
+    $(document).on("click", ".move_btn",function(){
+        if($(this).parent().parent().prev().find($(".move_address")).val() != ""){
+        
+        console.log($(this).parent().parent().prev().find($(".move_address")).attr("name","movement_address").val())
+        $(this).parent().parent().prev().find($(".move_address")).attr("name","movement_address")
+        $(this).parent().parent().prev().find($(".pallet_num")).attr("name","pallet_num")
+        $("#move_form").submit();
+    } else {
+        alert("이동할 창고번지를 입력하세요")
+    }
+
+
+
+    })
+    
     $(document).on("change", ".arrive_house",function(){
    
    let check = {
