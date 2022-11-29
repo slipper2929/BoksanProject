@@ -692,5 +692,12 @@ public class HomeController {
 
 				
 			}
+			
+			//접근권한없을때 들어가는 페이지
+			@RequestMapping(value="/error403", method= RequestMethod.GET)
+			public String error403() {
+				
+				return "error403";
+			}
 
 }

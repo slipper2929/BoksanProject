@@ -78,6 +78,7 @@ use_expressions : SpEL문법을 사용하겠다는 의미(true, default는 false
 	delete-cookies="JSESSIONID"
 	invalidate-session="true"
 	/>
+	<access-denied-handler error-page="/error403"/>
 	
 	<!-- ajax 세션 처리를 위한 필터 선언 -->
 	<!-- <custom-filter after="EXCEPTION_TRANSLATION_FILTER" ref="ajaxSessionTimeoutFilter"/> -->
