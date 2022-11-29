@@ -8,6 +8,47 @@ $(function(){
         dateFormat : 'yy-mm-dd'
     });
     
+    let now = new Date();
+    
+    let yy = now.getFullYear()
+    let mm = now.getMonth()+1
+    let dd = now.getDate()
+    
+    $(".datepick").on("change", function(){
+    
+    	let datepick_arr = $(this).val().split("-")
+    	
+    	if(datepick_arr[0] > yy){
+    		alert("오늘날짜보다 미래는 입력할 수 없습니다.")
+    		$(this).val("")
+    	} else if(datepick_arr[1] > mm){ 
+    			
+    		if(datepick_arr[0] >= yy){
+    			alert("오늘날짜보다 미래는 입력할 수 없습니다.")
+        		$(this).val("")
+    		}
+    				
+    			
+    		
+    	} else if(datepick_arr[2] > dd ){
+    		
+    		if(datepick_arr[1] >= mm){
+    			
+    			if(datepick_arr[0] >= yy){
+    				
+    				alert("오늘날짜보다 미래는 입력할 수 없습니다.")
+            		$(this).val("")
+            		
+    			}
+    			
+    		}
+    		
+    	}
+    	
+    })
+    
+    
+    
     //존재하는 창고번지인지 확인
     
     $(document).on("change", ".arrive_house",function(){

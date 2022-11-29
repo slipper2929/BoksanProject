@@ -71,6 +71,7 @@
                         </c:if>
                         <p class="b_text b_inputform_name">
                             <label><span>중량</span><input type="text" placeholder="내용을 입력해주세요." class="num_check gap" id="arrive_num" name="arrive_num"></label>
+                            <span class="weight">kg</span>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_order_ps">*해당상품은 키로(KG)단위로 발주합니다.</p>

@@ -126,7 +126,7 @@
 	        	$("table").append(release_tr)
 	        },
 	        error: function(e){
-	            alert("error : " + e)
+	            alert("다시 입력해주세요")
 	        }
 	    })
 	    
@@ -262,7 +262,7 @@
 
 	        },
 	        error: function(e){
-	            alert("error : " + e)
+	            alert("다시 입력해주세요")
 	        }
 	    })
     	

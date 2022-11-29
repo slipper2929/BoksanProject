@@ -132,3 +132,20 @@
     left: 50%;
     margin-left: -175px;
 }
+
+.b_text{
+	position: relative;
+}
+
+.weight{
+	position: absolute;
+	top: 0;
+	right : -410px;
+}
+
+.weight2{
+	position: absolute;
+	top: 0;
+	right : 110px;
+}
+

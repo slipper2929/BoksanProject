@@ -46,3 +46,12 @@
     padding-left: 320px;
 }
 
+.b_text{
+	position: relative;
+}
+
+.weight{
+	position: absolute;
+	top: 0;
+	right: -410px;
+}

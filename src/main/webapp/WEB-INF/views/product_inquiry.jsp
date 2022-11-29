@@ -71,10 +71,10 @@
                                 <p>업체명</p>
                             </th>
                             <th>
-                                <p>구매가</p>
+                                <p>구매가(원)</p>
                             </th>
                             <th>
-                                <p>파레트용량</p>
+                                <p>파레트용량(kg)</p>
                             </th>
                             <th>
                                 <p>관리</p>
@@ -132,11 +132,11 @@
                             	</p>
                             </td>
                             <td>
-                            	<p class="pilist_on">${pilist.price }</p>
+                            	<p class="pilist_on wonP">${pilist.price }</p>
                             	<p class="pilist_out"><input type="text" class="product_value_price" value="${pilist.price }"></p>
                             </td>
                             <td>
-                            	<p class="pilist_on">${pilist.pallet_in_ratio }</p>
+                            	<p class="pilist_on weightP">${pilist.pallet_in_ratio }</p>
                             	<p class="pilist_out"><input type="text" class="product_value_pir" value="${pilist.pallet_in_ratio }" readonly></p>
                             </td>
                             <td>

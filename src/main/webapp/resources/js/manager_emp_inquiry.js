@@ -80,7 +80,17 @@ $(function(){
 			$(this).val("");
 			$(this).attr("name","");
 		}
-		//$(".emp_delete_form").submit();
+		
+		
+	})
+	$(document).on("click","#emp_delete_button",function(){
+		if($(".delete_check").is(':checked')){
+			alert("삭제되었습니다.")
+			$(".emp_delete_form").submit();
+		}else{
+			alert("체크된 목록이 없습니다.")
+		}
+		
 	})
 //	$(document).on("click","#emp_delete_button", function(){
 //		

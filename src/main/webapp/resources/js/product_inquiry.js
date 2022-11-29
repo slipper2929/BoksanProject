@@ -3,6 +3,7 @@
  */
 $(".success_btn").hide();
 $(".pilist_out").hide();
+
 $(document).on("click",".up_btn",function(){
 	$(this).hide();
 	$(this).parents("tr").find(".pilist_on").hide();

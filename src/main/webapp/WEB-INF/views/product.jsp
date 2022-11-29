@@ -106,10 +106,13 @@
                             </label>
                         </p>
                         <p class="b_text">
-                            <label><span>구매가</span><input type="text" class="sc_check gap num_check" name="price"></label>
+                            <label><span>단가</span><input type="text" class="sc_check gap num_check" name="price"></label>
+                            <span class="won">원</span>
                         </p>
+                        
                         <p class="b_text">
                             <label><span>파레트중량</span><input type="text" class="sc_check gap num_check" name="pallet_in_ratio"></label>
+                            <span class="won">kg</span>
                         </p>
                         <p class="b_product_ps">*1파레트에 들어갈수 있는 최대중량(KG단위)</p>
                         <div class="b_submit btn_l_b">

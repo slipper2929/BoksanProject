@@ -446,3 +446,7 @@
 	margin-bottom: 10px;
 
 }
+
+.b_table3_box{
+	overflow-y:scroll;
+}

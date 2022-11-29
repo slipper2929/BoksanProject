@@ -65,6 +65,7 @@
                         </p>
                         <p class="b_text b_inputform_name">
                             <label><span>중량</span><input type="text" placeholder="중량을 입력해주세요." class="num_check release_weight"></label>
+                            <span class="weight">kg</span>
                             <p class="b_explanation">이름은 한글 5자이내로만 입력해주세요</p>
                         </p>
                         <p class="b_release_ps">*해당상품은 키로(KG)단위로 출고합니다.</p>
@@ -99,6 +100,7 @@
                     </p>
                     <p class="b_text b_select b_inputBox">
                         <label><span>중량</span>
+                        <span class="weight2">kg</span>
                             <input type="text" placeholder="중량을 입력하세요" class="num_check" id="pw_padd">
                         </label>
                     </p>

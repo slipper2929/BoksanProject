@@ -159,3 +159,12 @@
 	background-image: url(../b_img/plus2.png);
 }
 
+.b_text{
+	position: relative;
+}
+
+.won{
+	position: absolute;
+	bottom: 0;
+	right: -350px;
+}
