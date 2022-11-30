@@ -86,6 +86,7 @@ public class StockServiceImpl implements StockService{
 		sdao.move_compare(sdto);
 		String num = sdto.getHouse_code();
 		String move = sdto.getMovement_address();
+		System.out.println("-------------------------------");
 		System.out.println(num);
 		System.out.println(move);
 		System.out.println(sdto.getPallet_num());

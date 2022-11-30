@@ -81,11 +81,11 @@
                             <td><p>${molist.b_productdto.product_name }</p></td>
                             <td>
                             	<p>${molist.house_code }</p>
-                            	<input type="hidden" name="house_code" value="${molist.house_code }">
+                            	<input type="hidden" class="house_code" value="${molist.house_code }">
                             </td>
                             <td><p>
                             	<input type="hidden" class="movement_value"value="${movement[status.index]}">${movement[status.index]}</p>
-                            	<input type="hidden" name="movement_address" value="${movement[status.index]}">
+                            	<input type="hidden" class="movement_address" value="${movement[status.index]}">
                             </td>
                             <td class="move_location_bacode">
                                 <p>
